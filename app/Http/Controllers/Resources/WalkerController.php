@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Walker;
+use App\Http\Requests\WalkerRequest;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
@@ -17,7 +18,9 @@ class WalkerController extends Controller
      */
     public function index()
     {
-        //
+        $walker = Walker::ownedBy(Auth::id());
+
+        return view('walks.index', compact('walker'));
     }
 
     /**
@@ -36,7 +39,7 @@ class WalkerController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(WalkerRequest $request)
     {
         $walker = new Walker();
         $walker->experience = $request->input('experience');
@@ -54,11 +57,10 @@ class WalkerController extends Controller
         $user->document =  $request->input('document');
         $user->phone =  $request->input('phone');
         $user->address =  $request->input('address');
-        $user->name =  $request->input('name');
         $user->save();
 
         } 
-        return redirect(route('links.index'))->with('_success', '¡Enlace creado exitosamente!');
+        return redirect(route('walker.index'))->with('_success', '¡Perfil creado exitosamente!');
         
     }
 
@@ -70,7 +72,8 @@ class WalkerController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('walker.show', compact('link'));
+        
     }
 
     /**
@@ -81,7 +84,7 @@ class WalkerController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('walker.edit', compact('link'));
     }
 
     /**
@@ -91,9 +94,24 @@ class WalkerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(WalkerRequest $request, Walker $walker, User $user)
     {
-        //
+
+        $walker->experience = $request->input('experience');
+        $walker->save();
+
+        $user->name =  $request->input('name');
+        $user->lastname =  $request->input('lastname');
+        $user->email =  $request->input('email');
+        $user->password =  $request->input('password');
+        $user->document =  $request->input('document');
+        $user->phone =  $request->input('phone');
+        $user->address =  $request->input('address');
+        $user->save();
+
+        return redirect(route('walker.index'))->with('_success', 'Perfil editado exitosamente!');
+
+        
     }
 
     /**
@@ -102,8 +120,15 @@ class WalkerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Walker $walker)
     {
-        //
+        if($walker->owner->id == Auth::id())
+        {
+            $walker->delete();
+
+            return back()->with('_success', 'Perfil de paseador eliminado exitosamente!');
+        }
+        
+        return back()->with('_failure', '¡No tiene permiso de borrar ese perfil!');
     }
 }
