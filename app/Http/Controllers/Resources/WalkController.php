@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use app\Models\WalkRequest;
+use app\http\Requests\WalkRequestRequest;
+use Illuminate\Support\Facades\Auth;
 
 class WalkController extends Controller
 {
@@ -13,7 +16,9 @@ class WalkController extends Controller
      */
     public function index()
     {
-        //
+        $walks = WalkRequest::ownedBy(Auth::id())->simplePaginate(5);
+
+        return view('walks.index', compact('walks'));
     }
 
     /**
@@ -23,7 +28,7 @@ class WalkController extends Controller
      */
     public function create()
     {
-        //
+        return view('walks.create');
     }
 
     /**
@@ -32,9 +37,20 @@ class WalkController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(WalkRequestRequest $request)
     {
-        //
+        
+        $walk = new WalkRequest();
+        $walk->user_id = Auth::id();
+        $walk->requested_day = $request->input('requested_day');
+        $walk->minutes_walked = $request->input('minutes_walked');
+        $walk->route = $request->input('route');
+        $walk->min_time = $request->input('min_time');
+        $walk->max_time = $request->input('requestmax_timeed_day');
+        $walk->commentary = $request->input('commentary');
+        //$walk->walker = $request->input('walker'); id del paseador
+        $walk->status = $request->input('status');
+        $walk->save();
     }
 
     /**
@@ -43,9 +59,9 @@ class WalkController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(WalkRequest $walk)
     {
-        //
+        return view('walks.show', compact('link'));
     }
 
     /**
@@ -54,9 +70,9 @@ class WalkController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(WalkRequest $walk)
     {
-        //
+        return view('walks.edit', compact('link'));
     }
 
     /**
@@ -66,9 +82,19 @@ class WalkController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(WalkRequestRequest $request, WalkRequest $walk)
     {
-        //
+        $walk->requested_day = $request->input('requested_day');
+        $walk->minutes_walked = $request->input('minutes_walked');
+        $walk->route = $request->input('route');
+        $walk->min_time = $request->input('min_time');
+        $walk->max_time = $request->input('requestmax_timeed_day');
+        $walk->commentary = $request->input('commentary');
+        //$walk->walker = $request->input('walker'); id del paseador
+        $walk->status = $request->input('status');
+        $walk->save();
+
+        return redirect(route('walks.index'))->with('_success', 'Paseo editado exitosamente!');
     }
 
     /**
@@ -77,8 +103,15 @@ class WalkController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(WalkRequest $walk)
     {
-        //
+        if($walk->owner->id == Auth::id())
+        {
+            $walk->delete();
+
+            return back()->with('_success', 'Paseo eliminado exitosamente!');
+        }
+        
+        return back()->with('_failure', '¡No tiene permiso de borrar ese paseo!');
     }
 }

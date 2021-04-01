@@ -7,7 +7,7 @@ use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
 
-class WalkerRequest extends FormRequest
+class WalkRequestRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -27,7 +27,14 @@ class WalkerRequest extends FormRequest
     public function rules()
     {
         return [
-            'experience' => 'number|digits_between:0,80',
+            'requested_day' => 'required|max:128|date',
+            'minutes_walked' => 'required|max:128|digits_between:0,480',
+           // 'route' => 'required|max:128',
+            'min_time' => 'required|max:128|digits_between:0,480',
+            'max_time' => 'required|max:128|digits_between:1,480',
+            'commentary' => 'required|max:128',
+            'status' => 'required',
+            'walker' => 'required',
  
         ];
     }
