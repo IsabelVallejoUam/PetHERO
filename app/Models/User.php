@@ -18,9 +18,15 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'lastname',
         'email',
         'password',
+        'document',
+        'phone',
+        'address',
+        'role'
     ];
+
 
     /**
      * The attributes that should be hidden for arrays.
@@ -40,4 +46,32 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+     /**
+   * Users' roles
+   * 
+   * @var array
+   */
+   public const ROLES = [
+    'pet owner'     => 1,
+    'pet walker'    => 2,
+    'store owner'  => 3
+ ];
+
+ public function pets()
+ {
+     return $this->hasMany(Pet::class);
+ }
+
+//  public function roles()
+//  {
+//      return $this->hasMany(Pet::class);
+//  }
+
+ public function walkRequests()
+ {
+     return $this->hasMany(Walk_Request::class);
+ }
+
 }
+
