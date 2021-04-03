@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateWalkersTable extends CreateUsersTable
+class CreatePetsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,20 +13,22 @@ class CreateWalkersTable extends CreateUsersTable
      */
     public function up()
     {
-    
-        Schema::create('walkers', function (Blueprint $table) {
-            
+        Schema::create('pets', function (Blueprint $table) {
             $table->id();
-            $table->string("schedule")->nullable();
-            $table->integer("experience")->nullable();           
             $table->foreignId('user_id');
+            $table->string('name');
+            $table->enum('sex',['f','m']);
+            $table->date('birthday');
+            $table->string('race');
+            $table->integer('personality');
+            $table->text('commentary')->nullable();
+            $table->integer('size');
             $table->timestamps();
 
             $table->foreign('user_id')
                 ->references('id')->on('users')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
-
         });
     }
 
@@ -37,6 +39,6 @@ class CreateWalkersTable extends CreateUsersTable
      */
     public function down()
     {
-        Schema::dropIfExists('walkers');
+        Schema::dropIfExists('pets');
     }
 }

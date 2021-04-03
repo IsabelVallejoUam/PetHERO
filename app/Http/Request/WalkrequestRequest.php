@@ -7,7 +7,8 @@ use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
 
-class WalkerRequest extends FormRequest
+class PetNetworkRequest extends FormRequest
+
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -27,11 +28,10 @@ class WalkerRequest extends FormRequest
     public function rules()
     {
         return [
-            'experience' => 'numeric|digits_between:0,80',
- 
+            
         ];
     }
-
+    
     public function failedValidation(Validator $validator)
     {
         throw new HttpResponseException(response()->json($validator->errors(), 422));

@@ -33,7 +33,7 @@ class UserRequest extends FormRequest
             'lastname' => 'required|max:256',
             'document'=> 'required|numeric|digits_between:8,10',
             'phone' => 'required|numeric|digits_between:7,10',
-            'address' =>'required|max:256',
+
 
 
         ];
