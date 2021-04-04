@@ -2,14 +2,17 @@
 
 @section('content')
 <div class="container">
+    <h1>Editar Perfil de Paseador</h1>
+    <a type="button" class="btn btn-secondary mb-4 mt-2" href="{{ url()->previous() }}"><i class="far fa-hand-point-left"></i> Volver</a>
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
+                <div class="card-header"></div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('walker.store') }}">
+                    <form method="POST" action="{{ route('walker.update', $walker->id) }}">
                         @csrf
+                        @method('put')
 
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
@@ -113,7 +116,7 @@
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
+                                    UPDATE
                                 </button>
                             </div>
                         </div>

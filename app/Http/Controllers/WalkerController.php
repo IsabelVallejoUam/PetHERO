@@ -59,14 +59,12 @@ class WalkerController extends Controller
 
         $walker = new Walker();
         $walker->experience = $request->input('experience');
-        echo (User::all());
         $foregin_id= User::select('id')->where('document', '=', $request->input('document'))->value('id');
-        echo ($foregin_id);
         $walker->user_id = $foregin_id;
         $walker->save();
 
 
-        return redirect(route('walker.index'))->with('_success', '¡Perfil creado exitosamente!');
+        return redirect(route('walker.show'))->with('_success', '¡Perfil creado exitosamente!');
         
     }
 
@@ -76,9 +74,9 @@ class WalkerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Walker $walker, User $user)
     {
-        return view('walker.show', compact('link'));
+        return view('walker.show', compact('walker','user'));
         
     }
 
@@ -88,9 +86,9 @@ class WalkerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Walker $walker, User $user)
     {
-        return view('walker.edit', compact('link'));
+        return view('walker.edit', compact('walker','user'));
     }
 
     /**
@@ -100,22 +98,21 @@ class WalkerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(WalkerRequest $request, Walker $walker, User $user)
+    public function update(WalkerRequest $request,  UserRequest $request2, Walker $walker, User $user)
     {
 
         $walker->experience = $request->input('experience');
         $walker->save();
 
-        $user->name =  $request->input('name');
-        $user->lastname =  $request->input('lastname');
-        $user->email =  $request->input('email');
-        $user->password =  $request->input('password');
-        $user->document =  $request->input('document');
-        $user->phone =  $request->input('phone');
-        $user->address =  $request->input('address');
+        $user->name =  $request2->input('name');
+        $user->lastname =  $request2->input('lastname');
+        $user->email =  $request2->input('email');
+        $user->password =  $request2->input('password');
+        $user->document =  $request2->input('document');
+        $user->phone =  $request2->input('phone');
         $user->save();
 
-        return redirect(route('walker.index'))->with('_success', 'Perfil editado exitosamente!');
+        return redirect(route('walker.show'))->with('_success', 'Perfil editado exitosamente!') ;
 
         
     }
@@ -128,7 +125,7 @@ class WalkerController extends Controller
      */
     public function destroy(Walker $walker)
     {
-        if($walker->owner->id == Auth::id())
+        if($walker->owner->document == Auth::document())
         {
             $walker->delete();
 

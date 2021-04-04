@@ -1,13 +1,13 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+    
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'PET HERO') }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -17,14 +17,14 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet"> 
 </head>
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                    {{ config('app.name', 'PET HERO') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -47,9 +47,32 @@
                             @endif
                             
                             @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                        
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Registrarse
+                                      </a>
+    
+                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="{{ route('walker.create{{--PET OWNER--}}') }}"><i class="fas fa-plus"></i> Registrarse como Dueño de Mascota</a>
+                                        <a class="dropdown-item" href="{{ route('walker.create') }}"><i class="fas fa-plus"></i> Registrarse como Paseador</a>
+                                        <a class="dropdown-item" href="{{ route('walker.create{{--STORE OWNER--}}') }}"><i class="fas fa-plus"></i> Registrarse como Dueño de Tienda</a>
+                                    </div>
+    
                                 </li>
+
+                                {{-- <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                      PERFIL
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                      <a class="dropdown-item" href="{{ route('walker.show', auth()->user()->document)}}">Ver Perfil Publico</a>
+                                      <a class="dropdown-item" href="{{ route('walker.edit', auth()->user()->document )}}">Editar Perfil</a>
+                                      <a class="dropdown-item" href="{{ route('walker.index', auth()->user()->document)}}">Ver Informacion de Perfil</a>
+                                      <a class="dropdown-item" href="{{ route('walker.destroy', auth()->user()->document)}}">Eliminar Perfil</a>
+                                    </div>
+                                  </li> --}}
+
                             @endif
                         @else
                             <li class="nav-item dropdown">
@@ -58,6 +81,8 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('walk.index') }}"><i class="fas fa-plus"></i> Ver Perfil</a>
+
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -69,6 +94,8 @@
                                     </form>
                                 </div>
                             </li>
+
+                            
                         @endguest
                     </ul>
                 </div>
