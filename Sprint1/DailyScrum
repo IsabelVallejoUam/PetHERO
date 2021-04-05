@@ -1,0 +1,33 @@
+Dev: Isabel Vallejo
+
+Fecha: 27/03/2020
+1. ¿Qué has hecho desde la última reunión?
+Planear la estructura de la tabla para paseadores y los paseos como tal
+2. ¿Qué harás hoy?
+Crear la base del proyecto
+3. ¿Qué impedimentos tienes para realizar el trabajo y qué ayudas necesitas?
+El bootstrap no esta sirviendo aunque se hico la instalacion correcta
+
+Fecha: 31/03/2020
+1. ¿Qué has hecho desde la última reunión?
+Planear la estructura de los modelos y las requests para Uusarios, Paseadores, y paseos
+2. ¿Qué harás hoy?
+Crear dichos modelos, requests y las migraciones
+3. ¿Qué impedimentos tienes para realizar el trabajo y qué ayudas necesitas?
+Tuve dudas de como ibamos a implementar los roles y la division de informacion entre distintos tipos de usuarios
+
+Fecha: 01/04/2020
+1. ¿Qué has hecho desde la última reunión?
+Terminar los modelos y migraciones de paseadores y paseos
+2. ¿Qué harás hoy?
+Crear el CRUD para los paseadores y paseos
+3. ¿Qué impedimentos tienes para realizar el trabajo y qué ayudas necesitas?
+No e podido contactarme con mis compañeros para discutir ciertos temas y como se implementaran los metodos de creacion para usuarios
+
+Fecha: 03/04/2020
+1. ¿Qué has hecho desde la última reunión?
+terminar CRUDS
+2. ¿Qué harás hoy?
+Hoy Trabajare en las vistas para hacer uso de llos metodos creados en el CRUD
+3. ¿Qué impedimentos tienes para realizar el trabajo y qué ayudas necesitas?
+el manejo de rutas no funciona adecuadamente y no me permite vizualisar las vistas
