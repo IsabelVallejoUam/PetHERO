@@ -20,7 +20,7 @@ class WalkerController extends Controller
      */
     public function index()
     {
-        $walker = Walker::ownedBy(Auth::id());
+        $walker = Walker::ownedBy(auth()->user());
 
         return view('walker.index', compact('walker'));
     }

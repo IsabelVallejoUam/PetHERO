@@ -21,7 +21,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/walker/{document}', [WalkerController::class, 'show']);
+//Route::get('/walker/show/{document}', [WalkerController::class, 'show']);
 
 Auth::routes();
 
