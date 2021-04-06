@@ -16,7 +16,14 @@ class Store extends Model
      */
     protected $fillable = [
         'address',
-        'phone_number'
+        'phone_number',
+        'store_name',
+        'nit',
+        'description',
+        'owner_id',
+        'schedule',
+        'address',
+        'phone_number',
     ];
 
     public function scopeOwnedBy($query, $owner_id)

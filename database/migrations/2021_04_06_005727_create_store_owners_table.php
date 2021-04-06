@@ -15,8 +15,7 @@ class CreateStoreOwnersTable extends Migration
     {
         Schema::create('store_owners', function (Blueprint $table) {
             $table->id();  
-            $table->string("store_name");
-            $table->foreignId('user_id');
+            $table->foreignId('user_id')->unique();
             $table->timestamps();
 
             $table->foreign('user_id')

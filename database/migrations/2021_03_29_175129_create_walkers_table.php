@@ -19,7 +19,7 @@ class CreateWalkersTable extends CreateUsersTable
             $table->id();
             $table->string("schedule")->nullable();
             $table->integer("experience")->nullable();           
-            $table->foreignId('user_id');
+            $table->foreignId('user_id')->unique();
             $table->timestamps();
 
             $table->foreign('user_id')

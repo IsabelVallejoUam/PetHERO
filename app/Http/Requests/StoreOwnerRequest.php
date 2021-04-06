@@ -27,7 +27,6 @@ class StoreOwnerRequest extends FormRequest
     public function rules()
     {
         return [
-            'store_name' => 'required|max:250',
 
         ];
     }

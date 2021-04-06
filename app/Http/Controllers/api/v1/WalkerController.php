@@ -30,6 +30,7 @@ class WalkerController extends Controller
     public function store(WalkerRequest $request)
     {
         $walker = Walker::create($request->all());
+        //$walker = Walker::searchUsers();
         return response()->json(['data' => $walker], 201);
     }
 
@@ -68,7 +69,8 @@ class WalkerController extends Controller
      */
     public function destroy(Walker $walker)
     {
+        $dataDeleted=$walker;
         $walker->delete();
-        return response(null, 204);
+        return response()->json(['data' => $walker], 200);
     }
 }

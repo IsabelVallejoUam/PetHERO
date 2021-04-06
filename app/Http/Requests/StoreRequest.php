@@ -29,6 +29,9 @@ class StoreRequest extends FormRequest
         return [
             'address' => 'required|max:200',
             'phone_number' => 'required|numeric|digits_between:7,10',
+            'store_name' => 'requiered|max:250',
+            'nit' => 'required | numeric | digits_between:8,15',
+            'description' => 'max:400',
 
         ];
     }
