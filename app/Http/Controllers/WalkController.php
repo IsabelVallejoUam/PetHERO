@@ -108,7 +108,6 @@ class WalkController extends Controller
         if($walk->owner->id == Auth::id())
         {
             $walk->delete();
-
             return back()->with('_success', 'Paseo eliminado exitosamente!');
         }
         
