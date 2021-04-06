@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class StoreOwner extends Model
+class Store extends Model
 {
     use HasFactory, Notifiable;
 
@@ -15,16 +15,17 @@ class StoreOwner extends Model
      * @var array
      */
     protected $fillable = [
-        'contact_number'
+        'address',
+        'phone_number'
     ];
 
-    public function scopeOwnedBy($query, $user_id)
+    public function scopeOwnedBy($query, $owner_id)
     {
-        return $query->where('user_id', '=', $user_id);
+        return $query->where('owner_id', '=', $owner_id);
     }
 
     public function owner()
     {
-        return $this->belongsTo(User::class, 'user_id');
+        return $this->belongsTo(User::class, 'owner_id');
     }
 }
