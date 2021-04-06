@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateStore extends Migration
+class CreateStoreOwnerTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,14 @@ class CreateStore extends Migration
      */
     public function up()
     {
-        Schema::create('store', function (Blueprint $table) {
-            
-            $table->id();
+        Schema::create('store_owner', function (Blueprint $table) {
+            $table->id();  
+            $table->string("contact_number");
+            $table->foreignId('user_id');
             $table->timestamps();
-            $table->foreignId('owner_id');
-            $table->string('address');
-            $table->string('phone_number');
 
-            $table->foreign('owner_id')
-                ->references('id')->on('store_owner')
+            $table->foreign('user_id')
+                ->references('id')->on('users')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
         });
@@ -35,6 +33,6 @@ class CreateStore extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('store');
+        Schema::dropIfExists('store_owner');
     }
 }
