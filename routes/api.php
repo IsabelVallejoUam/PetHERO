@@ -2,7 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\api\v1\WalkerController as APIWalkerController;
+use App\Http\Controllers\api\v1\UserController as APIUserController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -17,3 +18,5 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+Route::apiResource('/v1/walkers', APIWalkerController::class);
+Route::apiResource('/v1/users', APIUserController::class);

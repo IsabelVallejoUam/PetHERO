@@ -6,7 +6,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-
+use Illuminate\Support\Facades\DB; 
 class Walker extends Authenticatable
 {
     use HasFactory, Notifiable;
@@ -18,7 +18,8 @@ class Walker extends Authenticatable
      */
     protected $fillable = [
         'experience',
-        //'schedule',
+        'schedule',
+        'user_id'
         
     ];
 
@@ -32,4 +33,17 @@ class Walker extends Authenticatable
         return $this->belongsTo(User::class, 'user_id');
     }
     
+
+    public static function searchUser ($walker){
+        $query = DB::select('SELECT walkers.*, users.* FROM users 
+                            JOIN walkers ON users.id = walkers.id 
+                            WHERE walkers.id =:id', ['id' => $walker->id]);
+        return $query;
+    }
+
+    public static function searchUsers(){
+        $query = DB::select('SELECT walkers.*, users.* FROM users 
+                            JOIN walkers ON users.id = walkers.id');
+        return $query;
+    }
 }
