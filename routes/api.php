@@ -19,6 +19,11 @@ use App\Http\Controllers\api\v1\StoreOwnerController as APIStoreOwnerController;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
 Route::apiResource('/v1/walkers', APIWalkerController::class);
 Route::apiResource('/v1/users', APIUserController::class);
 Route::apiResource('/v1/storeowners', APIStoreOwnerController::class);
+
+// Route::get('V1/walker/{document}', [APIWalkerController::class, 'show']);
+// Route::get('V1/storeowner/{document}', [APIWalkerController::class, 'show']);
+// Route::get('V1/petowner/{document}', [APIWalkerController::class, 'show']);
