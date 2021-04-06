@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
+use Illuminate\Support\Facades\DB;
 class StoreOwner extends Model
 {
     use HasFactory;
@@ -15,7 +15,8 @@ class StoreOwner extends Model
      * @var array
      */
     protected $fillable = [
-        'contact_number'
+        'contact_number',
+        'user_id'
     ];
 
     public function scopeOwnedBy($query, $user_id)
@@ -26,5 +27,18 @@ class StoreOwner extends Model
     public function owner()
     {
         return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public static function searchUser ($owner){
+        $query = DB::select('SELECT store_owners.*, users.* FROM users 
+                            JOIN store_owners ON users.id = store_owners.user_id 
+                            WHERE users.id =:id', ['id' => $owner->user_id]);
+        return $query;
+    }
+
+    public static function searchUsers(){
+        $query = DB::select('SELECT store_owners.*, users.* FROM users 
+                            JOIN store_owners ON users.id = store_owners.id');
+        return $query;
     }
 }
