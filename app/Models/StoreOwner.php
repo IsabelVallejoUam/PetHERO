@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class StoreOwner extends Model
 {
-    use HasFactory, Notifiable;
+    use HasFactory;
 
     /**
      * The attributes that are mass assignable.
