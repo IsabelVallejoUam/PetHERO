@@ -18,6 +18,7 @@ class CreateStoresTable extends Migration
             $table->id();
             $table->timestamps();
             $table->foreignId('owner_id');
+            $table->string("schedule")->nullable();
             $table->string('address');
             $table->string('phone_number');
 
