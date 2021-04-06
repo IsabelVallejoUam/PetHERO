@@ -12,35 +12,13 @@
                         @csrf
 
                         <div class="form-group row">
-                            <label for="requested_day" class="col-md-4 col-form-label text-md-right">{{ __('Requested Day') }}</label>
+                            <label for="minutes_walked" class="col-md-4 col-form-label text-md-right">{{ __('Minutes Walked') }}</label>
 
                             <div class="col-md-6">
-                                <input id="requested_day" type="date" class="form-control @error('requested_day') is-invalid @enderror" name="requested_day" value="{{ old('requested_day') }}" required autocomplete="requested_day" autofocus>
-
-                                @error('requested_day')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                <input id="minutes_walked" type="number" class="form-control @error('minutes_walked') is-invalid @enderror" name="minutes_walked" value="{{ old('minutes_walked') }}" autocomplete="minutes_walked" autofocus>
                             </div>
                         </div>
-
-                        <div class="form-group row">
-                            <label for="min_time" class="col-md-4 col-form-label text-md-right">{{ __('Minimum Time Expected') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="min_time" type="number" class="form-control @error('min_time') is-invalid @enderror" name="min_time" value="{{ old('min_time') }}" autocomplete="min_time" autofocus>
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="max_time" class="col-md-4 col-form-label text-md-right">{{ __('Maximum Time Expected') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="max_time" type="number" class="form-control @error('max_time') is-invalid @enderror" name="max_time" value="{{ old('max_time') }}" autocomplete="max_time" autofocus>
-                            </div>
-                        </div>
-
+                        
                         <div class="form-group row">
                             <label for="commentary" class="col-md-4 col-form-label text-md-right">{{ __('Commentary') }}</label>
 
@@ -53,6 +31,24 @@
                             <label for="walker" class="col-md-4 col-form-label text-md-right">{{ __('Walker') }}</label>
                             <div class="col-md-6">
                                 <input id="walker" type="text" class="form-control"  name="walker" value="{{ old('walker') }}"  autocomplete="walker" autofocus>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3">
+                            <label for="validationCustom04" class="form-label">Estado</label>
+                            <select class="form-select" id="validationCustom04" name="status" value="{{ old('status', $walk->status ?? "") }}" >
+                             
+                             
+                          <option selected disabled value="">Elegir...</option>
+                                <option selected="selected" value="{{ old('status', $walk->status ?? "") }}">{{ old('status', $walk->status ?? "") }} </option>
+                            @foreach ($walk as $status) 
+                                <option value="{{ $status['estado'] }}">{{ $status['estado'] }}</option>
+                            @endforeach 
+                              
+                        
+                            </select>
+                            <div class="invalid-feedback">
+                              Por favor eliga una Estado valido.
                             </div>
                         </div>
 

@@ -43,13 +43,13 @@ class WalkController extends Controller
         $walk = new WalkRequest();
         $walk->user_id = Auth::id();
         $walk->requested_day = $request->input('requested_day');
-        $walk->minutes_walked = $request->input('minutes_walked');
+        $walk->minutes_walked = 0;
         $walk->route = $request->input('route');
         $walk->min_time = $request->input('min_time');
         $walk->max_time = $request->input('requestmax_timeed_day');
         $walk->commentary = $request->input('commentary');
         //$walk->walker = $request->input('walker'); id del paseador
-        $walk->status = $request->input('status');
+        $walk->status = 0;
         $walk->save();
     }
 

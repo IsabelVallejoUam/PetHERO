@@ -27,6 +27,14 @@ class WalkRequest extends Authenticatable
         
     ];
 
+    protected $status=[
+        ["estado" => "pending"],
+        ["estado" => "active"],
+        ["estado" => "finished"],
+        ["estado" => "canceled"],
+
+    ];
+
     public function scopeOwnedBy($query, $user_id)
     {
         return $query->where('user_id', '=', $user_id);
