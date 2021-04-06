@@ -29,5 +29,4 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::resource('/walker', WalkerController::class);
 Route::resource('/walkRequest',WalkController::class);
 
-//Route::get('/walker', 'App\Http\Controllers\WalkerController@index');
 
