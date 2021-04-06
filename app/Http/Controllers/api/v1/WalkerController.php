@@ -5,6 +5,8 @@ namespace App\Http\Controllers\api\v1;
 use App\Http\Controllers\Controller;
 use App\Models\Walker;
 use Illuminate\Http\Request;
+use App\Http\Requests\WalkerRequest;
+
 
 class WalkerController extends Controller
 {
@@ -25,7 +27,7 @@ class WalkerController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(WalkerRequest $request)
     {
         $walker = Walker::create($request->all());
         return response()->json(['data' => $walker], 201);
@@ -39,6 +41,7 @@ class WalkerController extends Controller
      */
     public function show(Walker $walker)
     {
+        
         $walker= Walker::searchUser($walker);
         return response()->json(['data' => $walker], 200);
     }
@@ -50,7 +53,7 @@ class WalkerController extends Controller
      * @param  \App\Models\Walker  $walker
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Walker $walker)
+    public function update(WalkerRequest $request, Walker $walker)
     {
         $walker->update($request->all());
         $walker= Walker::searchUser($walker);
