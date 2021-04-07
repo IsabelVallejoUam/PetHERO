@@ -14,7 +14,7 @@ class ProductsSeeder extends Seeder
     public function run()
     {
         DB::table('products')->insert([
-            'store_id' => "3",
+            'store_id' => "3", 
             'price' => "10000",
             'title' => "Alimento dog chow 500gr",
             'discount' => "0",

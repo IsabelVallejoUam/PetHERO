@@ -15,7 +15,7 @@ class StoresSeeder extends Seeder
     public function run()
     {
         DB::table('stores')->insert([
-            'owner_id' => "1",
+            'owner_id' => "1", //Cambiar id en caso de error
             'store_name' => "Veterinaria de prueba",
             'nit' => "123456789",
             'description' => "Esta es una veterinaria muy linda de prueba",
