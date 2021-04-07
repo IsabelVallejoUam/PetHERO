@@ -49,6 +49,8 @@ Continue arreglando problemas en el API, especificamente con los metodos show y 
 3. ¿Qué impedimentos tienes para realizar el trabajo y qué ayudas necesitas?
 Teniamos un impedimento de que la api no queria recibir la informacion mandanda desde la URI, pero cambiamos los parametros del metodo y se soluciono
 
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+
 Dev: Juan Pablo Zapata 
 
 Fecha: 31/03/2020
