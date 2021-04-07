@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\api\v1\WalkerController as APIWalkerController;
 use App\Http\Controllers\api\v1\UserController as APIUserController;
 use App\Http\Controllers\api\v1\StoreOwnerController as APIStoreOwnerController;
+use App\Http\Controllers\api\v1\PetOwnerController as APIPetOwnerController;
+use App\Http\Controllers\api\v1\PetController as APIPetController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -24,6 +26,11 @@ Route::apiResource('/v1/walkers', APIWalkerController::class);
 Route::apiResource('/v1/users', APIUserController::class);
 Route::apiResource('/v1/storeowners', APIStoreOwnerController::class);
 
+Route::apiResource('/v1/petowners', APIPetOwnerController::class);
+Route::apiResource('/v1/pet', APIPetController::class);
+
+
 // Route::get('V1/walker/{document}', [APIWalkerController::class, 'show']);
 // Route::get('V1/storeowner/{document}', [APIWalkerController::class, 'show']);
 // Route::get('V1/petowner/{document}', [APIWalkerController::class, 'show']);
+
