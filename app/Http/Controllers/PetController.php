@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Pet;
 use Illuminate\Http\Request;
 use App\Http\Requests\PetRequest;
+use App\Models\PetOwner;
 use Illuminate\Support\Facades\Auth;
 
 class PetController extends Controller
@@ -16,7 +17,9 @@ class PetController extends Controller
      */
     public function index()
     {
-        //
+        $pet = Pet::ownedBy(auth()->user());
+
+        return view('pet.index', compact('pet'));
     }
 
     /**
@@ -47,7 +50,8 @@ class PetController extends Controller
         $pet->size = $request->input('size');
         $pet->type = $request->input('type');
 
-        $pet->user_id = Auth::id();
+        $foregin_id= PetOwner::select('id')->where('user_id', '=', Auth::id())->value('id');
+        $pet->user_id = $foregin_id;
         $pet->save();
 
         return redirect(route('pet.index'))->with('_success', '¡Mascota agregada exitosamente!');
@@ -59,9 +63,10 @@ class PetController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Pet $pet)
     {
-        //
+        return view('pet.show', compact('pet'));
+        
     }
 
     /**
@@ -70,9 +75,9 @@ class PetController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Pet $pet)
     {
-        //
+        return view('pet.edit', compact('pet'));
     }
 
     /**
@@ -82,9 +87,17 @@ class PetController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(PetRequest $request, Pet $pet)
     {
-        //
+        $pet->name = $request->input('name');
+        $pet->sex = $request->input('sex');
+        $pet->birthday = $request->input('birthday');
+        $pet->race = $request->input('race');
+        $pet->personality = $request->input('personality');
+        $pet->commentary = $request->input('commentary');
+        $pet->size = $request->input('size');
+        $pet->type = $request->input('type');
+        $pet->save();
     }
 
     /**
@@ -93,8 +106,16 @@ class PetController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Pet $pet)
     {
-        //
+        if($pet->owner->document == Auth::document())
+        {
+            $pet->delete();
+
+            return back()->with('_success', 'Mascota eliminado exitosamente!');
+        }
+        
+        return back()->with('_failure', '¡No tiene permiso de borrar esta mascota!');
     }
+    
 }
