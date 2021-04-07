@@ -37,7 +37,7 @@ class UserController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function show(UserRequest $user)
+    public function show(User $user)
     {
         return response()->json(['data' => $user], 200);
     }
@@ -61,7 +61,7 @@ class UserController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function destroy(UserRequest $user)
+    public function destroy(User $user)
     {
         $user->delete();
         return response(null, 204);
