@@ -49,4 +49,46 @@ Continue arreglando problemas en el API, especificamente con los metodos show y 
 3. ¿Qué impedimentos tienes para realizar el trabajo y qué ayudas necesitas?
 Teniamos un impedimento de que la api no queria recibir la informacion mandanda desde la URI, pero cambiamos los parametros del metodo y se soluciono
 
+Dev: Juan Pablo Zapata 
+
+Fecha: 31/03/2020
+1. ¿Qué has hecho desde la última reunión?
+Pensar en una forma de implementar los horarios de paseadores y tiendas
+2. ¿Qué harás hoy?
+Investigar opciones para lograr que los horarios sean lo más amigables con el usuario 
+3. ¿Qué impedimentos tienes para realizar el trabajo y qué ayudas necesitas?
+Nunca he impleentado algo así antes y es difícil estructurar algo 
+
+Fecha: 04/04/2020
+1. ¿Qué has hecho desde la última reunión?
+Pensar en la forma de probar los modelos inicialmente sin implementar vistas
+2. ¿Qué harás hoy?
+Estructrurar las pruebas de modelos con las apis
+3. ¿Qué impedimentos tienes para realizar el trabajo y qué ayudas necesitas?
+En este momento ninguno
+
+Fecha: 05/04/2020
+1. ¿Qué has hecho desde la última reunión?
+Dejar claras las apis y la forma en la que se deben relacionar las entidades
+2. ¿Qué harás hoy?
+Implementar las apis para usuario, dueño de tienda y paseador
+3. ¿Qué impedimentos tienes para realizar el trabajo y qué ayudas necesitas?
+No entendía muy bien el funcionamiento de la base, pero se solucionó rápido
+
+Fecha: 06/04/2020
+1. ¿Qué has hecho desde la última reunión?
+Implementar apis para usuario, paseador y dueño de tienda
+2. ¿Qué harás hoy?
+Intentar corregir un error con el api de dueño de tienda e implementar apis para tienda y producto
+3. ¿Qué impedimentos tienes para realizar el trabajo y qué ayudas necesitas?
+El api de dueño de tienda posee un error que no logro entender
+
+
+Fecha: 07/04/2020
+1. ¿Qué has hecho desde la última reunión?
+Con la ayuda del equipo pudimos solucionar el error del api de dueño de tienda
+2. ¿Qué harás hoy?
+Implementar apis para tienda y producto, probar las demás apis e iniciar su documentación
+3. ¿Qué impedimentos tienes para realizar el trabajo y qué ayudas necesitas?
+Por el momento ninguno
 
