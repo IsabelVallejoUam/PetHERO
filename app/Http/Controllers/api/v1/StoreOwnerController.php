@@ -41,11 +41,8 @@ class StoreOwnerController extends Controller
      */
     public function show($id)
     {
-    
         $storeOwner= StoreOwner::searchUser($id);
-        return response()->json(['data' => $storeOwner], 200); //BUG!! storeOwner sale null
-       
-        
+        return response()->json(['data' => $storeOwner], 200); //BUG!! storeOwner sale null   
     }
 
     /**
@@ -72,10 +69,11 @@ class StoreOwnerController extends Controller
      * @param  \App\Models\StoreOwner  $storeOwner
      * @return \Illuminate\Http\Response
      */
-    public function destroy(StoreOwner $storeOwner)
+    public function destroy($id)
     {
-        $dataDeleted=$storeOwner;
+        $storeOwner = StoreOwner::find($id);
+        $deletedData = $storeOwner;
         $storeOwner->delete();
-        return response()->json(['data' => $dataDeleted], 200);
+        return response()->json(['data' => $deletedData], 200);
     }
 }
