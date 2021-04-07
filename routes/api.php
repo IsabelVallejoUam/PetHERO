@@ -8,6 +8,7 @@ use App\Http\Controllers\api\v1\StoreOwnerController as APIStoreOwnerController;
 use App\Http\Controllers\api\v1\PetOwnerController as APIPetOwnerController;
 use App\Http\Controllers\api\v1\PetController as APIPetController;
 use App\Http\Controllers\api\v1\StoreController as APIStoreController;
+use App\Http\Controllers\api\v1\ProductController as APIProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,7 +29,7 @@ Route::apiResource('/v1/walkers', APIWalkerController::class);
 Route::apiResource('/v1/users', APIUserController::class);
 Route::apiResource('/v1/storeowners', APIStoreOwnerController::class);
 Route::apiResource('/v1/stores', APIStoreController::class);
-
+Route::apiResource('/v1/products', APIProductController::class);
 Route::apiResource('/v1/petowners', APIPetOwnerController::class);
 Route::apiResource('/v1/pets', APIPetController::class);
 

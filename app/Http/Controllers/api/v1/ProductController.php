@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\api;
+namespace App\Http\Controllers\api\v1;
 
 use App\Http\Controllers\Controller;
 use App\Models\Product;
@@ -17,7 +17,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        $products = Product::orderBy('store_id', 'asc')->get();
+        return response()->json(['data' => $products], 200);
     }
 
     /**
@@ -28,7 +29,8 @@ class ProductController extends Controller
      */
     public function store(ProductRequest $request)
     {
-        //
+        $product = Product::create($request->all());
+        return response()->json(['data' => $product], 201);
     }
 
     /**
@@ -39,7 +41,7 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        //
+        return response()->json(['data' => $product], 200);
     }
 
     /**
@@ -51,7 +53,8 @@ class ProductController extends Controller
      */
     public function update(ProductRequest $request, Product $product)
     {
-        //
+        $product->update($request->all());
+        return response()->json(['data' => $product], 200);
     }
 
     /**
@@ -62,6 +65,8 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        $deletedData = $product;
+        $product->delete();
+        return response()->json(['data' => $deletedData], 200);
     }
 }
