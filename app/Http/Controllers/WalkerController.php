@@ -7,6 +7,8 @@ use App\Models\User;
 use App\Models\Walker;
 use App\Http\Requests\WalkerRequest;
 use App\Http\Requests\UserRequest;
+use Illuminate\Support\Facades\Hash;
+
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -51,7 +53,7 @@ class WalkerController extends Controller
         $user->name =  $request2->input('name');
         $user->lastname =  $request2->input('lastname');
         $user->email =  $request2->input('email');
-        $user->password =  $request2->input('password');
+        $user->password =  Hash::make($request2->input('password'));
         $user->document =  $request2->input('document');
         $user->phone =  $request2->input('phone');
         $user->save();

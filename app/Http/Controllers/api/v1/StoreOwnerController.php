@@ -5,6 +5,8 @@ namespace App\Http\Controllers\api\v1;
 use App\Http\Controllers\Controller;
 use App\Models\StoreOwner;
 use Illuminate\Http\Request;
+use app\Http\Requests\StoreOwnerRequest;
+
 
 class StoreOwnerController extends Controller
 {
@@ -25,7 +27,7 @@ class StoreOwnerController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreOwnerRequest $request)
     {
         $owner = StoreOwner::create($request->all()); 
         return response()->json(['data' => $owner], 201);
@@ -41,7 +43,7 @@ class StoreOwnerController extends Controller
     {
         $storeOwner= StoreOwner::searchUser($storeOwner);
         return response()->json(['data' => $storeOwner], 200); //BUG!! No sale nada :()
-        //return response()->json(['data' => $storeOwner], 200);
+       
         
     }
 
@@ -52,7 +54,7 @@ class StoreOwnerController extends Controller
      * @param  \App\Models\StoreOwner  $storeOwner
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, StoreOwner $storeOwner)
+    public function update(StoreOwnerRequest $request, StoreOwner $storeOwner)
     {
         $storeOwner->update($request->all()); //No sirve
         $storeOwner= StoreOwner::searchUser($storeOwner);

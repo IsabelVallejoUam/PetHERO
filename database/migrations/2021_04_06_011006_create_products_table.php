@@ -17,10 +17,13 @@ class CreateProductsTable extends Migration
             $table->id();
             $table->timestamps();
             $table->foreignId('store_id');
-            $table->float('price');
+            $table->float('price')->unsigned();
             $table->string('title');
+            $table->float('discount')->default(0)->unsigned();
+            $table->integer('quantity')->default(0)->unsigned();
             $table->string('description');
             $table->string('image_url');
+
             
             $table->foreign('store_id')
                 ->references('id')->on('stores')

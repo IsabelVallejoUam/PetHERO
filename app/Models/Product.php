@@ -18,7 +18,8 @@ class Product extends Model
         'price',
         'title',
         'description',
-        'image_url'
+        'image_url',
+        'store_id',
     ];
 
     public function scopeOwnedBy($query, $store_id)

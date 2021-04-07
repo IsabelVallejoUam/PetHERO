@@ -25,6 +25,11 @@ class CreateWalksTable extends Migration
             $table->text('commentary')->nullable();
             $table->string('walker')->nullable();
             $table->integer('status');
+
+             $table->foreign('user_id')
+                ->references('id')->on('users')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
         });
     }
 

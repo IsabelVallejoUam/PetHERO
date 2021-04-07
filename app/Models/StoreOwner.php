@@ -15,8 +15,9 @@ class StoreOwner extends Model
      * @var array
      */
     protected $fillable = [
-        'contact_number',
-        'user_id'
+       
+        'user_id',
+        
     ];
 
     public function scopeOwnedBy($query, $user_id)
