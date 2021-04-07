@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Notifications\Notifiable;
 
 class Store extends Model
 {
@@ -22,8 +24,6 @@ class Store extends Model
         'description',
         'owner_id',
         'schedule',
-        'address',
-        'phone_number',
     ];
 
     public function scopeOwnedBy($query, $owner_id)

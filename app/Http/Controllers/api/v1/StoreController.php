@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\api;
+namespace App\Http\Controllers\api\v1;
 
 use App\Http\Controllers\Controller;
 use App\Models\Store;
@@ -16,7 +16,8 @@ class StoreController extends Controller
      */
     public function index()
     {
-        //
+        $stores = Store::orderBy('store_name', 'asc')->get();
+        return response()->json(['data' => $stores], 200);
     }
 
     /**
@@ -27,7 +28,8 @@ class StoreController extends Controller
      */
     public function store(StoreRequest $request)
     {
-        //
+        $store = Store::create($request->all()); 
+        return response()->json(['data' => $store], 201);
     }
 
     /**
@@ -38,7 +40,7 @@ class StoreController extends Controller
      */
     public function show(Store $store)
     {
-        //
+        return response()->json(['data' => $store], 200);
     }
 
     /**
@@ -50,7 +52,8 @@ class StoreController extends Controller
      */
     public function update(StoreRequest $request, Store $store)
     {
-        //
+        $store->update($request->all());
+        return response()->json(['data' => $store], 200);
     }
 
     /**
@@ -61,6 +64,7 @@ class StoreController extends Controller
      */
     public function destroy(Store $store)
     {
-        //
+        $store->delete();
+        return response(null, 204);
     }
 }
