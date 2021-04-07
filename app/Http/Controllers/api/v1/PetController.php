@@ -5,6 +5,7 @@ namespace App\Http\Controllers\api\v1;
 use App\Http\Controllers\Controller;
 use App\Models\Pet;
 use Illuminate\Http\Request;
+use App\Http\Requests\PetRequest;
 
 class PetController extends Controller
 {
@@ -25,7 +26,7 @@ class PetController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PetRequest $request)
     {
         $pet = Pet::create($request->all()); 
         return response()->json(['data' => $pet], 201);
@@ -52,20 +53,15 @@ class PetController extends Controller
      * @param  \App\Models\Pet  $Pet
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(PetRequest $request, $id)
     {
         $pet = Pet::find($id);
 
         $pet->update($request->all());
-    
+
         return response()->json(['data' => $pet], 200);
     }
-  /**public function update(Request $request, Pet $pet)
-    {
-        $pet->update($request->all());
-        $pet= Pet::searchUser($pet);
-        return response()->json(['data' => $pet], 200);
-    }*/
+
 
     /**
      * Remove the specified resource from storage.

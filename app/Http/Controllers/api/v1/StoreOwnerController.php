@@ -5,7 +5,7 @@ namespace App\Http\Controllers\api\v1;
 use App\Http\Controllers\Controller;
 use App\Models\StoreOwner;
 use Illuminate\Http\Request;
-use app\Http\Requests\StoreOwnerRequest;
+use App\Http\Requests\StoreOwnerRequest;
 
 
 class StoreOwnerController extends Controller
@@ -39,10 +39,11 @@ class StoreOwnerController extends Controller
      * @param  \App\Models\StoreOwner  $storeOwner
      * @return \Illuminate\Http\Response
      */
-    public function show(StoreOwner $storeOwner)
+    public function show($id)
     {
-        $storeOwner= StoreOwner::searchUser($storeOwner);
-        return response()->json(['data' => $storeOwner], 200); //BUG!! No sale nada :()
+    
+        $storeOwner= StoreOwner::searchUser($id);
+        return response()->json(['data' => $storeOwner], 200); //BUG!! storeOwner sale null
        
         
     }
@@ -54,11 +55,15 @@ class StoreOwnerController extends Controller
      * @param  \App\Models\StoreOwner  $storeOwner
      * @return \Illuminate\Http\Response
      */
-    public function update(StoreOwnerRequest $request, StoreOwner $storeOwner)
+    public function update(StoreOwnerRequest $request, $id)
     {
-        $storeOwner->update($request->all()); //No sirve
-        $storeOwner= StoreOwner::searchUser($storeOwner);
-        return response()->json(['data' => $storeOwner], 200);
+        $StoreOwner = StoreOwner::find($id);
+
+        $StoreOwner->update($request->all());
+
+        $StoreOwner= StoreOwner::searchUser($id);
+       
+        return response()->json(['data' => $StoreOwner], 200);
     }
 
     /**
@@ -69,7 +74,8 @@ class StoreOwnerController extends Controller
      */
     public function destroy(StoreOwner $storeOwner)
     {
-        $storeOwner->delete(); //No sirve
-        return response(null, 204);
+        $dataDeleted=$storeOwner;
+        $storeOwner->delete();
+        return response()->json(['data' => $dataDeleted], 200);
     }
 }

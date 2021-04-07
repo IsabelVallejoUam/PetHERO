@@ -71,6 +71,6 @@ class WalkerController extends Controller
     {
         $dataDeleted=$walker;
         $walker->delete();
-        return response()->json(['data' => $walker], 200);
+        return response()->json(['data' => $dataDeleted], 200);
     }
 }

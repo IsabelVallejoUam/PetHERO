@@ -5,6 +5,7 @@ namespace App\Http\Controllers\api\v1;
 use App\Http\Controllers\Controller;
 use App\Models\PetOwner;
 use Illuminate\Http\Request;
+use App\Http\Requests\PetOwnerRequest;
 
 class PetOwnerController extends Controller
 {
@@ -15,7 +16,7 @@ class PetOwnerController extends Controller
      */
     public function index()
     {
-        $owners = PetOwner::orderBy('user_id', 'asc')->get();
+        $owners = PetOwner::searchUsers();
         return response()->json(['data' => $owners], 200);
     }
 
@@ -25,7 +26,7 @@ class PetOwnerController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PetOwnerRequest $request)
     {
         $owner = PetOwner::create($request->all()); 
         return response()->json(['data' => $owner], 201);
@@ -39,10 +40,11 @@ class PetOwnerController extends Controller
      */
     public function show($id)
     {
-        $petOwner = PetOwner::findOrFail($id);
-        if($petOwner != null){
+        $petOwner = PetOwner::searchUser($id);
+  
             return response()->json(['data' => $petOwner], 200);
-        }
+        
+ 
     }
 
     /**
@@ -52,14 +54,18 @@ class PetOwnerController extends Controller
      * @param  \App\Models\PetOwner  $PetOwner
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(PetOwnerRequest $request, $id)
     {
         $petOwner = PetOwner::find($id);
 
         $petOwner->update($request->all());
-    
+
+        $petOwner= PetOwner::searchUser($id);
+       
         return response()->json(['data' => $petOwner], 200);
     }
+
+
 
     /**
      * Remove the specified resource from storage.
@@ -70,8 +76,8 @@ class PetOwnerController extends Controller
     public function destroy($id)
     {
         $petOwner = PetOwner::find($id);
-
+        $deletedData = $petOwner;
         $petOwner->delete();
-        return response(null, 204);
+        return response()->json(['data' => $deletedData], 200);
     }
 }

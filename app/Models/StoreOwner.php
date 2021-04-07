@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
+
 class StoreOwner extends Model
 {
     use HasFactory;
@@ -30,10 +31,10 @@ class StoreOwner extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
 
-    public static function searchUser ($owner){
+    public static function searchUser ($id){
         $query = DB::select('SELECT store_owners.*, users.* FROM users 
                             JOIN store_owners ON users.id = store_owners.user_id 
-                            WHERE users.id =:id', ['id' => $owner->user_id]);
+                            WHERE users.id =:id', ['id' => $id]);
         return $query;
     }
 

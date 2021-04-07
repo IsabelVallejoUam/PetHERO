@@ -27,7 +27,7 @@ Route::apiResource('/v1/users', APIUserController::class);
 Route::apiResource('/v1/storeowners', APIStoreOwnerController::class);
 
 Route::apiResource('/v1/petowners', APIPetOwnerController::class);
-Route::apiResource('/v1/pet', APIPetController::class);
+Route::apiResource('/v1/pets', APIPetController::class);
 
 
 // Route::get('V1/walker/{document}', [APIWalkerController::class, 'show']);

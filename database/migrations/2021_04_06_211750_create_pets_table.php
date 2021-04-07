@@ -16,18 +16,19 @@ class CreatePetsTable extends Migration
         Schema::create('pets', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->enum('type', ["Dog","Cat"]);
+            $table->integer('type');
             $table->string('race');
-            $table->enum('size', ["Small","Medium","Large"]);
-            $table->string('color');
-            $table->int('age');
             $table->foreignId('owner_id');
+            $table->enum('sex',['f','m']);
+            $table->date('birthday');
+            $table->integer('personality');
+            $table->text('commentary')->nullable();
+            $table->integer('size');
             $table->timestamps();
 
             $table->foreign('owner_id')
                 ->references('id')->on('pet_owners')
-                ->onUpdate('cascade')
-                ->onDelete('cascade');
+            ;
         });
     }
 

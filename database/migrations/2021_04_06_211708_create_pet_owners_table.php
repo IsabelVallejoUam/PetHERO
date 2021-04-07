@@ -13,7 +13,7 @@ class CreatePetOwnersTable extends Migration
      */
     public function up()
     {
-        Schema::create('PetOwners', function (Blueprint $table) {
+        Schema::create('pet_owners', function (Blueprint $table) {
             
             $table->id();
             $table->string("address");          

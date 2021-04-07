@@ -9,14 +9,39 @@ class Pet extends Model
 {
     use HasFactory;
 
+
     protected $fillable = [
         'name',
-        'type',
+        'sex',
+        'birthday',
         'race',
+        'personality',
+        'commentary',
         'size',
-        'color',
-        'age'
+        'type',
+        'owner_id',
+
     ];
+
+    public const SIZES = [
+        'tiny'     => 1,
+        'small'    => 2,
+        'medium'  => 3,
+        'large'  => 4,
+        'giant'  => 5
+     ];
+
+     public const PERSONALITIES = [
+        'calm'     => 1,
+        'friendly'    => 2,
+        'aggressive'  => 3,
+        'shy'  => 4,
+     ];
+
+     public const TYPES = [
+        'dog'     => 1,
+        'cat'    => 2,
+     ];
 
     public function scopeOwnedBy($query, $owner_id)
     {
