@@ -68,7 +68,7 @@ class User extends Authenticatable
 
  public function walkRequests()
  {
-     return $this->hasMany(Walk_Request::class);
+     return $this->hasMany(Walks::class);
  }
 
 }

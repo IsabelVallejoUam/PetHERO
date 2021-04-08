@@ -7,7 +7,7 @@ use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
 
-class WalkRequestRequest extends FormRequest
+class WalkRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -34,7 +34,7 @@ class WalkRequestRequest extends FormRequest
             'max_time' => 'required|max:128|digits_between:1,480',
             'commentary' => 'required|max:128',
             'status' => 'required',
-            'walker' => 'required',
+        
  
         ];
     }

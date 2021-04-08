@@ -57,11 +57,11 @@
                                         Registrarse
                                       </a>
     
-                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    {{-- <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown"> --}}
                                         <a class="dropdown-item" href="{{ route('walker.create{{--PET OWNER--}}') }}"><i class="fas fa-plus"></i> Registrarse como Dueño de Mascota</a>
                                         <a class="dropdown-item" href="{{ route('walker.create') }}"><i class="fas fa-plus"></i> Registrarse como Paseador</a>
                                         <a class="dropdown-item" href="{{ route('walker.create{{--STORE OWNER--}}') }}"><i class="fas fa-plus"></i> Registrarse como Dueño de Tienda</a>
-                                    </div>
+                                    {{-- </div> --}}
     
                                 </li>
 

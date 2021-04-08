@@ -46,7 +46,7 @@ class WalkController extends Controller
         $walk->minutes_walked = 0;
         $walk->route = $request->input('route');
         $walk->min_time = $request->input('min_time');
-        $walk->max_time = $request->input('requestmax_timeed_day');
+        $walk->max_time = $request->input('max_time');
         $walk->commentary = $request->input('commentary');
         //$walk->walker = $request->input('walker'); id del paseador
         $walk->status = 0;
@@ -88,7 +88,7 @@ class WalkController extends Controller
         $walk->minutes_walked = $request->input('minutes_walked');
         $walk->route = $request->input('route');
         $walk->min_time = $request->input('min_time');
-        $walk->max_time = $request->input('requestmax_timeed_day');
+        $walk->max_time = $request->input('max_time');
         $walk->commentary = $request->input('commentary');
         //$walk->walker = $request->input('walker'); id del paseador
         $walk->status = $request->input('status');

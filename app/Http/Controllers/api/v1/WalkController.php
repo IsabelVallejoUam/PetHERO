@@ -3,11 +3,11 @@
 namespace App\Http\Controllers\api\v1;
 
 use App\Http\Controllers\Controller;
-use App\Models\WalkRequest;
 use Illuminate\Http\Request;
-use App\Http\Requests\WalkRequestRequest;
+use App\Http\Requests\WalkRequest;
+use App\Models\Walk;
 
-class WalkerController extends Controller
+class WalkController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +16,7 @@ class WalkerController extends Controller
      */
     public function index()
     {
-        $walk = WalkRequest::orderBy('user_id', 'asc')->get();
+        $walk = Walk::orderBy('user_id', 'asc')->get();
         return response()->json(['data' => $walk], 201);
     }
 
@@ -26,9 +26,9 @@ class WalkerController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(WalkRequestRequest $request)
+    public function store(WalkRequest $request)
     {
-        $walk = WalkRequest::create($request->all());
+        $walk = Walk::create($request->all());
         return response()->json(['data' => $walk], 201);
     }
 
@@ -38,9 +38,9 @@ class WalkerController extends Controller
      * @param  \App\Models\Walker  $walker
      * @return \Illuminate\Http\Response
      */
-    public function show(WalkRequest $walk)
+    public function show(Walk $walk)
     {
-        $walk= WalkRequest::searchUser($walk);
+        $walk= Walk::searchUser($walk);
         return response()->json(['data' => $walk], 200);
     }
 
@@ -51,10 +51,10 @@ class WalkerController extends Controller
      * @param  \App\Models\Walker  $walker
      * @return \Illuminate\Http\Response
      */
-    public function update(WalkRequestRequest $request, WalkRequest $walk)
+    public function update(WalkRequest $request, Walk $walk)
     {
         $walk->update($request->all());
-        $walk= WalkRequest::searchUser($walk);
+        $walk= Walk::searchUser($walk);
         return response()->json(['data' => $walk], 200);
     }
 
