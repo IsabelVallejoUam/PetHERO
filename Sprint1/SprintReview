@@ -1,9 +1,10 @@
 Objetivo de la iteración: 
-    Poder Gestionar los usuarios y sus elementos, adelantar los controladores para gestionar los items desde el frontend
+    Poder Gestionar los usuarios y sus elementos, adelantar los controladores para gestionar los items desde la interfaz gráfica.
 
 Resultados obtenidos: 
-
+    Con un flujo de trabajo constante, se pudieron completar bastantes historias de usuario, sentando unas bases para la parte visual de la aplicacion.
+    
 Problemas identificados:
-    Varios Bugs 
+    Varios bugs, manejo del tablero en Jira.
 Cómo se resolvieron:
-    Discutiendo en equipo distintas alternativas que podian solucionar el codigo, compartiendo el conocimiento
+    Discutiendo en equipo distintas alternativas que podian solucionar el codigo, compartiendo el conocimiento. La colaboración cumplió un papel vital.
