@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
-use App\Models\PetOwner;
-use App\Http\Requests\PetOwnerRequest;
+use App\Models\StoreOwner;
+use App\Http\Requests\StoreOwnerRequest;
 use App\Http\Requests\UserRequest;
 use Illuminate\Support\Facades\Hash;
 
@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
-class PetOwnerController extends Controller
+class StoreOwnerController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -22,9 +22,9 @@ class PetOwnerController extends Controller
      */
     public function index()
     {
-        $petOwner = PetOwner::ownedBy(auth()->user());
+        $storeOwner = StoreOwner::ownedBy(auth()->user());
 
-        return view('petOwner.index', compact('petOwner'));
+        return view('storeOwner.index', compact('storeOwner'));
     }
 
     /**
@@ -34,7 +34,7 @@ class PetOwnerController extends Controller
      */
     public function create()
     {
-        return view('petOwner.create');
+        return view('storeOwner.create');
     }
 
     /**
@@ -43,7 +43,7 @@ class PetOwnerController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(PetOwnerRequest $request, UserRequest $request2)
+    public function store(StoreOwnerRequest $request, UserRequest $request2)
     {
       
         $existingUser = User::where('document', '=', $request2->input('document'))->exists();
@@ -59,14 +59,13 @@ class PetOwnerController extends Controller
         $user->save();
         } 
 
-        $petOwner = new PetOwner();
-        $petOwner->address = $request->input('address');
+        $petOwner = new StoreOwner();
         $foregin_id= User::select('id')->where('document', '=', $request->input('document'))->value('id');
         $petOwner->user_id = $foregin_id;
         $petOwner->save();
 
 
-        return redirect(route('petOwner.show'))->with('_success', '¡Perfil creado exitosamente!');
+        return redirect(route('storeOwner.show'))->with('_success', '¡Perfil creado exitosamente!');
         
     }
 
@@ -76,9 +75,9 @@ class PetOwnerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(PetOwner $petOwner, User $user)
+    public function show(StoreOwner $storeOwner, User $user)
     {
-        return view('petOwner.show', compact('petOwner','user'));
+        return view('storeOwner.show', compact('storeOwner','user'));
         
     }
 
@@ -88,9 +87,9 @@ class PetOwnerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(PetOwner $walker, User $user)
+    public function edit(StoreOwner $walker, User $user)
     {
-        return view('petOwner.edit', compact('petOwner','user'));
+        return view('storeOwner.edit', compact('storeOwner','user'));
     }
 
     /**
@@ -100,11 +99,8 @@ class PetOwnerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(PetOwnerRequest $request,  UserRequest $request2, PetOwner $petOwner, User $user)
+    public function update(StoreOwnerRequest $request,  UserRequest $request2, StoreOwner $petOwner, User $user)
     {
-
-        $petOwner->address = $request->input('address');
-        $petOwner->save();
 
         $user->name =  $request2->input('name');
         $user->lastname =  $request2->input('lastname');
@@ -114,7 +110,7 @@ class PetOwnerController extends Controller
         $user->phone =  $request2->input('phone');
         $user->save();
 
-        return redirect(route('petOwner.show'))->with('_success', 'Perfil editado exitosamente!') ;
+        return redirect(route('storeOwner.show'))->with('_success', 'Perfil editado exitosamente!') ;
 
         
     }
@@ -125,7 +121,7 @@ class PetOwnerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(PetOwner $petOwner)
+    public function destroy(StoreOwner $petOwner)
     {
         if($petOwner->owner->document == Auth::document())
         {

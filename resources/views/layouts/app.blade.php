@@ -58,9 +58,9 @@
                                       </a>
     
                                     {{-- <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown"> --}}
-                                        <a class="dropdown-item" href="{{ route('walker.create{{--PET OWNER--}}') }}"><i class="fas fa-plus"></i> Registrarse como Dueño de Mascota</a>
+                                        <a class="dropdown-item" href="{{ route('petOwner.create{{--PET OWNER--}}') }}"><i class="fas fa-plus"></i> Registrarse como Dueño de Mascota</a>
                                         <a class="dropdown-item" href="{{ route('walker.create') }}"><i class="fas fa-plus"></i> Registrarse como Paseador</a>
-                                        <a class="dropdown-item" href="{{ route('walker.create{{--STORE OWNER--}}') }}"><i class="fas fa-plus"></i> Registrarse como Dueño de Tienda</a>
+                                        <a class="dropdown-item" href="{{ route('storeOwner.create{{--STORE OWNER--}}') }}"><i class="fas fa-plus"></i> Registrarse como Dueño de Tienda</a>
                                     {{-- </div> --}}
     
                                 </li>

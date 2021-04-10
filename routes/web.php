@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Auth;
 
 use App\Http\Controllers\WalkerController;
 use App\Http\Controllers\WalkController;
+use App\Http\Controllers\PetOwnerController;
+use App\Http\Controllers\StoreOwnerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,7 +28,13 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
 Route::resource('/walker', WalkerController::class);
+
+Route::resource('/storeOwner', StoreOwnerController::class);
+
+Route::resource('/petOwner', PetOwnerController::class);
+
 Route::resource('/walkRequest',WalkController::class);
 
 // Route::get('/walker/{document}', [App\Http\Controllers\WalkerController::class, 'show'])->name('show');
