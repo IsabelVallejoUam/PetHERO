@@ -59,8 +59,8 @@ class PetOwnerController extends Controller
         $petOwner = PetOwner::find($id);
 
         $petOwner->update($request->all());
-
-        $petOwner= PetOwner::searchUser($id);
+        $user_id = $petOwner->user_id;
+        $petOwner= PetOwner::searchUser($user_id);
        
         return response()->json(['data' => $petOwner], 200);
     }

@@ -136,4 +136,12 @@ class WalkerController extends Controller
         
         return back()->with('_failure', '¡No tiene permiso de borrar ese perfil!');
     }
+
+    public function login()
+    {
+
+        return view('walker.login');
+    }
+
+
 }

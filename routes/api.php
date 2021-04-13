@@ -33,7 +33,6 @@ Route::apiResource('/v1/stores', APIStoreController::class);
 Route::apiResource('/v1/stores/products', APIProductController::class);
 Route::apiResource('/v1/petowners', APIPetOwnerController::class);
 Route::apiResource('/v1/petowners/pets', APIPetController::class);
-
 Route::apiResource('/v1/walks', APIWalkController::class);
 
 

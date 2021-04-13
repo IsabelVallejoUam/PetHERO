@@ -36,14 +36,14 @@ class Walker extends Authenticatable
 
     public static function searchUser ($walker){
         $query = DB::select('SELECT walkers.*, users.* FROM users 
-                            JOIN walkers ON users.id = walkers.id 
-                            WHERE walkers.id =:id', ['id' => $walker->id]);
+                            JOIN walkers ON users.id = walkers.user_id 
+                            WHERE walkers.user_id =:id', ['id' => $walker->user_id]);
         return $query;
     }
 
     public static function searchUsers(){
         $query = DB::select('SELECT walkers.*, users.* FROM users 
-                            JOIN walkers ON users.id = walkers.id');
+                            JOIN walkers WHERE users.id = walkers.user_id');
         return $query;
     }
 }

@@ -30,16 +30,16 @@ class StoreOwner extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
 
-    public static function searchUser ($id){
+    public static function searchUser ($user_id){
         $query = DB::select('SELECT store_owners.*, users.* FROM users 
                             JOIN store_owners ON users.id = store_owners.user_id 
-                            WHERE users.id =:id', ['id' => $id]);
+                            WHERE store_owners.user_id =:id', ['id' => $user_id]);
         return $query;
     }
 
     public static function searchUsers(){
         $query = DB::select('SELECT store_owners.*, users.* FROM users 
-                            JOIN store_owners ON users.id = store_owners.id');
+                            JOIN store_owners ON users.id = store_owners.user_id');
         return $query;
     }
 }

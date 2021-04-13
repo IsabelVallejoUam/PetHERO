@@ -49,14 +49,14 @@ class Walk extends Authenticatable
     }
     public static function searchUser ($walks){
         $query = DB::select('SELECT walks.*, users.* FROM users 
-                            JOIN walks ON users.id = walks.id 
-                            WHERE walks.id =:id', ['id' => $walks->id]);
+                            JOIN walks ON users.id = walks.user_id 
+                            WHERE walks.user_id =:id', ['id' => $walks->user_id]);
         return $query;
     }
 
     public static function searchUsers(){
         $query = DB::select('SELECT walks.*, users.* FROM users 
-                            JOIN walks ON users.id = walks.id');
+                            JOIN walks ON users.id = walks.user_id');
         return $query;
     }
 

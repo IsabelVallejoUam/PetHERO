@@ -58,7 +58,9 @@ class StoreOwnerController extends Controller
 
         $StoreOwner->update($request->all());
 
-        $StoreOwner= StoreOwner::searchUser($id);
+        $user_id = $StoreOwner->user_id;
+
+        $StoreOwner= StoreOwner::searchUser($user_id);
        
         return response()->json(['data' => $StoreOwner], 200);
     }
