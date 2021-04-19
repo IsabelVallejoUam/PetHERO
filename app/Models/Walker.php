@@ -2,21 +2,14 @@
 
 namespace App\Models;
 
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\DB; 
-
-class Walker extends Model
+class Walker extends Authenticatable
 {
-    use HasFactory;
-
-    
-    /*
-    * Llave primaria es el id del usario dueño del rol es una string
-    */
-    public $incrementing = false;
-    protected $primaryKey = 'user_id';
-
+    use HasFactory, Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -26,8 +19,7 @@ class Walker extends Model
     protected $fillable = [
         'experience',
         'schedule',
-        'user_id',
-        'rate'
+        'user_id'
         
     ];
 

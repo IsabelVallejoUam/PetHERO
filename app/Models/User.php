@@ -11,12 +11,6 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable;
 
-    /*
-    *La llave primaria es la cedula y no es un auto-increment
-    */
-    public $incrementing = false;
-    protected $primaryKey = 'document';
-
     /**
      * The attributes that are mass assignable.
      *
@@ -51,21 +45,31 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+     /**
+   * Users' roles
+   * 
+   * @var array
+   */
+   public const ROLES = [
+    'pet owner'     => 1,
+    'pet walker'    => 2,
+    'store owner'  => 3
+ ];
 
+ public function pets()
+ {
+     return $this->hasMany(Pet::class);
+ }
 
-    public function petOwner()
-    {
-        return $this->hasOne(PetOwner::class);
-    }
+//  public function roles()
+//  {
+//      return $this->hasMany(Pet::class);
+//  }
 
-    public function walker()
-    {
-        return $this->hasOne(Walker::class);
-    }
-
-    public function storeOwner()
-    {
-        return $this->hasOne(StoreOwner::class);
-    }
+ public function walkRequests()
+ {
+     return $this->hasMany(Walks::class);
+ }
 
 }
+

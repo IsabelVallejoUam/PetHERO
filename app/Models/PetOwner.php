@@ -11,12 +11,6 @@ class PetOwner extends Model
 {
     use HasFactory;
 
-    /*
-    * Llave primaria es el id del usario dueño del rol es una string
-    */
-    public $incrementing = false;
-    protected $primaryKey = 'user_id';
-
     protected $fillable = [
         'address',
         'user_id'

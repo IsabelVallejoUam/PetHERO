@@ -11,12 +11,6 @@ class Store extends Model
 {
     use HasFactory;
 
-    /*
-    * Llave primaria es el nit de la tienda es una string
-    */
-    public $incrementing = false;
-    protected $primaryKey = 'nit';
-
     /**
      * The attributes that are mass assignable.
      *

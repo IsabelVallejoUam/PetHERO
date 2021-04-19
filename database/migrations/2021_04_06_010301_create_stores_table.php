@@ -15,6 +15,7 @@ class CreateStoresTable extends Migration
     {
         Schema::create('stores', function (Blueprint $table) {
             
+            $table->id();
             $table->timestamps();
             $table->foreignId('owner_id');
             $table->string("store_name");
@@ -22,11 +23,10 @@ class CreateStoresTable extends Migration
             $table->string("description");
             $table->string("schedule")->nullable();
             $table->string('address');
-            $table->string('phone');
-            $table->integer('score')->default(0);
+            $table->string('phone_number');
 
             $table->foreign('owner_id')
-                ->references('user_id')->on('store_owners')
+                ->references('id')->on('store_owners')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
         });

@@ -14,12 +14,12 @@ class CreateStoreOwnersTable extends Migration
     public function up()
     {
         Schema::create('store_owners', function (Blueprint $table) {
-             
+            $table->id();  
             $table->foreignId('user_id')->unique();
             $table->timestamps();
 
             $table->foreign('user_id')
-                ->references('document')->on('users')
+                ->references('id')->on('users')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
         });

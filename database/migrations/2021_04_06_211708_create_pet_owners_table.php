@@ -15,13 +15,13 @@ class CreatePetOwnersTable extends Migration
     {
         Schema::create('pet_owners', function (Blueprint $table) {
             
-            $table->string('address');          
+            $table->id();
+            $table->string("address");          
             $table->foreignId('user_id');
-            $table->integer('score')->default(0);
             $table->timestamps();
 
             $table->foreign('user_id')
-                ->references('document')->on('users')
+                ->references('id')->on('users')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
         });

@@ -9,26 +9,17 @@ class Product extends Model
 {
     use HasFactory;
 
-    /*
-    * Llave primaria es el codigo de barras es una string
-    */
-    public $incrementing = false;
-    protected $primaryKey = 'bar_code';
-
-
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'bar_code',
         'price',
         'title',
         'description',
         'image_url',
         'store_id',
-        
     ];
 
     public function scopeOwnedBy($query, $store_id)
