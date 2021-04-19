@@ -15,9 +15,10 @@ class CreatePetOwnersTable extends Migration
     {
         Schema::create('pet_owners', function (Blueprint $table) {
             
-            $table->id();
+           
             $table->string("address");          
-            $table->foreignId('user_id');
+            $table->foreignId('user_id')->primary();
+            $table->integer('score')->default(0);
             $table->timestamps();
 
             $table->foreign('user_id')

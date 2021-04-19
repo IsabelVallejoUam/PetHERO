@@ -19,14 +19,17 @@ class CreateStoresTable extends Migration
             $table->timestamps();
             $table->foreignId('owner_id');
             $table->string("store_name");
+            $table->string("slogan")->nullable();
             $table->string("nit");
             $table->string("description");
             $table->string("schedule")->nullable();
             $table->string('address');
             $table->string('phone_number');
+            $table->integer("score")->default(0);           
+
 
             $table->foreign('owner_id')
-                ->references('id')->on('store_owners')
+                ->references('user_id')->on('store_owners')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
         });
