@@ -14,20 +14,26 @@ class CreateWalksTable extends Migration
     public function up()
     {
         Schema::create('walks', function (Blueprint $table) {
+
             $table->id();
             $table->timestamps();
-            $table->foreignId('user_id');
+            $table->foreignId('pet_id');
             $table->date('requested_day');
             $table->integer('minutes_walked')->nullable();
             $table->string('route');
             $table->integer('min_time');
             $table->integer('max_time');
             $table->text('commentary')->nullable();
-            $table->string('walker')->nullable();
+            $table->foreignId('walker')->nullable();
             $table->integer('status');
 
-             $table->foreign('user_id')
-                ->references('id')->on('users')
+            $table->foreign('pet_id')
+                ->references('id')->on('pets')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
+
+            $table->foreign('walker')
+                ->references('user_id')->on('walkers')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
         });

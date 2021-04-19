@@ -10,6 +10,13 @@ class StoreOwner extends Model
 {
     use HasFactory;
 
+    /*
+    * Llave primaria es el id del usario dueño del rol es una string
+    */
+    public $incrementing = false;
+    protected $primaryKey = 'user_id';
+
+    
     /**
      * The attributes that are mass assignable.
      *

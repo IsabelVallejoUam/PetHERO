@@ -16,14 +16,15 @@ class CreateWalkersTable extends CreateUsersTable
     
         Schema::create('walkers', function (Blueprint $table) {
             
-            $table->id();
-            $table->string("schedule")->nullable();
-            $table->integer("experience")->nullable();           
+            $table->string('schedule')->nullable();
+            $table->float('rate')->default(0)->unsigned();
+            $table->text('slogan')->nullable();
+            $table->integer('experience')->nullable();           
             $table->foreignId('user_id')->unique();
             $table->timestamps();
 
             $table->foreign('user_id')
-                ->references('id')->on('users')
+                ->references('document')->on('users')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
 

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePetOwnersTable extends Migration
+class CreateFavoriteStoresTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,18 @@ class CreatePetOwnersTable extends Migration
      */
     public function up()
     {
-        Schema::create('pet_owners', function (Blueprint $table) {
-            
-            $table->string('address');          
-            $table->foreignId('user_id');
-            $table->integer('score')->default(0);
+        Schema::create('favorite_stores', function (Blueprint $table) {
             $table->timestamps();
+            $table->foreignId('document');
+            $table->foreignId('store_id');
 
-            $table->foreign('user_id')
+            $table->foreign('document')
                 ->references('document')->on('users')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
+
+            $table->foreign('store_id')
+                ->references('nit')->on('stores')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
         });
@@ -34,6 +37,6 @@ class CreatePetOwnersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('PetOwners');
+        Schema::dropIfExists('favorite_stores');
     }
 }

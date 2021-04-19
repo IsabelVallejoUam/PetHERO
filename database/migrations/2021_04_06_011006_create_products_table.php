@@ -14,7 +14,8 @@ class CreateProductsTable extends Migration
     public function up()
     {
         Schema::create('products', function (Blueprint $table) {
-            $table->id();
+
+            $table->string('bar_code');
             $table->timestamps();
             $table->foreignId('store_id');
             $table->float('price')->unsigned();
@@ -23,10 +24,12 @@ class CreateProductsTable extends Migration
             $table->integer('quantity')->default(0)->unsigned();
             $table->string('description');
             $table->string('image_url');
+            $table->integer('score')->default(0);
+
 
             
             $table->foreign('store_id')
-                ->references('id')->on('stores')
+                ->references('nit')->on('stores')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
         });
