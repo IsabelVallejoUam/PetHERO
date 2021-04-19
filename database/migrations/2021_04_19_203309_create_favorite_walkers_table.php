@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePetsTable extends Migration
+class CreateFavoriteWalkersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,24 +13,23 @@ class CreatePetsTable extends Migration
      */
     public function up()
     {
-        Schema::create('pets', function (Blueprint $table) {
+        Schema::create('favorite_walkers', function (Blueprint $table) {
+            
             $table->id();
-            $table->string('name');
-            $table->integer('species');
-            $table->string('race');
-            $table->foreignId('owner_id');
-            $table->enum('sex',['f','m']);
-            $table->date('birthday');
-            $table->integer('personality');
-            $table->text('commentary')->nullable();
-            $table->integer('size');
             $table->timestamps();
+            $table->string('pet_owner_id');
+            $table->string('walker_id');
 
-            $table->foreign('owner_id')
+            $table->foreign('pet_owner_id')
                 ->references('user_id')->on('pet_owners')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
-            
+
+            $table->foreign('walker_id')
+                ->references('user_id')->on('walkers')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
+
         });
     }
 
@@ -41,6 +40,6 @@ class CreatePetsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pets');
+        Schema::dropIfExists('favorite_walkers');
     }
 }

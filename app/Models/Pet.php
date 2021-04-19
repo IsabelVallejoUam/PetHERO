@@ -18,7 +18,7 @@ class Pet extends Model
         'personality',
         'commentary',
         'size',
-        'type',
+        'specie',
         'owner_id',
 
     ];
@@ -38,7 +38,7 @@ class Pet extends Model
         'shy'  => 4,
      ];
 
-     public const TYPES = [
+     public const SPECIES = [
         'dog'     => 1,
         'cat'    => 2,
      ];
