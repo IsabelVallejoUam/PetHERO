@@ -66,7 +66,7 @@ class PetOwnerController extends Controller
         $petOwner->save();
 
 
-        return redirect(route('petOwner.show'))->with('_success', '¡Perfil creado exitosamente!');
+        return redirect()->route('petOwner.show', [$user])->with('_success', '¡Perfil creado exitosamente!');
         
     }
 
@@ -78,7 +78,24 @@ class PetOwnerController extends Controller
      */
     public function show(PetOwner $petOwner, User $user)
     {
+        $user = User::findOrFail($petOwner->user_id);
+
         return view('petOwner.show', compact('petOwner','user'));
+        
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function profile(PetOwner $petOwner)
+    {        
+        
+        $user = User::findOrFail($petOwner->user_id);
+        
+        return view('petOwner.perfil', compact('petOwner','user'));
         
     }
 
@@ -114,7 +131,7 @@ class PetOwnerController extends Controller
         $user->phone =  $request2->input('phone');
         $user->save();
 
-        return redirect(route('petOwner.show'))->with('_success', 'Perfil editado exitosamente!') ;
+        return redirect(route('petOwner.show',[$user,$petOwner]))->with('_success', 'Perfil editado exitosamente!') ;
 
         
     }

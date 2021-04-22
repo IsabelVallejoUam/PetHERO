@@ -11,6 +11,8 @@ class PetOwner extends Model
 {
     use HasFactory;
 
+    protected $primaryKey = 'user_id';
+
     protected $fillable = [
         'address',
         'user_id'
