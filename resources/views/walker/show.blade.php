@@ -1,40 +1,61 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>{{ $user->name }} {{ $user->lastname }}</title>
-  
-</head>
+@extends('layouts.app')
 
-<body>
+@section('content')
+<div class="container">
+    <h1>Ver Datos de {{ $user->name. ' ' .$user->lastname  }} como Paseador</h1>
+    <a type="button" class="btn btn-secondary mb-4 mt-2" href="{{ url()->previous() }}"><i class="far fa-hand-point-left"></i> Volver</a>
+    <table class="table table-striped table-hover">
+        <tr>
+            <th scope="col">Full Name</th>
+            <td>{{ $user->name. ' ' .$user->lastname  }}</td>
+        </tr>
+        <tr>
+            <th scope="col">Email</th>
+            <td>{{ $user->email }}</td>
+        </tr>
+        <tr>
+            <th scope="col">Phone Number</th>
+            <td>{{ $user->phone }}</td>
+        </tr>
+        <tr>
+            <th scope="col">Document</th>
+            <td>{{ $user->document }}</td>
+        </tr>
+        <tr>
+            <th scope="col">Slogan</th>
+            <td>{{ $walker->slogan }}</td>
+        </tr>
+        <tr>
+            <th scope="col">Experience</th>
+            <td>{{ $walker->experience }}</td>
+        </tr>
+        <tr>
+            <th scope="col">Rate</th>
+            <td>{{ $walker->rate }}</td>
+        </tr>
+        <tr>
+            <th scope="col">Schedule</th>
+            <td>{{ $walker->schedule }}</td>
+        </tr>
+        <tr>
+            <th scope="col">Creado en</th>
+            <td>{{ $walker->created_at ?? "Desconocida" }}</td>
+        </tr>
+        <tr>
+            <th scope="col">Actualizado en</th>
+            <td>{{ $walker->updated_at ?? "Desconocida"  }}</td>
+        </tr>
+    </table>
 
-    @extends('layouts.app')
-
-    @section('content')
-        <div class="jumbotron col-lg-6 col-md-6 col-sm-6 col-xs-6 offset-3 float-md-center text-center" style=" width:500px;">
-            <h1>Perfil de {{ $user->name }}</h1>
-            <p>
-            <img class="col-lg-6 col-md-6 col-sm-6 col-xs-6 offset-3 float-md-center" src="/images/{{$user->profile_photo}}" style="width:150px; height150px;  border-radius:50%; display: block;">
-            </p>
-            <div class="container">
-                <p class="text-center" style="margin-bottom: 20px">NOMBRE DEL PASEADOR: {{$user->name. ' ' .$user->lastname }}</p>
-                <br>
-                <p class="text-center" style="margin-bottom: 20px">NUMERO DE CONTACTO: {{$user->phone}}</p>
-                <br>
-                <p class="text-center" style="margin-bottom: 20px">CORREO DE CONTACTO: {{$user->email}}</p>
-                <br>
-                <p class="text-center" style="margin-bottom: 20px">AÑOS DE EXPERIENCIA: {{$walker->experience}}</p>
-                <br>
-            </div>
-
-        </div>
-
-
-    @endsection
-
-</body>
-
-</html>
+    <div class="btn-group" role="group" aria-label="Link options">
+        <a href=""{{--"{{ route('walker.edit', auth()->user()->document) }}"--}} class="btn btn-warning" title="Editar"><i class="far fa-edit"></i></a>
+        <form action=""{{--"{{ route('walker.destroy', auth()->user()->document) }}"--}} method="post"
+            onsubmit="return confirm('¿Esta seguro que desea eliminar el perfil?')">
+            @csrf
+            @method('delete')
+            <button type="submit" class="btn btn-danger" title="Remover"><i class="fas fa-trash"></i></button>
+        </form>
+    </div>
+</div>
+@endsection

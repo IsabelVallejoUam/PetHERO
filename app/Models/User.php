@@ -61,15 +61,21 @@ class User extends Authenticatable
      return $this->hasMany(Pet::class);
  }
 
-//  public function roles()
-//  {
-//      return $this->hasMany(Pet::class);
-//  }
-
- public function walkRequests()
+ public function walkerOwnership()
  {
-     return $this->hasMany(Walks::class);
+     return $this->hasOne(Walker::class);
  }
+
+ public function StoreOwnership()
+ {
+     return $this->hasOne(StoreOwner::class);
+ }
+
+ public function OwnerOwnership()
+ {
+     return $this->hasOne(PetOwner::class);
+ }
+
 
 }
 

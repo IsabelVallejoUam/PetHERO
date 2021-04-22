@@ -61,12 +61,16 @@ class WalkerController extends Controller
 
         $walker = new Walker();
         $walker->experience = $request->input('experience');
+        $walker->rate = $request->input('rate');
+        $walker->slogan = $request->input('slogan');
         $foregin_id= User::select('id')->where('document', '=', $request->input('document'))->value('id');
         $walker->user_id = $foregin_id;
         $walker->save();
 
+        $buscaEsta = $walker->user_id;
 
-        return redirect(route('walker.show'))->with('_success', '¡Perfil creado exitosamente!');
+      
+    return redirect()->route('walker.show', [$user] )->with('_success', '¡Perfil creado exitosamente!');
         
     }
 
@@ -76,9 +80,27 @@ class WalkerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Walker $walker, User $user)
-    {
+    public function show(Walker $walker)
+    {        
+        
+        $user = User::findOrFail($walker->user_id);
+        
         return view('walker.show', compact('walker','user'));
+        
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function profile(Walker $walker)
+    {        
+        
+        $user = User::findOrFail($walker->user_id);
+        
+        return view('walker.perfil', compact('walker','user'));
         
     }
 

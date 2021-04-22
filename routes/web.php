@@ -37,4 +37,4 @@ Route::resource('/petOwner', PetOwnerController::class);
 
 Route::resource('/walkRequest',WalkController::class);
 
-// Route::get('/walker/{document}', [App\Http\Controllers\WalkerController::class, 'show'])->name('show');
+Route::get('/walker/{id}', [App\Http\Controllers\WalkerController::class, 'show'])->name('show');

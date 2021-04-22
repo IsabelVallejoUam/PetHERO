@@ -16,6 +16,7 @@ class CreateWalkersTable extends CreateUsersTable
     
         Schema::create('walkers', function (Blueprint $table) {
             
+            
             $table->string("schedule")->nullable();
             $table->string("slogan")->nullable();
             $table->float("rate")->default(0); 
