@@ -1,7 +1,7 @@
 
     @extends('layouts.app')
     @section('content')
-        <a href="{{ route('walkers.index') }}" class="btn btn-primary">
+        <a href="{{ url('walker') }}" class="btn btn-primary">
             BUSCAR SERVICIOS DE PASEO
         </a>
         {{-- <a href="{{ route('store.index') }}" class="btn btn-primary">

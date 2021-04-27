@@ -20,16 +20,18 @@ use App\Http\Controllers\StoreOwnerController;
 */
 
 Route::get('/', function () {
-    return view('Inicio.welcome');
-});
+    return view('Inicio.welcome');});
+
+Route::view('/registerOptions', 'Inicio.register');
+
+Route::view('/lobby', 'Inicio.lobby');
+
 
 //Route::get('/walker/show/{document}', [WalkerController::class, 'show']);
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Route::view('/registerOptions', 'Inicio.register');
 
 Route::resource('/walker', WalkerController::class);
 
@@ -39,4 +41,4 @@ Route::resource('/petOwner', PetOwnerController::class);
 
 Route::resource('/walkRequest',WalkController::class);
 
-Route::get('/walker/{id}', [App\Http\Controllers\WalkerController::class, 'show'])->name('show');
+Route::get('/walker/profile/{walker}', [App\Http\Controllers\WalkerController::class, 'profile'])->name('walker.profile');

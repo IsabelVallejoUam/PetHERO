@@ -73,9 +73,11 @@
                             @endif
 
                             @if (Route::has('register'))
-
-                            
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url('/registerOptions') }}">{{ __('Registrarse') }}</a>
+                            </li>
                             @endif
+                            
                         @else
             
                             <li class="nav-item dropdown"> TIENDAS
