@@ -20,7 +20,7 @@ use App\Http\Controllers\StoreOwnerController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('Inicio.welcome');
 });
 
 //Route::get('/walker/show/{document}', [WalkerController::class, 'show']);
@@ -28,6 +28,8 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::view('/registerOptions', 'Inicio.register');
 
 Route::resource('/walker', WalkerController::class);
 
