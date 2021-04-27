@@ -17,8 +17,8 @@ class CreateFavoriteWalkersTable extends Migration
             
             $table->id();
             $table->timestamps();
-            $table->string('pet_owner_id');
-            $table->string('walker_id');
+            $table->foreignId('pet_owner_id');
+            $table->foreignId('walker_id');
 
             $table->foreign('pet_owner_id')
                 ->references('user_id')->on('pet_owners')

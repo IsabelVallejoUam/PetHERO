@@ -2,14 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+//MODELS
 use App\Models\User;
 use App\Models\PetOwner;
+use App\Models\FavoriteWalker;
+use App\Models\FavoriteStore;
+//REQUESTS
+use Illuminate\Http\Request;
 use App\Http\Requests\PetOwnerRequest;
 use App\Http\Requests\UserRequest;
+//BASIC
 use Illuminate\Support\Facades\Hash;
-
-
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
@@ -47,9 +50,13 @@ class PetOwnerController extends Controller
     {
       
         $existingUser = User::where('document', '=', $request2->input('document'))->exists();
-        $user = new User();
 
-        if ($existingUser == false){    
+        if ($existingUser == false){  
+            $user = new User();
+        }  else{
+            $user = User::where('document', '=', $request2->input('document'));
+        }
+
         $user->name =  $request2->input('name');
         $user->lastname =  $request2->input('lastname');
         $user->email =  $request2->input('email');
@@ -57,7 +64,6 @@ class PetOwnerController extends Controller
         $user->document =  $request2->input('document');
         $user->phone =  $request2->input('phone');
         $user->save();
-        } 
 
         $petOwner = new PetOwner();
         $petOwner->address = $request->input('address');
@@ -152,5 +158,35 @@ class PetOwnerController extends Controller
         }
         
         return back()->with('_failure', '¡No tiene permiso de borrar ese perfil!');
+    }
+
+    //MANAGE FAVORITES
+
+    /**
+     * Add a specifica Walker to the user favorite walkers table.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function addFavoriteWalker(FavoriteWalker $favoriteWalker,PetOwner $petOwner,Request $request){
+
+        $favoriteWalker = new FavoriteWalker();
+        $favoriteWalker->user_id = $petOwner->user_id;
+        $favoriteWalker->walker_id = $request->input('walker_id');
+
+    }
+
+    /**
+     * Add a specifica store to the user favorite stores table.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function addFavoriteStore(FavoriteStore $favoriteStore, PetOwner $petOwner, Request $request){
+        
+        $favoriteStore = new FavoriteStore();
+        $favoriteStore->user_id = $petOwner->user_id;
+        $favoriteStore->store_id = $request->input('store_id');
+
     }
 }

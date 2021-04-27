@@ -59,13 +59,14 @@ class StoreOwnerController extends Controller
         $user->save();
         } 
 
-        $petOwner = new StoreOwner();
+        $storeOwner = new StoreOwner();
         $foregin_id= User::select('id')->where('document', '=', $request->input('document'))->value('id');
-        $petOwner->user_id = $foregin_id;
-        $petOwner->save();
+        $storeOwner->user_id = $foregin_id;
+        $storeOwner->save();
 
 
-        return redirect(route('storeOwner.show'))->with('_success', '¡Perfil creado exitosamente!');
+        return redirect()->route('storeOwner.show', [$user,$storeOwner])->with('_success', '¡Perfil creado exitosamente!');
+
         
     }
 
@@ -99,7 +100,7 @@ class StoreOwnerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(StoreOwnerRequest $request,  UserRequest $request2, StoreOwner $petOwner, User $user)
+    public function update(StoreOwnerRequest $request,  UserRequest $request2, StoreOwner $storeOwner, User $user)
     {
 
         $user->name =  $request2->input('name');
@@ -110,7 +111,7 @@ class StoreOwnerController extends Controller
         $user->phone =  $request2->input('phone');
         $user->save();
 
-        return redirect(route('storeOwner.show'))->with('_success', 'Perfil editado exitosamente!') ;
+        return redirect(route('storeOwner.show', [$user,$storeOwner]))->with('_success', 'Perfil editado exitosamente!') ;
 
         
     }
@@ -121,11 +122,11 @@ class StoreOwnerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(StoreOwner $petOwner)
+    public function destroy(StoreOwner $storeOwner)
     {
-        if($petOwner->owner->document == Auth::document())
+        if($storeOwner->owner->document == Auth::document())
         {
-            $petOwner->delete();
+            $storeOwner->delete();
 
             return back()->with('_success', 'Perfil de paseador eliminado exitosamente!');
         }
