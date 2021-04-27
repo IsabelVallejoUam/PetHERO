@@ -10,6 +10,9 @@ class StoreOwner extends Model
 {
     use HasFactory;
 
+
+    protected $primaryKey = 'user_id';
+    
     /**
      * The attributes that are mass assignable.
      *

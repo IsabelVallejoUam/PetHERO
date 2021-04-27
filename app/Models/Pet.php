@@ -52,4 +52,9 @@ class Pet extends Model
     {
         return $this->belongsTo(PetOwner::class, 'owner_id');
     }
+
+    public function walkRequests()
+    {
+        return $this->hasMany(Walks::class);
+    }
 }
