@@ -25,7 +25,9 @@ class CreateProductsTable extends Migration
             $table->integer('quantity')->default(0)->unsigned();
             $table->string('description');
             $table->string('image_url');
-            $table->integer("score")->default(0);           
+            $table->integer("score")->default(0);
+            $table->string('photo')->default('default.png');
+            $table->enum('type', ['producto','servicio'])->default('producto');              
 
 
             

@@ -52,5 +52,5 @@ Route::get('/petOwner/profile/{petOwner}', [App\Http\Controllers\PetOwnerControl
 Route::post('/petOwner/favorite/{walker}', [App\Http\Controllers\PetOwnerController::class, 'addFavoriteWalker'])->name('petOwner.addFavoriteWalker');
 
 Route::post('/useravatar', [App\Http\Controllers\UserController::class,'update_avatar']);
-
+Route::post('/storephoto', [App\Http\Controllers\StoreController::class,'update_photo']);
 

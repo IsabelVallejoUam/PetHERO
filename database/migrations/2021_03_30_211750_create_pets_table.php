@@ -24,6 +24,7 @@ class CreatePetsTable extends Migration
             $table->integer('personality');
             $table->text('commentary')->nullable();
             $table->integer('size');
+            $table->string('photo')->default('default.png');   
             $table->timestamps();
 
             $table->foreign('owner_id')
