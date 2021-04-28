@@ -10,7 +10,7 @@
     <title>{{ config('app.name', 'PET HERO') }}</title>
 
     <!-- Scripts -->
-    {{-- <script src="{{ asset('js/app.js') }}" defer></script> --}}
+    {{-- <script src="{{ asset('js/app.js') }}" defer></script> Esta línea causa un bug con el navbar D:--}}
     
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
@@ -122,7 +122,7 @@
                                     <a class="dropdown-item" href="{{ route('storeOwner.index') }}"> Ver perfil</a>
                                 </div>
                             </li>
-                            
+
                         @endguest
                     </ul>
                 </div>
