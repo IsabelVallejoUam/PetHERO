@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Image;
 use App\Models\Store;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -15,19 +15,6 @@ class StoreController extends Controller
     public function index()
     {
         //
-    }
-
-    public function update_photo(Request $request){
-        //Subir la foto que el usuario eligió
-        if ($request->hasFile('photo')){
-            $avatar = $request->file('photo');
-            $filename = time() . '.' . $avatar->getClientOriginalExtension();
-            Image::make($avatar)->resize(300,300)->save(public_path('uploads/stores/'.$filename));
-            $user = Auth::user();
-            $user->avatar=$filename;
-            $user->save();
-            return back()->with('_success', '¡Foto  actualizada exitosamente!');
-        }
     }
 
     /**
@@ -59,11 +46,12 @@ class StoreController extends Controller
         $store->phone_number = $request->input('phone_number');
         $store->score = 0;
         $store->type = $request->input('type');
-        if($request->input('type') == 'veterinaria'){
+        if($request->input('type') == 'veterinaria' && $store->photo = null){
             $store->photo = "default_vet.png";
-        } else{
+        } else if($request->input('type') == 'tienda' && $store->photo = null){
             $store->photo = "default.png";
         }
+        
         
         $store->save();
 
@@ -89,7 +77,7 @@ class StoreController extends Controller
      */
     public function edit(Store $store)
     {
-        //
+        return view('store.edit',compact('store'));
     }
 
     /**
@@ -101,7 +89,24 @@ class StoreController extends Controller
      */
     public function update(Request $request, Store $store)
     {
-        //
+        $store->store_name = $request->input('store_name');
+        $store->slogan = $request->input('slogan');
+        $store->nit = $request->input('nit');
+        $store->description = $request->input('description');
+        $store->schedule = $request->input('schedule');
+        $store->address = $request->input('address');
+        $store->phone_number = $request->input('phone_number');
+        $store->score = 0;
+        $store->type = $request->input('type');
+        if ($request->hasFile('photo')){
+            $photo = $request->file('photo');
+            $filename = time() . '.' . $photo->getClientOriginalExtension();
+            Image::make($photo)->resize(300,300)->save(public_path('uploads/stores/'.$filename));
+            $store->photo=$filename;
+            $store->save();
+        }
+        $store->save();
+        return redirect(route('storeOwner.index'))->with('_success', 'Tienda editada exitosamente!');
     }
 
     /**

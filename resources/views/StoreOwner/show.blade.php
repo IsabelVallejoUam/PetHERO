@@ -51,7 +51,7 @@
         </tr>
     </table>
     
-    <div class="jumbotron"> <h1>Tus tiendas</h1> 
+    <div class="jumbotron"> <h1>Tus establecimientos</h1> 
         @foreach ($stores as $store)
         <div class="card" style="width: 18rem; display:inline-block; margin:10px;">
             <img class="card-img-top" src="/uploads/stores/{{$store->photo}}" alt="Card image cap">
@@ -64,31 +64,19 @@
                 <p><b>Teléfono:</b> {{$store->phone_number}}</p>
                 <p><b>Puntuación:</b> {{$store->score}}</p>
                 <a href="{{ route('store.show', $store->id) }}" class=" btn btn-info"> Ver {{$store->store_name}}</a>
-            </div>
-        </div>
-    @endforeach
-    </div>
-
-    <div class="jumbotron"> <h1>Mis veterinarias</h1> 
-        @foreach ($vets as $vet)
-        <div class="card" style="width: 18rem; display:inline-block; margin:10px;">
-            <img class="card-img-top" src="/uploads/stores/{{$store->photo}}" alt="Card image cap">
-            <div class="card-body">
-                <h4 class="card-title"><b>{{$store->store_name}}</b></h4>
-                <h5> <i>"{{$store->slogan}}"</i></h5>
-                <h6> {{$store->description}}</h6>
-                <p><b>Horario:</b> {{$store->schedule}}</p>
-                <p><b>Dirección:</b> {{$store->address}}</p>
-                <p><b>Teléfono:</b> {{$store->phone_number}}</p>
-                <p><b>Puntuación:</b> {{$store->score}}</p>
-                <a href="{{ route('store.show', $store->id) }}" class=" btn btn-info"> Ver {{$store->store_name}}</a>
-            </div>
+                <a href="{{ route('store.edit', ['store' => $store->id]) }}" class="btn btn-warning" title="Editar"><i class="far fa-edit"></i>Editar{{$store->store_name}}</a>
+                <form action="{{ route('store.destroy', $store->id) }}" method="post"
+                    onsubmit="return confirm('¿Esta seguro que desea remover esta tienda?')">
+                    @csrf
+                    @method('delete')
+                    <button type="submit" class=" btn btn-danger">Eliminar</button>
+                </form>
+                </div>
         </div>
     @endforeach
     </div>
 
     <div class="btn-group" role="group" aria-label="Link options">
-        <a href=""{{--"{{ route('walker.edit', auth()->user()->document) }}"--}} class="btn btn-warning" title="Editar"><i class="far fa-edit"></i></a>
         <form action=""{{--"{{ route('walker.destroy', auth()->user()->document) }}"--}} method="post"
             onsubmit="return confirm('¿Esta seguro que desea eliminar el perfil?')">
             @csrf

@@ -1,6 +1,6 @@
 <div class="mb-3">
     <label for="store_name" class="form-label">Nombre de la tienda</label>
-    <input type="text" class="form-control" id="store_name" name="store_name" value="{{ old('name', $store->name ?? "") }}">
+    <input type="text" class="form-control" id="store_name" name="store_name" value="{{ old('store_name', $store->store_name ?? "") }}">
 </div>
 <div class="mb-3">
     <label for="slogan" class="form-label">Slogan de la tienda</label>
@@ -12,7 +12,7 @@
 </div>  
 <div class="mb-3">
     <label for="description" class="form-label">Describe tu tienda</label>
-    <textarea id="description" name="description" value="{{ old('description', $store->description ?? "") }}"></textarea> 
+    <textarea id="description" name="description" value="{{ old('description', $store->description ?? "") }}">{{ old('description', $store->description ?? "") }}</textarea> 
 </div>  
 <div class="mb-3">
     <label for="schedule" class="form-label">Tu horario</label>
@@ -29,12 +29,15 @@
 </div>  
 
 <div class="mb-3">
-    <label for="exampleFormControlSelect1">Tipo de establecimiento</label>
-        <select name="type" class="form-control" id="type">
-          <option value="tienda" selected="selected">Tienda</option>
-          <option value="veterinaria">Veterinaria</option>
-        </select>
-      </div>
+    <label>Image</label>
+        <div class="input-group">
+            <div class="custom-file">
+                <input type="file" name="photo" class="custom-file-input">
+                <label class="custom-file-label"> Escoger archivo
+            </div>
+        </div>                                    
 </div>  
+
+
 
 
