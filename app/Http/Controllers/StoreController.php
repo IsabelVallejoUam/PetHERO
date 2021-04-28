@@ -78,7 +78,7 @@ class StoreController extends Controller
      */
     public function show(Store $store)
     {
-        //
+        return view('store.show',compact('store'));
     }
 
     /**
@@ -112,6 +112,9 @@ class StoreController extends Controller
      */
     public function destroy(Store $store)
     {
-        //
+        $store->delete();
+        return redirect()->route('storeOwner.index')->with('_success', '¡Tienda eliminada exitosamente!');
+        
+
     }
 }
