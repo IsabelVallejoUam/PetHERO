@@ -77,9 +77,12 @@ class StoreOwnerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(StoreOwner $storeOwner, User $user)
+    public function show(StoreOwner $storeOwner)
     {
-        return view('storeOwner.show', compact('storeOwner','user'));
+        $storeOwner = StoreOwner::where('user_id', Auth::id())->first();
+        $user = Auth::user();
+        $stores = Store::where('owner_id',Auth::id())->get();
+        return view('storeOwner.show', compact(['storeOwner','user','stores']));
         
     }
 

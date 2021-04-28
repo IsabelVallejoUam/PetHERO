@@ -38,6 +38,7 @@
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     PET HERO
+                    <img src="/uploads/avatars/{{Auth::user()->avatar}}" style="width: 35px; height:35px; position:relative; left:9px; border-radious:50%; margin:10px;"/>
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
                     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -119,8 +120,10 @@
                                     Dueño de tienda
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('storeOwner.index') }}"> Ver perfil</a>
+                                    <a class="dropdown-item" href="{{ route('storeOwner.index') }}"> Ver perfil público</a>
+                                    <a class="dropdown-item" href="{{ route('storeOwner.show',Auth::user()->id)}}"> Ver perfil privado</a>
                                 </div>
+                                
                             </li>
 
                         @endguest

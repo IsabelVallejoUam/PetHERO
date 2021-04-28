@@ -22,7 +22,7 @@
             </p>
             <div class="container">
                 <br>
-                <p class="text-center" style="margin-bottom: 20px">PUNTAJEñ {{$petOwner->score}} </p>
+                <p class="text-center" style="margin-bottom: 20px">PUNTAJE {{$petOwner->score}} </p>
                 <br>
                 <p class="text-center" style="margin-bottom: 20px">NOMBRE DEL DUEÑO: {{$user->name. ' ' .$user->lastname }} </p>
                 <br>

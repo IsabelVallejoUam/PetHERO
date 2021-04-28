@@ -5,26 +5,9 @@
     <a type="button" class="btn btn-secondary mb-4 mt-2" href="{{ url()->previous() }}"><i class="far fa-hand-point-left"></i> Volver</a>
     <a>
         <h1 style="position:static; display:block; margin-left:auto; margin-right:auto;" class="p-1 text-center">Perfil de {{ $user->name. ' ' .$user->lastname  }}  (Dueño de Tiendas)</h1>
-        <img src="/uploads/avatars/{{$user->avatar}}" style="width:150px; border-radious:50%; display: block; margin-left: auto; margin-right: auto;"/>
+        <img src="/uploads/avatars/{{$user->avatar}}" style="width:150px; border-radious:50%; display: block; margin-left: auto; margin-right: auto;"/><br>
     </a>
     <table class="table table-striped table-hover">
-        <tr>
-            <form enctype="multipart/form-data" action="/useravatar" method="POST"
-            onsubmit="return confirm('¿Esta seguro que desea cambiar su avatar?')">
-                <div style="display:inline-block;">
-                    <div class="card w-100">
-                        <div class="card-body">
-                          <h5 class="card-title">Sube tu propio avatar</h5>
-                          <p class="card-text">Elige una de tus fotos como Avatar.</p>
-                          <input type="file" name="avatar">
-                        <input type="hidden" name="_token" value="{{csrf_token()}}"><br>
-                        <input type="submit" class="pull-right btn btn-sm btn-primary mt-2" value="Actualizar avatar">
-                        </div>
-                      </div>
-                </div>
-            </form>
-        </tr>
-        
         <tr>
             <th scope="col">Full Name</th>
             <td>{{ $user->name. ' ' .$user->lastname  }}</td>
@@ -51,7 +34,7 @@
         </tr>
     </table>
     
-    <div class="jumbotron"> <h1>Tus tiendas</h1> 
+    <div class="jumbotron"> <h1>Mis tiendas</h1> 
         @foreach ($stores as $store)
         <div class="card" style="width: 18rem; display:inline-block; margin:10px;">
         <div class="card-body">
@@ -63,17 +46,6 @@
       </div>
     @endforeach
     </div>
-
-    <div class="btn-group" role="group" aria-label="Link options">
-        <a href=""{{--"{{ route('walker.edit', auth()->user()->document) }}"--}} class="btn btn-warning" title="Editar"><i class="far fa-edit"></i></a>
-        <form action=""{{--"{{ route('walker.destroy', auth()->user()->document) }}"--}} method="post"
-            onsubmit="return confirm('¿Esta seguro que desea eliminar el perfil?')">
-            @csrf
-            @method('delete')
-            <button type="submit" class="btn btn-danger" title="Remover"><i class="fas fa-trash"></i></button>
-        </form>
-    </div>
-    <a href="{{ route('store.create') }}" class="btn btn-primary" title="crear">Añadir tienda<i class="far fa-create"></i></a>
 </div>
 
 @endsection
