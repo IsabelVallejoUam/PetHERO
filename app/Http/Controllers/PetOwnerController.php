@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 //MODELS
 use App\Models\User;
 use App\Models\PetOwner;
+use App\Models\Walker;
+use App\Models\Store;
+
 use App\Models\FavoriteWalker;
 use App\Models\FavoriteStore;
 //REQUESTS
@@ -168,12 +171,20 @@ class PetOwnerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function addFavoriteWalker(FavoriteWalker $favoriteWalker,PetOwner $petOwner,Request $request){
+    public function addFavoriteWalker(FavoriteWalker $favoriteWalker,Walker $walker){
 
+        // $existingFavorite = FavoriteWalker::where('walker_id', '=', $walker->user_id, '&&', 'pet_owner_id', '=', Auth::id())->exists();
+
+        if(true){
         $favoriteWalker = new FavoriteWalker();
-        $favoriteWalker->user_id = $petOwner->user_id;
-        $favoriteWalker->walker_id = $request->input('walker_id');
+        $favoriteWalker->pet_owner_id = Auth::id();
+        $favoriteWalker->walker_id = $walker->user_id;
 
+        $favoriteWalker->save();
+        return back()->with('_success', 'Perfil de paseador agregado a favoritos!');
+        } else{
+        return back()->with('_failure', 'Perfil de paseador ya estaba en favoritos!');
+        }
     }
 
     /**
@@ -182,11 +193,13 @@ class PetOwnerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function addFavoriteStore(FavoriteStore $favoriteStore, PetOwner $petOwner, Request $request){
+    public function addFavoriteStore(FavoriteStore $favoriteStore, Store $store){
         
         $favoriteStore = new FavoriteStore();
-        $favoriteStore->user_id = $petOwner->user_id;
-        $favoriteStore->store_id = $request->input('store_id');
+        $favoriteStore->user_id = Auth::id();
+        $favoriteStore->store_id = $store->id;
 
+        $favoriteStore->save();
+        return back()->with('_success', 'tienda agregada a favoritos!');
     }
 }

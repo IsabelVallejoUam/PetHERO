@@ -52,16 +52,12 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
+
+                            <a class="nav-link" href="{{ url('/') }}">TIENDAS</a>
+
+                            <a class="nav-link" href="{{ url('walker') }}">PASEADORES</a>     
+
                         @guest
-
-                        
-                        <li class="nav-item dropdown"> TIENDAS
-                            <ul>Ver Tienas </ul>
-                        </li>
-
-                        <li class="nav-item dropdown"> PASEADORES
-                            <ul>Ver Paseadores</ul>
-                        </li>
 
 
                             @if (Route::has('login'))
@@ -79,27 +75,32 @@
                             @endif
                             
                         @else
-            
-                            <li class="nav-item dropdown"> TIENDAS
-                                <ul>Ver Tienas </ul>
-                            </li>
-
-                            <li class="nav-item dropdown"> PASEADORES
-                                <ul>Ver Paseadores</ul>
-                            </li>
-
-                            <li class="nav-item dropdown"> PERFIL
-                                <ul>Ver Perfil Publico </ul>
-                                <ul>Editar Perfil</ul>
-                                <ul>Ver Informacion de Perfil</ul>
-                            </li>
+                        {{-- @petOwner
+                        <li class="nav-item dropdown"> PERFIL
+                            <ul>Ver Perfil Publico </ul>
+                            <ul>Editar Perfil</ul>
+                            <ul>Ver Informacion de Perfil</ul>
+                        </li>
+                        @else
+                        @storeOwner
+                        <li class="nav-item dropdown"> PERFIL
+                            <ul>Ver Perfil Publico </ul>
+                            <ul>Editar Perfil</ul>
+                            <ul>Ver Informacion de Perfil</ul>
+                        </li>
+                        @else
+                        @walker
+                        <li class="nav-item dropdown"> PERFIL
+                            <ul>Ver Perfil Publico </ul>
+                            <ul>Editar Perfil</ul>
+                            <ul>Ver Informacion de Perfil</ul>
+                        </li>
+                        @else --}}
 
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{ Auth::user()->name }}
                             </a>
-
-                            {{-- <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown"> --}}
 
                                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                          document.getElementById('logout-form').submit();">
@@ -109,7 +110,6 @@
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                     @csrf
                                 </form>
-                            {{-- </div> --}}
                             </li>
 
 

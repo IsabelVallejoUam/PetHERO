@@ -27,10 +27,6 @@
                 <br>
                 <p class="text-center" style="margin-bottom: 20px">NOMBRE DEL PASEADOR: {{$user->name. ' ' .$user->lastname }} </p>
                 <br>
-                <p class="text-center" style="margin-bottom: 20px">NUMERO DE CONTACTO: {{$user->phone}}</p>
-                <br>
-                <p class="text-center" style="margin-bottom: 20px">CORREO DE CONTACTO: {{$user->email}}</p>
-                <br>
                 <p class="text-center" style="margin-bottom: 20px">AÑOS DE EXPERIENCIA: {{$walker->experience}} </p>
                 <br>
                 <br>
@@ -41,8 +37,16 @@
                 <br>
             </div>
 
+            <form action="{{ route('petOwner.addFavoriteWalker', $walker->user_id) }}" method="post"
+                onsubmit="return confirm('¿Seguro quieres agregar a {{$user->name. ' ' .$user->lastname }} como paseador favorito?')">
+                @csrf
+                @method('post')
+                <button type="submit" class="btn btn-danger" title="Remover"><i class="fas fa-star"></i></button>
+            </form>
+
         </div>
 
+        
 
     @endsection
 

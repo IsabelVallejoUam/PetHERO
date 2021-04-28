@@ -42,3 +42,6 @@ Route::resource('/petOwner', PetOwnerController::class);
 Route::resource('/walkRequest',WalkController::class);
 
 Route::get('/walker/profile/{walker}', [App\Http\Controllers\WalkerController::class, 'profile'])->name('walker.profile');
+
+
+Route::post('/petOwner/favorite/{walker}', [App\Http\Controllers\PetOwnerController::class, 'addFavoriteWalker'])->name('petOwner.addFavoriteWalker');
