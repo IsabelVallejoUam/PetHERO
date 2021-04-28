@@ -38,7 +38,7 @@
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     PET HERO
-                    <img src="/uploads/avatars/{{Auth::user()->avatar}}" style="width: 35px; height:35px; position:relative; left:9px; border-radious:50%; margin:10px;"/>
+                    {{-- <img src="/uploads/avatars/{{Auth::user()->avatar}}" style="width: 35px; height:35px; position:relative; left:9px; border-radious:50%; margin:10px;"/> --}}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
                     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -122,6 +122,28 @@
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('storeOwner.index') }}"> Ver perfil público</a>
                                     <a class="dropdown-item" href="{{ route('storeOwner.show',Auth::user()->id)}}"> Ver perfil privado</a>
+                                </div>
+                                
+                            </li>
+
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    Dueño de mascotas
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('petOwner.profile',Auth::user()->id) }}"> Ver perfil público</a>
+                                    <a class="dropdown-item" href="{{ route('petOwner.show',Auth::user()->id)}}"> Ver perfil privado</a>
+                                </div>
+                                
+                            </li>
+
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    Paseador
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('walker.profile',Auth::user()->id) }}"> Ver perfil público</a>
+                                    <a class="dropdown-item" href="{{ route('walker.show',Auth::user()->id)}}"> Ver perfil privado</a>
                                 </div>
                                 
                             </li>
