@@ -71,9 +71,12 @@
                     @method('delete')
                     <button type="submit" class=" btn btn-danger">Eliminar</button>
                 </form>
-                </div>
+            </div>
+            
         </div>
+        
     @endforeach
+    {{ $stores->links() }}
     </div>
 
     <div class="btn-group" role="group" aria-label="Link options">
