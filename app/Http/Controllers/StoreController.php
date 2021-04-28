@@ -17,6 +17,19 @@ class StoreController extends Controller
         //
     }
 
+    public function update_photo(Request $request){
+        //Subir la foto que el usuario eligió
+        if ($request->hasFile('photo')){
+            $avatar = $request->file('photo');
+            $filename = time() . '.' . $avatar->getClientOriginalExtension();
+            Image::make($avatar)->resize(300,300)->save(public_path('uploads/stores/'.$filename));
+            $user = Auth::user();
+            $user->avatar=$filename;
+            $user->save();
+            return back()->with('_success', '¡Foto  actualizada exitosamente!');
+        }
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -45,6 +58,12 @@ class StoreController extends Controller
         $store->address = $request->input('address');
         $store->phone_number = $request->input('phone_number');
         $store->score = 0;
+        $store->type = $request->input('type');
+        if($request->input('type') == 'veterinaria'){
+            $store->photo = "default_vet.png";
+        } else{
+            $store->photo = "default.png";
+        }
         
         $store->save();
 

@@ -25,8 +25,15 @@ class StoreOwnerController extends Controller
     {
         $storeOwner = StoreOwner::where('user_id', Auth::id())->first();
         $user = Auth::user();
-        $stores = Store::where('owner_id',Auth::id())->get();
-        return view('storeOwner.index', compact(['storeOwner','user','stores']));
+        $stores = Store::where([
+            ['owner_id','=',Auth::id()],
+            ['type','=','tienda'],
+            ])->get();
+        $vets = Store::where([
+            ['owner_id','=',Auth::id()],
+            ['type','=','veterinaria'],
+            ])->get();
+        return view('storeOwner.index', compact(['storeOwner','user','stores','vets']));
     }
 
     /**
@@ -67,8 +74,6 @@ class StoreOwnerController extends Controller
         $storeOwner->save();
 
         return redirect()->route('storeOwner.show', [$user,$storeOwner])->with('_success', '¡Perfil creado exitosamente!');
-
-        
     }
 
     /**
@@ -81,8 +86,15 @@ class StoreOwnerController extends Controller
     {
         $storeOwner = StoreOwner::where('user_id', Auth::id())->first();
         $user = Auth::user();
-        $stores = Store::where('owner_id',Auth::id())->get();
-        return view('storeOwner.show', compact(['storeOwner','user','stores']));
+        $stores = Store::where([
+            ['owner_id','=',Auth::id()],
+            ['type','=','tienda'],
+            ])->get();
+        $vets = Store::where([
+            ['owner_id','=',Auth::id()],
+            ['type','=','veterinaria'],
+            ])->get();
+        return view('storeOwner.show', compact(['storeOwner','user','stores','vets']));
         
     }
 

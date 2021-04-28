@@ -22,7 +22,19 @@
     <label for="address" class="form-label">Dirección</label>
     <input type="text" class="form-control" id="address" name="address" value="{{ old('address', $store->address ?? "") }}">
 </div>  
+
 <div class="mb-3">
     <label for="phone_number" class="form-label">Teléfono</label>
     <input type="text" class="form-control" id="phone_number" name="phone_number" value="{{ old('phone_number', $store->phone_number ?? "") }}">
 </div>  
+
+<div class="mb-3">
+    <label for="exampleFormControlSelect1">Tipo de establecimiento</label>
+        <select name="type" class="form-control" id="type">
+          <option value="tienda" selected="selected">Tienda</option>
+          <option value="veterinaria">Veterinaria</option>
+        </select>
+      </div>
+</div>  
+
+

@@ -37,13 +37,36 @@
     <div class="jumbotron"> <h1>Mis tiendas</h1> 
         @foreach ($stores as $store)
         <div class="card" style="width: 18rem; display:inline-block; margin:10px;">
-        <div class="card-body">
-          <h4 class="card-title">{{$store->store_name}}</h4>
-          <h5> <b>{{$store->slogan}}</b></h5>
-          <h6> {{$store->description}}</h6>
-          {{-- <a href="{{ route('category.show', $category->id) }}" class=" btn btn-info"><img src="https://www.flaticon.com/svg/vstatic/svg/822/822102.svg?token=exp=1618288348~hmac=3cf6eedf10846c17eae23b4bf4d5b78b" height="25"/> Ver {{$category->title}}</a> --}}
+            <img class="card-img-top" src="/uploads/stores/{{$store->photo}}" alt="Card image cap">
+            <div class="card-body">
+                <h4 class="card-title"><b>{{$store->store_name}}</b></h4>
+                <h5> <i>"{{$store->slogan}}"</i></h5>
+                <h6> {{$store->description}}</h6>
+                <p><b>Horario:</b> {{$store->schedule}}</p>
+                <p><b>Dirección:</b> {{$store->address}}</p>
+                <p><b>Teléfono:</b> {{$store->phone_number}}</p>
+                <p><b>Puntuación:</b> {{$store->score}}</p>
+                <a href="{{ route('store.show', $store->id) }}" class=" btn btn-info"> Ver {{$store->store_name}}</a>
+            </div>
         </div>
-      </div>
+    @endforeach
+    </div>
+
+    <div class="jumbotron"> <h1>Mis veterinarias</h1> 
+        @foreach ($vets as $vet)
+        <div class="card" style="width: 18rem; display:inline-block; margin:10px;">
+            <img class="card-img-top" src="/uploads/stores/{{$store->photo}}" alt="Card image cap">
+            <div class="card-body">
+                <h4 class="card-title"><b>{{$store->store_name}}</b></h4>
+                <h5> <i>"{{$store->slogan}}"</i></h5>
+                <h6> {{$store->description}}</h6>
+                <p><b>Horario:</b> {{$store->schedule}}</p>
+                <p><b>Dirección:</b> {{$store->address}}</p>
+                <p><b>Teléfono:</b> {{$store->phone_number}}</p>
+                <p><b>Puntuación:</b> {{$store->score}}</p>
+                <a href="{{ route('store.show', $store->id) }}" class=" btn btn-info"> Ver {{$store->store_name}}</a>
+            </div>
+        </div>
     @endforeach
     </div>
 </div>

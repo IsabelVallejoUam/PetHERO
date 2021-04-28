@@ -25,7 +25,9 @@ class CreateStoresTable extends Migration
             $table->string("schedule")->nullable();
             $table->string('address');
             $table->string('phone_number');
-            $table->integer("score")->default(0);           
+            $table->integer("score")->default(0);  
+            $table->enum('type', ['veterinaria','tienda'])->default('tienda');
+            $table->string('photo')->default('default.png');         
 
 
             $table->foreign('owner_id')
