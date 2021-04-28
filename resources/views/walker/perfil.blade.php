@@ -13,13 +13,14 @@
 
     @extends('layouts.app')
     @section('content')
-    <h3> {{$walker->slogan}} </h3>
+   
 
         <div class="jumbotron col-lg-6 col-md-6 col-sm-6 col-xs-6 offset-3 float-md-center text-center" style=" width:500px;">
-
+            
             <h1>Perfil de {{ $user->name }}</h1>
+            <h3> "{{$walker->slogan}}" </h3>
             <p>
-            <img class="col-lg-6 col-md-6 col-sm-6 col-xs-6 offset-3 float-md-center" src="/images/{{$user->profile_photo}}" style="width:150px; height150px;  border-radius:50%; display: block;">
+                <img src="/uploads/avatars/{{$user->avatar}}" style="width:150px; border-radious:50%; display: block; margin-left: auto; margin-right: auto;"/>
             </p>
             <div class="container">
                 <br>
