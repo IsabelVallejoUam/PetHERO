@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\StoreOwner;
+use App\Models\Store;
 use App\Http\Requests\StoreOwnerRequest;
 use App\Http\Requests\UserRequest;
 use Illuminate\Support\Facades\Hash;
@@ -22,9 +23,10 @@ class StoreOwnerController extends Controller
      */
     public function index()
     {
-        $storeOwner = StoreOwner::ownedBy(auth()->user());
-
-        return view('storeOwner.index', compact('storeOwner'));
+        $storeOwner = StoreOwner::where('user_id', Auth::id())->first();
+        $user = Auth::user();
+        $stores = Store::where('owner_id',Auth::id())->get();
+        return view('storeOwner.index', compact(['storeOwner','user','stores']));
     }
 
     /**
@@ -50,20 +52,19 @@ class StoreOwnerController extends Controller
         $user = new User();
 
         if ($existingUser == false){    
-        $user->name =  $request2->input('name');
-        $user->lastname =  $request2->input('lastname');
-        $user->email =  $request2->input('email');
-        $user->password =  Hash::make($request2->input('password'));
-        $user->document =  $request2->input('document');
-        $user->phone =  $request2->input('phone');
-        $user->save();
+            $user->name =  $request2->input('name');
+            $user->lastname =  $request2->input('lastname');
+            $user->email =  $request2->input('email');
+            $user->password =  Hash::make($request2->input('password'));
+            $user->document =  $request2->input('document');
+            $user->phone =  $request2->input('phone');
+            $user->save();
         } 
 
         $storeOwner = new StoreOwner();
         $foregin_id= User::select('id')->where('document', '=', $request->input('document'))->value('id');
         $storeOwner->user_id = $foregin_id;
         $storeOwner->save();
-
 
         return redirect()->route('storeOwner.show', [$user,$storeOwner])->with('_success', '¡Perfil creado exitosamente!');
 

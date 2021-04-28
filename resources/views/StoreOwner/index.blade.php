@@ -22,10 +22,6 @@
             <td>{{ $user->document }}</td>
         </tr>
         <tr>
-            <th scope="col">Address</th>
-            <td>{{ $user->address }}</td>
-        </tr>
-        <tr>
             <th scope="col">Creado en</th>
             <td>{{ $storeOwner->created_at ?? "Desconocida" }}</td>
         </tr>
@@ -34,6 +30,19 @@
             <td>{{ $storeOwner->updated_at ?? "Desconocida"  }}</td>
         </tr>
     </table>
+    
+    <div class="jumbotron"> <h1>Tus tiendas</h1> 
+        @foreach ($stores as $store)
+        <div class="card" style="width: 18rem; display:inline-block; margin:10px;">
+        <div class="card-body">
+          <h4 class="card-title">{{$store->store_name}}</h4>
+          <h5> <b>{{$store->slogan}}</b></h5>
+          <h6> {{$store->description}}</h6>
+          {{-- <a href="{{ route('category.show', $category->id) }}" class=" btn btn-info"><img src="https://www.flaticon.com/svg/vstatic/svg/822/822102.svg?token=exp=1618288348~hmac=3cf6eedf10846c17eae23b4bf4d5b78b" height="25"/> Ver {{$category->title}}</a> --}}
+        </div>
+      </div>
+    @endforeach
+    </div>
 
     <div class="btn-group" role="group" aria-label="Link options">
         <a href=""{{--"{{ route('walker.edit', auth()->user()->document) }}"--}} class="btn btn-warning" title="Editar"><i class="far fa-edit"></i></a>
@@ -44,5 +53,7 @@
             <button type="submit" class="btn btn-danger" title="Remover"><i class="fas fa-trash"></i></button>
         </form>
     </div>
+    <a href="{{ route('store.create') }}" class="btn btn-primary" title="crear">Añadir tienda<i class="far fa-create"></i></a>
 </div>
+
 @endsection

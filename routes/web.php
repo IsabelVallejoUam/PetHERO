@@ -7,6 +7,7 @@ use App\Http\Controllers\WalkerController;
 use App\Http\Controllers\WalkController;
 use App\Http\Controllers\PetOwnerController;
 use App\Http\Controllers\StoreOwnerController;
+use App\Http\Controllers\StoreController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,6 +41,8 @@ Route::resource('/storeOwner', StoreOwnerController::class);
 Route::resource('/petOwner', PetOwnerController::class);
 
 Route::resource('/walkRequest',WalkController::class);
+
+Route::resource('/store',StoreController::class);
 
 Route::get('/walker/profile/{walker}', [App\Http\Controllers\WalkerController::class, 'profile'])->name('walker.profile');
 

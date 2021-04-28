@@ -20,7 +20,7 @@ class StoreOwner extends Model
      */
     protected $fillable = [
        
-        'user_id'
+        'user_id',
     ];
 
     public function scopeOwnedBy($query, $user_id)
