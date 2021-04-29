@@ -43,7 +43,7 @@ class UsersSeeder extends Seeder
         ]); 
 
         DB::table('users')->insert([
-            'name' => "Juan", //ID 4
+            'name' => "Juanito", //ID 4
             'lastname'=>"Pasea Perro",
             'email' => "paseador@correo.com",
             'document' => '1002636279',
@@ -70,7 +70,7 @@ class UsersSeeder extends Seeder
         ]);
 
         DB::table('users')->insert([
-            'name' => "Juan", //ID 7
+            'name' => "peranito", //ID 7
             'lastname'=>"Paseador",
             'email' => "juanp@correo.edu.co",
             'document' => '1102636277',
