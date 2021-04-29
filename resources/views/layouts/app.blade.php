@@ -34,10 +34,10 @@
 
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-dark shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    PET HERO
+                    Pet Hero
                     {{-- <img src="/uploads/avatars/{{Auth::user()->avatar}}" style="width: 35px; height:35px; position:relative; left:9px; border-radious:50%; margin:10px;"/> --}}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
