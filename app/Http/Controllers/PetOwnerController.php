@@ -169,21 +169,22 @@ class PetOwnerController extends Controller
     {
 
         $existingFavorite = FavoriteWalker::where('walker_id', '=', $walker->user_id)->where('pet_owner_id', '=', Auth::id())->exists();
-       
-        //COMPROBAR QUE ESTA LOGEADO
-        if(Auth::check()){
-        if ($existingFavorite) {
-            return back()->with('_failure', 'Perfil de paseador ya estaba en favoritos!');
-        } else {
-            $favoriteWalker = new FavoriteWalker();
-            $favoriteWalker->pet_owner_id = Auth::id();
-            $favoriteWalker->walker_id = $walker->user_id;
 
-            $favoriteWalker->save();
-            return back()->with('_success', 'Perfil de paseador agregado a favoritos!');
-        }
+        //COMPROBAR QUE ESTA LOGEADO
+        if (Auth::check()) {
+            //COMPROBAR QUE NO EXISTE YA EL FAVORITO
+            if ($existingFavorite) {
+                return back()->with('_failure', 'Perfil de paseador ya estaba en favoritos!');
+            } else {
+                $favoriteWalker = new FavoriteWalker();
+                $favoriteWalker->pet_owner_id = Auth::id();
+                $favoriteWalker->walker_id = $walker->user_id;
+
+                $favoriteWalker->save();
+                return back()->with('_success', 'Perfil de paseador agregado a favoritos!');
+            }
         } else {
-            return back()->with('_failure', 'Debes estar Loggeado para agregar a favoritos!');  
+            return back()->with('_failure', 'Debes estar Loggeado para agregar a favoritos!');
         }
     }
 
@@ -196,11 +197,23 @@ class PetOwnerController extends Controller
     public function addFavoriteStore(FavoriteStore $favoriteStore, Store $store)
     {
 
-        $favoriteStore = new FavoriteStore();
-        $favoriteStore->user_id = Auth::id();
-        $favoriteStore->store_id = $store->id;
+        $existingFavorite = FavoriteStore::where('store_id', '=', $store->id)->where('user_id', '=', Auth::id())->exists();
 
-        $favoriteStore->save();
-        return back()->with('_success', 'tienda agregada a favoritos!');
+        //COMPROBAR QUE ESTA LOGEADO
+        if (Auth::check()) {
+            //COMPROBAR QUE NO EXISTE YA EL FAVORITO
+            if ($existingFavorite) {
+                return back()->with('_failure', 'Esta tienda ya estaba en favoritos!');
+            } else {
+                $favoriteStore = new FavoriteStore();
+                $favoriteStore->user_id = Auth::id();
+                $favoriteStore->store_id = $store->id;
+
+                $favoriteStore->save();
+                return back()->with('_success', 'tienda agregada a favoritos!');
+            }
+        } else {
+            return back()->with('_failure', 'Debes estar Loggeado para agregar a favoritos!');
+        }
     }
 }

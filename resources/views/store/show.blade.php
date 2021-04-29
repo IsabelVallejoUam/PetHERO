@@ -42,6 +42,14 @@
             </td>
         </tr>
     </table>
+    
+    <form action="{{ route('petOwner.addFavoriteStore', $store->id) }}" method="post"
+        onsubmit="return confirm('¿Seguro quieres agregar a {{$store->name}} como tienda favorita?')">
+        @csrf
+        @method('post')
+        <button type="submit" class="btn btn-danger" title="Remover"><i class="fas fa-star"></i></button>
+    </form>
+
     <div class="jumbotron"> <h1>Productos</h1> 
         @foreach ($products as $product)
         <div class="card" style="width: 18rem; display:inline-block; margin:10px;">
