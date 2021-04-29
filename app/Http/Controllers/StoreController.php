@@ -67,8 +67,9 @@ class StoreController extends Controller
      */
     public function show(Store $store)
     {
-        $products = Product::ownedBy($store->id)->paginate(5);
-        return view('store.show',compact(['store','products']));
+        $products = Product::ownedBy($store->id)->where('type','producto')->simplePaginate(6);
+        $services = Product::ownedBy($store->id)->where('type','servicio')->simplePaginate(6);
+        return view('store.show',compact(['store','products','services']));
     }
 
     /**
