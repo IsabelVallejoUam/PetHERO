@@ -15,7 +15,9 @@ class StoreController extends Controller
      */
     public function index()
     {
-        //
+        // Cambiar esto de aquí
+        $stores = Store::all();
+        return view('store.indexAll',compact('stores'));
     }
 
     /**
