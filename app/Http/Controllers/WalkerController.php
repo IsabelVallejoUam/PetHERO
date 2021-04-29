@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Walker;
+use App\Models\Pet;
 use App\Models\FavoritePet;
 
 
@@ -178,12 +179,26 @@ class WalkerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function addFavoriteWalker(FavoritePet $favoritePet,Walker $walker,Request $request){
+    public function addFavoritePet(FavoritePet $favoritePet, Pet $pet){
 
-        $favoriteWalker = new FavoritePet();
-        $favoriteWalker->user_id = $walker->user_id;
-        $favoriteWalker->pet_id = $request->input('pet_id');
+        $existingFavorite = FavoritePet::where('pet_id', '=', $pet->id)->where('walker_id', '=', Auth::id())->exists();
 
+        //COMPROBAR QUE ESTA LOGEADO
+        if (Auth::check()) {
+            //COMPROBAR QUE NO EXISTE YA EL FAVORITO
+            if ($existingFavorite) {
+                return back()->with('_failure', 'Esta mascota ya estaba en favoritos!');
+            } else {
+                $favoritePet = new FavoritePet();
+                $favoritePet->user_id = Auth::id();
+                $favoritePet->pet_id = $pet->id;
+
+                $favoritePet->save();
+                return back()->with('_success', 'mascota agregada a favoritos!');
+            }
+        } else {
+            return back()->with('_failure', 'Debes estar Loggeado para agregar a favoritos!');
+        }
     }
 
 }
