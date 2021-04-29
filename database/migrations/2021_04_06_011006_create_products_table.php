@@ -17,20 +17,15 @@ class CreateProductsTable extends Migration
             
             $table->id();
             $table->timestamps();
-            $table->string('slogan')->nullable();
             $table->foreignId('store_id');
             $table->float('price')->unsigned();
             $table->string('name');
             $table->float('discount')->default(0)->unsigned();
             $table->integer('quantity')->default(0)->unsigned();
             $table->string('description');
-            $table->string('image_url');
             $table->integer("score")->default(0);
             $table->string('photo')->default('default.png');
-            $table->enum('type', ['producto','servicio'])->default('producto');              
-
-
-            
+            $table->enum('type', ['producto','servicio'])->default('producto');                     
             $table->foreign('store_id')
                 ->references('id')->on('stores')
                 ->onUpdate('cascade')
@@ -45,6 +40,6 @@ class CreateProductsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('product');
+        Schema::dropIfExists('products');
     }
 }

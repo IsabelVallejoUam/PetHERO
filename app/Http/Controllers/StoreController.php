@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Image;
 use App\Models\Store;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 class StoreController extends Controller
@@ -14,7 +15,9 @@ class StoreController extends Controller
      */
     public function index()
     {
-        //
+        // Cambiar esto de aquí
+        $stores = Store::all();
+        return view('store.indexAll',compact('stores'));
     }
 
     /**
@@ -66,7 +69,9 @@ class StoreController extends Controller
      */
     public function show(Store $store)
     {
-        return view('store.show',compact('store'));
+        $products = Product::ownedBy($store->id)->where('type','producto')->simplePaginate(6);
+        $services = Product::ownedBy($store->id)->where('type','servicio')->simplePaginate(6);
+        return view('store.show',compact(['store','products','services']));
     }
 
     /**
