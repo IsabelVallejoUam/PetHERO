@@ -109,7 +109,7 @@ class ProductController extends Controller
         }
         $product->save();
         $store_id = $product->store_id;
-        return redirect(route('store.show', $store_id))->with('_success', 'Producto añadido exitosamente!');
+        return redirect(route('store.show', $store_id))->with('_success', 'Producto o servicio modificado exitosamente!');
     }
 
     /**
