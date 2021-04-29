@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Image;
 use App\Models\Store;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 class StoreController extends Controller
@@ -66,7 +67,8 @@ class StoreController extends Controller
      */
     public function show(Store $store)
     {
-        return view('store.show',compact('store'));
+        $products = Product::ownedBy($store->id)->paginate(5);
+        return view('store.show',compact(['store','products']));
     }
 
     /**
