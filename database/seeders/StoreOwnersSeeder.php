@@ -17,5 +17,13 @@ class StoreOwnersSeeder extends Seeder
         DB::table('store_owners')->insert([
             'user_id' => "2" //Cambiar id en caso de error
         ]); 
+
+        DB::table('store_owners')->insert([
+            'user_id' => "8" //Cambiar id en caso de error
+        ]); 
+
+        DB::table('store_owners')->insert([
+            'user_id' => "9" //Cambiar id en caso de error
+        ]); 
     }
 }

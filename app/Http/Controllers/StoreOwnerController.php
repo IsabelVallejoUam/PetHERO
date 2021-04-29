@@ -50,9 +50,9 @@ class StoreOwnerController extends Controller
     {
       
         $existingUser = User::where('document', '=', $request2->input('document'))->exists();
-        $user = new User();
 
-        if ($existingUser == false){    
+        if ($existingUser == false){  
+            $user = new User();  
             $user->name =  $request2->input('name');
             $user->lastname =  $request2->input('lastname');
             $user->email =  $request2->input('email');
@@ -67,7 +67,7 @@ class StoreOwnerController extends Controller
         $storeOwner->user_id = $foregin_id;
         $storeOwner->save();
 
-        return redirect()->route('storeOwner.show', [$user,$storeOwner])->with('_success', '¡Perfil creado exitosamente!');
+        return redirect()->route('storeOwner.show', [$user])->with('_success', '¡Perfil creado exitosamente!');
     }
 
     /**
@@ -78,9 +78,11 @@ class StoreOwnerController extends Controller
      */
     public function show(StoreOwner $storeOwner)
     {
-        $storeOwner = StoreOwner::where('user_id', Auth::id())->first();
-        $user = Auth::user();
-        $stores = Store::where('owner_id','=',Auth::id())->get();
+        
+        $user = User::findOrFail($storeOwner->user_id);
+
+        $stores = Store::where('owner_id','=',$storeOwner->user_id);
+
         return view('storeOwner.show', compact(['storeOwner','user','stores']));
         
     }

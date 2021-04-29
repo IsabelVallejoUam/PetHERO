@@ -16,11 +16,11 @@ class ProductsSeeder extends Seeder
         DB::table('products')->insert([
             'store_id' => "3", 
             'price' => "10000",
-            'title' => "Alimento dog chow 500gr",
+            'name' => "Alimento dog chow 500gr",
             'discount' => "0",
             'quantity' => "20",
             'description' => "Alimento premium para perros",
-            'image_url' => "/public/images/products/docg_chow.png"
+            'photo' => "/public/images/products/docg_chow.png"
         ]); 
     }
 }
