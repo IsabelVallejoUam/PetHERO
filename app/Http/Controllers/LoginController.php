@@ -11,8 +11,8 @@ class LoginController extends Controller{
         // Retrive Input
         $credentials = $request->only('email', 'password');
 
-        $exsitingProfile = DB::select('SELECT :perfil.*, users.* FROM users 
-        JOIN :perfil WHERE users.email =:email AND users.id = PERFIL.user_id', ['email' => $request->input('email'), 'perfil' =>$request->input('perfil')]);
+        $exsitingProfile = DB::select('SELECT :PERFIL.*, users.* FROM users 
+        JOIN :PERFIL WHERE users.email =:email AND users.id = PERFIL.user_id', ['email' => $request->input('email'), 'perfil' =>$request->input('perfil')]);
           
         
         if (Auth::attempt($credentials) && count($exsitingProfile)>0) {

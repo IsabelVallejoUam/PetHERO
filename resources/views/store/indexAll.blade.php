@@ -5,7 +5,7 @@
 <div class="jumbotron"> <h1>Establecimientos</h1> 
     @foreach ($stores as $store)
     <div class="card" style="width: 18rem; display:inline-block; margin:10px;">
-        <img class="card-img-top" src="/uploads/stores/{{$store->photo}}" alt="Card image cap">
+        <img class="card-img-top" src="/uploads/stores/{{$store->photo}}" alt="{{$store->description}}">
         <div class="card-body">
             <h4 class="card-title"><b>{{$store->store_name}}</b></h4>
             <h5> <i>"{{$store->slogan}}"</i></h5>

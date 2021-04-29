@@ -168,8 +168,10 @@ class PetOwnerController extends Controller
     public function addFavoriteWalker(FavoriteWalker $favoriteWalker, Walker $walker)
     {
 
-        $existingFavorite = FavoriteWalker::where('walker_id', '=', $walker->user_id, 'AND', 'pet_owner_id', '=', Auth::id());
-
+        $existingFavorite = FavoriteWalker::where('walker_id', '=', $walker->user_id)->where('pet_owner_id', '=', Auth::id())->exists();
+       
+        //COMPROBAR QUE ESTA LOGEADO
+        if(Auth::check()){
         if ($existingFavorite) {
             return back()->with('_failure', 'Perfil de paseador ya estaba en favoritos!');
         } else {
@@ -179,6 +181,9 @@ class PetOwnerController extends Controller
 
             $favoriteWalker->save();
             return back()->with('_success', 'Perfil de paseador agregado a favoritos!');
+        }
+        } else {
+            return back()->with('_failure', 'Debes estar Loggeado para agregar a favoritos!');  
         }
     }
 

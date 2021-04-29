@@ -26,7 +26,8 @@ class WalkerController extends Controller
      */
     public function index()
     {
-        $walkers = Walker::all()->sortBy('score');
+        //$walkers = Walker::all()->sortBy('score');
+        $walkers = Walker::searchUsers();
 
         return view('walker.index', compact('walkers'));
     }
