@@ -14,6 +14,7 @@
     @extends('layouts.app')
     @section('content')
    
+    <a type="button" class="btn btn-secondary mb-4 mt-2" href="{{ route('walker.index') }}">Volver</a>
 
         <div class="jumbotron col-lg-6 col-md-6 col-sm-6 col-xs-6 offset-3 float-md-center text-center" style=" width:500px;">
             

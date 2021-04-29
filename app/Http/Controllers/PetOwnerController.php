@@ -111,8 +111,10 @@ class PetOwnerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(PetOwner $walker, User $user)
+    public function edit(PetOwner $petOwner)
     {
+        $user = User::findOrFail($petOwner->user_id);
+
         return view('petOwner.edit', compact('petOwner', 'user'));
     }
 
@@ -123,8 +125,10 @@ class PetOwnerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(PetOwnerRequest $request,  UserRequest $request2, PetOwner $petOwner, User $user)
+    public function update(PetOwnerRequest $request,  UserRequest $request2, PetOwner $petOwner)
     {
+
+        $user = User::findOrFail($petOwner->user_id);
 
         $petOwner->address = $request->input('address');
         $petOwner->save();

@@ -8,7 +8,7 @@
         <img class="card-img-top" src="/uploads/stores/{{$store->photo}}" alt="{{$store->description}}">
         <div class="card-body">
             <h4 class="card-title"><b>{{$store->store_name}}</b></h4>
-            <h5> <i>"{{$store->slogan}}"</i></h5>
+            <h5> <i>{{$store->slogan}}</i></h5>
             <h6> {{$store->description}}</h6>
             <p><b>Horario:</b> {{$store->schedule}}</p>
             <p><b>Dirección:</b> {{$store->address}}</p>

@@ -2,16 +2,16 @@
 
 @section('content')
 
-    <div class="container">
+    <div class="jumbotron">
         <h1>PASEADORES</h1>
         
       
             <div class="row-fluid ">
             @foreach ( $walkers as $walker) 
-                <div class="col-sm-4 ">
-                    <div class="card-columns-fluid">
+            <div class="card" style="display:inline-block; margin:10px;">
+                    <div class="col-sm-12 d-flex">
                         <div class="card  bg-light" style = "width: 22rem; " >
-                            <img class="card-img-top" src="/uploads/avatars/{{$walker->avatar}}" alt="Foto de perfil">
+                            <img class="card-img-top" src="/uploads/avatars/{{$walker->avatar}}" alt={{$walker->name}}>
 
         
                             <div class="card-body">

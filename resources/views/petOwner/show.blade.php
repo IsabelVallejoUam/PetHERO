@@ -7,7 +7,7 @@
 <a type="button" class="btn btn-secondary mb-4 mt-2" href="{{ url()->previous() }}"><i class="far fa-hand-point-left"></i> Volver</a>
     <div class="card">
         <a>
-            <h1 style="position:static; display:block; margin-left:auto; margin-right:auto;" class="p-1 text-center">Perfil de {{ $user->name. ' ' .$user->lastname  }}  (Dueño de Tiendas)</h1>
+            <h1 style="position:static; display:block; margin-left:auto; margin-right:auto;" class="p-1 text-center">Perfil de {{ $user->name. ' ' .$user->lastname  }} </h1>
             <img src="/uploads/avatars/{{$user->avatar}}" style="width:150px; border-radious:50%; display: block; margin-left: auto; margin-right: auto;"/>
         </a>
         <table class="table table-striped table-hover">
@@ -49,16 +49,16 @@
             </tr>
             <tr>
                 <th scope="col">Creado en</th>
-                <td>{{ $walker->created_at ?? "Desconocida" }}</td>
+                <td>{{ $petOwner->created_at ?? "Desconocida" }}</td>
             </tr>
             <tr>
                 <th scope="col">Actualizado en</th>
-                <td>{{ $walker->updated_at ?? "Desconocida"  }}</td>
+                <td>{{ $petOwner->updated_at ?? "Desconocida"  }}</td>
             </tr>
         </table>
         </div>   
         <div class="btn-group" role="group" aria-label="Link options">
-            <a href=""{{--"{{ route('walker.edit', auth()->user()->document) }}"--}} class="btn btn-warning" title="Editar"><i class="far fa-edit"></i></a>
+            <a href="{{ route('petOwner.edit', $petOwner->user_id) }}" class="btn btn-warning" title="Editar"><i class="far fa-edit"></i></a>
             <form action=""{{--"{{ route('walker.destroy', auth()->user()->document) }}"--}} method="post"
                 onsubmit="return confirm('¿Esta seguro que desea eliminar el perfil?')">
                 @csrf

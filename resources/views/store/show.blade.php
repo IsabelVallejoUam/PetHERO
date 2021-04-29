@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <a type="button" class="btn btn-secondary mb-4 mt-2" href="{{ url()->previous() }}">Volver</a>
+    <a type="button" class="btn btn-secondary mb-4 mt-2" href="{{ route('store.index') }}">Volver</a>
     
     <h1>{{ $store->store_name }}</h1>
     <img src="/uploads/stores/{{$store->photo}}" style="width:150px; border-radious:50%; display: block;"/>
