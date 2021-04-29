@@ -20,18 +20,6 @@
             <th scope="col">Phone Number</th>
             <td>{{ $user->phone }}</td>
         </tr>
-        <tr>
-            <th scope="col">Document</th>
-            <td>{{ $user->document }}</td>
-        </tr>
-        <tr>
-            <th scope="col">Creado en</th>
-            <td>{{ $storeOwner->created_at ?? "Desconocida" }}</td>
-        </tr>
-        <tr>
-            <th scope="col">Actualizado en</th>
-            <td>{{ $storeOwner->updated_at ?? "Desconocida"  }}</td>
-        </tr>
     </table>
     
     <div class="jumbotron"> <h1>Mis establecimientos</h1> 

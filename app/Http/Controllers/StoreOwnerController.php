@@ -80,8 +80,7 @@ class StoreOwnerController extends Controller
     {
         
         $user = User::findOrFail($storeOwner->user_id);
-
-        $stores = Store::where('owner_id','=',$storeOwner->user_id);
+        $stores = Store::where('owner_id','=',Auth::id())->get();
 
         return view('storeOwner.show', compact(['storeOwner','user','stores']));
         
@@ -93,8 +92,10 @@ class StoreOwnerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(StoreOwner $walker, User $user)
+    public function edit(StoreOwner $storeOwner)
     {
+        $user = User::findOrFail($storeOwner->user_id);
+
         return view('storeOwner.edit', compact('storeOwner','user'));
     }
 
@@ -105,8 +106,9 @@ class StoreOwnerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(StoreOwnerRequest $request,  UserRequest $request2, StoreOwner $storeOwner, User $user)
+    public function update(StoreOwnerRequest $request,  UserRequest $request2, StoreOwner $storeOwner)
     {
+        $user = User::findOrFail($storeOwner->user_id);
 
         $user->name =  $request2->input('name');
         $user->lastname =  $request2->input('lastname');
