@@ -120,7 +120,7 @@
                                     Dueño de tienda
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('storeOwner.index') }}"> Ver perfil público</a>
+                                    <a class="dropdown-item" href="{{ route('storeOwner.profile',Auth::user()->id) }}"> Ver perfil público</a>
                                     <a class="dropdown-item" href="{{ route('storeOwner.show',Auth::user()->id)}}"> Ver perfil privado</a>
                                 </div>
                                 

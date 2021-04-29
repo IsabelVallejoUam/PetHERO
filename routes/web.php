@@ -34,6 +34,7 @@ Route::get('/walker/profile/{walker}', [App\Http\Controllers\WalkerController::c
 Route::post('/walker/favorite/pet/{pet}', [App\Http\Controllers\WalkerController::class, 'addFavoritePet'])->name('walker.addFavoritePet');
 
 Route::resource('/storeOwner', StoreOwnerController::class);
+Route::get('/storeOwner/profile/{storeOwner}', [App\Http\Controllers\StoreOwnerController::class, 'profile'])->name('storeOwner.profile');
 
 Route::resource('/petOwner', PetOwnerController::class);
 Route::get('/petOwner/profile/{petOwner}', [App\Http\Controllers\PetOwnerController::class, 'profile'])->name('petOwner.profile');

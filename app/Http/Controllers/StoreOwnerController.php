@@ -23,7 +23,7 @@ class StoreOwnerController extends Controller
      */
     public function index()
     {
-        $storeOwner = StoreOwner::where('user_id', Auth::id())->first();
+       
         $user = Auth::user();
         $stores = Store::where('owner_id','=',Auth::id())->get();
        
@@ -84,6 +84,21 @@ class StoreOwnerController extends Controller
 
         return view('storeOwner.show', compact(['storeOwner','user','stores']));
         
+    }
+
+       /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function profile(StoreOwner $storeOwner)
+    {
+
+        $user = User::findOrFail($storeOwner->user_id);
+        $stores = Store::where('owner_id','=',$storeOwner->user_id)->get();
+
+        return view('storeOwner.perfil', compact('storeOwner', 'user','stores'));
     }
 
     /**
