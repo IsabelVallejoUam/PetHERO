@@ -9,6 +9,7 @@ use App\Http\Controllers\PetOwnerController;
 use App\Http\Controllers\StoreOwnerController;
 use App\Http\Controllers\StoreController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\FavoriteStoreController;
 
 /*
 |--------------------------------------------------------------------------
@@ -50,5 +51,8 @@ Route::resource('/product',ProductController::class);
 Route::post('/useravatar', [App\Http\Controllers\UserController::class,'update_avatar']);
 Route::post('/productdata', [App\Http\Controllers\ProductController::class,'getData'])->name('product.getData');
 Route::post('/product', [App\Http\Controllers\ProductController::class,'store'])->name('product.store');
+
+Route::resource('/favoriteStore',FavoriteStoreController::class);
+
 
 
