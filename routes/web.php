@@ -10,6 +10,7 @@ use App\Http\Controllers\StoreOwnerController;
 use App\Http\Controllers\StoreController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\FavoriteStoreController;
+use App\Http\Controllers\FavoriteWalkerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -53,6 +54,8 @@ Route::post('/productdata', [App\Http\Controllers\ProductController::class,'getD
 Route::post('/product', [App\Http\Controllers\ProductController::class,'store'])->name('product.store');
 
 Route::resource('/favoriteStore',FavoriteStoreController::class);
+
+Route::resource('/favoriteWalker',FavoriteWalkerController::class);
 
 
 

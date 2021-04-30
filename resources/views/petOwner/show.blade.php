@@ -15,7 +15,9 @@
                         <li class="nav-item"> <a class="nav-link" href="{{route('favoriteStore.index')  }}" >
                             TIENDAS FAVORITAS
                         </a></li>
-                        <li>PASEADORES</li>
+                        <li class="nav-item"> <a class="nav-link" href="{{route('favoriteWalker.index')  }}" >
+                            PASEADORES FAVORITOS
+                        </a></li>
                     </ul>
                     <h4 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
                         <span> LISTA FAVORITOS </span>
