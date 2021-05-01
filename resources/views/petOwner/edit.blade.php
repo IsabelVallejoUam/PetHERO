@@ -1,4 +1,4 @@
-@extends('layouts.app')
+{{-- @extends('layouts.app')
 
 @section('content')
 <div class="container">
@@ -94,8 +94,6 @@
                                 @enderror
                             </div>
                         </div>
-
-                        {{-- ESTO NO CONFIRMA LA CLAVE, LA ESTA ACTUALIZANDO AYUDA --}}
                         <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Confirmar Password') }} </label>
 
@@ -124,5 +122,35 @@
         </div>
     </div>
 </div>
+@endsection --}}
+
+@extends('layouts.app')
+
+@section('content')
+<div class="container">
+    
+    <div class="row justify-content-center">
+
+        <div class="col-md-8">
+            <div class="card">
+                
+                <div class="card-header">
+                    <a type="button" class="btn btn-secondary mb-4 mt-2 " href="{{ url()->previous() }}"><i class="far fa-hand-point-left"></i> Volver</a><br>
+                    Editar perfil de {{$user->name}}
+                </div>
+                       
+                <form action="{{ route('petOwner.update',$user->id) }}" method="post" enctype="multipart/form-data">
+                    @csrf
+                    @method('put')
+                    <div class="card-body">
+                         @include('petOwner.sub_form')
+                    </div>
+                    <button type="submit" class="btn btn-primary">Editar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 @endsection
+
 

@@ -152,13 +152,12 @@ class StoreOwnerController extends Controller
             } else {
                 return back()->with('_failure', 'Las contraseñas no coinciden');
             }
-        } else {
+        } else if(!$request2->filled('newpassword') && !$request2->filled('newpasswordconfirmation')){
             $user->save();
             return redirect(route('storeOwner.show', [$user,$storeOwner]))->with('_success', 'Perfil editado exitosamente!') ;
-        }
-        
-       
-        
+        }else {
+            return back()->with('_failure', 'Debes completar los dos campos de contraseñas');
+        }     
     }
 
     /**

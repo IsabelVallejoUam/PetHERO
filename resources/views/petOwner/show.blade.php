@@ -46,23 +46,6 @@
                     </a>
                     <table class="table table-striped table-hover">
                         <tr>
-                            <form enctype="multipart/form-data" action="/useravatar" method="POST"
-                                onsubmit="return confirm('¿Esta seguro que desea cambiar su avatar?')">
-                                <div style="display:inline-block;">
-                                    <div class="card w-100">
-                                        <div class="card-body">
-                                            <h5 class="card-title">Sube tu propio avatar</h5>
-                                            <p class="card-text">Elige una de tus fotos como Avatar.</p>
-                                            <input type="file" name="avatar">
-                                            <input type="hidden" name="_token" value="{{ csrf_token() }}"><br>
-                                            <input type="submit" class="pull-right btn btn-sm btn-primary mt-2"
-                                                value="Actualizar avatar">
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-                        </tr>
-                        <tr>
                             <th scope="col">Full Name</th>
                             <td>{{ $user->name . ' ' . $user->lastname }}</td>
                         </tr>
