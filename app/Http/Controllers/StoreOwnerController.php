@@ -143,21 +143,13 @@ class StoreOwnerController extends Controller
             $user->avatar=$filename;
         }
         if( $request2->filled('newpassword') && $request2->filled('newpasswordconfirmation')){
-            $newpassword =  $request2->input('newpassword');
-            $newpasswordconf =  $request2->input('newpasswordconfirmation');
-            if($newpassword == $newpasswordconf){
-                $user->password =  Hash::make($request2->input('newpassword'));
-                $user->save();
-                return redirect(route('storeOwner.show', [$user,$storeOwner]))->with('_success', 'Perfil editado exitosamente!') ;
-            } else {
-                return back()->with('_failure', 'Las contraseñas no coinciden');
-            }
-        } else if(!$request2->filled('newpassword') && !$request2->filled('newpasswordconfirmation')){
+            $user->password =  Hash::make($request2->input('newpassword'));
             $user->save();
             return redirect(route('storeOwner.show', [$user,$storeOwner]))->with('_success', 'Perfil editado exitosamente!') ;
-        }else {
-            return back()->with('_failure', 'Debes completar los dos campos de contraseñas');
-        }     
+        } else {
+            $user->save();
+            return redirect(route('storeOwner.show', [$user,$storeOwner]))->with('_success', 'Perfil editado exitosamente!') ;
+        }
     }
 
     /**

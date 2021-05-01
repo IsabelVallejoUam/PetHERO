@@ -152,22 +152,33 @@ class PetOwnerController extends Controller
             Image::make($photo)->resize(300,300)->save(public_path('uploads/avatars/'.$filename));
             $user->avatar=$filename;
         }
+        // if( $request2->filled('newpassword') && $request2->filled('newpasswordconfirmation')){
+        //     $newpassword =  $request2->input('newpassword');
+        //     $newpasswordconf =  $request2->input('newpasswordconfirmation');
+        //     if($newpassword == $newpasswordconf){
+        //         $user->password =  Hash::make($request2->input('newpassword'));
+        //         $user->save();
+        //         return redirect(route('petOwner.show', [$user,$petOwner]))->with('_success', 'Perfil editado exitosamente!') ;
+        //     } else {
+        //         return back()->with('_failure', 'Las contraseñas no coinciden');
+        //     }
+        // } else if(!$request2->filled('newpassword') && !$request2->filled('newpasswordconfirmation')) {
+        //     $user->save();
+        //     return redirect(route('petOwner.show', [$user, $petOwner]))->with('_success', 'Perfil editado exitosamente!');
+        // } else {
+        //     return back()->with('_failure', 'Debes completar los dos campos de contraseñas');
+        // }
+
         if( $request2->filled('newpassword') && $request2->filled('newpasswordconfirmation')){
-            $newpassword =  $request2->input('newpassword');
-            $newpasswordconf =  $request2->input('newpasswordconfirmation');
-            if($newpassword == $newpasswordconf){
-                $user->password =  Hash::make($request2->input('newpassword'));
-                $user->save();
-                return redirect(route('petOwner.show', [$user,$petOwner]))->with('_success', 'Perfil editado exitosamente!') ;
-            } else {
-                return back()->with('_failure', 'Las contraseñas no coinciden');
-            }
-        } else if(!$request2->filled('newpassword') && !$request2->filled('newpasswordconfirmation')) {
+            $user->password =  Hash::make($request2->input('newpassword'));
             $user->save();
-            return redirect(route('petOwner.show', [$user, $petOwner]))->with('_success', 'Perfil editado exitosamente!');
+            return redirect(route('petOwner.show', [$user,$petOwner]))->with('_success', 'Perfil editado exitosamente!') ;
         } else {
-            return back()->with('_failure', 'Debes completar los dos campos de contraseñas');
+            $user->save();
+            return redirect(route('petOwner.show', [$user,$petOwner]))->with('_success', 'Perfil editado exitosamente!') ;
         }
+
+   
     }
 
     /**
