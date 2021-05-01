@@ -64,6 +64,8 @@ class StoreOwnerController extends Controller
                 $filename = time() . '.' . $photo->getClientOriginalExtension();
                 Image::make($photo)->resize(300,300)->save(public_path('uploads/avatars/'.$filename));
                 $user->avatar=$filename;
+            } else{
+                $user->avatar='default.png';
             }
             $user->save();
         } 
@@ -73,7 +75,7 @@ class StoreOwnerController extends Controller
         $storeOwner->user_id = $foregin_id;
         $storeOwner->save();
 
-        return redirect()->route('storeOwner.show', [$user])->with('_success', '¡Perfil creado exitosamente!');
+        return view('layouts.created', compact('user'))->with('_success', '¡Perfil creado exitosamente!');
     }
 
     /**
