@@ -90,6 +90,10 @@
                             <th scope="col">Actualizado en</th>
                             <td>{{ $petOwner->updated_at ?? 'Desconocida' }}</td>
                         </tr>
+                        <tr>
+                            <th scope="col">Mascotas</th>
+                            <td><a href="{{ route('pet.index') }}" class=" btn btn-info"> Ver Mis Mascotas</a></td>
+                        </tr>
                     </table>
                 </div>
                 <div class="btn-group" role="group" aria-label="Link options">
