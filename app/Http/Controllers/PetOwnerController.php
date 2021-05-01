@@ -18,6 +18,7 @@ use App\Http\Requests\UserRequest;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Image;
 
 class PetOwnerController extends Controller
 {
@@ -65,6 +66,15 @@ class PetOwnerController extends Controller
         $user->email =  $request2->input('email');
         $user->password =  Hash::make($request2->input('password'));
         $user->document =  $request2->input('document');
+
+        if ($request->hasFile('avatar')){
+            $photo = $request->file('avatar');
+            $filename = time() . '.' . $photo->getClientOriginalExtension();
+            Image::make($photo)->resize(300,300)->save(public_path('uploads/avatars/'.$filename));
+            $user->avatar=$filename;
+        } else{
+            $user->avatar='default.png';
+        }
         $user->phone =  $request2->input('phone');
         $user->save();
 
@@ -75,7 +85,7 @@ class PetOwnerController extends Controller
         $petOwner->save();
 
 
-        return redirect()->route('petOwner.show', [$user])->with('_success', '¡Perfil creado exitosamente!');
+        return view('layouts.created', compact('user'))->with('_success', '¡Perfil creado exitosamente!');
     }
 
     /**
