@@ -20,6 +20,15 @@
             <p><b>Comentarios:</b> {{$pet->commentary}}</p>
             <p><b>Tamaño:</b> {{$pet->size}}</p>
             <a href="{{ route('pet.show', $pet->id) }}" class=" btn btn-info"> Ver {{$pet->name}}</a>
+            <a href="{{ route('pet.edit', $pet->id) }}" class="btn btn-warning" title="Editar{{$pet->name}}"><i class="far fa-edit"></i></a>
+            <form action="{{ route('pet.destroy', $pet) }}" method="post"
+                onsubmit="return confirm('¿Esta seguro que desea eliminar la Mascota?')">
+                @csrf
+                @method('delete')
+                <button type="submit" class="btn btn-danger" title="Remover{{$pet->name}}"><i class="fas fa-trash"></i></button>
+            </form>                        
+                
+
         </div>
     </div>
     @endforeach

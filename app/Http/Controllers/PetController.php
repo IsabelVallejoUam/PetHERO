@@ -55,7 +55,7 @@ class PetController extends Controller
         $pet->owner_id = $foregin_id;
         $pet->save();
 
-        return redirect(route('petOwner.show', [$foregin_id]))->with('_success', '¡Mascota agregada exitosamente!');
+        return redirect(route('pet.index'))->with('_success', '¡Mascota agregada exitosamente!');
     }
 
     /**
@@ -96,8 +96,9 @@ class PetController extends Controller
         $pet->personality = $request->input('personality');
         $pet->commentary = $request->input('commentary');
         $pet->size = $request->input('size');
-        $pet->type = $request->input('species');
+        $pet->species = $request->input('species');
         $pet->save();
+        return redirect(route('pet.index'))->with('_success', '¡Mascota editada exitosamente!');
     }
 
     /**
@@ -108,14 +109,14 @@ class PetController extends Controller
      */
     public function destroy(Pet $pet)
     {
-        if($pet->owner->document == Auth::document())
+        if($pet->owner_id == Auth::id())
         {
             $pet->delete();
 
-            return back()->with('_success', 'Mascota eliminado exitosamente!');
+            return redirect(route('pet.index'))->with('_success', '¡Mascota eliminada exitosamente!');
         }
         
-        return back()->with('_failure', '¡No tiene permiso de borrar esta mascota!');
+        return back()->with('_failure', '¡No tiene permiso de borrar este recurso!');
     }
     
 }
