@@ -30,13 +30,12 @@ class PetRequest extends FormRequest
                  
         'name' => 'required|max:50',
         'sex'=> 'required',
-        'birthday' => 'required|date',
+        'age' => 'required',
         'race'  => 'required|max:100',
         'personality' => 'required',
         'commentary' => 'max:200',
         'size'  => 'required',
-        'type' => 'required',
-
+        'species' => 'required'
         ];
     }
 

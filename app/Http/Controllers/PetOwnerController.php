@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\PetOwner;
 use App\Models\Walker;
 use App\Models\Store;
+use App\Models\Pet;
 
 use App\Models\FavoriteWalker;
 use App\Models\FavoriteStore;
@@ -29,8 +30,8 @@ class PetOwnerController extends Controller
     public function index()
     {
         $petOwner = PetOwner::ownedBy(auth()->user());
-
-        return view('petOwner.index', compact('petOwner'));
+        $pets = Pet::where('owner_id','=',Auth::id())->get();
+        return view('petOwner.index', compact(['petOwner','pets']));
     }
 
     /**
@@ -87,8 +88,8 @@ class PetOwnerController extends Controller
     public function show(PetOwner $petOwner, User $user)
     {
         $user = User::findOrFail($petOwner->user_id);
-
-        return view('petOwner.show', compact('petOwner', 'user'));
+        $pets = Pet::where('owner_id','=',Auth::id())->get();
+        return view('petOwner.show', compact(['petOwner', 'user','pets']));
     }
 
     /**
@@ -101,8 +102,8 @@ class PetOwnerController extends Controller
     {
 
         $user = User::findOrFail($petOwner->user_id);
-
-        return view('petOwner.perfil', compact('petOwner', 'user'));
+        $pets = Pet::where('owner_id','=',Auth::id())->get();
+        return view('petOwner.perfil', compact(['petOwner', 'user','pets']));
     }
 
     /**

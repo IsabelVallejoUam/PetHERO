@@ -17,9 +17,9 @@ class PetController extends Controller
      */
     public function index()
     {
-        $pet = Pet::ownedBy(auth()->user());
+        $pets = Pet::where('owner_id','=',Auth::id())->get();
 
-        return view('pet.index', compact('pet'));
+        return view('pet.index', compact('pets'));
     }
 
     /**
@@ -43,18 +43,19 @@ class PetController extends Controller
         $pet = new Pet();
         $pet->name = $request->input('name');
         $pet->sex = $request->input('sex');
-        $pet->birthday = $request->input('birthday');
+        $pet->age = $request->input('age');
         $pet->race = $request->input('race');
         $pet->personality = $request->input('personality');
         $pet->commentary = $request->input('commentary');
         $pet->size = $request->input('size');
-        $pet->type = $request->input('type');
+        $pet->species = $request->input('species');
 
-        $foregin_id= PetOwner::select('id')->where('user_id', '=', Auth::id())->value('id');
-        $pet->user_id = $foregin_id;
+        $foregin_id = PetOwner::where('user_id','=',Auth::id())->value('user_id');
+        
+        $pet->owner_id = $foregin_id;
         $pet->save();
 
-        return redirect(route('pet.index'))->with('_success', '¡Mascota agregada exitosamente!');
+        return redirect(route('petOwner.show', [$foregin_id]))->with('_success', '¡Mascota agregada exitosamente!');
     }
 
     /**
@@ -66,7 +67,6 @@ class PetController extends Controller
     public function show(Pet $pet)
     {
         return view('pet.show', compact('pet'));
-        
     }
 
     /**
@@ -91,12 +91,12 @@ class PetController extends Controller
     {
         $pet->name = $request->input('name');
         $pet->sex = $request->input('sex');
-        $pet->birthday = $request->input('birthday');
+        $pet->age = $request->input('age');
         $pet->race = $request->input('race');
         $pet->personality = $request->input('personality');
         $pet->commentary = $request->input('commentary');
         $pet->size = $request->input('size');
-        $pet->type = $request->input('type');
+        $pet->type = $request->input('species');
         $pet->save();
     }
 
