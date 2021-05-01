@@ -53,6 +53,7 @@ class StoreController extends Controller
         $store->schedule = $request->input('schedule');
         $store->address = $request->input('address');
         $store->phone_number = $request->input('phone_number');
+        $store->privacy = $request->input('privacy');
         $store->score = 0;
         $store->type = $request->input('type');
         if($request->input('type') == 'veterinaria' && $store->photo = null){
@@ -60,8 +61,6 @@ class StoreController extends Controller
         } else if($request->input('type') == 'tienda' && $store->photo = null){
             $store->photo = "default.png";
         }
-        
-        
         $store->save();
 
         return redirect(route('storeOwner.index'))->with('_success', 'Tienda creada exitosamente!');
@@ -107,7 +106,7 @@ class StoreController extends Controller
         $store->schedule = $request->input('schedule');
         $store->address = $request->input('address');
         $store->phone_number = $request->input('phone_number');
-        $store->score = 0;
+        $store->privacy = $request->input('privacy');
         $store->type = $request->input('type');
         if ($request->hasFile('photo')){
             $photo = $request->file('photo');

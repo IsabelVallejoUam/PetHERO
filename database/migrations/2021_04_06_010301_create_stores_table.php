@@ -27,6 +27,7 @@ class CreateStoresTable extends Migration
             $table->string('phone_number');
             $table->integer("score")->default(0);  
             $table->enum('type', ['veterinaria','tienda'])->nullable();
+            $table->enum('privacy', ['public','private']);
             $table->string('photo')->default('default.png');         
 
 

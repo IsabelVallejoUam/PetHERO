@@ -25,6 +25,7 @@ class CreateProductsTable extends Migration
             $table->string('description');
             $table->integer("score")->default(0);
             $table->string('photo')->default('default.png');
+            $table->enum('privacy', ['public','private']);
             $table->enum('type', ['producto','servicio'])->default('producto');                     
             $table->foreign('store_id')
                 ->references('id')->on('stores')

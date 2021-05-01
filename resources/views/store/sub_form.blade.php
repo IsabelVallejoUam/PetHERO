@@ -29,7 +29,16 @@
 </div>  
 
 <div class="mb-3">
-    <label>Image</label>
+    <label for="privacy">Privacidad</label>
+    <select name="privacy" class="form-control" id="privacy">
+        <option value="private" selected="selected">Privado (solo tú lo podrás ver)</option>
+        <option value="public">Público (visible para todos los usuarios)</option>
+    </select>
+</div> 
+
+
+<div class="mb-3">
+    <label>Foto del establecimiento</label>
         <div class="input-group">
             <div class="custom-file">
                 <input type="file" name="photo" class="custom-file-input">

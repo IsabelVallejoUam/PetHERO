@@ -26,8 +26,8 @@ class StoreOwnerController extends Controller
        
         $user = Auth::user();
         $stores = Store::where('owner_id','=',Auth::id())->get();
-       
-        return view('storeOwner.index', compact(['storeOwner','user','stores']));
+        $storeOwner = StoreOwner::find($user->id);
+        return view('storeOwner.show', compact(['storeOwner','user','stores']));
     }
 
     /**
@@ -88,7 +88,6 @@ class StoreOwnerController extends Controller
     {
         $user = User::findOrFail($storeOwner->user_id);
         $stores = Store::where('owner_id','=',Auth::id())->get();
-
         return view('storeOwner.show', compact(['storeOwner','user','stores']));
         
     }
@@ -103,7 +102,7 @@ class StoreOwnerController extends Controller
     {
         $storeOwner = StoreOwner::where('user_id',Auth::id())->first();
         $user = User::findOrFail($storeOwner->user_id);
-        $stores = Store::where('owner_id','=',$storeOwner->user_id)->get();
+        $stores = Store::where('owner_id','=',$storeOwner->user_id)->where('privacy','=','public')->get();
 
         return view('storeOwner.perfil', compact('storeOwner', 'user','stores'));
     }
