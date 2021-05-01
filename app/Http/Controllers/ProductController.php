@@ -53,6 +53,7 @@ class ProductController extends Controller
         $product->description = $request->input('description');
         $product->quantity = $request->input('quantity');
         $product->type = $request->input('type');
+        $product->privacy = $request->input('privacy');
         if ($request->hasFile('photo')){
             $photo = $request->file('photo');
             $filename = time() . '.' . $photo->getClientOriginalExtension();
@@ -101,6 +102,7 @@ class ProductController extends Controller
         $product->description = $request->input('description');
         $product->quantity = $request->input('quantity');
         $product->type = $request->input('type');
+        $product->privacy = $request->input('privacy');
         if ($request->hasFile('photo')){
             $photo = $request->file('photo');
             $filename = time() . '.' . $photo->getClientOriginalExtension();

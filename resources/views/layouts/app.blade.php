@@ -56,8 +56,21 @@
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
 
-                            <a class="nav-link" href="{{ route('store.indexAll') }}">TIENDAS</a>
 
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                Tiendas
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ route('store.indexAll') }}">Ver todas las tiendas</a>
+                                <a class="dropdown-item" href="{{route('favoriteStore.index')  }}"> Ver tiendas favoritas</a>
+                            </div>
+                            
+                        </li>
+
+
+
+                            
                             <a class="nav-link" href="{{ url('walker') }}">PASEADORES</a>     
 
                         @guest

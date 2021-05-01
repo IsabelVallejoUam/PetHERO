@@ -53,6 +53,7 @@ Route::resource('/product',ProductController::class);
 Route::post('/useravatar', [App\Http\Controllers\UserController::class,'update_avatar']);
 Route::post('/productdata', [App\Http\Controllers\ProductController::class,'getData'])->name('product.getData');
 Route::post('/product', [App\Http\Controllers\ProductController::class,'store'])->name('product.store');
+Route::get('/store/public/{store}', [App\Http\Controllers\StoreController::class,'showPublic'])->name('store.showPublic');
 
 Route::resource('/favoriteStore',FavoriteStoreController::class);
 

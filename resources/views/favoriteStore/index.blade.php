@@ -15,7 +15,7 @@
             <p><b>Dirección:</b> {{$store->address}}</p>
             <p><b>Teléfono:</b> {{$store->phone_number}}</p>
             <p><b>Puntuación:</b> {{$store->score}}</p>
-            <a href="{{ route('store.show', $store->id) }}" class=" btn btn-info"> Ver {{$store->store_name}}</a>
+            <a href="{{ route('store.showPublic', $store->id) }}" class=" btn btn-info"> Ver {{$store->store_name}}</a>
         </div>
     </div>
 @endforeach

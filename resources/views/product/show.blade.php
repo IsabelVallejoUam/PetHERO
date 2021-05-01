@@ -9,8 +9,8 @@
     </a>
      <table class="table table-striped table-hover">
         <tr>
-            <th scope="col">{{ $product->name}}</th>
-            <td></td>
+            <th scope="col">Nombre del producto</th>
+            <td>{{ $product->name}}</td>
         </tr>
         <tr>
             <th scope="col">Precio</th>

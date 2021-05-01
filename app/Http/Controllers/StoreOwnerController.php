@@ -22,8 +22,7 @@ class StoreOwnerController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-       
+    { 
         $user = Auth::user();
         $stores = Store::where('owner_id','=',Auth::id())->get();
         $storeOwner = StoreOwner::find($user->id);

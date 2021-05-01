@@ -6,7 +6,7 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header"><a type="button" class="btn btn-secondary mb-4 mt-2 " href="{{ url()->previous() }}"><i class="far fa-hand-point-left"></i> Volver</a><br>
-                    Crear una nueva tienda
+                    Crear una nuevo establecimiento
                 </div>
                   <form action="{{ route('store.store') }}" method="post" enctype="multipart/form-data">
                     @csrf

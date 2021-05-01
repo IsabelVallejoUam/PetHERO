@@ -15,14 +15,18 @@ class StoreController extends Controller
      */
     public function index()
     {
-        $stores = Store::all();
-        return view('store.indexAll',compact('stores'));
-        
+
+    }
+
+    public function showPublic(Store $store){
+        $products = Product::ownedBy($store->id)->where('type','producto')->where('privacy','public')->simplePaginate(6);
+        $services = Product::ownedBy($store->id)->where('type','servicio')->where('privacy','public')->simplePaginate(6);
+        return view('store.index',compact(['store','products','services']));
     }
 
     public function indexAll()
     {
-        $stores = Store::all();
+        $stores = Store::where('privacy','public')->get();
         return view('store.indexAll',compact('stores'));
     }
 
