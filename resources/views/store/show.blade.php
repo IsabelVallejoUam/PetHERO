@@ -1,6 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
+<?php
+    $authenticated = false;
+    if (Auth::id() == $store->owner_id){ //Verifica que el usuario sea el mismo dueño de la tienda
+        $authenticated = true;
+    } else {
+        $authenticated = false;
+    }
+?>
 <div class="container">
     <a type="button" class="btn btn-secondary mb-4 mt-2" href="{{ route('store.index') }}">Volver</a>
     
@@ -60,8 +68,10 @@
                 <h6> {{$store->description}}</h6>
                 <p><b>Descuento:</b> {{$product->discount}}</p>
                 <p><b>Stock:</b> {{$product->quantity}}</p>
-                <p><b>Puntuación:</b> {{$product->score}}</p>
+                <p><b>Puntuación:</b> {{$product->score}}</p>         
+            
                 <a href="{{ route('product.show', $product->id) }}" class=" btn btn-info"> Ver {{$product->name}}</a>
+                @if($authenticated)
                 <a href="{{ route('product.edit', ['product' => $product->id]) }}" class="btn btn-warning" title="Editar"><i class="far fa-edit"></i>Editar{{$product->name}}</a>
                 <form action="{{ route('product.destroy', $product->id) }}" method="post"
                     onsubmit="return confirm('¿Esta seguro que desea remover esta tienda?')">
@@ -69,6 +79,7 @@
                     @method('delete')
                     <button type="submit" class=" btn btn-danger">Eliminar</button>
                 </form>
+                @endif
             </div>
         </div>   
     @endforeach
@@ -85,7 +96,9 @@
                 <h6> {{$store->description}}</h6>
                 <p><b>Descuento:</b> {{$product->discount}}</p>
                 <p><b>Puntuación:</b> {{$product->score}}</p>
+                
                 <a href="{{ route('product.show', $product->id) }}" class=" btn btn-info"> Ver {{$product->name}}</a>
+                @if($authenticated)
                 <a href="{{ route('product.edit', ['product' => $product->id]) }}" class="btn btn-warning" title="Editar"><i class="far fa-edit"></i>Editar{{$product->name}}</a>
                 <form action="{{ route('product.destroy', $product->id) }}" method="post"
                     onsubmit="return confirm('¿Esta seguro que desea remover esta tienda?')">
@@ -93,6 +106,7 @@
                     @method('delete')
                     <button type="submit" class=" btn btn-danger">Eliminar</button>
                 </form>
+                @endif
             </div>
             
         </div>
@@ -101,30 +115,20 @@
     {{$services->links()}}
     
     </div>
-
-
-    
     {{-- Envío del id de la tienda del view al controlador de producto --}}
+    @if($authenticated)
     <form action="{{route('product.getData')}}" method="POST">
         {{ csrf_field() }}
         <input type="hidden" name="store_id" value="{{$store->id}}">
         <button type="submit" class="btn btn-primary">Añadir producto ó servicio</button>
     </form>
+    @endif
 
     <div class="btn-group" role="group" aria-label="Link options">
         <form action="{{ route('store.destroy', $store->id) }}" method="post"
             onsubmit="return confirm('¿Esta seguro que desea remover este establecimiento?')">
             @csrf
             @method('delete')
-            <?php
-                $authenticated = false;
-                use Illuminate\Support\Facades\Auth;
-                if (Auth::id() == $store->owner_id){ //Verifica que el usuario sea el mismo dueño del post
-                    $authenticated = true;
-                } else {
-                    $authenticated = false;
-                }
-            ?>
             @if($authenticated)
                 <button type="submit" class="btn btn-danger" title="Remover">Eliminar</button>
             @endif  

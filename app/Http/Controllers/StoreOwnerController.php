@@ -59,6 +59,12 @@ class StoreOwnerController extends Controller
             $user->password =  Hash::make($request2->input('password'));
             $user->document =  $request2->input('document');
             $user->phone =  $request2->input('phone');
+            if ($request->hasFile('avatar')){
+                $photo = $request->file('avatar');
+                $filename = time() . '.' . $photo->getClientOriginalExtension();
+                Image::make($photo)->resize(300,300)->save(public_path('uploads/avatars/'.$filename));
+                $user->avatar=$filename;
+            }
             $user->save();
         } 
 
@@ -163,11 +169,11 @@ class StoreOwnerController extends Controller
      */
     public function destroy(StoreOwner $storeOwner)
     {
-        if($storeOwner->owner->document == Auth::document())
+        if($storeOwner->user_id == Auth::id())
         {
             $storeOwner->delete();
 
-            return back()->with('_success', 'Perfil de paseador eliminado exitosamente!');
+            return redirect()->route('/')->with('_success', 'Perfil de paseador eliminado exitosamente!');
         }
         
         return back()->with('_failure', '¡No tiene permiso de borrar ese perfil!');

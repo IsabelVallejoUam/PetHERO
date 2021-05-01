@@ -8,7 +8,7 @@
                 <div class="card-header">{{ __('Register') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('storeOwner.store') }}">
+                    <form method="POST" enctype="multipart/form-data" action="{{ route('storeOwner.store') }}">
                         @csrf
 
                         <div class="form-group row">
@@ -102,6 +102,18 @@
                             </div>
                         </div>
 
+
+                        <div class="form-group row">
+                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">Elige un avatar</label>
+                            <div class="form-group row mb-0">
+                                <div class="col-md-8 offset-md-4">
+                                    <div class="custom-file">
+                                        <input type="file" name="avatar" class="custom-file-input">
+                                        <label class="custom-file-label"> Escoger archivo
+                                    </div>
+                                </div>
+                            </div> 
+                        </div> 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
