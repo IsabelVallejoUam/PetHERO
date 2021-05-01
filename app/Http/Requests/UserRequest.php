@@ -29,13 +29,11 @@ class UserRequest extends FormRequest
         return [
             'name' => 'required|max:128',
             'email' => 'required|max:256|email',
-            'password' => 'max:256',         
+            'newpassword' => 'required_with:newpasswordconfirmation|max:256',
+            'newpasswordconfirmation' => 'required_with:newpassword|same:newpassword',    
             'lastname' => 'required|max:256',
             'document'=> 'required|numeric|digits_between:8,10',
             'phone' => 'required|numeric|digits_between:7,10',
-
-
-
         ];
     }
 
