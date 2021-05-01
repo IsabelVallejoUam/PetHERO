@@ -9,7 +9,7 @@ use App\Models\Store;
 use App\Http\Requests\StoreOwnerRequest;
 use App\Http\Requests\UserRequest;
 use Illuminate\Support\Facades\Hash;
-
+use Image;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -78,7 +78,6 @@ class StoreOwnerController extends Controller
      */
     public function show(StoreOwner $storeOwner)
     {
-        
         $user = User::findOrFail($storeOwner->user_id);
         $stores = Store::where('owner_id','=',Auth::id())->get();
 
@@ -94,7 +93,7 @@ class StoreOwnerController extends Controller
      */
     public function profile(StoreOwner $storeOwner)
     {
-
+        $storeOwner = StoreOwner::where('user_id',Auth::id())->first();
         $user = User::findOrFail($storeOwner->user_id);
         $stores = Store::where('owner_id','=',$storeOwner->user_id)->get();
 
@@ -109,6 +108,7 @@ class StoreOwnerController extends Controller
      */
     public function edit(StoreOwner $storeOwner)
     {
+        $storeOwner = StoreOwner::where('user_id',Auth::id())->first();
         $user = User::findOrFail($storeOwner->user_id);
 
         return view('storeOwner.edit', compact('storeOwner','user'));
@@ -124,17 +124,34 @@ class StoreOwnerController extends Controller
     public function update(StoreOwnerRequest $request,  UserRequest $request2, StoreOwner $storeOwner)
     {
         $user = User::findOrFail($storeOwner->user_id);
-
+        $storeOwner = StoreOwner::where('user_id',Auth::id())->first();
         $user->name =  $request2->input('name');
         $user->lastname =  $request2->input('lastname');
         $user->email =  $request2->input('email');
-        $user->password =  $request2->input('password');
         $user->document =  $request2->input('document');
         $user->phone =  $request2->input('phone');
-        $user->save();
-
-        return redirect(route('storeOwner.show', [$user,$storeOwner]))->with('_success', 'Perfil editado exitosamente!') ;
-
+        if ($request->hasFile('avatar')){
+            $photo = $request->file('avatar');
+            $filename = time() . '.' . $photo->getClientOriginalExtension();
+            Image::make($photo)->resize(300,300)->save(public_path('uploads/avatars/'.$filename));
+            $user->avatar=$filename;
+        }
+        if( $request2->filled('newpassword') && $request2->filled('newpasswordconfirmation')){
+            $newpassword =  $request2->input('newpassword');
+            $newpasswordconf =  $request2->input('newpasswordconfirmation');
+            if($newpassword == $newpasswordconf){
+                $user->password =  Hash::make($request2->input('newpassword'));
+                $user->save();
+                return redirect(route('storeOwner.show', [$user,$storeOwner]))->with('_success', 'Perfil editado exitosamente!') ;
+            } else {
+                return back()->with('_failure', 'Las contraseñas no coinciden');
+            }
+        } else {
+            $user->save();
+            return redirect(route('storeOwner.show', [$user,$storeOwner]))->with('_success', 'Perfil editado exitosamente!') ;
+        }
+        
+       
         
     }
 
