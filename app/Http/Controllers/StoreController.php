@@ -60,13 +60,16 @@ class StoreController extends Controller
         $store->privacy = $request->input('privacy');
         $store->score = 0;
         $store->type = $request->input('type');
-        if($request->input('type') == 'veterinaria' && $store->photo = null){
-            $store->photo = "default_vet.png";
-        } else if($request->input('type') == 'tienda' && $store->photo = null){
+        if ($request->hasFile('photo')){
+            $photo = $request->file('photo');
+            $filename = time() . '.' . $photo->getClientOriginalExtension();
+            Image::make($photo)->resize(300,300)->save(public_path('uploads/stores/'.$filename));
+            $store->photo=$filename;
+            $store->save();
+        } else {
             $store->photo = "default.png";
         }
         $store->save();
-
         return redirect(route('storeOwner.index'))->with('_success', 'Tienda creada exitosamente!');
     }
 
