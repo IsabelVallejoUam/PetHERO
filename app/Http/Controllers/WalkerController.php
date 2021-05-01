@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Hash;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
-
+use Image;
 class WalkerController extends Controller
 {
     /**
@@ -56,14 +56,22 @@ class WalkerController extends Controller
         $user = new User();
 
         if ($existingUser == false){    
-        $user->name =  $request2->input('name');
-        $user->lastname =  $request2->input('lastname');
-        $user->email =  $request2->input('email');
-        $user->password =  Hash::make($request2->input('password'));
-        $user->document =  $request2->input('document');
-        $user->phone =  $request2->input('phone');
-        $user->save();
-        } 
+            $user->name =  $request2->input('name');
+            $user->lastname =  $request2->input('lastname');
+            $user->email =  $request2->input('email');
+            $user->password =  Hash::make($request2->input('password'));
+            $user->document =  $request2->input('document');
+            $user->phone =  $request2->input('phone');
+            if ($request->hasFile('avatar')){
+                $photo = $request->file('avatar');
+                $filename = time() . '.' . $photo->getClientOriginalExtension();
+                Image::make($photo)->resize(300,300)->save(public_path('uploads/avatars/'.$filename));
+                $user->avatar=$filename;
+            } else{
+                $user->avatar='default.png';
+            }
+            $user->save();
+        }
 
         $walker = new Walker();
         $walker->experience = $request->input('experience');
@@ -73,11 +81,7 @@ class WalkerController extends Controller
         $walker->user_id = $foregin_id;
         $walker->save();
 
-        $buscaEsta = $walker->user_id;
-
-      
-    return redirect()->route('walker.show', [$user] )->with('_success', '¡Perfil creado exitosamente!');
-        
+        return view('layouts.created', compact('user'))->with('_success', '¡Perfil creado exitosamente!');    
     }
 
     /**
@@ -116,8 +120,9 @@ class WalkerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Walker $walker, User $user)
+    public function edit(Walker $walker)
     {
+        $user = User::findOrFail($walker->user_id);
         return view('walker.edit', compact('walker','user'));
     }
 
@@ -130,21 +135,39 @@ class WalkerController extends Controller
      */
     public function update(WalkerRequest $request,  UserRequest $request2, Walker $walker, User $user)
     {
-
+        $user = User::findOrFail($walker->user_id);
         $walker->experience = $request->input('experience');
+        $walker->schedule = $request->input('schedule');
+        $walker->slogan = $request->input('slogan');
+        $walker->rate = $request->input('rate');
         $walker->save();
-
         $user->name =  $request2->input('name');
         $user->lastname =  $request2->input('lastname');
         $user->email =  $request2->input('email');
-        $user->password =  $request2->input('password');
         $user->document =  $request2->input('document');
         $user->phone =  $request2->input('phone');
-        $user->save();
-
-        return redirect(route('walker.show'))->with('_success', 'Perfil editado exitosamente!') ;
-
-        
+        if ($request->hasFile('avatar')){
+            $photo = $request->file('avatar');
+            $filename = time() . '.' . $photo->getClientOriginalExtension();
+            Image::make($photo)->resize(300,300)->save(public_path('uploads/avatars/'.$filename));
+            $user->avatar=$filename;
+        }
+        if( $request2->filled('newpassword') && $request2->filled('newpasswordconfirmation')){
+            $newpassword =  $request2->input('newpassword');
+            $newpasswordconf =  $request2->input('newpasswordconfirmation');
+            if($newpassword == $newpasswordconf){
+                $user->password =  Hash::make($request2->input('newpassword'));
+                $user->save();
+                return redirect(route('walker.show', [$user,$walker]))->with('_success', 'Perfil editado exitosamente!') ;
+            } else {
+                return back()->with('_failure', 'Las contraseñas no coinciden');
+            }
+        } else if(!$request2->filled('newpassword') && !$request2->filled('newpasswordconfirmation')){
+            $user->save();
+            return redirect(route('walker.show', [$user,$walker]))->with('_success', 'Perfil editado exitosamente!') ;
+        }else {
+            return back()->with('_failure', 'Debes completar los dos campos de contraseñas');
+        }  
     }
 
     /**

@@ -8,7 +8,7 @@
                 <div class="card-header">{{ __('Register') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('walker.store') }}">
+                    <form method="POST" action="{{ route('walker.store') }}" enctype="multipart/form-data">
                         @csrf
 
                         <div class="form-group row">
