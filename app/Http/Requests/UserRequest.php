@@ -29,7 +29,7 @@ class UserRequest extends FormRequest
         return [
             'name' => 'required|max:128',
             'email' => 'required|max:256|email',
-            'password' => 'required|max:256',         
+            'password' => 'max:256',         
             'lastname' => 'required|max:256',
             'document'=> 'required|numeric|digits_between:8,10',
             'phone' => 'required|numeric|digits_between:7,10',

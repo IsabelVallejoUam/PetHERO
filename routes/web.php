@@ -46,6 +46,7 @@ Route::post('/petOwner/favorite/store/{store}', [App\Http\Controllers\PetOwnerCo
 Route::resource('/walkRequest',WalkController::class);
 
 Route::resource('/store',StoreController::class);
+Route::get('/stores', [App\Http\Controllers\StoreController::class, 'indexAll'])->name('store.indexAll');
 
 Route::resource('/product',ProductController::class);
 

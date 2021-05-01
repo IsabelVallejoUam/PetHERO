@@ -56,7 +56,7 @@
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
 
-                            <a class="nav-link" href="{{ route('store.index') }}">TIENDAS</a>
+                            <a class="nav-link" href="{{ route('store.indexAll') }}">TIENDAS</a>
 
                             <a class="nav-link" href="{{ url('walker') }}">PASEADORES</a>     
 
