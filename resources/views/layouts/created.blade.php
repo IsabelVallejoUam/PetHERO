@@ -22,7 +22,7 @@
     </table>
     
     <div class="jumbotron"> <h1>Todo listo, solo inicia sesión</h1> 
-        Inicia sesión para modificar tus datos.<br>
+        Inicia sesión para modificar tus datos.
         <a type="button" class="btn btn-secondary mb-4 mt-2" href="{{ route('login') }}"><i class="fas fa-sign-in-alt"></i> Inicia sesión</a>
     </div>
 </div>
