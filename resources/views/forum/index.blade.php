@@ -7,7 +7,23 @@
                 <img class="card-img-top" src="/uploads/avatars/{{$post->owner->avatar}}" style="padding:15px;width:200px;float:left;" >      
                 <div class="card-body">
                     <div class="container" style="display: inline">
-                        <h3>{{$post->title}}</h3>
+                        <h3>{{$post->title}}
+                            <?php
+                                $authenticated = false;
+                                if (Auth::id() == $post->owner_id){ //Verifica que el usuario sea el mismo dueño del post
+                                    $authenticated = true;
+                                } else {
+                                    $authenticated = false;
+                                }
+                            ?>
+                            @if($authenticated)
+                                @if ($post->privacy == 'public')
+                                    <i class="fas fa-lock-open"></i>
+                                @elseif ($post->privacy == 'private')
+                                    <i class="fas fa-lock"></i>
+                                @endif
+                            @endif
+                        </h3>
                         <h6> Escrito por: <u>{{$post->owner->name}} </u></h6>
                     </div>
                     <div class="container"  style="display:flow-root;">

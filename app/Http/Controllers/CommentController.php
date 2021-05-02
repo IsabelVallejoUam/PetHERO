@@ -65,7 +65,7 @@ class CommentController extends Controller
      */
     public function edit(Comment $comment)
     {
-        //
+        return view('post.comment.edit', compact('comment'));
     }
 
     /**
@@ -77,7 +77,10 @@ class CommentController extends Controller
      */
     public function update(Request $request, Comment $comment)
     {
-        //
+        $comment->content = $request->input('content');
+        $comment->save();
+        $post = Post::find($request->input('post_id'));        
+        return redirect(route('post.show',$post))->with('_success', 'Comentario editado exitosamente!');
     }
 
     /**

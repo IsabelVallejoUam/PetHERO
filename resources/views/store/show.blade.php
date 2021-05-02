@@ -65,7 +65,7 @@
             <div class="card-body">
                 <h4 class="card-title"><b>{{$product->name}}</b>
                     @if ($product->privacy == 'private')
-                    <i class="fas fa-lock"></i>
+                        <i class="fas fa-lock"></i>
                     @else
                         <i class="fas fa-lock-open"></i>
                     @endif

@@ -14,10 +14,10 @@ class ForumController extends Controller
      */
     public function index()
     {
-        $posts = Post::where('privacy','public')->simplePaginate(5);
-        
+        $posts = Post::where('privacy','public')->simplePaginate(6);
         return view('forum.index', compact('posts'));
     }
+
 
     /**
      * Show the form for creating a new resource.

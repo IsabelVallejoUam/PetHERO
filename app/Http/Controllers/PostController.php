@@ -16,7 +16,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        $posts = Post::where('owner_id',Auth::id())->simplePaginate(6);
+        return view('forum.index', compact('posts'));
     }
 
     /**
@@ -66,7 +67,7 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        //
+        return view('post.edit',compact('post'));
     }
 
     /**
@@ -78,7 +79,11 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        //
+        $post->title = $request->input('title');
+        $post->content = $request->input('content');
+        $post->privacy = $request->input('privacy');
+        $post->save();
+        return redirect(route('post.show', $post->id))->with('_success', 'Post editado exitosamente!');
     }
 
     /**

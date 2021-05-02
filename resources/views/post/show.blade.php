@@ -12,12 +12,16 @@
 ?>
 <div class="container">
     <a type="button" class="btn btn-secondary mb-4 mt-2 " href="{{ url()->previous() }}"><i class="far fa-hand-point-left"></i> Volver</a><br>
-    <h1>{{ $post->title }}</h1>
+    <h1>{{ $post->title }}
+    @if($authenticated)
+        @if ($post->privacy == 'public')
+            <i class="fas fa-lock-open"></i>
+        @else
+            <i class="fas fa-lock"></i>
+        @endif
+    @endif
+    </h1>
     <table class="table table-striped table-hover">
-        <tr>
-            <th scope="col" style="width: 200px">Código</th>
-            <td>{{ $post->id }}</td>
-        </tr>
         <tr>
             <th scope="col" style="width: 200px">Propietario</th>
             <td>{{ $post->owner->name }}</td>
@@ -53,7 +57,7 @@
                     }
                 ?>
                 @if ($owner)
-                <a href="{{ route('comment.edit', $answer->id) }}" class=" btn btn-warning" title="Editar"><i class="far fa-edit"></i> Editar</a>
+                <a href="{{ route('comment.edit', ['comment' => $answer->id]) }}" class=" btn btn-warning" title="Editar"><i class="far fa-edit"></i> Editar</a>
                 <form action="{{ route('comment.destroy', $answer->id) }}" method="post"
                     onsubmit="return confirm('¿Esta seguro que desea remover el post?')">
                     @csrf
@@ -86,6 +90,7 @@
         
     @if($authenticated)
     <div class="btn-group" role="group" aria-label="Link options">
+        <a href="{{ route('post.edit', ['post' => $post->id]) }}" class=" btn btn-warning" title="Editar"><i class="far fa-edit"></i> Editar</a>
         <form action="{{ route('post.destroy', $post->id) }}" method="post"
             onsubmit="return confirm('¿Esta seguro que desea remover el post?')">
             @csrf

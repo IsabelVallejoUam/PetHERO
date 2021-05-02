@@ -67,12 +67,23 @@
                             </div>
                             
                         </li>
+
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                Foro
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ route('forum.index') }}">Ver foro completo</a>
+                                <a class="dropdown-item" href="{{route('post.index')  }}"> Ver mis publicaciones</a>
+                            </div>
+                            
+                        </li>
                             
 
 
                             
                             <a class="nav-link" href="{{ url('walker') }}">PASEADORES</a>     
-                            <a class="nav-link" href="{{route('forum.index')  }}">Foro</a>
+
                         @guest
 
 
