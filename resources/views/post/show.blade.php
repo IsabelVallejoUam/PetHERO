@@ -43,7 +43,10 @@
         @foreach ($answers as $answer)
         <tr>
             <th scope="col">
-                Respuesta de {{$answer->owner->name}}
+                Respuesta de {{$answer->owner->name}} @if ($answer->created_at != $answer->updated_at)
+                <i>(Editada)</i><br>
+            @endif
+                
                 <img src='/uploads/avatars/{{$answer->owner->avatar}}' width="100px">
             </th>
             <td>
@@ -62,7 +65,7 @@
                     onsubmit="return confirm('¿Esta seguro que desea remover el post?')">
                     @csrf
                     @method('delete')
-                    <button type="submit" class="btn btn-danger" title="Remover"><i class="fas fa-trash-alt"></i>Eliminar post</button>  
+                    <button type="submit" class="btn btn-danger" title="Remover"><i class="fas fa-trash-alt"></i>Eliminar comentario</button>  
                 </form>
                 @endif
             </td>

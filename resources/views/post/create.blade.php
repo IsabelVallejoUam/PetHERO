@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('content')
+@include('layouts.validation-error')
 <form action="{{route('post.store')}}" method="post" enctype="multipart/form-data">
 @csrf
 <div class="container p-2">
@@ -33,14 +34,13 @@
                         <label for="privacy">Privacidad</label>
                             <select name="privacy" class="form-control" id="privacy">
                             <option value="private" selected="selected">Privado (solo tú lo podrás ver)</option>
-                            <option value="public">Público (visible para todos los usuarios)</option>
+                            <option value="public"></i>Público (visible para todos los usuarios)</option>
                             </select>
                         </label>
                     </div>
-
                     <div class="row center">
                         <div class="col s6">
-                            <button class="btn btn-success" type="submit"> Publicar </button>
+                            <button class="btn btn-primary" type="submit"> Publicar </button>
                             <a href="{{ url()->previous()  }}"><button type="button" class="btn btn btn-danger">Cancelar</button></a>
                         </div>
                     </div>

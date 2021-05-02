@@ -28,6 +28,9 @@
                     </div>
                     <div class="container"  style="display:flow-root;">
                         <b>Preview</b>
+                        @if ($post->created_at != $post->updated_at)
+                            <i>(Edited)</i>
+                        @endif
                         <?php 
                             $html2TextConverter = new \Html2Text\Html2Text($post->content);
                             $text = strip_tags($html2TextConverter->getText());
