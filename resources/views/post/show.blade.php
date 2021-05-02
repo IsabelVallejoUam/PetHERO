@@ -23,8 +23,11 @@
     </h1>
     <table class="table table-striped table-hover">
         <tr>
-            <th scope="col" style="width: 200px">Propietario</th>
-            <td>{{ $post->owner->name }}</td>
+            <th scope="col" style="width: 200px">Propietario<br> <u>{{ $post->owner->name }}</u></th>
+            <td>
+                <img src='/uploads/avatars/{{$post->owner->avatar}}' width="100px">
+                          
+            </td>
         </tr>
         <tr>
             <th scope="col">Fecha de craación</th>
