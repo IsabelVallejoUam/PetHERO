@@ -5,9 +5,7 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
-
-
-class StoreOwnerRequest extends FormRequest
+class PostRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -27,8 +25,10 @@ class StoreOwnerRequest extends FormRequest
     public function rules()
     {
         return [
-
+            'content' => 'required|min:2',
+            'title' => 'required|max:256|min:2'
         ];
     }
 
+    
 }
