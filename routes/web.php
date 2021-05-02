@@ -11,6 +11,10 @@ use App\Http\Controllers\StoreController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\FavoriteStoreController;
 use App\Http\Controllers\FavoriteWalkerController;
+use App\Http\Controllers\CommentController;
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\ForumController;
+use App\Http\Controllers\CKEditorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,6 +36,12 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Auth::routes();
 
 Route::resource('/walker', WalkerController::class);
+
+Route::resource('/comment', CommentController::class);
+Route::resource('/post', PostController::class);
+Route::resource('/forum', ForumController::class);
+Route::post('ckeditor/image_upload', [CKEditorController::class, 'upload'])->name('upload');
+
 Route::get('/walker/profile/{walker}', [App\Http\Controllers\WalkerController::class, 'profile'])->name('walker.profile');
 Route::post('/walker/favorite/pet/{pet}', [App\Http\Controllers\WalkerController::class, 'addFavoritePet'])->name('walker.addFavoritePet');
 
@@ -58,6 +68,8 @@ Route::get('/store/public/{store}', [App\Http\Controllers\StoreController::class
 Route::resource('/favoriteStore',FavoriteStoreController::class);
 
 Route::resource('/favoriteWalker',FavoriteWalkerController::class);
+
+
 
 
 

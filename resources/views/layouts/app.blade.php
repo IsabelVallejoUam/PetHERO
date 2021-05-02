@@ -11,7 +11,7 @@
 
     <!-- Scripts -->
     {{-- <script src="{{ asset('js/app.js') }}" defer></script> Esta línea causa un bug con el navbar D:--}}
-    
+    <script src="//cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
     </script>
@@ -67,20 +67,21 @@
                             </div>
                             
                         </li>
-
+                            
 
 
                             
                             <a class="nav-link" href="{{ url('walker') }}">PASEADORES</a>     
-
+                            <a class="nav-link" href="{{route('forum.index')  }}">Foro</a>
                         @guest
 
 
                             @if (Route::has('login'))
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                    
                                 </li>
-
+                                
 
                             @endif
 
