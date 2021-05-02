@@ -94,6 +94,19 @@
                         </div>
 
                         <div class="form-group row">
+                            <label for="schedule" class="col-md-4 col-form-label text-md-right">{{ __('Schedule') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="schedule" type="text" class="form-control @error('schedule') is-invalid @enderror" name="schedule" value="{{ old('schedule') }}" required autocomplete="schedule">
+                                @error('schedule')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
                             <label for="experience" class="col-md-4 col-form-label text-md-right">{{ __('Experience as a walker in Years') }}</label>
 
                             <div class="col-md-6">
