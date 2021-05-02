@@ -1,12 +1,12 @@
 @extends('layouts.app')
-
+@include('layouts.validation-error')
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
-
+                <a type="button" class="btn btn-secondary mb-4 mt-2" href="{{ url()->previous() }}" style="width:150px;"><i class="far fa-hand-point-left"></i> Volver</a>         
+                <div class="card-header">{{ __('Registro dueño de establecimiento') }}  <i class="fas fa-store"></i></div>
                 <div class="card-body">
                     <form method="POST" enctype="multipart/form-data" action="{{ route('storeOwner.store') }}">
                         @csrf
@@ -117,7 +117,7 @@
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
+                                    {{ __('Register')}}
                                 </button>
                             </div>
                         </div>

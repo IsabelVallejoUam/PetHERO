@@ -128,7 +128,7 @@
 </div>
 @endsection --}}
 @extends('layouts.app')
-
+@include('layouts.validation-error')
 @section('content')
 <div class="container">
     
@@ -139,7 +139,7 @@
                 
                 <div class="card-header">
                     <a type="button" class="btn btn-secondary mb-4 mt-2 " href="{{ url()->previous() }}"><i class="far fa-hand-point-left"></i> Volver</a><br>
-                    Editar perfil de {{$user->name}}
+                    Editar perfil de {{$user->name}} <i class="fas fa-dog"></i>
                 </div>
                        
                 <form action="{{ route('walker.update',$user->id) }}" method="post" enctype="multipart/form-data">
