@@ -137,7 +137,37 @@ $type = 'walker';
 
                             @if ($type == 'storeOwner')
                                 <li class="nav-item dropdown">
-                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+
+                                    <li class="nav-item dropdown">
+                                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                            <img src="/uploads/avatars/{{ Auth::user()->avatar }}"
+                                                style="width: 35px; height:35px; position:relarive; left:9px; border-radious:50%;" />
+                                            {{ Auth::user()->name }}
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                            <a class="dropdown-item"
+                                                href="{{ route('storeOwner.profile', Auth::user()->id) }}"> Ver perfil
+                                                público</a>
+                                            <a class="dropdown-item" href="{{ route('storeOwner.show', Auth::user()->id) }}">
+                                                Ver perfil privado</a>
+                                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                                    document.getElementById('logout-form').submit();">
+                                                {{ __('Logout') }}
+                                            </a>
+                                        </div> 
+                                        {{-- <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                                    document.getElementById('logout-form').submit();">
+                                                {{ __('Logout') }}
+                                            </a>
+                                        </div> --}}
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                            @csrf
+                                        </form>
+                                    </li>
+
+                                    {{-- <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                         PERFIL (Dueño de tienda)
                                     </a>
@@ -147,7 +177,7 @@ $type = 'walker';
                                             público</a>
                                         <a class="dropdown-item" href="{{ route('storeOwner.show', Auth::user()->id) }}">
                                             Ver perfil privado</a>
-                                    </div>
+                                    </div> --}}
 
                                     <li class="nav-item dropdown">
                                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
@@ -189,7 +219,39 @@ $type = 'walker';
 
                             @if ($type == 'petOwner')
                                 <li class="nav-item dropdown">
-                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+
+                                    <li class="nav-item dropdown">
+                                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                            <img src="/uploads/avatars/{{ Auth::user()->avatar }}"
+                                                style="width: 35px; height:35px; position:relarive; left:9px; border-radious:50%;" />
+                                            {{ Auth::user()->name }}
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                            <a class="dropdown-item" href="{{ route('petOwner.profile', Auth::user()->id) }}">
+                                                Ver perfil público</a>
+                                            <a class="dropdown-item" href="{{ route('petOwner.show', Auth::user()->id) }}"> Ver
+                                                perfil privado</a>
+                                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                document.getElementById('logout-form').submit();">
+                                                {{ __('Logout') }}
+                                             <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                                    document.getElementById('logout-form').submit();">
+                                                {{ __('Logout') }}
+                                            </a></a>
+                                        </div> 
+                                        {{-- <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                                    document.getElementById('logout-form').submit();">
+                                                {{ __('Logout') }}
+                                            </a>
+                                        </div> --}}
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                            @csrf
+                                        </form>
+                                    </li>
+
+                                    {{-- <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                         PERFIL (Dueño de mascotas)
                                     </a>
@@ -198,7 +260,7 @@ $type = 'walker';
                                             Ver perfil público</a>
                                         <a class="dropdown-item" href="{{ route('petOwner.show', Auth::user()->id) }}"> Ver
                                             perfil privado</a>
-                                    </div>
+                                    </div> --}}
 
                                     <li class="nav-item dropdown">
                                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
@@ -257,6 +319,36 @@ $type = 'walker';
                             {{-- -------------------------------------------------------- --}}
                             @if ($type == 'walker')
                                 <li class="nav-item dropdown">
+
+                                    <li class="nav-item dropdown">
+                                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                            <img src="/uploads/avatars/{{ Auth::user()->avatar }}"
+                                                style="width: 35px; height:35px; position:relarive; left:9px; border-radious:50%;" />
+                                            {{ Auth::user()->name }}
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                            <a class="dropdown-item" href="{{ route('walker.profile', Auth::user()->id) }}">
+                                                Ver perfil público</a>
+                                            <a class="dropdown-item" href="{{ route('walker.show', Auth::user()->id) }}"> Ver
+                                                perfil privado</a>
+                                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                                    document.getElementById('logout-form').submit();">
+                                                {{ __('Logout') }}
+                                            </a>
+                                        </div>
+                                        
+                                        {{-- <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                                    document.getElementById('logout-form').submit();">
+                                                {{ __('Logout') }}
+                                            </a>
+                                        </div> --}}
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                            @csrf
+                                        </form>
+                                    </li>
+{{--                                     
                                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                         PERFIL (Paseador)
@@ -266,7 +358,7 @@ $type = 'walker';
                                             Ver perfil público</a>
                                         <a class="dropdown-item" href="{{ route('walker.show', Auth::user()->id) }}"> Ver
                                             perfil privado</a>
-                                    </div>
+                                    </div> --}}
 
 
                                 <li class="nav-item dropdown">
@@ -311,23 +403,6 @@ $type = 'walker';
 
                             {{-- --------------------------------------------- --}}
 
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    <img src="/uploads/avatars/{{ Auth::user()->avatar }}"
-                                        style="width: 35px; height:35px; position:relarive; left:9px; border-radious:50%;" />
-                                    {{ Auth::user()->name }}
-                                </a>
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                            document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-                                </div>
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                    @csrf
-                                </form>
-                            </li>
                         @endguest
                     </ul>
                 </div>
