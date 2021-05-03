@@ -1,0 +1,92 @@
+Dev: Isabel Vallejo
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+
+Dev: Juan Pablo Zapata 
+
+Fecha: 31/03/2020
+1. ¿Qué has hecho desde la última reunión?
+Pensar en una forma de implementar los horarios de paseadores y tiendas
+2. ¿Qué harás hoy?
+Investigar opciones para lograr que los horarios sean lo más amigables con el usuario 
+3. ¿Qué impedimentos tienes para realizar el trabajo y qué ayudas necesitas?
+Nunca he impleentado algo así antes y es difícil estructurar algo 
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+
+Dev: Juan Manuel Morales   
+
+Fecha: 19/04/2020
+1. ¿Qué has hecho desde la última reunión?
+    Implementar primera version de APIS controladores para las mascotas y dueños de mascotas
+2. ¿Qué harás hoy?
+    Pensar en las vistas para el usuario dueño de mascota y para las mascotas
+3. ¿Qué impedimentos tienes para realizar el trabajo y qué ayudas necesitas?
+    Ninguno por el momento
+
+Fecha: 20/04/2020
+1. ¿Qué has hecho desde la última reunión?
+    Arreglar detalles de las migraciones
+2. ¿Qué harás hoy?
+    Crear una primera version de las vistas para usuario dueño mascota
+3. ¿Qué impedimentos tienes para realizar el trabajo y qué ayudas necesitas?
+    Ninguno por el momento
+
+Fecha: 21/04/2020
+1. ¿Qué has hecho desde la última reunión?
+    Vistas para usuario dueño de mascota
+2. ¿Qué harás hoy?
+    Discutir el diseño general de la pagina con mis compañeros
+3. ¿Qué impedimentos tienes para realizar el trabajo y qué ayudas necesitas?
+    Las opiniones de todos son diversas
+
+Fecha: 22/04/2020
+1. ¿Qué has hecho desde la última reunión?
+    Discutir sobre el diseño de la pagina
+2. ¿Qué harás hoy?
+    Ver propuestas graficas de diseño para la pagina
+3. ¿Qué impedimentos tienes para realizar el trabajo y qué ayudas necesitas?
+    Ninguna, todos estuvimos de acuerdo
+
+Fecha: 26/04/2020
+1. ¿Qué has hecho desde la última reunión?
+    Establecer el diseño general de la pagina
+2. ¿Qué harás hoy?
+    Crear los controladores para las vistas de mascota
+3. ¿Qué impedimentos tienes para realizar el trabajo y qué ayudas necesitas?
+    Ninguno
+
+Fecha: 27/04/2020
+1. ¿Qué has hecho desde la última reunión?
+    Crear controladores para mascota
+2. ¿Qué harás hoy?
+    Crear las vistas para mascota
+3. ¿Qué impedimentos tienes para realizar el trabajo y qué ayudas necesitas?
+    Ninguno
+
+Fecha: 28/04/2020
+1. ¿Qué has hecho desde la última reunión?
+    Crear las vistas de mascota
+2. ¿Qué harás hoy?
+    Unir el CRUD de mascotas con el dueño de mascota
+3. ¿Qué impedimentos tienes para realizar el trabajo y qué ayudas necesitas?
+    Ninguno
+    
+Fecha: 29/04/2020
+1. ¿Qué has hecho desde la última reunión?
+    Unir CRUD de mascotas con el dueño
+2. ¿Qué harás hoy?
+    Arreglar pequeños errores dentro del codigo 
+3. ¿Qué impedimentos tienes para realizar el trabajo y qué ayudas necesitas?
+    Falta de comunicación al hacer cambios en el codigo
+    
+Fecha: 01/05/2020
+1. ¿Qué has hecho desde la última reunión?
+    Arreglo de errores dentro del codigo
+2. ¿Qué harás hoy?
+    Reestilizacion del CRUD de mascota y cambio del controlador y la migracion
+3. ¿Qué impedimentos tienes para realizar el trabajo y qué ayudas necesitas?
+    Falta de comunicación al hacer cambios en el codigo
+
+
