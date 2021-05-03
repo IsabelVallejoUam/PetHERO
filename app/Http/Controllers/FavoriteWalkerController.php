@@ -17,7 +17,6 @@ class FavoriteWalkerController extends Controller
     public function index()
     {
         $walkers = FavoriteWalker::searchWalker(Auth::user());
-        var_dump($walkers);
         return view('favoriteWalker.index', compact('walkers'));
     }
 
