@@ -9,17 +9,18 @@
                     <a type="button" class="btn btn-secondary mb-4 mt-2" href="{{ url()->previous() }}" style="width:150px;"><i class="far fa-hand-point-left"></i> Volver</a>
                     <div class="card-header row justify-content-center">
                             <img src="/uploads/Logo.png" style="width:150px; border-radius:1%;"/>
+
                             Pet Hero<br>
                     </div>
                     <div class="card-body row justify-content-center">
                         <a href="{{ url('walker') }}" class="btn btn-primary">
-                            <i class="fab fa-searchengin"></i> BUSCAR SERVICIOS DE PASEO
+                            <i class="fab fa-searchengin"></i> VER PASEADORES
                         </a>
                         <a href="{{ route('store.indexAll') }}" class="btn btn-primary">
-                            <i class="fas fa-search-location"></i> BUSCAR TIENDAS O VETERINARIAS
+                            <i class="fas fa-search-location"></i> VER TIENDAS Y VETERINARIAS
                         </a>
                         <a href="{{ route('forum.index') }}" class="btn btn-primary">
-                            <i class="fab fa-wpforms"></i> INGRESAR AL FORO</a>
+                            <i class="fab fa-wpforms"></i> IR AL FORO</a>
                     </div>
                 </div>
             </div>
