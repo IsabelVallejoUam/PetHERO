@@ -1,6 +1,78 @@
 Dev: Isabel Vallejo
 
 
+Fecha: 10/04/2020
+1. ¿Qué has hecho desde la última reunión?
+Distribuimos las tareas para este sprint
+2. ¿Qué harás hoy?
+Crear una vista que permita registrarse como los distintos usuarios (paseador,  dueño de tienda, dueño de mascota)
+3. ¿Qué impedimentos tienes para realizar el trabajo y qué ayudas necesitas?
+Ninguno
+
+
+
+
+Fecha: 12/04/2020
+1. ¿Qué has hecho desde la última reunión?
+Revisar las APIS que habiamos creado ya que debido a alguno cambios no estan funcionando adecuadamente
+2. ¿Qué harás hoy?
+Arreglar los bugs presentes en algunos metodos de las APIS 
+3. ¿Qué impedimentos tienes para realizar el trabajo y qué ayudas necesitas?
+Cada miembro trabajo las APIS un poco diferente e,ntonces toca normalizarlas.
+
+
+
+
+Fecha: 19/04/2020
+1. ¿Qué has hecho desde la última reunión?
+Diseñar como se implementaran los favoritos en esta pagina 
+2. ¿Qué harás hoy?
+Crear las migraciones para tiendas,mascotas y paseadores favoritos
+Normalizar y actualizar la base de datos
+3. ¿Qué impedimentos tienes para realizar el trabajo y qué ayudas necesitas?
+Las tablas que tenemos planeadas no son iguales a las que hay en el proyecto
+
+
+Fecha: 22/04/2020
+1. ¿Qué has hecho desde la última reunión?
+Trabajar en la mejora de la base de datos
+2. ¿Qué harás hoy?
+Crear las vistas y metodos para tener perfiles publicos y privados
+Normalizar y actualizar la base de datos
+3. ¿Qué impedimentos tienes para realizar el trabajo y qué ayudas necesitas?
+
+
+Fecha: 27/04/2020
+1. ¿Qué has hecho desde la última reunión?
+Trabajar en los metodos para poder tener favoritos y poder agregarlos
+2. ¿Qué harás hoy?
+Poder ver los paseadores en conjunto y por separado
+3. ¿Qué impedimentos tienes para realizar el trabajo y qué ayudas necesitas?
+Hay algunos bugs que no se de donde salen
+La consulta en SQL casi no me daba, pero era por un error mio
+
+Fecha: 29/04/2020
+1. ¿Qué has hecho desde la última reunión?
+Arreglos minimos al  codigo
+Agregar mas seeders a los que ya habia hecho un compañero
+2. ¿Qué harás hoy?
+Que se pueda editar los perfiles de los usuarios
+3. ¿Qué impedimentos tienes para realizar el trabajo y qué ayudas necesitas?
+Un compañero no a querido o podido subir su parte del codigo y no se como esta trabajando el su parte para poder integrarla al main sin problemas
+
+Fecha: 03/05/2020
+1. ¿Qué has hecho desde la última reunión?
+Arreglos menores y organizacion del codigo
+2. ¿Qué harás hoy?
+Trabajar en detalles como el orden de  la barra de tarea y que links contiene
+3. ¿Qué impedimentos tienes para realizar el trabajo y qué ayudas necesitas?
+El nombramiento de unas paginasestaban mal en el sentido de que no seguian las reglas que habiamos indicado y al intentar arreglarlo las uno de los metodos no me funciona 
+por ninguna aparente error claro. Entonces toco dejarlo como estaba. El compañero dijo que el desupues lo arreglaba.
+
+
+
+
+
 -----------------------------------------------------------------------------------------------------------------------------------------------------
 
 Dev: Juan Pablo Zapata 
