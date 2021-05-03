@@ -81,6 +81,17 @@ $type = 'walker';
 
                             @if (Route::has('login'))
                                
+                                   
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    Foro
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('forum.index') }}">Ir el foro</a>
+                                </div>
+
+                            </li>
 
                                 <li class="nav-item dropdown">
                                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
@@ -104,10 +115,12 @@ $type = 'walker';
                                     </div>
 
                                 </li>
+
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
 
                                 </li>
+
 
 
                             @endif
@@ -120,6 +133,7 @@ $type = 'walker';
 
 
                         @else
+
 
                             @if ($type == 'storeOwner')
                                 <li class="nav-item dropdown">
@@ -185,6 +199,18 @@ $type = 'walker';
                                         <a class="dropdown-item" href="{{ route('petOwner.show', Auth::user()->id) }}"> Ver
                                             perfil privado</a>
                                     </div>
+
+                                    <li class="nav-item dropdown">
+                                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                            Mascotas
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                            <a class="dropdown-item" href="{{ route('pet.index') }}">Ver todas las
+                                                mascotas</a>
+                                        </div>
+    
+                                    </li>
 
                                     <li class="nav-item dropdown">
                                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
@@ -284,6 +310,7 @@ $type = 'walker';
                             @endif
 
                             {{-- --------------------------------------------- --}}
+
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

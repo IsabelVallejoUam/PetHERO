@@ -50,10 +50,10 @@
             </div> 
         @endforeach        
         {{$posts->links()}}<br>
-        @if (Route::has('login'))
-            <a type="button" class="btn btn-primary " href="{{ route('post.create') }}"><i class="fas fa-plus-square"></i> Crear nuevo post</a> 
+        @if (Auth::id() == null)
+        <a type="button" class="btn btn btn-secundary " href="{{ route('login') }}"> Registrate para crear un post</a>      
         @else
-            <a type="button" class="btn btn btn-secundary " href="{{ route('post.create') }}"> Registrate para crear un post</a> 
+        <a type="button" class="btn btn-primary " href="{{ route('post.create') }}"><i class="fas fa-plus-square"></i> Crear nuevo post</a> 
         @endif
         
 
