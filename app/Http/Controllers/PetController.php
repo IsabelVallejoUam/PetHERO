@@ -17,9 +17,9 @@ class PetController extends Controller
      */
     public function index()
     {
-        $pet = Pet::ownedBy(auth()->user());
+        $pets = Pet::where('owner_id','=',Auth::id())->get();
 
-        return view('pet.index', compact('pet'));
+        return view('pet.index', compact('pets'));
     }
 
     /**
@@ -43,15 +43,16 @@ class PetController extends Controller
         $pet = new Pet();
         $pet->name = $request->input('name');
         $pet->sex = $request->input('sex');
-        $pet->birthday = $request->input('birthday');
+        $pet->age = $request->input('age');
         $pet->race = $request->input('race');
         $pet->personality = $request->input('personality');
         $pet->commentary = $request->input('commentary');
         $pet->size = $request->input('size');
-        $pet->type = $request->input('type');
+        $pet->species = $request->input('species');
 
-        $foregin_id= PetOwner::select('id')->where('user_id', '=', Auth::id())->value('id');
-        $pet->user_id = $foregin_id;
+        $foregin_id = PetOwner::where('user_id','=',Auth::id())->value('user_id');
+        
+        $pet->owner_id = $foregin_id;
         $pet->save();
 
         return redirect(route('pet.index'))->with('_success', '¡Mascota agregada exitosamente!');
@@ -66,7 +67,6 @@ class PetController extends Controller
     public function show(Pet $pet)
     {
         return view('pet.show', compact('pet'));
-        
     }
 
     /**
@@ -91,13 +91,14 @@ class PetController extends Controller
     {
         $pet->name = $request->input('name');
         $pet->sex = $request->input('sex');
-        $pet->birthday = $request->input('birthday');
+        $pet->age = $request->input('age');
         $pet->race = $request->input('race');
         $pet->personality = $request->input('personality');
         $pet->commentary = $request->input('commentary');
         $pet->size = $request->input('size');
-        $pet->type = $request->input('type');
+        $pet->species = $request->input('species');
         $pet->save();
+        return redirect(route('pet.index'))->with('_success', '¡Mascota editada exitosamente!');
     }
 
     /**
@@ -108,14 +109,14 @@ class PetController extends Controller
      */
     public function destroy(Pet $pet)
     {
-        if($pet->owner->document == Auth::document())
+        if($pet->owner_id == Auth::id())
         {
             $pet->delete();
 
-            return back()->with('_success', 'Mascota eliminado exitosamente!');
+            return redirect(route('pet.index'))->with('_success', '¡Mascota eliminada exitosamente!');
         }
         
-        return back()->with('_failure', '¡No tiene permiso de borrar esta mascota!');
+        return back()->with('_failure', '¡No tiene permiso de borrar este recurso!');
     }
     
 }

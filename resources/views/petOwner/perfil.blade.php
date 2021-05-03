@@ -32,9 +32,10 @@
                 <p class="text-center" style="margin-bottom: 20px">CORREO DE CONTACTO: {{$user->email}}</p>
                 <br>
                 <p class="text-center" style="margin-bottom: 20px">DIRECCION: {{$petOwner->address}} </p>
-                <br>
-                <br>
-                <p class="text-center" style="margin-bottom: 20px">MASCOTAS: aqui mascotas con botones para verlas </p>
+                <div class="jumbotron"> <h1>Mis Mascotas: </h1> 
+                    @foreach ($pets as $pet)
+                        <a href="{{ route('pet.show', $pet->id) }}" class=" btn btn-info">{{$pet->name}}</a>
+                    @endforeach
                 <br>
             </div>
 

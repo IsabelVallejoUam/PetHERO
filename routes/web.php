@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\WalkerController;
 use App\Http\Controllers\WalkController;
 use App\Http\Controllers\PetOwnerController;
+use App\Http\Controllers\PetController;
 use App\Http\Controllers\StoreOwnerController;
 use App\Http\Controllers\StoreController;
 use App\Http\Controllers\ProductController;
@@ -52,6 +53,8 @@ Route::resource('/petOwner', PetOwnerController::class);
 Route::get('/petOwner/profile/{petOwner}', [App\Http\Controllers\PetOwnerController::class, 'profile'])->name('petOwner.profile');
 Route::post('/petOwner/favorite/walker/{walker}', [App\Http\Controllers\PetOwnerController::class, 'addFavoriteWalker'])->name('petOwner.addFavoriteWalker');
 Route::post('/petOwner/favorite/store/{store}', [App\Http\Controllers\PetOwnerController::class, 'addFavoriteStore'])->name('petOwner.addFavoriteStore');
+
+Route::resource('/pet', PetController::class);
 
 Route::resource('/walkRequest',WalkController::class);
 
