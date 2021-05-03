@@ -39,7 +39,7 @@
 
 <div class="mb-3">
     <label>Foto del establecimiento</label>
-        <div class="input-group">
+        <div class="offset-sm-1">
             <div class="custom-file">
                 <input type="file" name="photo" class="custom-file-input">
                 <label class="custom-file-label"> Escoger archivo

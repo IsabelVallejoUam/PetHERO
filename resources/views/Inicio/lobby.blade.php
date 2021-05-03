@@ -8,8 +8,8 @@
                 <div class="card">
                     <a type="button" class="btn btn-secondary mb-4 mt-2" href="{{ url()->previous() }}" style="width:150px;"><i class="far fa-hand-point-left"></i> Volver</a>
                     <div class="card-header row justify-content-center">
-                            <img src="/uploads/Logo.png" style="width:150px; border-radious:50%;"/>
-                            Peth Hero<br>
+                            <img src="/uploads/Logo.png" style="width:150px; border-radius:1%;"/>
+                            Pet Hero<br>
                     </div>
                     <div class="card-body row justify-content-center">
                         <a href="{{ url('walker') }}" class="btn btn-primary">

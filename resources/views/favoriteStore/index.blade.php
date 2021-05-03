@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="jumbotron"> <h1>Establecimientos Favoritos</h1> 
+<div class="card container"> <h1>Establecimientos Favoritos</h1> 
   
     @foreach ($stores as $store)
     <div class="card" style="width: 18rem; display:inline-block; margin:10px;">

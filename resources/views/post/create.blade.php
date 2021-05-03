@@ -22,7 +22,7 @@
                         <label for="content"> Contenido</label>
                         <textarea class="form-control" type="text" name="content" id="content"></textarea><script>
                             CKEDITOR.replace( 'content',{
-                            width: "1200px",
+                            width: "1000px",
                             height: "300px",
                             filebrowserUploadUrl: "{{route('upload', ['_token' => csrf_token() ])}}",
                             filebrowserUploadMethod: 'form'

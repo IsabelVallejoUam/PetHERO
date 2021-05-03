@@ -1,10 +1,17 @@
 @extends ('layouts.app')
 @section('content')
-<h1 style="text-align: center;">Posts</h1><br>
-    <div class="jumbotron" style="margin: 100px; margin-top:0px">
+
+    <div class="card" style="margin: 100px; margin-top:0px">
+        <h1 style="text-align: center;">Posts</h1><br>
+        {{$posts->links()}}<br>
+        @if (Route::has('login'))
+            <a type="button" class="btn btn-primary " href="{{ route('post.create') }}"><i class="fas fa-plus-square"></i> Crear nuevo post</a> 
+        @else
+            <a type="button" class="btn btn btn-secundary " href="{{ route('post.create') }}"> Registrate para crear un post</a> 
+        @endif
         @foreach ($posts as $post)
             <div class="card " style=" display:inline-block; margin:20px;; width:350px;">
-                <img class="card-img-top" src="/uploads/avatars/{{$post->owner->avatar}}" style="padding:15px;width:200px;float:left;" >      
+                <img class="card-img-top" src="/uploads/avatars/{{$post->owner->avatar}}" style="border-radius: 2rem; padding:15px;width:200px;float:left;" >      
                 <div class="card-body">
                     <div class="container" style="display: inline">
                         <h3>{{$post->title}}
@@ -49,12 +56,7 @@
                 </div>
             </div> 
         @endforeach        
-        {{$posts->links()}}<br>
-        @if (Route::has('login'))
-            <a type="button" class="btn btn-primary " href="{{ route('post.create') }}"><i class="fas fa-plus-square"></i> Crear nuevo post</a> 
-        @else
-            <a type="button" class="btn btn btn-secundary " href="{{ route('post.create') }}"> Registrate para crear un post</a> 
-        @endif
+        
         
 
 @endsection

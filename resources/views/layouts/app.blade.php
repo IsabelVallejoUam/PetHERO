@@ -10,7 +10,7 @@
     <title>@yield('pageTitle') PET HERO</title>
 
     <!-- Scripts -->
-    {{-- <script src="{{ asset('js/app.js') }}" defer></script> Esta línea causa un bug con el navbar D: --}}
+    <!-- {{-- <script src="{{ asset('js/app.js') }}" defer></script> Esta línea causa un bug con el navbar D: --}} -->
     <script src="//cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
@@ -54,7 +54,7 @@ $type = 'walker';
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-dark shadow-sm">
-            <div class="container">
+            <div class="container">	
                 <a class="navbar-brand" href="{{ url('/') }}">
                     <img src="/uploads/Logo.png"
                         style="width: 35px; height:35px; position:relative; left:9px; border-radious:50%; margin:10px;" />
@@ -100,7 +100,7 @@ $type = 'walker';
                                         Paseadores
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="{{ route('walker.index') }}">Ver todas los paseadres</a>
+                                        <a class="dropdown-item" href="{{ route('walker.index') }}">Ver todas los paseadores</a>
                                     </div>
 
                                 </li>
@@ -193,7 +193,7 @@ $type = 'walker';
                                         </a>
                                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                             <a class="dropdown-item" href="{{ route('store.indexAll') }}">Ver todas las tiendas</a>
-                                            <a class="dropdown-item" href="{{ route('favoriteStore.index') }}">Ver tiendas favritas</a>
+                                            <a class="dropdown-item" href="{{ route('favoriteStore.index') }}">Ver tiendas favoritas</a>
 
                                         </div>
     
@@ -206,7 +206,7 @@ $type = 'walker';
                                         </a>
                                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                             <a class="dropdown-item" href="{{ route('walker.index') }}">Ver todas los paseadres</a>
-                                            <a class="dropdown-item" href="{{ route('favoriteWalker.index') }}">Ver  paseadres favritos</a>
+                                            <a class="dropdown-item" href="{{ route('favoriteWalker.index') }}">Ver  paseadres favoritos</a>
 
                                         </div>
     
@@ -288,7 +288,7 @@ $type = 'walker';
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     <img src="/uploads/avatars/{{ Auth::user()->avatar }}"
-                                        style="width: 35px; height:35px; position:relarive; left:9px; border-radious:50%;" />
+                                        style="width: 35px; height:35px; left:9px; border-radius:50%;" />
                                     {{ Auth::user()->name }}
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">

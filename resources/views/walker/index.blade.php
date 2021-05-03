@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <div class="jumbotron">
+    <div class="card">
         <h1>PASEADORES</h1>
         
       

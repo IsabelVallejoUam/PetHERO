@@ -14,11 +14,11 @@
     @extends('layouts.app')
     @section('content')
 
-        <div class="jumbotron col-lg-6 col-md-6 col-sm-6 col-xs-6 offset-3 float-md-center text-center" style=" width:500px;">
+        <div class="card container" style=" width:500px;">
 
             <h1>Perfil de {{ $user->name }}</h1>
             <p>
-                <img src="/uploads/avatars/{{$user->avatar}}" style="width:150px; border-radious:50%; display: block; margin-left: auto; margin-right: auto;"/>
+                <img src="/uploads/avatars/{{$user->avatar}}" style="width:150px; border-radius:1rem; display: block; margin-left: auto; margin-right: auto;"/>
     
             </p>
             <div class="container">
@@ -32,7 +32,8 @@
                 <p class="text-center" style="margin-bottom: 20px">CORREO DE CONTACTO: {{$user->email}}</p>
                 <br>
                 <p class="text-center" style="margin-bottom: 20px">DIRECCION: {{$petOwner->address}} </p>
-                <div class="jumbotron"> <h1>Mis Mascotas: </h1> 
+                <div>
+                    <h3>Mis Mascotas:</h3>
                     @foreach ($pets as $pet)
                         <a href="{{ route('pet.show', $pet->id) }}" class=" btn btn-info">{{$pet->name}}</a>
                     @endforeach
