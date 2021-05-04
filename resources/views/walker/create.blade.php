@@ -93,7 +93,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
+                        {{-- <div class="form-group row">
                             <label for="schedule" class="col-md-4 col-form-label text-md-right">{{ __('Schedule') }}</label>
 
                             <div class="col-md-6">
@@ -104,7 +104,7 @@
                                     </span>
                                 @enderror
                             </div>
-                        </div>
+                        </div> --}}
 
                         <div class="form-group row">
                             <label for="experience" class="col-md-4 col-form-label text-md-right">{{ __('Experience as a walker in Years') }}</label>
@@ -119,7 +119,7 @@
                         @enderror
                         </div>
 
-                        <div class="form-group row">
+                        {{-- <div class="form-group row">
                             <label for="rate" class="col-md-4 col-form-label text-md-right">{{ __('Rate per Walk ($COP)') }}</label>
 
                             <div class="col-md-6">
@@ -130,7 +130,7 @@
                                 <strong>{{ $message }}</strong>
                             </span>
                         @enderror
-                        </div>
+                        </div> --}}
 
                         <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>

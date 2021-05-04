@@ -10,14 +10,10 @@
 </head>
 
 <body>
-
     @extends('layouts.app')
     @section('content')
-   
     <a type="button" class="btn btn-secondary mb-4 mt-2" href="{{ route('walker.index') }}">Volver</a>
-
-        <div class="jumbotron col-lg-6 col-md-6 col-sm-6 col-xs-6 offset-3 float-md-center text-center" style=" width:500px;">
-            
+        <div class="card container align-middle" style="width:400px;"> 
             <h1>Perfil de {{ $user->name }}</h1>
             <h3> "{{$walker->slogan}}" </h3>
             <p>
@@ -31,27 +27,16 @@
                 <br>
                 <p class="text-center" style="margin-bottom: 20px">AÑOS DE EXPERIENCIA: {{$walker->experience}} </p>
                 <br>
-                <br>
-                <p class="text-center" style="margin-bottom: 20px">TARIFA: {{$walker->rate}} </p>
-                <br>
-                <br>
-                <p class="text-center" style="margin-bottom: 20px">HORARIO: {{$walker->schedule}} </p>
-                <br>
             </div>
-
-            <form action="{{ route('petOwner.addFavoriteWalker', $walker->user_id) }}" method="post"
-                onsubmit="return confirm('¿Seguro quieres agregar a {{$user->name. ' ' .$user->lastname }} como paseador favorito?')">
-                @csrf
-                @method('post')
-                <button type="submit" class="btn btn-danger" title="Remover"><i class="fas fa-star"></i></button>
-            </form>
-
+            <div class="col text-center">
+                <form action="{{ route('petOwner.addFavoriteWalker', $walker->user_id) }}" method="post"
+                    onsubmit="return confirm('¿Seguro quieres agregar a {{$user->name. ' ' .$user->lastname }} como paseador favorito?')">
+                    @csrf
+                    @method('post')
+                    <button type="submit" class="btn btn-danger text-center " title="favorito"><i class="fas fa-star"></i></button>
+                </form>
+            </div>
         </div>
-
-        
-
     @endsection
-
 </body>
-
 </html>

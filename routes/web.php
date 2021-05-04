@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth;
 
 use App\Http\Controllers\WalkerController;
 use App\Http\Controllers\WalkController;
+use App\Http\Controllers\RouteController;
 use App\Http\Controllers\PetOwnerController;
 use App\Http\Controllers\PetController;
 use App\Http\Controllers\StoreOwnerController;
@@ -40,6 +41,7 @@ Route::resource('/walker', WalkerController::class);
 
 Route::resource('/comment', CommentController::class);
 Route::resource('/post', PostController::class);
+Route::resource('/walker/route', RouteController::class);
 Route::resource('/forum', ForumController::class);
 Route::post('ckeditor/image_upload', [CKEditorController::class, 'upload'])->name('upload');
 

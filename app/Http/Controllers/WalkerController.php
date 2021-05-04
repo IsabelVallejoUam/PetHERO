@@ -75,7 +75,6 @@ class WalkerController extends Controller
 
         $walker = new Walker();
         $walker->experience = $request->input('experience');
-        $walker->rate = $request->input('rate');
         $walker->slogan = $request->input('slogan');
         $foregin_id= User::select('id')->where('document', '=', $request->input('document'))->value('id');
         $walker->user_id = $foregin_id;
@@ -137,9 +136,7 @@ class WalkerController extends Controller
     {
         $user = User::findOrFail($walker->user_id);
         $walker->experience = $request->input('experience');
-        $walker->schedule = $request->input('schedule');
         $walker->slogan = $request->input('slogan');
-        $walker->rate = $request->input('rate');
         $walker->save();
         $user->name =  $request2->input('name');
         $user->lastname =  $request2->input('lastname');

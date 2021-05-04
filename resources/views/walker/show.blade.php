@@ -63,14 +63,6 @@
                             <td>{{ $walker->experience }}</td>
                         </tr>
                         <tr>
-                            <th scope="col">Rate</th>
-                            <td>{{ $walker->rate }}</td>
-                        </tr>
-                        <tr>
-                            <th scope="col">Schedule</th>
-                            <td>{{ $walker->schedule }}</td>
-                        </tr>
-                        <tr>
                             <th scope="col">Creado en</th>
                             <td>{{ $walker->created_at ?? 'Desconocida' }}</td>
                         </tr>

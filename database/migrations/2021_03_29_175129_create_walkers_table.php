@@ -15,11 +15,7 @@ class CreateWalkersTable extends Migration
     {
     
         Schema::create('walkers', function (Blueprint $table) {
-            
-            
-            $table->string("schedule")->nullable();
             $table->string("slogan")->nullable();
-            $table->float("rate")->default(0); 
             $table->integer("experience")->nullable();           
             $table->foreignId('user_id')->primary();
             $table->integer("score")->default(0);           

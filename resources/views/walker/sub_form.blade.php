@@ -28,14 +28,14 @@
     <input type="text" class="form-control" id="experience" name="experience" value="{{ old('experience', $walker->experience ?? "") }}">
 </div>  
 
-<div class="mb-3">
+{{-- <div class="mb-3">
     <label for="rate" class="form-label">Tarifa por paseo ($COP)</label>
     <input type="number" class="form-control" id="rate" name="rate" value="{{ old('rate', $walker->rate ?? "") }}">
-</div>  
+</div>   
 <div class="mb-3">
     <label for="schedule" class="form-label">Horario </label>
     <input type="text" class="form-control" id="schedule" name="schedule" value="{{ old('schedule', $walker->schedule ?? "") }}">
-</div> 
+</div> --}}
 
 <div class="mb-3">
     <label for="newpassword" class="form-label">Nueva contraseña</label>
