@@ -1,10 +1,10 @@
 @extends('layouts.app')
 @include('layouts.validation-error')
 @section('content')
-<div class="card container">
+<div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
+            <div class="card container">
                 <a type="button" class="btn btn-secondary mb-4 mt-2" href="{{ url()->previous() }}" style="width:150px;"><i class="far fa-hand-point-left"></i> Volver</a>         
                 <div class="card-header">{{ __('Registro dueño de establecimiento') }}  <i class="fas fa-store"></i></div>
                 <div class="card-body">

@@ -47,7 +47,7 @@
 
 
         <div class="btn-group" role="group" aria-label="Link options">
-            <a href="{{ route('storeOwner.edit', $storeOwner->user_id) }}" class="btn btn-warning" title="Editar"><i class="far fa-edit"></i></a>
+            <a href="{{ route('storeOwner.edit', $storeOwner->user_id) }}"  class="btn btn-warning" title="Editar"><i class="far fa-edit"></i></a>
             <form action=""{{--"{{ route('walker.destroy', auth()->user()->document) }}"--}} method="post"
                 onsubmit="return confirm('¿Esta seguro que desea eliminar el perfil?')">
                 @csrf
