@@ -59,7 +59,6 @@ class StoreController extends Controller
         $store->phone_number = $request->input('phone_number');
         $store->privacy = $request->input('privacy');
         $store->score = 0;
-        $store->type = $request->input('type');
         if ($request->hasFile('photo')){
             $photo = $request->file('photo');
             $filename = time() . '.' . $photo->getClientOriginalExtension();

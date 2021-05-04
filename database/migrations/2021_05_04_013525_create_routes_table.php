@@ -21,7 +21,13 @@ class CreateRoutesTable extends Migration
             $table->string("description");
             $table->string("schedule")->nullable();
             $table->float("price")->default(0); 
+            $table->enum('privacy', ['public','private']);
             $table->timestamps();
+
+            $table->foreign('owner_id')
+                    ->references('user_id')->on('walkers')
+                    ->onUpdate('cascade')
+                    ->onDelete('cascade');
         });
     }
 

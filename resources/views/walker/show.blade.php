@@ -71,6 +71,50 @@
                             <td>{{ $walker->updated_at ?? 'Desconocida' }}</td>
                         </tr>
                     </table>
+                    <h3>Tus rutas</h3>
+                    {{--Rutas del paseador--}}
+                    <table class="table table-striped table-hover">
+                        <tr>
+                            <th scope="col">Ruta</th>
+                            <th scope="col">Descripción de la ruta</th>
+                            <th scope="col">Duración aproximada</th>
+                            <th scope="col">Precio por paseo</th>
+                            <th scope="col">Horario</th>
+                            <th scope="col"><a href="{{ route('route.create') }}" class="btn btn-primary" title="Crear"><i class="fas fa-plus-circle"></i>Crear nueva</a>
+                            </th>
+                        </tr>
+
+                        @foreach ($routes as $route)
+                            <tr>
+                                <td>
+                                    @if ($route->privacy == 'private')
+                                        <i class="fas fa-lock"></i>
+                                    @else
+                                        <i class="fas fa-lock-open"></i>
+                                    @endif
+                                    {{$route->title}}
+                                </td>
+                                <td><textarea disabled>{{$route->description}}</textarea></td>
+                                <td>{{$route->duration}} Horas</td>
+                                <td>${{$route->price}}(COP)</td>
+                                <td>{{$route->schedule}}</td>
+                                <td>
+                                    <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+                                        <div class="btn-group" role="group" aria-label="Link options">
+                                            <a href="{{ route('route.show', $route->id) }}" class=" btn btn-info">Ver</a>
+                                            <a href="{{ route('route.edit', $route->id) }}" class="btn btn-warning" title="Editar"><i class="far fa-edit"></i>Editar</a>
+                                            <form action="{{ route('route.destroy', $route->id) }}" method="post"
+                                                onsubmit="return confirm('¿Esta seguro que desea remover esta ruta?')">
+                                                @csrf
+                                                @method('delete')
+                                                <button type="submit" class=" btn btn-danger">Borrar</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </table>
 
                     <div class="btn-group" role="group" aria-label="Link options">
                         <a href="{{ route('walker.edit', $walker->user_id) }}" class="btn btn-warning" title="Editar"><i class="far fa-edit"></i>Editar{{$user->name}}</a>

@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Walker;
 use App\Models\Pet;
+use App\Models\Route;
 use App\Models\FavoritePet;
 
 
@@ -93,8 +94,8 @@ class WalkerController extends Controller
     {        
         
         $user = User::findOrFail($walker->user_id);
-        
-        return view('walker.show', compact('walker','user'));
+        $routes = Route::ownedBy($walker->user_id)->get();
+        return view('walker.show', compact('walker','user','routes'));
         
     }
 

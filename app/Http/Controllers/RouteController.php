@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Auth;
 use App\Models\Route;
 use Illuminate\Http\Request;
 use App\Http\Requests\RouteRequest;
@@ -24,7 +24,7 @@ class RouteController extends Controller
      */
     public function create()
     {
-        //
+        return view('walker.route.create');
     }
 
     /**
@@ -35,7 +35,16 @@ class RouteController extends Controller
      */
     public function store(RouteRequest $request)
     {
-        //
+        $route = new Route();
+        $route->owner_id = Auth::id();
+        $route->title = $request->input('title');
+        $route->description = $request->input('description');
+        $route->schedule = $request->input('schedule');
+        $route->duration = $request->input('duration');
+        $route->privacy = $request->input('privacy');
+        $route->price = $request->input('price');
+        $route->save();
+        return redirect(route('walker.show',Auth::id()))->with('_success', 'Ruta creada exitosamente!');
     }
 
     /**
