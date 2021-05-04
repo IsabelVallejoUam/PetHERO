@@ -7,8 +7,12 @@
                     class="far fa-hand-point-left"></i> Volver</a>
             <a>
                 <h1 style="position:static; display:block; margin-left:auto; margin-right:auto;"
-                    class="p-1 text-center">Perfil de {{ $user->name . ' ' . $user->lastname }} (Paseador de
-                    mascotas)</h1>
+                    class="p-1 text-center">Rutas de {{ $user->name . ' ' . $user->lastname }} (Paseador de
+                    mascotas) 
+                </h1>
+                <h3 class="text-center"><i>"{{ $walker->slogan }}"</i>
+                </h3>
+
                 <img src="/uploads/avatars/{{ $user->avatar }}"
                     style="width:150px; border-radious:50%; display: block; margin-left: auto; margin-right: auto;" />
             </a>
@@ -20,14 +24,6 @@
                 <tr>
                     <th scope="col">Email</th>
                     <td>{{ $user->email }}</td>
-                </tr>
-                <tr>
-                    <th scope="col">Phone Number</th>
-                    <td>{{ $user->phone }}</td>
-                </tr>
-                <tr>
-                    <th scope="col">Slogan</th>
-                    <td>{{ $walker->slogan }}</td>
                 </tr>
                 <tr>
                     <th scope="col">Experience</th>
@@ -56,7 +52,7 @@
                         <td><textarea disabled>{{$route->schedule}}</textarea></td>
                         <td>
                             <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
-                                <div class="btn-group" role="group" aria-label="Link options">
+                                <div class="btn-group" role="group" aria-label="Link options">            
                                     <a href="{{ route('route.show', $route->id) }}" class=" btn btn-info">Ver</a>
                                 </div>
                             </div>

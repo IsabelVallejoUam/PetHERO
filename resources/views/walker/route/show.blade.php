@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
-       <div class="card container align-middle" style="width:400px;"> 
-        <a type="button" style="width: 100px;" class="btn btn-secondary mb-4 mt-2" href="{{ url()->previous() }}"><i class="far fa-hand-point-left"></i> Volver</a>
+       <div class="card container align-middle" style="width:500px;"> 
+        <a type="button" style="width: 100px;" class="btn btn-secondary mb-4 mt-2" href="{{ route('walker.index') }}"><i class="far fa-hand-point-left"></i> Volver</a>
  
         <h1>Ruta de {{ $route->owner->name }} <i class="fas fa-route"></i>
             <p>
@@ -29,6 +29,8 @@
             <br>
             <p class="text-center" style="margin-bottom: 20px"><b>Horario:</b> {{$route->schedule}} Horas </p>
             <br>
+            <p class="text-center" style="margin-bottom: 20px"><a href="{{ route('walk.create') }}" class="btn btn-primary" title="Crear"><i class="fas fa-plus-circle"></i>Pedir paseo en esta ruta</a></p>
+            
             @endif
         </div>
     </div>
