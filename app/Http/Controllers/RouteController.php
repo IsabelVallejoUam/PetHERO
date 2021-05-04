@@ -55,7 +55,7 @@ class RouteController extends Controller
      */
     public function show(Route $route)
     {
-        //
+        return view('walker.route.show', compact('route'));
     }
 
     /**
@@ -66,7 +66,7 @@ class RouteController extends Controller
      */
     public function edit(Route $route)
     {
-        //
+        return view('walker.route.edit', compact('route'));
     }
 
     /**
@@ -78,7 +78,14 @@ class RouteController extends Controller
      */
     public function update(RouteRequest $request, Route $route)
     {
-        //
+        $route->title = $request->input('title');
+        $route->description = $request->input('description');
+        $route->schedule = $request->input('schedule');
+        $route->duration = $request->input('duration');
+        $route->privacy = $request->input('privacy');
+        $route->price = $request->input('price');
+        $route->save();
+        return redirect(route('walker.show',Auth::id()))->with('_success', 'Ruta editada exitosamente!');
     }
 
     /**
@@ -89,6 +96,11 @@ class RouteController extends Controller
      */
     public function destroy(Route $route)
     {
-        //
+        if(Auth::id() == $route->owner_id){
+            $route ->delete();
+            return redirect()->route('walker.show',Auth::id())->with('_success', '¡Ruta eliminada exitosamente!');
+        } else {
+            return redirect()->route('walker.show',Auth::id())->with('_failure', '¡No tienes permiso para esto!');
+        }
     }
 }

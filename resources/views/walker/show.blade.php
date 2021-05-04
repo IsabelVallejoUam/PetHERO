@@ -97,7 +97,7 @@
                                 <td><textarea disabled>{{$route->description}}</textarea></td>
                                 <td>{{$route->duration}} Horas</td>
                                 <td>${{$route->price}}(COP)</td>
-                                <td>{{$route->schedule}}</td>
+                                <td><textarea disabled>{{$route->schedule}}</textarea></td>
                                 <td>
                                     <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
                                         <div class="btn-group" role="group" aria-label="Link options">
