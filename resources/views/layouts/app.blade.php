@@ -111,7 +111,7 @@ $type = 'walker';
                                         Paseadores
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="{{ route('walker.index') }}">Ver todas los paseadores</a>
+                                        <a class="dropdown-item" href="{{ route('walker.index') }}">Ver todos los paseadores</a>
                                     </div>
 
                                 </li>
@@ -138,6 +138,42 @@ $type = 'walker';
                             @if ($type == 'storeOwner')
                                 <li class="nav-item dropdown">
 
+
+                                    <li class="nav-item dropdown">
+                                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                            Tiendas
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                            <a class="dropdown-item" href="{{ route('store.indexAll') }}">Ver todas las
+                                                tiendas</a>
+                                        </div>
+    
+                                    </li>
+    
+                                    <li class="nav-item dropdown">
+                                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                            Paseadores
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                            <a class="dropdown-item" href="{{ route('walker.index') }}">Ver todos los paseadores</a>
+                                        </div>
+    
+                                    </li>
+    
+                                    <li class="nav-item dropdown">
+                                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                            Foro
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                            <a class="dropdown-item" href="{{ route('forum.index') }}">Ver foro completo</a>
+                                            <a class="dropdown-item" href="{{ route('post.index') }}"> Ver mis
+                                                publicaciones</a>
+                                        </div>
+                                    </li>
+
                                     <li class="nav-item dropdown">
                                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -161,97 +197,11 @@ $type = 'walker';
                                         </form>
                                     </li>
 
-                                    {{-- <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                        PERFIL (Dueño de tienda)
-                                    </a>
-                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item"
-                                            href="{{ route('storeOwner.profile', Auth::user()->id) }}"> Ver perfil
-                                            público</a>
-                                        <a class="dropdown-item" href="{{ route('storeOwner.show', Auth::user()->id) }}">
-                                            Ver perfil privado</a>
-                                    </div> --}}
-
-                                    <li class="nav-item dropdown">
-                                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                            Tiendas
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                            <a class="dropdown-item" href="{{ route('store.indexAll') }}">Ver todas las
-                                                tiendas</a>
-                                        </div>
-    
-                                    </li>
-    
-                                    <li class="nav-item dropdown">
-                                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                            Paseadores
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                            <a class="dropdown-item" href="{{ route('walker.index') }}">Ver todas los paseadres</a>
-                                        </div>
-    
-                                    </li>
-    
-                                    <li class="nav-item dropdown">
-                                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                            Foro
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                            <a class="dropdown-item" href="{{ route('forum.index') }}">Ver foro completo</a>
-                                            <a class="dropdown-item" href="{{ route('post.index') }}"> Ver mis
-                                                publicaciones</a>
-                                        </div>
-
                                 </li>
                             @endif
-                            {{-- ------------------------------------------------------ --}}
 
                             @if ($type == 'petOwner')
                                 <li class="nav-item dropdown">
-
-                                    <li class="nav-item dropdown">
-                                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                            <img src="/uploads/avatars/{{ Auth::user()->avatar }}"
-                                                style="width: 35px; height:35px; position:relarive; left:9px; border-radious:50%;" />
-                                            {{ Auth::user()->name }}
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                            <a class="dropdown-item" href="{{ route('petOwner.profile', Auth::user()->id) }}">
-                                                Ver perfil público</a>
-                                            <a class="dropdown-item" href="{{ route('petOwner.show', Auth::user()->id) }}"> Ver
-                                                perfil privado</a>
-                                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                document.getElementById('logout-form').submit();">
-                                                {{ __('Logout') }}
-                                             </a>
-                                        </div> 
-                                        {{-- <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                                    document.getElementById('logout-form').submit();">
-                                                {{ __('Logout') }}
-                                            </a>
-                                        </div> --}}
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                            @csrf
-                                        </form>
-                                    </li>
-
-                                    {{-- <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                        PERFIL (Dueño de mascotas)
-                                    </a>
-                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="{{ route('petOwner.profile', Auth::user()->id) }}">
-                                            Ver perfil público</a>
-                                        <a class="dropdown-item" href="{{ route('petOwner.show', Auth::user()->id) }}"> Ver
-                                            perfil privado</a>
-                                    </div> --}}
 
                                     <li class="nav-item dropdown">
                                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
@@ -284,8 +234,8 @@ $type = 'walker';
                                             Paseadores
                                         </a>
                                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                            <a class="dropdown-item" href="{{ route('walker.index') }}">Ver todas los paseadres</a>
-                                            <a class="dropdown-item" href="{{ route('favoriteWalker.index') }}">Ver  paseadres favoritos</a>
+                                            <a class="dropdown-item" href="{{ route('walker.index') }}">Ver todos los paseadores</a>
+                                            <a class="dropdown-item" href="{{ route('favoriteWalker.index') }}">Ver  paseadores favoritos</a>
 
                                         </div>
     
@@ -303,12 +253,68 @@ $type = 'walker';
                                         </div>
     
                                     </li>
-    
+
+                                    <li class="nav-item dropdown">
+                                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                            <img src="/uploads/avatars/{{ Auth::user()->avatar }}"
+                                                style="width: 35px; height:35px; position:relarive; left:9px; border-radious:50%;" />
+                                            {{ Auth::user()->name }}
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                            <a class="dropdown-item" href="{{ route('petOwner.profile', Auth::user()->id) }}">
+                                                Ver perfil público</a>
+                                            <a class="dropdown-item" href="{{ route('petOwner.show', Auth::user()->id) }}"> Ver
+                                                perfil privado</a>
+                                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                document.getElementById('logout-form').submit();">
+                                                {{ __('Logout') }}
+                                             </a>
+                                        </div> 
+
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                            @csrf
+                                        </form>
+                                    </li>
 
                                 </li>
                             @endif
-                            {{-- -------------------------------------------------------- --}}
                             @if ($type == 'walker')
+                                 <li class="nav-item dropdown">
+                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                        Tiendas
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="{{ route('store.indexAll') }}">Ver todas las
+                                            tiendas</a>
+                                    </div>
+
+                                </li>
+
+                                <li class="nav-item dropdown">
+                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                        Paseadores
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="{{ route('walker.index') }}">Ver todos los paseadores</a>
+                                    </div>
+
+                                </li>
+
+                                <li class="nav-item dropdown">
+                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                        Foro
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="{{ route('forum.index') }}">Ver foro completo</a>
+                                        <a class="dropdown-item" href="{{ route('post.index') }}"> Ver mis
+                                            publicaciones</a>
+                                    </div>
+
+                                </li>
                                 <li class="nav-item dropdown">
 
                                     <li class="nav-item dropdown">
@@ -339,11 +345,11 @@ $type = 'walker';
                                             @csrf
                                         </form>
                                     </li>
-{{--                                     
-                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+
+                                    <!-- <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                         PERFIL (Paseador)
-                                    </a>
+                                    </a> -->
                                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                         <a class="dropdown-item" href="{{ route('walker.profile', Auth::user()->id) }}">
                                             Ver perfil público</a>
@@ -352,41 +358,7 @@ $type = 'walker';
                                     </div> --}}
 
 
-                                <li class="nav-item dropdown">
-                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                        Tiendas
-                                    </a>
-                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="{{ route('store.indexAll') }}">Ver todas las
-                                            tiendas</a>
-                                    </div>
-
-                                </li>
-
-                                <li class="nav-item dropdown">
-                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                        Paseadores
-                                    </a>
-                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="{{ route('walker.index') }}">Ver todas los paseadres</a>
-                                    </div>
-
-                                </li>
-
-                                <li class="nav-item dropdown">
-                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                        Foro
-                                    </a>
-                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="{{ route('forum.index') }}">Ver foro completo</a>
-                                        <a class="dropdown-item" href="{{ route('post.index') }}"> Ver mis
-                                            publicaciones</a>
-                                    </div>
-
-                                </li>
+                                
 
 
                                 </li>
