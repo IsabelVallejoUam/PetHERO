@@ -3,8 +3,8 @@
 @section('content')
 
     <div class="card container-fluid">
-        <div class="row">
-            <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+        <!-- <div class="row">
+             <nav class="col-md-2 d-none d-md-block bg-light sidebar">
                 <div class="sidebar-sticky">
                     <h2 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
                         <span>FAVORITOS </span>
@@ -23,7 +23,7 @@
                         <li>mascotica 5</li>
                     </ul>
                 </div>
-            </nav>
+            </nav> -->
 
 
             <div class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
