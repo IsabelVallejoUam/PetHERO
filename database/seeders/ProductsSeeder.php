@@ -20,7 +20,7 @@ class ProductsSeeder extends Seeder
             'discount' => "0",
             'quantity' => "20",
             'description' => "Alimento premium para perros",
-            'photo' => "/public/images/products/docg_chow.png"
+            'photo' => "docg_chow.png"
         ]); 
     }
 }
