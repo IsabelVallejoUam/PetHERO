@@ -109,8 +109,8 @@ class WalkerController extends Controller
     {        
         
         $user = User::findOrFail($walker->user_id);
-        
-        return view('walker.perfil', compact('walker','user'));
+        $routes = Route::ownedBy($walker->user_id)->where('privacy','public')->get();
+        return view('walker.perfil', compact('walker','user','routes'));
         
     }
 

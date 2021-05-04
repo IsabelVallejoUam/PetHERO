@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Route;
+use App\Models\Walker;
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Requests\RouteRequest;
 class RouteController extends Controller
@@ -14,7 +16,6 @@ class RouteController extends Controller
      */
     public function index()
     {
-        //
     }
 
     /**
@@ -25,6 +26,16 @@ class RouteController extends Controller
     public function create()
     {
         return view('walker.route.create');
+    }
+
+    public function getData(Request $request)
+    {
+        
+        $walker=Walker::find($request)->first();
+        $user = User::find($walker->user_id)->first();
+        $routes = Route::ownedBy($walker->user_id)->where('privacy','public')->get();
+        $walker_id=$walker->id;
+        return view('walker.route.showRoutes', compact('walker','user','routes'));
     }
 
     /**

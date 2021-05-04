@@ -43,6 +43,7 @@ Route::resource('/comment', CommentController::class);
 Route::resource('/post', PostController::class);
 Route::resource('/walker/route', RouteController::class);
 Route::resource('/forum', ForumController::class);
+Route::resource('/walk', WalkController::class);
 Route::post('ckeditor/image_upload', [CKEditorController::class, 'upload'])->name('upload');
 
 Route::get('/walker/profile/{walker}', [App\Http\Controllers\WalkerController::class, 'profile'])->name('walker.profile');
@@ -67,6 +68,7 @@ Route::resource('/product',ProductController::class);
 
 Route::post('/useravatar', [App\Http\Controllers\UserController::class,'update_avatar']);
 Route::post('/productdata', [App\Http\Controllers\ProductController::class,'getData'])->name('product.getData');
+Route::post('/routes', [App\Http\Controllers\RouteController::class,'getData'])->name('route.getData');
 Route::post('/product', [App\Http\Controllers\ProductController::class,'store'])->name('product.store');
 Route::get('/store/public/{store}', [App\Http\Controllers\StoreController::class,'showPublic'])->name('store.showPublic');
 
