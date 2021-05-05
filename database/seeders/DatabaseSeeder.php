@@ -19,7 +19,9 @@ class DatabaseSeeder extends Seeder
             PetOwnersSeeder::class,
             StoreOwnersSeeder::class,
             StoresSeeder::class,
-            ProductsSeeder::class
+            ProductsSeeder::class,
+            RoutesSeeder::class,
+            PetsSeeder::class
         ]);
     }
 }
