@@ -23,7 +23,7 @@ class CreateWalksTable extends Migration
             $table->integer('minutes_walked')->nullable();
             $table->integer('pet_calification')->nullable();
             $table->integer('walker_calification')->nullable();
-            $table->foreignId('route');
+            $table->foreignId ('route')->nullable();
             $table->integer('min_time');
             $table->integer('max_time');
             $table->text('commentary')->nullable();

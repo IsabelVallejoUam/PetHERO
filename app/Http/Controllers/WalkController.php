@@ -77,8 +77,11 @@ class WalkController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request)
+    public function create()
     {
+        $walkers = Walker::get();
+        $pets = Pet::ownedBy(Auth::id())->get();
+        return view('walks.createNew', compact('walkers','pets'));
     }
 
 
@@ -92,6 +95,7 @@ class WalkController extends Controller
         return view('walks.create', compact('walker','user','routes','pets'));
     }
 
+
     /**
      * Store a newly created resource in storage.
      *
@@ -100,7 +104,6 @@ class WalkController extends Controller
      */
     public function store(Request $request)
     {
-
         $walk = new Walk();
         $walk->pet_id = $request->input('pet_id');
         $walk->requested_day = $request->input('requested_day');
@@ -134,8 +137,21 @@ class WalkController extends Controller
         $walk->save();
         return redirect(route('walk.walkerIndex'))->with('_success', 'Se ha confirmado la cancelación del paseo!');   
     }
-    
 
+    public function submitNewRoute(Request $request)
+    {
+        $walk = Walk::where('id',$request->input('walk_id'))->first();
+        $walk->route = $request->input('route_id');
+        $walk->save();
+        return redirect(route('walk.walkerIndex'))->with('_success', 'Se ha confirmado la cancelación del paseo!');   
+    }
+
+    public function addRoute(Request $request)
+    {
+        $walk = Walk::where('id',$request->input('walker_id'))->first();
+        $routes = Route::where('owner_id',$walk->walker)->get();
+        return view('walks.addRoute', compact('walk','routes'));
+    }
 
     public function petOwnerCancel(Request $request)
     {
@@ -227,7 +243,11 @@ class WalkController extends Controller
     {
         $chats = Chat::where('walk',$walk->id)->get();
         $pet = Pet::find($walk->pet_id);
-        $route = Route::find($walk->route)->first();
+        if($walk->route != null){
+            $route = Route::find($walk->route)->first();
+        } else {
+            $route = null;
+        }
         $walker = Walker::where('user_id',$walk->walker)->first();
         return view('walks.show', compact(['walk','pet','route','walker','chats']));
     }

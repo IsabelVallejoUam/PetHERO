@@ -39,8 +39,13 @@
                 <td>{{$walk->requested_hour}}</td>
             </tr>
             <tr>
+                
                 <th scope="col">Precio</th>
-                <td>${{ $route->price }}(COP)</td>
+                @if($route!= null)
+                    <td>${{ $route->price }}(COP)</td>
+                @else
+                    <td>Sin asignar</td>
+                @endif
             </tr>
             <tr>
                 <th scope="col">Tiempo mínimo pedido</th>
@@ -83,29 +88,32 @@
 
         <h3>Ruta</h3>
         {{--Rutas del paseador--}}
-        <table class="table table-striped table-hover">
-            <tr>
-                <th scope="col">Ruta</th>
-                <th scope="col">Descripción</th>
-                <th scope="col">Precio</th>
-                <th scope="col">Duración estimada</th>
-                <th scope="col">Acciones
-                </th>
-            </tr>
-            <tr>
-                <td>{{ $route->title}}</td>
-                <td>{{$route->description}}</td>
-                <td>${{ $route->price }}(COP)</td>
-                <td>{{ $route->duration }} Horas</td>
-                <td>
-                    <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
-                        <div class="btn-group" role="group" aria-label="Link options">
-                            <a href="{{ route('route.show',$route->id) }}" class="btn btn-primary" title="Ver">Ver ruta</a> 
+        @if($route!=null)
+            <table class="table table-striped table-hover">
+                <tr>
+                    <th scope="col">Ruta</th>
+                    <th scope="col">Descripción</th>
+                    <th scope="col">Precio</th>
+                    <th scope="col">Duración estimada</th>
+                    <th scope="col">Acciones
+                    </th>
+                </tr>
+                <tr>
+                    <td>{{ $route->title}}</td>
+                    <td>{{$route->description}}</td>
+                    <td>${{ $route->price }}(COP)</td>
+                    <td>{{ $route->duration }} Horas</td>
+                    <td>
+                        <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+                            <div class="btn-group" role="group" aria-label="Link options">
+                                <a href="{{ route('route.show',$route->id) }}" class="btn btn-primary" title="Ver">Ver ruta</a> 
+                            </div>
                         </div>
-                    </div>
-                </td>
-            </tr>
-            </table> 
+                    </td>
+                </tr>
+            </table>
+        @else <h3>Sin asignar</h3>
+        @endif 
 
         <h3>Mascota</h3>
         {{--Mascota--}}

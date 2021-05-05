@@ -85,8 +85,10 @@ Route::post('/walk/finish', [App\Http\Controllers\WalkController::class,'finish'
 Route::post('/walk/start', [App\Http\Controllers\WalkController::class,'start'])->name('walk.start');
 Route::post('/walk/submit/finish', [App\Http\Controllers\WalkController::class,'submitWalkerFinish'])->name('walk.submitWalkerFinish');
 Route::post('/walk/reject', [App\Http\Controllers\WalkController::class,'walkerReject'])->name('walk.walkerReject');
+Route::post('/walk/addroute', [App\Http\Controllers\WalkController::class,'addRoute'])->name('walk.addRoute');
 Route::post('/walk/submit/reject', [App\Http\Controllers\WalkController::class,'submitWalkerReject'])->name('walk.submitWalkerReject');
 Route::post('/walk/submit/petOwner/cancel', [App\Http\Controllers\WalkController::class,'submitPetOwnerCancel'])->name('walk.submitPetOwnerCancel');
+Route::post('/walk/submit/newroute', [App\Http\Controllers\WalkController::class,'submitNewRoute'])->name('walk.submitNewRoute');
 Route::post('/walk/submit/walker/cancel', [App\Http\Controllers\WalkController::class,'submitWalkerCancel'])->name('walk.submitWalkerCancel');
 //Ruta para crear paseos
 Route::post('/walk/request', [App\Http\Controllers\WalkController::class,'requestNew'])->name('walk.requestNew');

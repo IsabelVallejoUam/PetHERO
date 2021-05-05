@@ -17,6 +17,7 @@
     if (isset($pet)) {
         $type = 'petOwner';
     } 
+    $routes_count = \App\Models\Route::where('owner_id',$user->id)->count();
 ?>
     @extends('layouts.app')
     @section('content')
@@ -35,26 +36,27 @@
                 <br>
                 <p class="text-center" style="margin-bottom: 20px">AÑOS DE EXPERIENCIA: {{$walker->experience}} </p>
                 <br>
+                <p class="text-center" style="margin-bottom: 20px">NÚMERO DE RUTAS: {{$routes_count}} </p>
+                <br>
             </div>
-            
+            @if($routes_count > 0)
                 <form action="{{route('route.getData')}}" method="POST">
                     {{ csrf_field() }}
                     <input type="hidden" name="walker_id" value="{{$user->id}}">
                     <p class="text-center">
                         <button type="submit" class="btn btn-primary"><i class="fas fa-search-location"></i> Ver rutas</button>
-                        
                     </p>
                 </form>
                 @if($type =='petOwner')
-                <form action="{{route('walk.requestNew')}}" method="POST">
-                    {{ csrf_field() }}
-                    <input type="hidden" name="walker_id" value="{{$user->id}}">
-                    <p class="text-center">
-                        <button type="submit" class="btn btn-primary"><i class="fas fa-search-location"></i> Pedir paseo</button>
-                        
-                    </p>
-                </form>
+                    <form action="{{route('walk.requestNew')}}" method="POST">
+                        {{ csrf_field() }}
+                        <input type="hidden" name="walker_id" value="{{$user->id}}">
+                        <p class="text-center">
+                            <button type="submit" class="btn btn-primary"><i class="fas fa-search-location"></i> Pedir paseo</button>
+                        </p>
+                    </form>
                 @endif
+            @endif
             <div class="col text-center">
                 <form action="{{ route('petOwner.addFavoriteWalker', $walker->user_id) }}" method="post"
                     onsubmit="return confirm('¿Seguro quieres agregar a {{$user->name. ' ' .$user->lastname }} como paseador favorito?')">

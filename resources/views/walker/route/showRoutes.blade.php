@@ -62,6 +62,15 @@
                             <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
                                 <div class="btn-group" role="group" aria-label="Link options">            
                                     <a href="{{ route('route.show', $route->id) }}" class=" btn btn-info">Ver</a>
+                                    @if($type =='petOwner')
+                                        <form action="{{route('walk.requestNew')}}" method="POST">
+                                            {{ csrf_field() }}
+                                            <input type="hidden" name="walker_id" value="{{$user->id}}">
+                                            <p class="text-center">
+                                                <button type="submit" class="btn btn-primary"><i class="fas fa-search-location"></i> Pedir paseo en esta ruta</button>
+                                            </p>
+                                        </form>
+                                    @endif
                                 </div>
                             </div>
                         </td>
@@ -69,9 +78,13 @@
                 @endforeach
                 </table> 
                 @if($type == 'petOwner')
-                    <p class="text-center">
-                        <a href="{{ route('walk.create') }}" class="btn btn-primary" title="Crear"><i class="fas fa-plus-circle"></i>Pedir paseo</a>            
-                    </p>
+                    <form action="{{route('walk.requestNew')}}" method="POST">
+                        {{ csrf_field() }}
+                        <input type="hidden" name="walker_id" value="{{$user->id}}">
+                        <p class="text-center">
+                            <button type="submit" class="btn btn-primary"><i class="fas fa-search-location"></i> Pedir paseo en esta ruta</button>
+                        </p>
+                    </form>
                 @endif
             </div>
         </div>

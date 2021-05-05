@@ -22,7 +22,9 @@ use App\Models\Walker;
         
         @foreach ($walks as $walk)
         <?php
+        if($walk->route != -1){
             $route = Route::where('id','=',$walk->route)->first();
+        }
             $walker = Walker::where('user_id','=',$walk->walker)->first();
         ?>
             <tr>
@@ -30,11 +32,25 @@ use App\Models\Walker;
                     <img src="/uploads/pets/{{ $walk->pet->photo }}" style="width: 35px; height:35px; position:relarive;" />
                     {{$walk->pet->name}}   {{$walk->id}}
                 </td>
-                <td>{{$route->title}}<br>
-                    @if ($walk->status == 'finished')
-                        Minutos caminados: {{$walk->minutes_walked}}    
+                @if($route!=null)
+                    <td>{{$route->title}}<br>
+                        @if ($walk->status == 'finished')
+                            Minutos caminados: {{$walk->minutes_walked}}    
+                        @endif
+                    </td>
+                @else
+                    <td>Sin ruta asignada
+                        @if ($route == null && $walk->status == 'pending')
+                            <form action="{{route('walk.addRoute')}}" method="POST">
+                                {{ csrf_field() }}
+                                <input type="hidden" name="walker_id" value="{{$walk->walker}}">
+                                <p class="text-center">
+                                    <button type="submit" class="btn btn-primary"><i class="fas fa-plus"></i>Asignar ruta</button>
+                                </p>
+                            </form>
+                        @endif
+                    </td>
                     @endif
-                </td>
                 <td>
                     <img src="/uploads/avatars/{{$walker->owner->avatar}}" style="width: 35px; height:35px; position:relarive;" />
                     {{$walker->owner->name}}</td>
@@ -163,12 +179,10 @@ use App\Models\Walker;
         @endforeach
     </table>    
      
-    @if (Auth::id() == null && $type == 'petOwner')
-        <a type="button" class="btn btn btn-secundary " href="{{ route('login') }}"> Pedir un nuevo paseo</a>      
-    @else
-        <p class="text-center">
-            <a type="button" class="btn btn-primary " href="{{ route('post.create') }}"><i class="fas fa-plus-square"></i> Crear nuevo post</a> 
-        </p>
+    @if ($type == 'petOwner')
+    <p class="text-center">
+        <a type="button" class="btn btn-primary " href="{{ route('walk.create') }}"><i class="fas fa-plus-square"></i>Pedir un nuevo paseo</a> 
+    </p>
     @endif
 </div>
 
