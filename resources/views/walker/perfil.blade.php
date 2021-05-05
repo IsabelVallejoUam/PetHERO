@@ -21,7 +21,7 @@
     @extends('layouts.app')
     @section('content')
       <div class="card container align-middle" style="width:600px;"> 
-        <a type="button" class="btn btn-secondary mb-4 mt-2" style="width: 100px" href="{{ route('walker.index') }}">Volver</a>
+        <a type="button" class="btn btn-secondary mb-4 mt-2" style="width: 100px" href="{{ url()->previous() }}">Volver</a>
             <h1 class="text-center">Perfil de {{ $user->name }}</h1>
             <p>
                 <img src="/uploads/avatars/{{$user->avatar}}" style="width:150px; border-radious:50%; display: block; margin-left: auto; margin-right: auto;"/>

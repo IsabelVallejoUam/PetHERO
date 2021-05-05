@@ -8,11 +8,11 @@
     $id = Auth::id();
     use App\Models\PetOwner;
     $pet = PetOwner::find($id);
-    $walker = Walker::find($id);
+    $isWalker = Walker::find($id);
     if (isset($pet)) {
     $type = 'petOwner';
     } 
-    if (isset($walker)) {
+    if (isset($isWalker)) {
     $type = 'walker';
     }
 ?>
@@ -96,7 +96,7 @@
                 <td>
                     <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
                         <div class="btn-group" role="group" aria-label="Link options">
-                            <a href="{{ route('route.show',$route->id) }}" class="btn btn-primary" title="Crear">Ver ruta</a> 
+                            <a href="{{ route('route.show',$route->id) }}" class="btn btn-primary" title="Ver">Ver ruta</a> 
                         </div>
                     </div>
                 </td>
@@ -104,7 +104,7 @@
             </table> 
 
         <h3>Mascota</h3>
-        {{--Rutas del paseador--}}
+        {{--Mascota--}}
         <table class="table table-striped table-hover">
             <tr>
                 <th scope="col">Mascota</th>
@@ -141,39 +141,35 @@
             </table> 
 
             <h3>Paseador</h3>
-        {{--Bug D: no se pasa de la vista al controlador--}}
-        <?php
-            $walker = Walker::where('user_id','=',$walk->walker)->first();
-        ?>
-        <table class="table table-striped table-hover">
-            <tr>
-                <th scope="col">Paseador</th>
-                <th scope="col">Experiencia (años)</th>
-                <th scope="col">Teléfono</th>
-                <th scope="col">Correo</th>
-                <th scope="col">Calificación</th>
-                <th scope="col">Acciones
-                </th>
-            </tr>
-            <tr>
-                <td>
-                    <img src="/uploads/avatars/{{$walker->owner->avatar }}" style="width: 35px; height:35px; position:relarive;" />
-                    {{$walker->owner->name}} {{$walker->owner->lastname}}
-                    <br><i>"{{$walker->slogan}}"</i>
-                </td>
-                <td>{{$walker->experience}}</td>
-                <td>
-                    {{$walker->owner->phone}}</td>
-                <td>{{$walker->owner->email}}</td>
-                <td>{{$walker->score}}</td>
-                <td>
-                    <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
-                        <div class="btn-group" role="group" aria-label="Link options">
-                            <a href="{{ route('walker.profile', $walk->walker) }}" class=" btn btn-primary">Ver paseador</a>
+            <table class="table table-striped table-hover">
+                <tr>
+                    <th scope="col">Paseador</th>
+                    <th scope="col">Experiencia (años)</th>
+                    <th scope="col">Teléfono</th>
+                    <th scope="col">Correo</th>
+                    <th scope="col">Calificación</th>
+                    <th scope="col">Acciones
+                    </th>
+                </tr>
+                <tr>
+                    <td>
+                        <img src="/uploads/avatars/{{$walker->owner->avatar }}" style="width: 35px; height:35px; position:relarive;" />
+                        {{$walker->owner->name}} {{$walker->owner->lastname}}
+                        <br><i>"{{$walker->slogan}}"</i>
+                    </td>
+                    <td>{{$walker->experience}}</td>
+                    <td>
+                        {{$walker->owner->phone}}</td>
+                    <td>{{$walker->owner->email}}</td>
+                    <td>{{$walker->score}}</td>
+                    <td>
+                        <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+                            <div class="btn-group" role="group" aria-label="Link options">
+                                <a href="{{ route('walker.profile', $walk->walker) }}" class=" btn btn-primary">Ver paseador</a>
+                            </div>
                         </div>
-                    </div>
-                </td>
-            </tr>
+                    </td>
+                </tr>
             </table> 
 
 

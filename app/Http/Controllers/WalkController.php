@@ -106,12 +106,10 @@ class WalkController extends Controller
      */
     public function show(Walk $walk)
     {
-        $walker = Walker::find($walk->walker)->first();
-        
         $pet = Pet::find($walk->pet_id);
         $route = Route::find($walk->route)->first();
-        $walker = Walker::where('user_id','=',$walk->walker)->first();
-        return view('walks.show', compact('walk','pet','route'));
+        $walker = Walker::where('user_id',$walk->walker)->first();
+        return view('walks.show', compact(['walk','pet','route','walker']));
     }
 
     /**
