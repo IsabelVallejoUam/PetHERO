@@ -24,6 +24,24 @@ class WalkController extends Controller
         $type = 'petOwner';
         return view('walks.index', compact('walks','type'));
     }
+    public function indexPending()
+    {
+        $walks = Walk::ownedBy(Auth::id())->where('status','pending')->simplePaginate(5);
+        $type = 'petOwner';
+        return view('walks.index', compact('walks','type'));
+    }
+    public function indexActive()
+    {
+        $walks = Walk::ownedBy(Auth::id())->where('status','active')->simplePaginate(5);
+        $type = 'petOwner';
+        return view('walks.index', compact('walks','type'));
+    }
+    public function indexFinished()
+    {
+        $walks = Walk::ownedBy(Auth::id())->where('status','finished')->simplePaginate(5);
+        $type = 'petOwner';
+        return view('walks.index', compact('walks','type'));
+    }
 
     public function walkerIndex()
     {
@@ -32,6 +50,27 @@ class WalkController extends Controller
         return view('walks.index', compact('walks','type'));
     }
 
+
+    public function walkerIndexFinished()
+    {
+        $walks = Walk::where('walker',Auth::id())->where('status','finished')->simplePaginate(5);
+        $type = 'walker';
+        return view('walks.index', compact('walks','type'));
+    }
+
+    public function walkerIndexPending()
+    {
+        $walks = Walk::where('walker',Auth::id())->where('status','pending')->simplePaginate(5);
+        $type = 'walker';
+        return view('walks.index', compact('walks','type'));
+    }
+
+    public function walkerIndexActive()
+    {
+        $walks = Walk::where('walker',Auth::id())->where('status','active')->simplePaginate(5);
+        $type = 'walker';
+        return view('walks.index', compact('walks','type'));
+    }
     /**
      * Show the form for creating a new resource.
      *

@@ -40,7 +40,12 @@ Auth::routes();
 Route::resource('/walker', WalkerController::class);
 
 Route::get('/walks', [App\Http\Controllers\WalkController::class,'walkerIndex'])->name('walk.walkerIndex');
-
+Route::get('/walks/finished', [App\Http\Controllers\WalkController::class,'walkerIndexFinished'])->name('walk.walkerIndexFinished');
+Route::get('/walks/pending', [App\Http\Controllers\WalkController::class,'walkerIndexPending'])->name('walk.walkerIndexPending');
+Route::get('/walks/active', [App\Http\Controllers\WalkController::class,'walkerIndexActive'])->name('walk.walkerIndexActive');
+Route::get('/petowner/walks/pending', [App\Http\Controllers\WalkController::class,'indexPending'])->name('walk.indexPending');
+Route::get('/petowner/walks/active', [App\Http\Controllers\WalkController::class,'indexActive'])->name('walk.indexActive');
+Route::get('/petowner/walks/finished', [App\Http\Controllers\WalkController::class,'indexFinished'])->name('walk.indexFinished');
 
 Route::resource('/comment', CommentController::class);
 Route::resource('/post', PostController::class);

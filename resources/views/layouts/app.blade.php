@@ -224,6 +224,9 @@ $type = 'walker';
                                             </a>
                                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                                 <a class="dropdown-item" href="{{ route('walk.index') }}">Ver todos los paseos</a>
+                                                <a class="dropdown-item" href="{{ route('walk.indexPending') }}">Gestionar paseos pendientes</a>
+                                                <a class="dropdown-item" href="{{ route('walk.indexActive') }}">Gestionar paseos en curso</a>
+                                                <a class="dropdown-item" href="{{ route('walk.indexFinished') }}">Ver paseos finalizados</a>
                                             </div>
         
                                         </li>
@@ -328,6 +331,21 @@ $type = 'walker';
                                     </div>
 
                                 </li>
+
+
+                                <li class="nav-item dropdown">
+                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                        Paseos
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="{{ route('walk.walkerIndex') }}">Gestionar todos mis paseos</a>
+                                        <a class="dropdown-item" href="{{ route('walk.walkerIndexPending') }}">Gestionar paseos pendientes</a>
+                                        <a class="dropdown-item" href="{{ route('walk.walkerIndexActive') }}">Gestionar paseos en curso</a>
+                                        <a class="dropdown-item" href="{{ route('walk.walkerIndexFinished') }}">Ver paseos finalizados</a>
+                                    </div>
+
+                                </li>
                                 <li class="nav-item dropdown">
 
                                     <li class="nav-item dropdown">
@@ -338,7 +356,6 @@ $type = 'walker';
                                             {{ Auth::user()->name }}
                                         </a>
                                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                            <a class="dropdown-item" href="{{ route('walk.walkerIndex') }}">Ver todos mis paseos</a>
                                             <a class="dropdown-item" href="{{ route('walker.profile', Auth::user()->id) }}">
                                                 Ver perfil público</a>
                                             <a class="dropdown-item" href="{{ route('walker.show', Auth::user()->id) }}"> Ver

@@ -30,7 +30,11 @@ use App\Models\Walker;
                     <img src="/uploads/pets/{{ $walk->pet->photo }}" style="width: 35px; height:35px; position:relarive;" />
                     {{$walk->pet->name}}   {{$walk->id}}
                 </td>
-                <td>{{$route->title}}</td>
+                <td>{{$route->title}}<br>
+                    @if ($walk->status == 'finished')
+                        Minutos caminados: {{$walk->minutes_walked}}    
+                    @endif
+                </td>
                 <td>
                     <img src="/uploads/avatars/{{$walker->owner->avatar}}" style="width: 35px; height:35px; position:relarive;" />
                     {{$walker->owner->name}}</td>
@@ -70,7 +74,7 @@ use App\Models\Walker;
                                     </form>
                                 @endif
                             @endif
-  
+                            
                             @if ($walk->status == 'accepted')
                                 @if($type == 'walker')
                                     <form action="{{route('walk.cancel')}}" method="POST" 
