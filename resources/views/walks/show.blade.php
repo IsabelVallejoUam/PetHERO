@@ -74,6 +74,8 @@
                         <i class="fas fa-battery-full"></i>
                     @elseif ($walk->status == 'pending') 
                         <i class="fas fa-spinner"></i>
+                    @elseif ($walk->status == 'rejected') 
+                        <i class="fas fa-ban"></i>
                     @endif
                 </td>
             </tr>

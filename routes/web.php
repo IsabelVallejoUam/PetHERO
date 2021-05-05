@@ -75,7 +75,8 @@ Route::resource('/product',ProductController::class);
 Route::post('/useravatar', [App\Http\Controllers\UserController::class,'update_avatar']);
 Route::post('/productdata', [App\Http\Controllers\ProductController::class,'getData'])->name('product.getData');
 Route::post('/routes', [App\Http\Controllers\RouteController::class,'getData'])->name('route.getData');
-Route::post('/walk/cancel', [App\Http\Controllers\WalkController::class,'cancel'])->name('walk.cancel');
+Route::post('/walk/walker/cancel', [App\Http\Controllers\WalkController::class,'walkerCancel'])->name('walk.walkerCancel');
+Route::post('/walk/petowner/cancel', [App\Http\Controllers\WalkController::class,'petOwnerCancel'])->name('walk.petOwnerCancel');
 Route::post('/walk/confirmCancel', [App\Http\Controllers\WalkController::class,'confirmCancel'])->name('walk.confirmCancel');
 Route::post('/walk/accept', [App\Http\Controllers\WalkController::class,'walkerAccept'])->name('walk.walkerAccept');
 Route::post('/walk/finish', [App\Http\Controllers\WalkController::class,'finish'])->name('walk.walkerFinish');
@@ -83,6 +84,8 @@ Route::post('/walk/start', [App\Http\Controllers\WalkController::class,'start'])
 Route::post('/walk/submit/finish', [App\Http\Controllers\WalkController::class,'submitWalkerFinish'])->name('walk.submitWalkerFinish');
 Route::post('/walk/reject', [App\Http\Controllers\WalkController::class,'walkerReject'])->name('walk.walkerReject');
 Route::post('/walk/submit/reject', [App\Http\Controllers\WalkController::class,'submitWalkerReject'])->name('walk.submitWalkerReject');
+Route::post('/walk/submit/petOwner/cancel', [App\Http\Controllers\WalkController::class,'submitPetOwnerCancel'])->name('walk.submitPetOwnerCancel');
+Route::post('/walk/submit/walker/cancel', [App\Http\Controllers\WalkController::class,'submitWalkerCancel'])->name('walk.submitWalkerCancel');
 //Ruta para crear paseos
 Route::post('/walk/request', [App\Http\Controllers\WalkController::class,'requestNew'])->name('walk.requestNew');
 Route::post('/product', [App\Http\Controllers\ProductController::class,'store'])->name('product.store');

@@ -39,8 +39,10 @@ use App\Models\Walker;
                     <img src="/uploads/avatars/{{$walker->owner->avatar}}" style="width: 35px; height:35px; position:relarive;" />
                     {{$walker->owner->name}}</td>
                 <td>{{$walk->status}}<br>
-                    @if ($walk->status == 'rejected')
-                    <textarea disabled>Motivo de rechazo:{{$walk->commentary}}</textarea>    
+                    @if ($walk->status == 'rejected' )
+                        <textarea disabled>Motivo de rechazo:{{$walk->commentary}}</textarea> 
+                    @elseif ($walk->status == 'canceled' )
+                        <textarea disabled>Motivo de cancelación:{{$walk->commentary}}</textarea>      
                     @endif
                 </td>
                 <td>{{$walk->requested_day}}</td>
@@ -74,10 +76,11 @@ use App\Models\Walker;
                                     </form>
                                 @endif
                             @endif
-                            
+
                             @if ($walk->status == 'accepted')
                                 @if($type == 'walker')
-                                    <form action="{{route('walk.cancel')}}" method="POST" 
+
+                                    <form action="{{route('walk.walkerCancel')}}" method="POST" 
                                     onsubmit="return confirm('¿Esta seguro que desea cancelar este paseo?')">
                                         {{ csrf_field() }}
                                         <input type="hidden" name="walk_id" value="{{$walk->id}}">
@@ -93,13 +96,14 @@ use App\Models\Walker;
                                     </form>
                                 @endif
                                 @if($type == 'petOwner')
-                                    <form action="{{route('walk.cancel')}}" method="POST" 
+                                    <form action="{{route('walk.petOwnerCancel')}}" method="POST" 
                                     onsubmit="return confirm('¿Esta seguro que desea cancelar este paseo?')">
                                         {{ csrf_field() }}
                                         <input type="hidden" name="walk_id" value="{{$walk->id}}">
                                         <input type="hidden" name="type" value="{{$type}}">
                                         <button type="submit" class="btn btn-danger">Cancelar</button>
                                     </form>
+                                    
                                 @endif
                             @endif
 
@@ -127,6 +131,17 @@ use App\Models\Walker;
                             @endif
                                 
                             @if ($walk->status == 'canceled' && $walk->cancel_confirmation == 'no')
+                                @if($walk->walker_confirmation == 'yes' && $type == 'petOwner')
+                                    <form action="{{route('walk.confirmCancel')}}" method="POST" 
+                                    onsubmit="return confirm('¿Esta seguro que desea confirmar cancelación?')">
+                                        {{ csrf_field() }}
+                                        <input type="hidden" name="walk_id" value="{{$walk->id}}" id="walk_id">
+                                        <input type="hidden" name="type" value="{{$type}}" id="type">
+                                        <button type="submit" class="btn btn-danger">Aceptar cancelación</button>
+                                    </form>
+                                @endif
+
+                                @if($walk->walker_confirmation == 'no' && $type == 'walker')
                                 <form action="{{route('walk.confirmCancel')}}" method="POST" 
                                 onsubmit="return confirm('¿Esta seguro que desea confirmar cancelación?')">
                                     {{ csrf_field() }}
@@ -134,6 +149,7 @@ use App\Models\Walker;
                                     <input type="hidden" name="type" value="{{$type}}" id="type">
                                     <button type="submit" class="btn btn-danger">Aceptar cancelación</button>
                                 </form>
+                            @endif
                             @endif
                         </div>
                     </div>

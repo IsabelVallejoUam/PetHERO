@@ -116,18 +116,42 @@ class WalkController extends Controller
         return redirect(route('walk.index'))->with('_success', 'Petición de paseo añadida exitosamente!');
     }
 
-    public function cancel(Request $request)
+    public function walkerCancel(Request $request)
     {
 
         $walk = Walk::where('id',$request->input('walk_id'))->first();
+        return view('walks.cancel.walkerCancel', compact('walk'));
+    }
+
+    public function submitWalkerCancel(Request $request)
+    {
+        $walk = Walk::where('id',$request->input('walk_id'))->first();
         $walk->status = 'canceled';
+        $walk->commentary = $request->input('reason');
         $walk->cancel_confirmation = 'no';
+        $walk->walker_confirmation = 'yes';
         $walk->save();
-        if($request->input('type') == 'walker'){
-            return redirect(route('walk.walkerIndex'))->with('_success', 'Se ha confirmado la cancelación del paseo!');   
-        } else {
-            return redirect(route('walk.index'))->with('_success', 'Se ha confirmado la cancelación del paseo!');   
-        }
+        return redirect(route('walk.walkerIndex'))->with('_success', 'Se ha confirmado la cancelación del paseo!');   
+    }
+    
+
+
+    public function petOwnerCancel(Request $request)
+    {
+
+        $walk = Walk::where('id',$request->input('walk_id'))->first();
+        return view('walks.cancel.petOwnerCancel', compact('walk'));
+    }
+
+    public function submitPetOwnerCancel(Request $request)
+    {
+        $walk = Walk::where('id',$request->input('walk_id'))->first();
+        $walk->status = 'canceled';
+        $walk->commentary = $request->input('reason');
+        $walk->cancel_confirmation = 'no';
+        $walk->walker_confirmation = 'no';
+        $walk->save();
+        return redirect(route('walk.index'))->with('_success', 'Se ha confirmado la cancelación del paseo!');   
     }
 
     public function start(Request $request)
