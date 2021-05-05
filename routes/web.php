@@ -16,6 +16,7 @@ use App\Http\Controllers\FavoriteWalkerController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ForumController;
+use App\Http\Controllers\ChatController;
 use App\Http\Controllers\CKEditorController;
 
 /*
@@ -49,6 +50,7 @@ Route::get('/petowner/walks/finished', [App\Http\Controllers\WalkController::cla
 
 Route::resource('/comment', CommentController::class);
 Route::resource('/post', PostController::class);
+Route::resource('/chats', ChatController::class);
 Route::resource('/walker/route', RouteController::class);
 Route::resource('/forum', ForumController::class);
 Route::resource('/walk', WalkController::class);

@@ -176,7 +176,39 @@
                 </tr>
             </table> 
 
-
+            <h3>Chat</h3>
+            {{--Chat--}}
+            <table class="table table-striped table-hover">
+                @foreach ($chats as $chat)
+                <tr>
+                    <th scope="col">
+                        Respuesta de {{$chat->owner->name}} <br>
+                        <img src='/uploads/avatars/{{$chat->owner->avatar}}' width="100px">
+                    </th>
+                    <td>
+                        <textarea disabled class="form-control" type="text" name="content" id="content">{{$chat->content}}
+                        </textarea>El {{$chat->created_at->format('d/m/y')}} a las {{$chat->created_at->format('H:m')}}
+                    </td>
+                </tr>
+                @endforeach
+                @if($walk->status == 'accepted' || $walk->status == 'active')
+                    <tr>
+                        <th scope="col">
+                            <img src='/uploads/avatars/{{Auth::user()->avatar}}' width="100px">
+                        </th>
+                        <form action="{{ route('chats.store') }}" method="POST" enctype="multipart/form-data">
+                            @csrf
+                            <td>
+                                <input type="hidden" name="owner_id" value="{{Auth::id()}}">
+                                <input type="hidden" name="walk_id" value="{{$walk->id}}">
+                                Escribe una respuesta:
+                                <textarea class="form-control" type="text" name="content" id="content"></textarea>
+                                <button type="submit" class="btn btn-primary"><i class="fas fa-plus-square"></i>Enviar</button>
+                            </td>
+                        </form>   
+                    </tr>
+                @endif
+            </table>
         </div>
     </div>
 </div>

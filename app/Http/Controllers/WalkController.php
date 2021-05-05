@@ -7,6 +7,7 @@ use App\Http\Requests\WalkRequest;
 use App\Models\Walker;
 use App\Models\Walk;
 use App\Models\User;
+use App\Models\Chat;
 use App\Models\Route;
 use App\Models\Pet;
 use Illuminate\Support\Facades\Auth;
@@ -224,10 +225,11 @@ class WalkController extends Controller
      */
     public function show(Walk $walk)
     {
+        $chats = Chat::where('walk',$walk->id)->get();
         $pet = Pet::find($walk->pet_id);
         $route = Route::find($walk->route)->first();
         $walker = Walker::where('user_id',$walk->walker)->first();
-        return view('walks.show', compact(['walk','pet','route','walker']));
+        return view('walks.show', compact(['walk','pet','route','walker','chats']));
     }
 
     /**
