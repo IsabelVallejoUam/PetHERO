@@ -1,6 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
+<?php
+    use App\Models\PetOwner;
+    $type = '';
+    $pet = PetOwner::find(Auth::id());
+    if (isset($pet)) {
+        $type = 'petOwner';
+    } 
+?>
     <div class="card container">
         <div class="container">
             <a type="button" class="btn btn-secondary mb-4 mt-2" href="{{ url()->previous() }}"><i
@@ -60,9 +68,11 @@
                     </tr>
                 @endforeach
                 </table> 
-                <p class="text-center">
-                    <a href="{{ route('walk.create') }}" class="btn btn-primary" title="Crear"><i class="fas fa-plus-circle"></i>Pedir paseo</a>            
-                </p>
+                @if($type == 'petOwner')
+                    <p class="text-center">
+                        <a href="{{ route('walk.create') }}" class="btn btn-primary" title="Crear"><i class="fas fa-plus-circle"></i>Pedir paseo</a>            
+                    </p>
+                @endif
             </div>
         </div>
     </div>

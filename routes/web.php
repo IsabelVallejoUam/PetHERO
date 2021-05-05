@@ -39,6 +39,9 @@ Auth::routes();
 
 Route::resource('/walker', WalkerController::class);
 
+Route::get('/walks', [App\Http\Controllers\WalkController::class,'walkerIndex'])->name('walk.walkerIndex');
+
+
 Route::resource('/comment', CommentController::class);
 Route::resource('/post', PostController::class);
 Route::resource('/walker/route', RouteController::class);
@@ -67,6 +70,8 @@ Route::resource('/product',ProductController::class);
 Route::post('/useravatar', [App\Http\Controllers\UserController::class,'update_avatar']);
 Route::post('/productdata', [App\Http\Controllers\ProductController::class,'getData'])->name('product.getData');
 Route::post('/routes', [App\Http\Controllers\RouteController::class,'getData'])->name('route.getData');
+Route::post('/walk/cancel', [App\Http\Controllers\WalkController::class,'cancel'])->name('walk.cancel');
+Route::post('/walk/confirmCancel', [App\Http\Controllers\WalkController::class,'confirmCancel'])->name('walk.confirmCancel');
 
 //Ruta para crear paseos
 Route::post('/walk/request', [App\Http\Controllers\WalkController::class,'requestNew'])->name('walk.requestNew');

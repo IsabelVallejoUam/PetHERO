@@ -10,6 +10,14 @@
 </head>
 
 <body>
+<?php
+    use App\Models\PetOwner;
+    $type = '';
+    $pet = PetOwner::find(Auth::id());
+    if (isset($pet)) {
+        $type = 'petOwner';
+    } 
+?>
     @extends('layouts.app')
     @section('content')
       <div class="card container align-middle" style="width:600px;"> 
@@ -37,7 +45,7 @@
                         
                     </p>
                 </form>
-
+                @if($type =='petOwner')
                 <form action="{{route('walk.requestNew')}}" method="POST">
                     {{ csrf_field() }}
                     <input type="hidden" name="walker_id" value="{{$user->id}}">
@@ -46,7 +54,7 @@
                         
                     </p>
                 </form>
-            
+                @endif
             <div class="col text-center">
                 <form action="{{ route('petOwner.addFavoriteWalker', $walker->user_id) }}" method="post"
                     onsubmit="return confirm('¿Seguro quieres agregar a {{$user->name. ' ' .$user->lastname }} como paseador favorito?')">

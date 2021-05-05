@@ -338,6 +338,7 @@ $type = 'walker';
                                             {{ Auth::user()->name }}
                                         </a>
                                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                            <a class="dropdown-item" href="{{ route('walk.walkerIndex') }}">Ver todos mis paseos</a>
                                             <a class="dropdown-item" href="{{ route('walker.profile', Auth::user()->id) }}">
                                                 Ver perfil público</a>
                                             <a class="dropdown-item" href="{{ route('walker.show', Auth::user()->id) }}"> Ver
@@ -346,6 +347,9 @@ $type = 'walker';
                                                                     document.getElementById('logout-form').submit();">
                                                 {{ __('Logout') }}
                                             </a>
+                                            
+                
+                                            
                                         </div>
                                         
                                         {{-- <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">

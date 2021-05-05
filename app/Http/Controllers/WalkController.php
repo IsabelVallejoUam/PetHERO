@@ -24,6 +24,12 @@ class WalkController extends Controller
         return view('walks.index', compact('walks'));
     }
 
+    public function walkerIndex()
+    {
+        $walks = Walk::where('walker',Auth::id())->simplePaginate(5);
+        return view('walks.index', compact('walks'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -69,6 +75,29 @@ class WalkController extends Controller
         return redirect(route('walk.index'))->with('_success', 'Petición de paseo añadida exitosamente!');
     }
 
+    public function cancel(Request $request)
+    {
+
+        $walk = Walk::find($request)->first();
+        $walk->status = 'canceled';
+        $walk->cancel_confirmation = 'no';
+        $walk->save();
+    
+        return redirect(route('walk.index'))->with('_success', 'Paseo cancelado exitosamente!');
+    }
+
+    public function confirmCancel(Request $request)
+    {
+        $walk = Walk::find($request->input('walk_id'))->first();
+        $walk->cancel_confirmation = 'yes';
+        $walk->save();
+        if($request->input('type') == 'walker'){
+            return redirect(route('walk.walkerIndex'))->with('_success', 'Se ha confirmado la cancelación del paseo!');   
+        } else {
+            return redirect(route('walk.index'))->with('_success', 'Se ha confirmado la cancelación del paseo!');   
+        }
+    }
+
     /**
      * Display the specified resource.
      *
@@ -77,7 +106,12 @@ class WalkController extends Controller
      */
     public function show(Walk $walk)
     {
-        // return view('walks.show', compact('link'));
+        $walker = Walker::find($walk->walker)->first();
+        
+        $pet = Pet::find($walk->pet_id);
+        $route = Route::find($walk->route)->first();
+        $walker = Walker::where('user_id','=',$walk->walker)->first();
+        return view('walks.show', compact('walk','pet','route'));
     }
 
     /**
@@ -88,7 +122,7 @@ class WalkController extends Controller
      */
     public function edit(Walk $walk)
     {
-        // return view('walks.edit', compact('link'));
+        
     }
 
     /**
@@ -100,17 +134,7 @@ class WalkController extends Controller
      */
     public function update(WalkRequest $request, Walk $walk)
     {
-        // $walk->requested_day = $request->input('requested_day');
-        // $walk->minutes_walked = $request->input('minutes_walked');
-        // $walk->route = $request->input('route');
-        // $walk->min_time = $request->input('min_time');
-        // $walk->max_time = $request->input('max_time');
-        // $walk->commentary = $request->input('commentary');
-        // //$walk->walker = $request->input('walker'); id del paseador
-        // $walk->status = $request->input('status');
-        // $walk->save();
-
-        // return redirect(route('walks.index'))->with('_success', 'Paseo editado exitosamente!');
+        
     }
 
     /**
@@ -119,14 +143,13 @@ class WalkController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(WalkRequest $walk)
+    public function destroy(Walk $walk)
     {
-        // if($walk->owner->id == Auth::id())
-        // {
-        //     $walk->delete();
-        //     return back()->with('_success', 'Paseo eliminado exitosamente!');
-        // }
-
-        // return back()->with('_failure', '¡No tiene permiso de borrar ese paseo!');
+        if($walk->owner->id == Auth::id())
+        {
+            $walk->delete();
+            return back()->with('_success', 'Paseo eliminado exitosamente!');
+        }
+        return back()->with('_failure', '¡No tiene permiso de borrar ese paseo!');
     }
 }
