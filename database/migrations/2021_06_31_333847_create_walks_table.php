@@ -21,12 +21,14 @@ class CreateWalksTable extends Migration
             $table->date('requested_day');
             $table->time("requested_hour");
             $table->integer('minutes_walked')->nullable();
+            $table->integer('pet_calification')->nullable();
+            $table->integer('walker_calification')->nullable();
             $table->foreignId('route');
             $table->integer('min_time');
             $table->integer('max_time');
             $table->text('commentary')->nullable();
             $table->foreignId('walker')->nullable();
-            $table->enum('status',['pending','accepted','active','finished','canceled']);
+            $table->enum('status',['pending','accepted','active','finished','canceled','rejected']);
             $table->enum('cancel_confirmation',['yes','no']);
             $table->enum('walker_confirmation',['yes','no']);
             $table->foreign('pet_id')

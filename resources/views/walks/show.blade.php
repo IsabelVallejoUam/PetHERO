@@ -50,10 +50,12 @@
                 <th scope="col">Tiempo máximo pedido</th>
                 <td>{{ $walk->max_time }} Horas</td>
             </tr>
-            <tr>
-                <th scope="col">Tiempo caminado</th>
-                <td>{{ $walk->minutes_walked }} Minutos</td>
-            </tr>
+            @if($walk->status == 'finished')
+                <tr>
+                    <th scope="col">Tiempo caminado</th>
+                    <td>{{ $walk->minutes_walked }} Minutos</td>
+                </tr>
+                @endif
             <tr>
                 <th scope="col">Comentario del usuario</th>
                 <td>"{{ $walk->commentary }}"</td>
@@ -62,15 +64,15 @@
                 <th scope="col">Estado</th>
                 <td>
                     {{ $walk->status }}
-                    @if ($walk->status = 'canceled')
+                    @if ($walk->status == 'canceled')
                         <i class="fas fa-ban"></i>
-                    @elseif ($walk->status = 'accepted') 
+                    @elseif ($walk->status == 'accepted') 
                         <i class="fas fa-battery-empty"></i>
-                    @elseif ($walk->status = 'active') 
+                    @elseif ($walk->status == 'active') 
                         <i class="fas fa-battery-half"></i>
-                    @elseif ($walk->status = 'finished') 
+                    @elseif ($walk->status == 'finished') 
                         <i class="fas fa-battery-full"></i>
-                    @elseif ($walk->status = 'pending') 
+                    @elseif ($walk->status == 'pending') 
                         <i class="fas fa-spinner"></i>
                     @endif
                 </td>

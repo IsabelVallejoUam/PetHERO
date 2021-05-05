@@ -21,13 +21,15 @@ class WalkController extends Controller
     public function index()
     {
         $walks = Walk::ownedBy(Auth::id())->simplePaginate(5);
-        return view('walks.index', compact('walks'));
+        $type = 'petOwner';
+        return view('walks.index', compact('walks','type'));
     }
 
     public function walkerIndex()
     {
         $walks = Walk::where('walker',Auth::id())->simplePaginate(5);
-        return view('walks.index', compact('walks'));
+        $type = 'walker';
+        return view('walks.index', compact('walks','type'));
     }
 
     /**
@@ -78,17 +80,46 @@ class WalkController extends Controller
     public function cancel(Request $request)
     {
 
-        $walk = Walk::find($request)->first();
+        $walk = Walk::where('id',$request->input('walk_id'))->first();
         $walk->status = 'canceled';
         $walk->cancel_confirmation = 'no';
         $walk->save();
+        if($request->input('type') == 'walker'){
+            return redirect(route('walk.walkerIndex'))->with('_success', 'Se ha confirmado la cancelación del paseo!');   
+        } else {
+            return redirect(route('walk.index'))->with('_success', 'Se ha confirmado la cancelación del paseo!');   
+        }
+    }
+
+    public function start(Request $request)
+    {
+        $walk = Walk::where('id',$request->input('walk_id'))->first();
+        $walk->status = 'active';
+        $walk->save();
+        return redirect(route('walk.walkerIndex'))->with('_success', 'Paseo iniciado exitosamente!');
+    }
     
-        return redirect(route('walk.index'))->with('_success', 'Paseo cancelado exitosamente!');
+
+    public function finish(Request $request)
+    {
+        $walk = Walk::where('id',$request->input('walk_id'))->first();
+        return view('walks.walkerFinish', compact('walk'));
+    }
+
+
+    public function submitWalkerFinish(Request $request)
+    {
+        $walk = Walk::where('id',$request->input('walk_id'))->first();
+        $walk->minutes_walked = $request->input('minutes');
+        $walk->pet_calification = $request->input('petCalification');
+        $walk->status = 'finished';
+        $walk->save();
+        return redirect(route('walk.walkerIndex'))->with('_success', 'Se ha finalizado el paseo!');   
     }
 
     public function confirmCancel(Request $request)
     {
-        $walk = Walk::find($request->input('walk_id'))->first();
+        $walk = Walk::where('id',$request->input('walk_id'))->first();
         $walk->cancel_confirmation = 'yes';
         $walk->save();
         if($request->input('type') == 'walker'){
@@ -97,6 +128,30 @@ class WalkController extends Controller
             return redirect(route('walk.index'))->with('_success', 'Se ha confirmado la cancelación del paseo!');   
         }
     }
+
+    public function walkerAccept(Request $request)
+    {
+        $walk = Walk::where('id',$request->input('walk_id'))->first();
+        $walk->status = 'accepted';
+        $walk->save();
+        return redirect(route('walk.walkerIndex'))->with('_success', 'Se ha confirmado el paseo!');   
+    }
+
+    public function walkerReject(Request $request)
+    {
+        $walk = Walk::where('id',$request->input('walk_id'))->first();
+        return view('walks.walkerReject', compact('walk'));
+    }
+
+    public function submitWalkerReject(Request $request)
+    {
+        $walk = Walk::where('id',$request->input('walk_id'))->first();
+        $walk->commentary = $request->input('reason');
+        $walk->status = 'rejected';
+        $walk->save();
+        return redirect(route('walk.walkerIndex'))->with('_success', 'Se ha rechazado el paseo!');   
+    }
+    
 
     /**
      * Display the specified resource.

@@ -72,7 +72,12 @@ Route::post('/productdata', [App\Http\Controllers\ProductController::class,'getD
 Route::post('/routes', [App\Http\Controllers\RouteController::class,'getData'])->name('route.getData');
 Route::post('/walk/cancel', [App\Http\Controllers\WalkController::class,'cancel'])->name('walk.cancel');
 Route::post('/walk/confirmCancel', [App\Http\Controllers\WalkController::class,'confirmCancel'])->name('walk.confirmCancel');
-
+Route::post('/walk/accept', [App\Http\Controllers\WalkController::class,'walkerAccept'])->name('walk.walkerAccept');
+Route::post('/walk/finish', [App\Http\Controllers\WalkController::class,'finish'])->name('walk.walkerFinish');
+Route::post('/walk/start', [App\Http\Controllers\WalkController::class,'start'])->name('walk.start');
+Route::post('/walk/submit/finish', [App\Http\Controllers\WalkController::class,'submitWalkerFinish'])->name('walk.submitWalkerFinish');
+Route::post('/walk/reject', [App\Http\Controllers\WalkController::class,'walkerReject'])->name('walk.walkerReject');
+Route::post('/walk/submit/reject', [App\Http\Controllers\WalkController::class,'submitWalkerReject'])->name('walk.submitWalkerReject');
 //Ruta para crear paseos
 Route::post('/walk/request', [App\Http\Controllers\WalkController::class,'requestNew'])->name('walk.requestNew');
 Route::post('/product', [App\Http\Controllers\ProductController::class,'store'])->name('product.store');
