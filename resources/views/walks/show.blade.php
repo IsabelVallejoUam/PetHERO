@@ -163,7 +163,10 @@
                     </td>
                     <td>{{$walker->experience}}</td>
                     <td>
-                        {{$walker->owner->phone}}</td>
+                        @if($walk->status != 'pending' && $walk->status != 'canceled' && $walk->status != 'rejected')
+                            {{$walker->owner->phone}}
+                        @endif
+                    </td>
                     <td>{{$walker->owner->email}}</td>
                     <td>{{$walker->score}}</td>
                     <td>

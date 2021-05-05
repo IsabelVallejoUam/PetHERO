@@ -40,9 +40,14 @@ use App\Models\Walker;
                     {{$walker->owner->name}}</td>
                 <td>{{$walk->status}}<br>
                     @if ($walk->status == 'rejected' )
-                        <textarea disabled>Motivo de rechazo:{{$walk->commentary}}</textarea> 
+                        <textarea disabled>Motivo de rechazo:{{$walk->commentary}}</textarea>
                     @elseif ($walk->status == 'canceled' )
-                        <textarea disabled>Motivo de cancelación:{{$walk->commentary}}</textarea>      
+                        <textarea disabled>Motivo de cancelación:{{$walk->commentary}}</textarea> <br> 
+                        @if($walk->cancel_confirmation == 'no' && $type == 'walker')    
+                            <p style="width: 150px">En espera de confirmación para la cancelación por parte del usuario</p>
+                        @elseif($walk->cancel_confirmation == 'no' && $type == 'petOwner')
+                        <p style="width: 150px">En espera de confirmación para la cancelación por parte del paseador</p>
+                        @endif
                     @endif
                 </td>
                 <td>{{$walk->requested_day}}</td>
