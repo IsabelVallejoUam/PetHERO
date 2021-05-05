@@ -5,8 +5,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\DB; 
-
-
+use App\Models\Pet;
+use App\Models\Walker;
+use App\Models\Route;
 class Walk extends Authenticatable
 {
     use HasFactory, Notifiable;
@@ -39,6 +40,22 @@ class Walk extends Authenticatable
     {
         return $this->belongsTo(User::class, 'user_id');
     }
+
+    public function pet()
+    {
+        return $this->belongsTo(Pet::class, 'pet_id');
+    }
+
+    public function route()
+    {
+        return $this->belongsTo(Route::class, 'route');
+    }
+
+    public function walker()
+    {
+        return $this->belongsTo(Walker::class, 'walker_id');
+    }
+
     public static function searchUser ($walks){
         $query = DB::select('SELECT walks.*, users.* FROM users 
                             JOIN walks ON users.id = walks.user_id 

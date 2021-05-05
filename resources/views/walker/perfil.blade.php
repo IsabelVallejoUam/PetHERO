@@ -34,6 +34,16 @@
                     <input type="hidden" name="walker_id" value="{{$user->id}}">
                     <p class="text-center">
                         <button type="submit" class="btn btn-primary"><i class="fas fa-search-location"></i> Ver rutas</button>
+                        
+                    </p>
+                </form>
+
+                <form action="{{route('walk.requestNew')}}" method="POST">
+                    {{ csrf_field() }}
+                    <input type="hidden" name="walker_id" value="{{$user->id}}">
+                    <p class="text-center">
+                        <button type="submit" class="btn btn-primary"><i class="fas fa-search-location"></i> Pedir paseo</button>
+                        
                     </p>
                 </form>
             

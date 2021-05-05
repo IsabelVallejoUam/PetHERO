@@ -1,7 +1,5 @@
-@extends('layouts.app')
 
-@section('content')
-<div class="container">
+{{-- <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -12,7 +10,7 @@
                         @csrf
 
                         <div class="form-group row">
-                            <label for="requested_day" class="col-md-4 col-form-label text-md-right">{{ __('Requested Day') }}</label>
+                            <label for="requested_day" class="col-md-4 col-form-label text-md-right">{{ __('Día para el paseo') }}</label>
 
                             <div class="col-md-6">
                                 <input id="requested_day" type="date" class="form-control @error('requested_day') is-invalid @enderror" name="requested_day" value="{{ old('requested_day') }}" required autocomplete="requested_day" autofocus>
@@ -69,5 +67,27 @@
         </div>
     </div>
 </div>
-@endsection
+ --}}
+ @extends('layouts.app')
+ @include('layouts.validation-error')
+ @section('content')
+ <div class="container">
+     <div class="row justify-content-center">
+         <div class="col-md-8">
+             <div class="card">
+                 <div class="card-header"><a type="button" class="btn btn-secondary mb-4 mt-2 " href="{{ url()->previous() }}"><i class="far fa-hand-point-left"></i> Volver</a><br>
+                     Pedir paseo a {{$walker->owner->name}}
+                  </div>
+                 <form action="{{ route('walk.store') }}" method="post" enctype="multipart/form-data">
+                     @csrf
+                     <div class="card-body">
+                         @include('walks.sub_form')
+                     </div> 
+                     <button type="submit" class="btn btn-primary">Pedir</button>
+                 </form>
+             </div>
+         </div>
+     </div>
+ </div>
+ @endsection
 

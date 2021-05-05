@@ -17,22 +17,34 @@ class CreateWalksTable extends Migration
             $table->id();
             $table->timestamps();
             $table->foreignId('pet_id');
+            $table->foreignId('user_id');
             $table->date('requested_day');
+            $table->time("requested_hour");
             $table->integer('minutes_walked')->nullable();
-            $table->string('route');
+            $table->foreignId('route');
             $table->integer('min_time');
             $table->integer('max_time');
             $table->text('commentary')->nullable();
             $table->foreignId('walker')->nullable();
             $table->enum('status',['pending','active','finished','canceled']);
 
-             $table->foreign('pet_id')
+            $table->foreign('pet_id')
                 ->references('id')->on('pets')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
 
-                $table->foreign('walker')
-                ->references('user_id')->on('walkers')
+            $table->foreign('user_id')
+            ->references('user_id')->on('pet_owners')
+            ->onUpdate('cascade')
+            ->onDelete('cascade');
+
+            $table->foreign('walker')
+            ->references('user_id')->on('walkers')
+            ->onUpdate('cascade')
+            ->onDelete('cascade');
+
+            $table->foreign('route')
+                ->references('id')->on('routes')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
         });

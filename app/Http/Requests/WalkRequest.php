@@ -27,20 +27,15 @@ class WalkRequest extends FormRequest
     public function rules()
     {
         return [
-            'requested_day' => 'required|max:128|date',
-            'minutes_walked' => 'required|max:128|digits_between:0,480',
-           // 'route' => 'required|max:128',
-            'min_time' => 'required|max:128|digits_between:0,480',
-            'max_time' => 'required|max:128|digits_between:1,480',
+            'requested_day' => 'required|max:128',
+            'route' => 'required',
+            'min_time' => 'required|max:128',
+            'max_time' => 'required|max:128',
             'commentary' => 'required|max:128',
             'status' => 'required',
-        
- 
+            'walker' => 'required'
         ];
     }
 
-    public function failedValidation(Validator $validator)
-    {
-        throw new HttpResponseException(response()->json($validator->errors(), 422));
-    }
+
 }

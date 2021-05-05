@@ -59,8 +59,6 @@ Route::post('/petOwner/favorite/store/{store}', [App\Http\Controllers\PetOwnerCo
 
 Route::resource('/pet', PetController::class);
 
-Route::resource('/walkRequest',WalkController::class);
-
 Route::resource('/store',StoreController::class);
 Route::get('/stores', [App\Http\Controllers\StoreController::class, 'indexAll'])->name('store.indexAll');
 
@@ -69,6 +67,9 @@ Route::resource('/product',ProductController::class);
 Route::post('/useravatar', [App\Http\Controllers\UserController::class,'update_avatar']);
 Route::post('/productdata', [App\Http\Controllers\ProductController::class,'getData'])->name('product.getData');
 Route::post('/routes', [App\Http\Controllers\RouteController::class,'getData'])->name('route.getData');
+
+//Ruta para crear paseos
+Route::post('/walk/request', [App\Http\Controllers\WalkController::class,'requestNew'])->name('walk.requestNew');
 Route::post('/product', [App\Http\Controllers\ProductController::class,'store'])->name('product.store');
 Route::get('/store/public/{store}', [App\Http\Controllers\StoreController::class,'showPublic'])->name('store.showPublic');
 
