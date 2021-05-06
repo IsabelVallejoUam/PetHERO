@@ -17,6 +17,7 @@ use App\Models\Walker;
     
     <table class="table table-striped table-hover">
         <tr>
+            <th scope="col">Código</th>
             <th scope="col">Mascota</th>
             <th scope="col">Ruta</th>
             <th scope="col">Paseador</th>
@@ -34,9 +35,13 @@ use App\Models\Walker;
             $walker = Walker::where('user_id','=',$walk->walker)->first();
         ?>
             <tr>
+
+                <td>
+                    {{$walk->id}}
+                </td>
                 <td>
                     <img src="/uploads/pets/{{ $walk->pet->photo }}" style="width: 35px; height:35px; position:relarive;" />
-                    {{$walk->pet->name}}   {{$walk->id}}
+                    {{$walk->pet->name}}   
                 </td>
                 @if($route!=null)
                     <td>{{$route->title}}<br>
