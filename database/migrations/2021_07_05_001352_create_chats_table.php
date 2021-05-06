@@ -16,23 +16,18 @@ class CreateChatsTable extends Migration
         Schema::create('chats', function (Blueprint $table) {
             $table->id();
             $table->foreignId('walk');
-            $table->foreignId('walker_id');
-            $table->foreignId('petOwner_id');
-
+            $table->foreignId('owner_id');
+            $table->string('content');
             $table->foreign('walk')
                 ->references('id')->on('walks')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
 
-            $table->foreign('walker_id')
-            ->references('user_id')->on('walkers')
-            ->onUpdate('cascade')
-            ->onDelete('cascade');
+            $table->foreign('owner_id')
+                ->references('id')->on('users')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
 
-            $table->foreign('petOwner_id')
-            ->references('user_id')->on('pet_owners')
-            ->onUpdate('cascade')
-            ->onDelete('cascade');
             $table->timestamps();
         });
     }

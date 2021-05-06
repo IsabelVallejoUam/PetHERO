@@ -115,7 +115,35 @@
                             </tr>
                         @endforeach
                     </table>
-
+                    <h3>Gestiona tus paseos</h3>
+                    {{--Paseos--}}
+                    <table class="table table-striped table-hover">
+                        <tr>
+                            <th scope="col"></th>
+                            <td><a class="dropdown-item" href="{{ route('walk.walkerIndex') }}">Gestionar todos mis paseos</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="col"></th>
+                            <td><a class="dropdown-item" href="{{ route('walk.walkerIndexPending') }}">Gestionar paseos pendientes</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="col"></th>
+                            <td><a class="dropdown-item" href="{{ route('walk.walkerIndexActive') }}">Gestionar paseos en curso</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="col"></th>
+                            <td><a class="dropdown-item" href="{{ route('walk.walkerIndexFinished') }}">Ver paseos finalizados</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="col"></th>
+                            <td><a class="dropdown-item" href="{{ route('walk.indexRequests') }}">Ver solicitudes disponibles</a>
+                            </td>
+                        </tr>
+                    </table>  
                     <div class="btn-group" role="group" aria-label="Link options">
                         <a href="{{ route('walker.edit', $walker->user_id) }}" class="btn btn-warning" title="Editar"><i class="far fa-edit"></i>Editar{{$user->name}}</a>
                 
