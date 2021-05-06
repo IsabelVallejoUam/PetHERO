@@ -152,7 +152,9 @@
             </tr>
             </table> 
 
+            
             <h3>Paseador</h3>
+            @if($walk->walker != null)
             <table class="table table-striped table-hover">
                 <tr>
                     <th scope="col">Paseador</th>
@@ -186,7 +188,10 @@
                     </td>
                 </tr>
             </table> 
+            @else <h3>Sin asignar</h3>
+            @endif
 
+            @if($walk->walker != null)
             <h3>Chat</h3>
             {{--Chat--}}
             <table class="table table-striped table-hover">
@@ -220,6 +225,7 @@
                     </tr>
                 @endif
             </table>
+            @endif
         </div>
     </div>
 </div>

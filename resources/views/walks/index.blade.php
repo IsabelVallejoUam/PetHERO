@@ -8,8 +8,10 @@ use App\Models\Walker;
 <div class="card" style="margin: 100px; margin-top:0px">
     @if(!$request)
         <h1 style="text-align: center;">Mis paseos</h1><br>
-    @else
-    <h1 style="text-align: center;">Solicitudes de paseo disponibles</h1><br>
+    @elseif($type == 'walker')
+        <h1 style="text-align: center;">Solicitudes de paseo disponibles</h1><br>
+    @elseif($type == 'petOwner')
+        <h1 style="text-align: center;">Mis solicitudes pendietes</h1><br>
     @endif
     {{$walks->links()}}<br>
     
