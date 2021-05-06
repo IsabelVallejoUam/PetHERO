@@ -71,10 +71,17 @@
                     <td>{{ $walk->pet_calification }}/5</td>
                 </tr>
                 @endif
-            <tr>
-                <th scope="col">Comentario del usuario</th>
-                <td>"{{ $walk->commentary }}"</td>
-            </tr>
+            @if($walk->status == 'canceled' || $walk->status == 'rejected')  
+                <tr>
+                    <th scope="col">Motivo de cancelación</th>
+                    <td>"{{ $walk->commentary }}"</td>
+                </tr>
+            @else
+                <tr>
+                    <th scope="col">Comentario del usuario</th>
+                    <td>"{{ $walk->commentary }}"</td>
+                </tr>
+            @endif
             <tr>
                 <th scope="col">Estado</th>
                 <td>
@@ -197,6 +204,34 @@
             </table> 
             @else <h3>Sin asignar</h3>
             @endif
+
+            <h3>Cliente</h3>
+            <table class="table table-striped table-hover">
+                <tr>
+                    <th scope="col">Dueño de mascota</th>
+                    <th scope="col">Teléfono</th>
+                    <th scope="col">Correo</th>
+                    <th scope="col">Dirección</th>
+                    <th scope="col">Acciones
+                    </th>
+                </tr>
+                <tr>
+                    <td>
+                        <img src="/uploads/avatars/{{$user->owner->avatar }}" style="width: 35px; height:35px; position:relarive;" />
+                        {{$user->owner->name}} {{$user->owner->lastname}}
+                    </td>
+                    <td>{{$user->owner->phone}}</td>
+                    <td>{{$user->owner->email}}</td>
+                    <td>{{$user->address}}</td>
+                    <td>
+                        <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+                            <div class="btn-group" role="group" aria-label="Link options">
+                                <a href="{{ route('petOwner.profile', $walk->user_id) }}" class=" btn btn-primary">Ver usuario</a>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </table> 
 
             @if($walk->walker != null)
             <h3>Chat</h3>

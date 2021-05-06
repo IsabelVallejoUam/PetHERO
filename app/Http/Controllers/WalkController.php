@@ -7,6 +7,7 @@ use App\Http\Requests\WalkRequest;
 use App\Models\Walker;
 use App\Models\Walk;
 use App\Models\User;
+use App\Models\PetOwner;
 use App\Models\Chat;
 use App\Models\Route;
 use App\Models\Pet;
@@ -309,13 +310,14 @@ class WalkController extends Controller
     {
         $chats = Chat::where('walk',$walk->id)->get();
         $pet = Pet::find($walk->pet_id);
+        $user = PetOwner::find($walk->user_id);
         if($walk->route != null){
             $route = Route::find($walk->route)->first();
         } else {
             $route = null;
         }
         $walker = Walker::where('user_id',$walk->walker)->first();
-        return view('walks.show', compact(['walk','pet','route','walker','chats']));
+        return view('walks.show', compact(['walk','pet','route','walker','chats','user']));
     }
 
     /**
