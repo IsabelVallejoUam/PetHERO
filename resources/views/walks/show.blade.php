@@ -60,6 +60,16 @@
                     <th scope="col">Tiempo caminado</th>
                     <td>{{ $walk->minutes_walked }} Minutos</td>
                 </tr>
+
+                <tr>
+                    <th scope="col">Calificación para el paseador:</th>
+                    <td>{{ $walk->walker_calification }}/5</td>
+                </tr>
+
+                <tr>
+                    <th scope="col">Calificación para la mascota:</th>
+                    <td>{{ $walk->pet_calification }}/5</td>
+                </tr>
                 @endif
             <tr>
                 <th scope="col">Comentario del usuario</th>
@@ -132,8 +142,7 @@
             <tr>
                 <td>
                     <img src="/uploads/pets/{{ $walk->pet->photo }}" style="width: 35px; height:35px; position:relarive;" />
-                    {{$walk->pet->name}}
-                    
+                    {{$walk->pet->name}}    
                 </td>
                 <td>{{$walk->pet->age}}</td>
                 <td>
@@ -151,8 +160,6 @@
                 </td>
             </tr>
             </table> 
-
-            
             <h3>Paseador</h3>
             @if($walk->walker != null)
             <table class="table table-striped table-hover">
