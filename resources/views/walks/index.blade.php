@@ -31,6 +31,7 @@ use App\Models\Walker;
         <?php
             $route = Route::where('id','=',$walk->route)->first();
             $walker = Walker::where('user_id','=',$walk->walker)->first();
+            $count= Route::where('owner_id',$walk->walker)->count();
         ?>
             <tr>
 
@@ -49,7 +50,7 @@ use App\Models\Walker;
                     </td>
                 @else
                     <td>Sin ruta asignada
-                        @if ($route == null && $walk->status == 'pending' && $type == 'walker' && !$request)
+                        @if ($route == null && $walk->status == 'pending' && $type == 'walker' && !$request && $count > 0)
                             <form action="{{route('walk.addRoute')}}" method="POST">
                                 {{ csrf_field() }}
                                 <input type="hidden" name="walker_id" value="{{$walk->walker}}">
@@ -188,7 +189,7 @@ use App\Models\Walker;
                             @endif
 
                             @if (($walk->status == 'canceled' && $walk->cancel_confirmation == 'yes') 
-                                || $walk->status == 'rejected')
+                                || ($walk->status == 'rejected' && $walk->cancel_confirmation == 'yes'))
                                 <form action="{{ route('walk.destroy', $walk->id) }}" method="post"
                                     onsubmit="return confirm('¿Esta seguro que desea eliminar este paseo?')">
                                     @csrf
@@ -197,7 +198,7 @@ use App\Models\Walker;
                                 </form>
                             @endif
                                 
-                            @if ($walk->status == 'canceled' && $walk->cancel_confirmation == 'no')
+                            @if (($walk->status == 'canceled' && $walk->cancel_confirmation == 'no'))
                                 @if($walk->walker_confirmation == 'yes' && $type == 'petOwner')
                                     <form action="{{route('walk.confirmCancel')}}" method="POST" 
                                     onsubmit="return confirm('¿Esta seguro que desea confirmar cancelación?')">
@@ -207,7 +208,6 @@ use App\Models\Walker;
                                         <button type="submit" class="btn btn-danger">Aceptar cancelación</button>
                                     </form>
                                 @endif
-
                                 @if($walk->walker_confirmation == 'no' && $type == 'walker')
                                 <form action="{{route('walk.confirmCancel')}}" method="POST" 
                                 onsubmit="return confirm('¿Esta seguro que desea confirmar cancelación?')">
@@ -216,7 +216,17 @@ use App\Models\Walker;
                                     <input type="hidden" name="type" value="{{$type}}" id="type">
                                     <button type="submit" class="btn btn-danger">Aceptar cancelación</button>
                                 </form>
+                                @endif
                             @endif
+
+                            @if($walk->cancel_confirmation == 'no' && $type == 'petOwner' && $walk->status == 'rejected')
+                                <form action="{{route('walk.confirmCancel')}}" method="POST" 
+                                onsubmit="return confirm('¿Esta seguro que desea confirmar cancelación?')">
+                                    {{ csrf_field() }}
+                                    <input type="hidden" name="walk_id" value="{{$walk->id}}" id="walk_id">
+                                    <input type="hidden" name="type" value="{{$type}}" id="type">
+                                    <button type="submit" class="btn btn-danger">Aceptar cancelación</button>
+                                </form>
                             @endif
                         </div>
                     </div>

@@ -55,6 +55,10 @@
                             <button type="submit" class="btn btn-primary"><i class="fas fa-search-location"></i> Pedir paseo</button>
                         </p>
                     </form>
+                @else 
+                    <p class="text-center">
+                        <a type="button" class="btn btn-primary " href="{{ route('walk.create') }}"><i class="fas fa-plus-square"></i>Pedir servicio de paseo</a> 
+                    </p>
                 @endif
             @endif
             <div class="col text-center">

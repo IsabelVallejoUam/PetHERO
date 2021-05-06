@@ -280,6 +280,7 @@ class WalkController extends Controller
         $walk = Walk::where('id',$request->input('walk_id'))->first();
         $walk->commentary = $request->input('reason');
         $walk->status = 'rejected';
+        $walk->cancel_confirmation='no';
         $walk->save();
         return redirect(route('walk.walkerIndex'))->with('_success', 'Se ha rechazado el paseo!');   
     }
