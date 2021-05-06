@@ -80,8 +80,12 @@ use App\Models\Walker;
                         @if($walk->cancel_confirmation == 'no' && $type == 'walker')    
                             <p style="width: 150px">En espera de confirmación para la cancelación por parte del usuario</p>
                         @elseif($walk->cancel_confirmation == 'no' && $type == 'petOwner')
-                        <p style="width: 150px">En espera de confirmación para la cancelación por parte del paseador</p>
+                            <p style="width: 150px">En espera de confirmación para la cancelación por parte del paseador</p>
                         @endif
+                    @elseif ($walk->status == 'finished' && $walk->walker_calification != null)
+                        <p style="width: 150px">Calificación del servicio: {{$walk->walker_calification}}</p>
+                    @elseif ($walk->status == 'finished' && $walk->walker_calification == null)
+                        <p style="width: 150px">Califica este servicio!</p>
                     @endif
                 </td>
                 <td>{{$walk->requested_day}}</td>
@@ -174,6 +178,16 @@ use App\Models\Walker;
                                 @endif
                             @endif
 
+                            @if ($walk->status == 'finished' && $walk->walker_calification == null)
+                                @if($type == 'petOwner')
+                                    <form action="{{route('walk.rate')}}" method="POST" 
+                                    onsubmit="return confirm('¿Esta seguro que desea calificar este paseo?')">
+                                        {{ csrf_field() }}
+                                        <input type="hidden" name="walk_id" value="{{$walk->id}}" id="walk_id">
+                                        <button type="submit" class="btn btn-primary">Calificar paseo</button>
+                                    </form>
+                                @endif
+                            @endif
 
                             @if (($walk->status == 'canceled' && $walk->cancel_confirmation == 'yes') 
                                 || $walk->status == 'rejected')
