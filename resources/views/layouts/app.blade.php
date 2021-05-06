@@ -227,6 +227,7 @@ $type = 'walker';
                                                 <a class="dropdown-item" href="{{ route('walk.indexPending') }}">Gestionar paseos pendientes</a>
                                                 <a class="dropdown-item" href="{{ route('walk.indexActive') }}">Gestionar paseos en curso</a>
                                                 <a class="dropdown-item" href="{{ route('walk.indexFinished') }}">Ver paseos finalizados</a>
+                                                <a class="dropdown-item" href="{{ route('walk.petIndexRequests') }}">Ver mis solicitudes pendientes</a>
                                             </div>
         
                                         </li>
@@ -343,6 +344,7 @@ $type = 'walker';
                                         <a class="dropdown-item" href="{{ route('walk.walkerIndexPending') }}">Gestionar paseos pendientes</a>
                                         <a class="dropdown-item" href="{{ route('walk.walkerIndexActive') }}">Gestionar paseos en curso</a>
                                         <a class="dropdown-item" href="{{ route('walk.walkerIndexFinished') }}">Ver paseos finalizados</a>
+                                        <a class="dropdown-item" href="{{ route('walk.indexRequests') }}">Ver solicitudes disponibles</a>
                                     </div>
 
                                 </li>

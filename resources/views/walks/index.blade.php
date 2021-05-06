@@ -6,7 +6,11 @@ use App\Models\Walker;
 
 ?>
 <div class="card" style="margin: 100px; margin-top:0px">
-    <h1 style="text-align: center;">Mis paseos</h1><br>
+    @if(!$request)
+        <h1 style="text-align: center;">Mis paseos</h1><br>
+    @else
+    <h1 style="text-align: center;">Solicitudes de paseo disponibles</h1><br>
+    @endif
     {{$walks->links()}}<br>
     
     <table class="table table-striped table-hover">
@@ -40,7 +44,7 @@ use App\Models\Walker;
                     </td>
                 @else
                     <td>Sin ruta asignada
-                        @if ($route == null && $walk->status == 'pending')
+                        @if ($route == null && $walk->status == 'pending' && $type == 'walker' && !$request)
                             <form action="{{route('walk.addRoute')}}" method="POST">
                                 {{ csrf_field() }}
                                 <input type="hidden" name="walker_id" value="{{$walk->walker}}">
@@ -51,9 +55,16 @@ use App\Models\Walker;
                         @endif
                     </td>
                     @endif
-                <td>
-                    <img src="/uploads/avatars/{{$walker->owner->avatar}}" style="width: 35px; height:35px; position:relarive;" />
-                    {{$walker->owner->name}}</td>
+                    @if(!$request)
+                        <td>
+                            <img src="/uploads/avatars/{{$walker->owner->avatar}}" style="width: 35px; height:35px; position:relarive;" />
+                            {{$walker->owner->name}}
+                        </td>
+                    @else
+                        <td>
+                            Sin paseador asignado
+                        </td>
+                    @endif
                 <td>{{$walk->status}}<br>
                     @if ($walk->status == 'rejected' )
                         <textarea disabled>Motivo de rechazo:{{$walk->commentary}}</textarea>
@@ -73,7 +84,7 @@ use App\Models\Walker;
                         <div class="btn-group" role="group" aria-label="Link options">
                             <a href="{{ route('walk.show', $walk->id) }}" class=" btn btn-info">Ver detalles</a>
 
-                            @if ($walk->status == 'pending')
+                            @if ($walk->status == 'pending' && !$request)
                                 @if($type == 'walker')
                                     <form action="{{route('walk.walkerAccept')}}" method="POST" 
                                     onsubmit="return confirm('¿Esta seguro que desea confirmar este paseo?')">
@@ -96,6 +107,22 @@ use App\Models\Walker;
                                         <button type="submit" class=" btn btn-danger">Borrar</button>
                                     </form>
                                 @endif
+                                @elseif($request)
+                                    @if($type == 'walker')
+                                    <form action="{{route('walk.walkerAcceptRequest')}}" method="POST" 
+                                    onsubmit="return confirm('¿Esta seguro que desea aceptar este paseo?')">
+                                        {{ csrf_field() }}
+                                        <input type="hidden" name="walk_id" value="{{$walk->id}}" id="walk_id">
+                                        <button type="submit" class="btn btn-primary">Aceptar petición</button>
+                                    </form>
+                                    @else
+                                        <form action="{{ route('walk.destroy', $walk->id) }}" method="post"
+                                            onsubmit="return confirm('¿Esta seguro que desea eliminar esta solicitud?')">
+                                            @csrf
+                                            @method('delete')
+                                            <button type="submit" class=" btn btn-danger">Borrar</button>
+                                        </form>
+                                    @endif
                             @endif
 
                             @if ($walk->status == 'accepted')
@@ -181,7 +208,10 @@ use App\Models\Walker;
      
     @if ($type == 'petOwner')
     <p class="text-center">
-        <a type="button" class="btn btn-primary " href="{{ route('walk.create') }}"><i class="fas fa-plus-square"></i>Pedir un nuevo paseo</a> 
+        <a type="button" class="btn btn-primary " href="{{ route('walk.create') }}"><i class="fas fa-plus-square"></i>Pedir servicio a un paseador</a> 
+    </p>
+    <p class="text-center">
+        <a type="button" class="btn btn-primary " href="{{ route('walk.createRequest') }}"><i class="fas fa-plus-square"></i>Publicar solicitud de paseo</a> 
     </p>
     @endif
 </div>
