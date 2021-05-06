@@ -24,7 +24,8 @@ class WalkController extends Controller
         $walks = Walk::ownedBy(Auth::id())->whereNotNull('walker')->simplePaginate(5);
         $type = 'petOwner';
         $request = false;
-        return view('walks.index', compact('walks','type','request'));
+        $status = "";
+        return view('walks.index', compact('walks','type','request','status'));
     }
     //Lista los paseos pendientes del usuario
     public function indexPending()
@@ -32,7 +33,8 @@ class WalkController extends Controller
         $walks = Walk::ownedBy(Auth::id())->where('status','pending')->whereNotNull('walker')->simplePaginate(5);
         $type = 'petOwner';
         $request = false;
-        return view('walks.index', compact('walks','type','request'));
+        $status = "Pendientes";
+        return view('walks.index', compact('walks','type','request','status'));
     }
     //Lista los paseos activos del usuario
     public function indexActive()
@@ -40,7 +42,8 @@ class WalkController extends Controller
         $walks = Walk::ownedBy(Auth::id())->where('status','active')->whereNotNull('walker')->simplePaginate(5);
         $type = 'petOwner';
         $request = false;
-        return view('walks.index', compact('walks','type','request'));
+        $status = "Activos";
+        return view('walks.index', compact('walks','type','request','status'));
     }
     //Lista los paseos finalizados del usuario
     public function indexFinished()
@@ -48,7 +51,8 @@ class WalkController extends Controller
         $walks = Walk::ownedBy(Auth::id())->where('status','finished')->whereNotNull('walker')->simplePaginate(5);
         $type = 'petOwner';
         $request = false;
-        return view('walks.index', compact('walks','type','request'));
+        $status = "Finalizados";
+        return view('walks.index', compact('walks','type','request','status'));
     }
     //Lista todos los paseos del paseador
     public function walkerIndex()
@@ -56,7 +60,8 @@ class WalkController extends Controller
         $walks = Walk::where('walker',Auth::id())->whereNotNull('walker')->simplePaginate(5);
         $type = 'walker';
         $request = false;
-        return view('walks.index', compact('walks','type','request'));
+        $status = "";
+        return view('walks.index', compact('walks','type','request','status'));
     }
     //Lista todos los paseos finalizados del paseador
     public function walkerIndexFinished()
@@ -64,7 +69,8 @@ class WalkController extends Controller
         $walks = Walk::where('walker',Auth::id())->where('status','finished')->whereNotNull('walker')->simplePaginate(5);
         $type = 'walker';
         $request = false;
-        return view('walks.index', compact('walks','type','request'));
+        $status = "FInalizados";
+        return view('walks.index', compact('walks','type','request','status'));
     }
     //Lista todos los paseos pendientes del paseador
     public function walkerIndexPending()
@@ -72,7 +78,8 @@ class WalkController extends Controller
         $walks = Walk::where('walker',Auth::id())->where('status','pending')->whereNotNull('walker')->simplePaginate(5);
         $type = 'walker';
         $request = false;
-        return view('walks.index', compact('walks','type','request'));
+        $status = "Pendientes";
+        return view('walks.index', compact('walks','type','request','status'));
     }
     //Lista todos los paseos activos del paseador
     public function walkerIndexActive()
@@ -80,7 +87,8 @@ class WalkController extends Controller
         $walks = Walk::where('walker',Auth::id())->where('status','active')->whereNotNull('walker')->simplePaginate(5);
         $type = 'walker';
         $request = false;
-        return view('walks.index', compact('walks','type','request'));
+        $status = "Activos";
+        return view('walks.index', compact('walks','type','request','status'));
     }
     //Lista todas las solicitudes de paseo disponibles 
     public function indexRequests()
@@ -88,7 +96,8 @@ class WalkController extends Controller
         $walks = Walk::where('status','pending')->whereNull('walker')->simplePaginate(5);
         $type = 'walker';
         $request = true;
-        return view('walks.index', compact('walks','type','request'));
+        $status = "Globales";
+        return view('walks.index', compact('walks','type','request','status'));
     }
     //Lista todas las solicitudes de paseo de un dueño de mascota
     public function petIndexRequests()
@@ -96,7 +105,8 @@ class WalkController extends Controller
         $walks = Walk::where('status','pending')->whereNull('walker')->simplePaginate(5);
         $type = 'petOwner';
         $request = true;
-        return view('walks.index', compact('walks','type','request'));
+        $status = "Sin aceptar";
+        return view('walks.index', compact('walks','type','request','status'));
     }
     /**
      * Show the form for creating a new resource.

@@ -7,7 +7,7 @@ use App\Models\Walker;
 ?>
 <div class="card" style="margin: 100px; margin-top:0px">
     @if(!$request)
-        <h1 style="text-align: center;">Mis paseos</h1><br>
+        <h1 style="text-align: center;">Mis paseos {{$status}}</h1><br>
     @elseif($type == 'walker')
         <h1 style="text-align: center;">Solicitudes de paseo disponibles</h1><br>
     @elseif($type == 'petOwner')
@@ -29,9 +29,7 @@ use App\Models\Walker;
         
         @foreach ($walks as $walk)
         <?php
-        if($walk->route != -1){
             $route = Route::where('id','=',$walk->route)->first();
-        }
             $walker = Walker::where('user_id','=',$walk->walker)->first();
         ?>
             <tr>
