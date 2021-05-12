@@ -22,6 +22,7 @@ class Pet extends Model
         'photo'
     ];
 
+
     public function scopeOwnedBy($query, $owner_id)
     {
         return $query->where('owner_id', '=', $owner_id);

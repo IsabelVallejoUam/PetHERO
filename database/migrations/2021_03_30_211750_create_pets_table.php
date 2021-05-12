@@ -19,7 +19,7 @@ class CreatePetsTable extends Migration
             $table->enum('species',['dog','cat']);
             $table->string('race');
             $table->foreignId('owner_id');
-            $table->enum('sex',['femenine','masculine']);
+            $table->string('sex');
             $table->integer('age');
             $table->enum('personality',['calm','friendly','aggressive','shy']);
             $table->text('commentary')->nullable();

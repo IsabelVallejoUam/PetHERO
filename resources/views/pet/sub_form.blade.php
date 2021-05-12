@@ -23,7 +23,8 @@
                 <div class="mb-3">
                     <label for="sex" class="form-label">Sexo de la Mascota</label>
                     <select class="form-control" name="sex" id="sex">
-                        @include('pet.option-sex',['val'=>$pet->sex ?? ""])
+                        <option value="femenino">Femenino</option>
+                        <option value="masculino">Masculino</option>
                     </select>
                 </div>  
 
