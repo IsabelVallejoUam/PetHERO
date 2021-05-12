@@ -81,7 +81,7 @@
                     @if($authenticated)
                     <a href="{{ route('product.edit', ['product' => $product->id]) }}" class="btn btn-warning" title="Editar"><i class="far fa-edit"></i>Editar{{$product->name}}</a>
                     <form action="{{ route('product.destroy', $product->id) }}" method="post"
-                        onsubmit="return confirm('¿Esta seguro que desea remover esta tienda?')">
+                        onsubmit="return confirm('¿Esta seguro que desea remover este Producto?')">
                         @csrf
                         @method('delete')
                         <button type="submit" class=" btn btn-danger">Eliminar</button>

@@ -16,6 +16,13 @@
                     </div>
                     <button type="submit" class="btn btn-primary">Editar</button>
                 </form>
+                <p>
+                    <form action="{{ route('product.destroy', $product->id) }}" method="post"
+                        onsubmit="return confirm('¿Esta seguro que desea remover este Producto?')">
+                        @csrf
+                        @method('delete')
+                        <button type="submit" class=" btn btn-danger">Eliminar</button>
+                    </form> 
             </div>
         </div>
     </div>

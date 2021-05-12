@@ -119,19 +119,6 @@
                         @enderror
                         </div>
 
-                        {{-- <div class="form-group row">
-                            <label for="rate" class="col-md-4 col-form-label text-md-right">{{ __('Rate per Walk ($COP)') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="rate" type="number" class="form-control @error('rate') is-invalid @enderror" name="rate" value="{{ old('rate') }}" autocomplete="rate" autofocus>
-                            </div>
-                            @error('rate')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                        </div> --}}
-
                         <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 

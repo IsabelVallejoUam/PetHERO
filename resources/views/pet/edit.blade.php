@@ -10,5 +10,13 @@
         @include('pet.sub_form')
         <button type="submit" class="btn btn-primary">Editar</button>
     </form>
+    <p>
+        <form action="{{ route('pet.destroy', $pet) }}" method="post"
+                    onsubmit="return confirm('¿Esta seguro que desea eliminar la Mascota?')">
+                    @csrf
+                    @method('delete')
+                    <button type="submit" class="btn btn-danger" title="Remover{{$pet->name}}"><i class="fas fa-trash"></i></button>
+                </form>
 </div>
+
 @endsection
