@@ -6,6 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Requests\UserRequest;
+
+use App\Http\Resources\users\UsersCollection;
+use App\Http\Resources\users\UsersResource;
+
 class UserController extends Controller
 {
     /**
@@ -16,7 +20,10 @@ class UserController extends Controller
     public function index()
     {
         $users = User::orderBy('name', 'asc')->get();
-        return response()->json(['data' => $users], 200);
+        //return response()->json(['data' => $users], 200);
+        return (new UsersCollection($users))
+        ->response()
+        ->setStatusCode(200);
     }
 
     /**
@@ -28,7 +35,10 @@ class UserController extends Controller
     public function store(UserRequest $request)
     {
         $user = User::create($request->all());
-        return response()->json(['data' => $user], 201);
+        return (new UsersResource($user))
+        ->response()
+        ->setStatusCode(200);
+        //return response()->json(['data' => $user], 201);
     }
 
     /**
@@ -39,7 +49,10 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        return response()->json(['data' => $user], 200);
+        //return response()->json(['data' => $user], 200);
+        return (new UsersResource($user))
+        ->response()
+        ->setStatusCode(200);
     }
 
     /**
@@ -52,7 +65,10 @@ class UserController extends Controller
     public function update(UserRequest $request, User $user)
     {
         $user->update($request->all());
-        return response()->json(['data' => $user], 200);
+        //return response()->json(['data' => $user], 200);
+        return (new UsersResource($user))
+        ->response()
+        ->setStatusCode(200);
     }
 
     /**
