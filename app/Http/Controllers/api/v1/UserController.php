@@ -19,7 +19,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::orderBy('name', 'asc')->get();
+        $users = User::orderBy('id', 'asc')->get();
         //return response()->json(['data' => $users], 200);
         return (new UsersCollection($users))
         ->response()
@@ -79,7 +79,8 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
+        $dataDeleted=$user;
         $user->delete();
-        return response(null, 204);
+        return response()->json(['data' => $dataDeleted], 200);
     }
 }

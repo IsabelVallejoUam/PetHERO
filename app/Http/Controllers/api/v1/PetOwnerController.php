@@ -7,6 +7,11 @@ use App\Models\PetOwner;
 use Illuminate\Http\Request;
 use App\Http\Requests\PetOwnerRequest;
 
+
+use App\Http\Resources\petOwners\PetOwnersCollection;
+use App\Http\Resources\petOwners\PetOwnersResource;
+
+
 class PetOwnerController extends Controller
 {
     /**
@@ -16,8 +21,10 @@ class PetOwnerController extends Controller
      */
     public function index()
     {
-        $owners = PetOwner::searchUsers();
-        return response()->json(['data' => $owners], 200);
+        $walkers = PetOwner::orderBy('id', 'asc')->get();
+        return (new PetOwnersCollection($walkers))
+        ->response()
+        ->setStatusCode(200);
     }
 
     /**
@@ -28,8 +35,10 @@ class PetOwnerController extends Controller
      */
     public function store(PetOwnerRequest $request)
     {
-        $owner = PetOwner::create($request->all()); 
-        return response()->json(['data' => $owner], 201);
+        $petOwner = PetOwner::create($request->all());
+        return (new PetOwnersResource($petOwner))
+        ->response()
+        ->setStatusCode(200);
     }
 
     /**
@@ -38,12 +47,11 @@ class PetOwnerController extends Controller
      * @param  \App\Models\PetOwner  $PetOwner
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(PetOwner $petOwner)
     {
-        $petOwner = PetOwner::searchUser($id);
-  
-            return response()->json(['data' => $petOwner], 200);
-        
+        return (new PetOwnersResource($petOwner))
+        ->response()
+        ->setStatusCode(200);
  
     }
 
@@ -54,15 +62,12 @@ class PetOwnerController extends Controller
      * @param  \App\Models\PetOwner  $PetOwner
      * @return \Illuminate\Http\Response
      */
-    public function update(PetOwnerRequest $request, $id)
+    public function update(PetOwnerRequest $request, PetOwner $petOwner)
     {
-        $petOwner = PetOwner::find($id);
-
         $petOwner->update($request->all());
-        $user_id = $petOwner->user_id;
-        $petOwner= PetOwner::searchUser($user_id);
-       
-        return response()->json(['data' => $petOwner], 200);
+        return (new PetOwnersResource($petOwner))
+        ->response()
+        ->setStatusCode(200);
     }
 
 
@@ -73,11 +78,10 @@ class PetOwnerController extends Controller
      * @param  \App\Models\PetOwner  $PetOwner
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(PetOwner $petOwner)
     {
-        $petOwner = PetOwner::find($id);
-        $deletedData = $petOwner;
+        $dataDeleted=$petOwner;
         $petOwner->delete();
-        return response()->json(['data' => $deletedData], 200);
+        return response()->json(['data' => $dataDeleted], 200);
     }
 }

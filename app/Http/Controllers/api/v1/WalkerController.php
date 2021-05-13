@@ -7,6 +7,9 @@ use App\Models\Walker;
 use Illuminate\Http\Request;
 use App\Http\Requests\WalkerRequest;
 
+use App\Http\Resources\walkers\WalkersCollection;
+use App\Http\Resources\walkers\WalkersResource;
+
 
 class WalkerController extends Controller
 {
@@ -17,8 +20,10 @@ class WalkerController extends Controller
      */
     public function index()
     {
-        $walker = Walker::searchUsers();
-        return response()->json(['data' => $walker], 201);
+        $walkers = Walker::orderBy('id', 'asc')->get();
+        return (new WalkersCollection($walkers))
+        ->response()
+        ->setStatusCode(200);
     }
 
     /**
@@ -30,8 +35,9 @@ class WalkerController extends Controller
     public function store(WalkerRequest $request)
     {
         $walker = Walker::create($request->all());
-        //$walker = Walker::searchUsers();
-        return response()->json(['data' => $walker], 201);
+        return (new WalkersResource($walker))
+        ->response()
+        ->setStatusCode(200);
     }
 
     /**
@@ -43,8 +49,9 @@ class WalkerController extends Controller
     public function show(Walker $walker)
     {
         
-        $walker= Walker::searchUser($walker);
-        return response()->json(['data' => $walker], 200);
+        return (new WalkersResource($walker))
+        ->response()
+        ->setStatusCode(200);
     }
 
     /**
@@ -57,8 +64,9 @@ class WalkerController extends Controller
     public function update(WalkerRequest $request, Walker $walker)
     {
         $walker->update($request->all());
-        $walker= Walker::searchUser($walker);
-        return response()->json(['data' => $walker], 200);
+        return (new WalkersResource($walker))
+        ->response()
+        ->setStatusCode(200);
     }
 
     /**

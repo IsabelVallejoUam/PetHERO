@@ -7,6 +7,9 @@ use App\Models\StoreOwner;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreOwnerRequest;
 
+use App\Http\Resources\storeOwners\StoreOwnersCollection;
+use App\Http\Resources\storeOwners\StoreOwnersResource;
+
 
 class StoreOwnerController extends Controller
 {
@@ -17,8 +20,10 @@ class StoreOwnerController extends Controller
      */
     public function index()
     {
-        $owners=StoreOwner::searchUsers();
-        return response()->json(['data' => $owners], 200);
+        $storeOwners = StoreOwner::orderBy('id', 'asc')->get();
+        return (new StoreOwnersCollection($storeOwners))
+        ->response()
+        ->setStatusCode(200);
     }
 
     /**
@@ -29,8 +34,10 @@ class StoreOwnerController extends Controller
      */
     public function store(StoreOwnerRequest $request)
     {
-        $owner = StoreOwner::create($request->all()); 
-        return response()->json(['data' => $owner], 201);
+        $storeOwner = StoreOwner::create($request->all());
+        return (new StoreOwnersResource($storeOwner))
+        ->response()
+        ->setStatusCode(200);
     }
 
     /**
@@ -39,10 +46,11 @@ class StoreOwnerController extends Controller
      * @param  \App\Models\StoreOwner  $storeOwner
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        $storeOwner= StoreOwner::searchUser($id);
-        return response()->json(['data' => $storeOwner], 200); //BUG!! storeOwner sale null   
+    public function show(StoreOwner $storeOwner)
+    { 
+        return (new StoreOwnersResource($storeOwner))
+        ->response()
+        ->setStatusCode(200); 
     }
 
     /**
@@ -52,17 +60,12 @@ class StoreOwnerController extends Controller
      * @param  \App\Models\StoreOwner  $storeOwner
      * @return \Illuminate\Http\Response
      */
-    public function update(StoreOwnerRequest $request, $id)
+    public function update(StoreOwnerRequest $request, StoreOwner $storeOwner)
     {
-        $StoreOwner = StoreOwner::find($id);
-
-        $StoreOwner->update($request->all());
-
-        $user_id = $StoreOwner->user_id;
-
-        $StoreOwner= StoreOwner::searchUser($user_id);
-       
-        return response()->json(['data' => $StoreOwner], 200);
+        $storeOwner->update($request->all());
+        return (new StoreOwnersResource($storeOwner))
+        ->response()
+        ->setStatusCode(200);
     }
 
     /**
@@ -71,11 +74,10 @@ class StoreOwnerController extends Controller
      * @param  \App\Models\StoreOwner  $storeOwner
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(StoreOwner $storeOwner)
     {
-        $storeOwner = StoreOwner::find($id);
-        $deletedData = $storeOwner;
+        $dataDeleted=$storeOwner;
         $storeOwner->delete();
-        return response()->json(['data' => $deletedData], 200);
+        return response()->json(['data' => $dataDeleted], 200);
     }
 }
