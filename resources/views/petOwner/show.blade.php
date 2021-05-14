@@ -35,7 +35,7 @@
                 </nav> --> 
 
 
-                <div class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+                <div>
                     <a type="button" class="btn btn-secondary mb-4 mt-2" href="{{ url()->previous() }}"><i
                             class="far fa-hand-point-left"></i> Volver</a>
                     <div class="card">

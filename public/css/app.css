@@ -59,8 +59,7 @@
 }
 
 .btn{
-
-
+  margin:1rem;
 }
 .comboGreenBG{
   background-color: var(--petLightGreen);
@@ -4402,6 +4401,7 @@ input[type=button].btn-block {
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0);
   border-radius: 0.5rem;
+  padding: 2rem;
 }
 .card > hr {
   margin-right: 0;
@@ -4873,6 +4873,7 @@ a.badge-dark:focus, a.badge-dark.focus {
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0);
   border-radius: 0.5rem;
+  margin: 1rem;
 }
 @media (min-width: 576px) {
   .jumbotron {
@@ -10080,7 +10081,7 @@ h3 {
   font-family: var(--font-family-text);
   /* font-variant: normal; */
   text-rendering: auto;
-  line-height: 1;
+  /* line-height: 1; */
 }
 
 .fa-lg {
