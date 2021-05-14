@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Resources\walkers;
+namespace App\Http\Resources\pets;
 
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
-class WalkersCollection extends ResourceCollection
+class PetsCollection extends ResourceCollection
 {
     /**
      * Transform the resource collection into an array.
@@ -17,7 +17,7 @@ class WalkersCollection extends ResourceCollection
         return [
             'data' => $this->collection,
                 'links' => [
-                'self' => '/api/v1/walkers'
+                'self' => '/api/v1/pets'
                 ],
             ];
     }

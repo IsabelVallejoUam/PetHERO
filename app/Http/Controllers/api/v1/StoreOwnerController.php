@@ -20,7 +20,7 @@ class StoreOwnerController extends Controller
      */
     public function index()
     {
-        $storeOwners = StoreOwner::orderBy('id', 'asc')->get();
+        $storeOwners = StoreOwner::orderBy('user_id', 'asc')->get();
         return (new StoreOwnersCollection($storeOwners))
         ->response()
         ->setStatusCode(200);

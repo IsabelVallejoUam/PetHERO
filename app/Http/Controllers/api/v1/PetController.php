@@ -7,6 +7,10 @@ use App\Models\Pet;
 use Illuminate\Http\Request;
 use App\Http\Requests\PetRequest;
 
+use App\Http\Resources\pets\PetsCollection;
+use App\Http\Resources\pets\PetsResource;
+
+
 class PetController extends Controller
 {
     /**
@@ -16,8 +20,10 @@ class PetController extends Controller
      */
     public function index()
     {
-        $pets=Pet::orderBy('name','asc')->get();
-        return response()->json(['data' => $pets], 200);
+        $pets = Pet::orderBy('id', 'asc')->get();
+        return (new PetsCollection($pets))
+        ->response()
+        ->setStatusCode(200);
     }
 
     /**
@@ -28,8 +34,10 @@ class PetController extends Controller
      */
     public function store(PetRequest $request)
     {
-        $pet = Pet::create($request->all()); 
-        return response()->json(['data' => $pet], 201);
+        $pet = Pet::create($request->all());
+        return (new PetsResource($pet))
+        ->response()
+        ->setStatusCode(200);
     }
 
     /**
@@ -38,12 +46,11 @@ class PetController extends Controller
      * @param  \App\Models\Pet  $Pet
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Pet $pet)
     {
-        $pet= Pet::findOrFail($id);
-        if($pet != null){
-            return response()->json(['data' => $pet], 200);
-        }
+        return (new PetsResource($pet))
+        ->response()
+        ->setStatusCode(200);
     }
 
     /**
@@ -53,13 +60,12 @@ class PetController extends Controller
      * @param  \App\Models\Pet  $Pet
      * @return \Illuminate\Http\Response
      */
-    public function update(PetRequest $request, $id)
+    public function update(PetRequest $request, Pet $pet)
     {
-        $pet = Pet::find($id);
-
         $pet->update($request->all());
-
-        return response()->json(['data' => $pet], 200);
+        return (new PetsResource($pet))
+        ->response()
+        ->setStatusCode(200);
     }
 
 
@@ -69,17 +75,11 @@ class PetController extends Controller
      * @param  \App\Models\Pet  $Pet
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Pet $pet)
     {
-        $pet = Pet::find($id);
-
+        $dataDeleted=$pet;
         $pet->delete();
-        return response(null, 204);
+        return response()->json(['data' => $dataDeleted], 200);
     }
- /**public function destroy(Pet $pet)
-    {
-        $pet->delete(); //No sirve
-        return response(null, 204);
-    }
-    */
+
 }

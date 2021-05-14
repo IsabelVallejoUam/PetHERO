@@ -21,7 +21,7 @@ class PetOwnerController extends Controller
      */
     public function index()
     {
-        $walkers = PetOwner::orderBy('id', 'asc')->get();
+        $walkers = PetOwner::orderBy('user_id', 'asc')->get();
         return (new PetOwnersCollection($walkers))
         ->response()
         ->setStatusCode(200);

@@ -19,7 +19,8 @@ class Pet extends Model
         'commentary',
         'size',
         'species',
-        'photo'
+        'photo',
+        'owner_id'
     ];
 
 

@@ -20,7 +20,7 @@ class WalkerController extends Controller
      */
     public function index()
     {
-        $walkers = Walker::orderBy('id', 'asc')->get();
+        $walkers = Walker::orderBy('user_id', 'asc')->get();
         return (new WalkersCollection($walkers))
         ->response()
         ->setStatusCode(200);
