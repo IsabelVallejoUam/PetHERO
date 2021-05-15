@@ -56,7 +56,7 @@
         onsubmit="return confirm('¿Seguro quieres agregar a {{$store->name}} como tienda favorita?')">
         @csrf
         @method('post')
-        <button type="submit" class="btn btn-danger" title="Remover"><i class="fas fa-star"></i></button>
+        <button type="submit" class="btn btn-danger" title="Favorito"><i class="fas fa-star">  Favorito</i></button>
     </form>
     {{-- @endif --}}
 
