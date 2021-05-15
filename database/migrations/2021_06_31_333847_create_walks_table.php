@@ -28,9 +28,9 @@ class CreateWalksTable extends Migration
             $table->integer('max_time');
             $table->text('commentary')->nullable();
             $table->foreignId('walker')->nullable();
-            $table->enum('status',['pending','accepted','active','finished','canceled','rejected']);
-            $table->enum('cancel_confirmation',['yes','no']);
-            $table->enum('walker_confirmation',['yes','no']);
+            $table->enum('status',['pending','accepted','active','finished','canceled','rejected'])->default("pending");
+            $table->enum('cancel_confirmation',['yes','no'])->nullable();
+            $table->enum('walker_confirmation',['yes','no'])->nullable();
             $table->foreign('pet_id')
                 ->references('id')->on('pets')
                 ->onUpdate('cascade')
