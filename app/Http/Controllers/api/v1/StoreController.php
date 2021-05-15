@@ -7,6 +7,10 @@ use App\Models\Store;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreRequest;
 
+use App\Http\Resources\stores\StoresCollection;
+use App\Http\Resources\stores\StoresResource;
+
+
 class StoreController extends Controller
 {
     /**
@@ -16,8 +20,10 @@ class StoreController extends Controller
      */
     public function index()
     {
-        $stores = Store::orderBy('store_name', 'asc')->get();
-        return response()->json(['data' => $stores], 200);
+        $stores = Store::orderBy('id', 'asc')->get();
+        return (new StoresCollection($stores))
+        ->response()
+        ->setStatusCode(200);
     }
 
     /**
@@ -28,8 +34,10 @@ class StoreController extends Controller
      */
     public function store(StoreRequest $request)
     {
-        $store = Store::create($request->all()); 
-        return response()->json(['data' => $store], 201);
+        $store = Store::create($request->all());
+        return (new StoresResource($store))
+        ->response()
+        ->setStatusCode(200);
     }
 
     /**
@@ -40,7 +48,9 @@ class StoreController extends Controller
      */
     public function show(Store $store)
     {
-        return response()->json(['data' => $store], 200);
+        return (new StoresResource($store))
+        ->response()
+        ->setStatusCode(200);
     }
 
     /**
@@ -53,7 +63,9 @@ class StoreController extends Controller
     public function update(StoreRequest $request, Store $store)
     {
         $store->update($request->all());
-        return response()->json(['data' => $store], 200);
+        return (new StoresResource($store))
+        ->response()
+        ->setStatusCode(200);
     }
 
     /**
@@ -64,7 +76,8 @@ class StoreController extends Controller
      */
     public function destroy(Store $store)
     {
+        $dataDeleted=$store;
         $store->delete();
-        return response(null, 204);
+        return response()->json(['data' => $dataDeleted], 200);
     }
 }

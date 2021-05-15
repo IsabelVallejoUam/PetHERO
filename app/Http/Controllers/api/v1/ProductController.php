@@ -7,6 +7,9 @@ use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Http\Requests\ProductRequest;
 
+use App\Http\Resources\products\ProductsCollection;
+use App\Http\Resources\products\ProductsResource;
+
 
 class ProductController extends Controller
 {
@@ -17,8 +20,10 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::orderBy('store_id', 'asc')->get();
-        return response()->json(['data' => $products], 200);
+        $products = Product::orderBy('id', 'asc')->get();
+        return (new ProductsCollection($products))
+        ->response()
+        ->setStatusCode(200);
     }
 
     /**
@@ -27,10 +32,12 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ProductRequest $request)
+    public function store(Product $product)
     {
-        $product = Product::create($request->all());
-        return response()->json(['data' => $product], 201);
+        $product = Product::create($product->all());
+        return (new ProductsResource($product))
+        ->response()
+        ->setStatusCode(200);
     }
 
     /**
@@ -41,7 +48,9 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        return response()->json(['data' => $product], 200);
+        return (new ProductsResource($product))
+        ->response()
+        ->setStatusCode(200);
     }
 
     /**
@@ -54,7 +63,9 @@ class ProductController extends Controller
     public function update(ProductRequest $request, Product $product)
     {
         $product->update($request->all());
-        return response()->json(['data' => $product], 200);
+        return (new ProductsResource($product))
+        ->response()
+        ->setStatusCode(200);
     }
 
     /**
@@ -65,8 +76,8 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        $deletedData = $product;
+        $dataDeleted=$product;
         $product->delete();
-        return response()->json(['data' => $deletedData], 200);
+        return response()->json(['data' => $dataDeleted], 200);
     }
 }

@@ -38,26 +38,26 @@ class Walker extends Authenticatable
     }
     
 
-    public static function searchUser ($walker){
-        $query = DB::select('SELECT walkers.*, users.* FROM users 
-                            JOIN walkers ON users.id = walkers.user_id 
-                            WHERE walkers.user_id =:id', ['id' => $walker->user_id]);
-        return $query;
-    }
+    // public static function searchUser ($walker){
+    //     $query = DB::select('SELECT walkers.*, users.* FROM users 
+    //                         JOIN walkers ON users.id = walkers.user_id 
+    //                         WHERE walkers.user_id =:id', ['id' => $walker->user_id]);
+    //     return $query;
+    // }
 
-    public static function searchUsers(){
-        $query = DB::select('SELECT walkers.*, users.* FROM users 
-                            JOIN walkers WHERE users.id = walkers.user_id');
-        return $query;
-    }
+    // public static function searchUsers(){
+    //     $query = DB::select('SELECT walkers.*, users.* FROM users 
+    //                         JOIN walkers WHERE users.id = walkers.user_id');
+    //     return $query;
+    // }
 
 
-    public static function searchActiveWalkers($walker_id){
-        $query = DB::select('SELECT walkers.* FROM routes as r 
-                            JOIN w ON w.id = r.owner_id 
-                            WHERE w.user_id =:id', ['id' => $walker_id]);
-        return $query;
-    }
+    // public static function searchActiveWalkers($walker_id){
+    //     $query = DB::select('SELECT walkers.* FROM routes as r 
+    //                         JOIN w ON w.id = r.owner_id 
+    //                         WHERE w.user_id =:id', ['id' => $walker_id]);
+    //     return $query;
+    // }
 
     
 }
