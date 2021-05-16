@@ -3,12 +3,11 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 
 
-class FavoriteWalker extends Authenticatable
+class FavoriteWalker extends Model
 {
     use HasFactory;
 
@@ -28,11 +27,6 @@ class FavoriteWalker extends Authenticatable
     public static function searchWalker($user)
     {
 
-        // $query = DB::select('SELECT * FROM favorite_walkers
-        //                     JOIN walkers WHERE favorite_walkers.walker_id = walkers.user_id 
-        //                     JOIN users WHERE favorite_walkers.walker_id = users.id 
-        //                     AND favorite_walkers.pet_owner_id =:id', ['id' => $user->id]); 
-        // return $query;
 
         $query = DB::table('favorite_walkers')
             ->join('walkers', 'favorite_walkers.walker_id', '=', 'walkers.user_id')

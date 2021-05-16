@@ -11,6 +11,10 @@ use App\Http\Controllers\api\v1\StoreController as APIStoreController;
 use App\Http\Controllers\api\v1\ProductController as APIProductController;
 use App\Http\Controllers\api\v1\WalkController as APIWalkController;
 
+use App\Http\Controllers\api\v1\FavoritePetController as APIFavoritePetController;
+use App\Http\Controllers\api\v1\FavoriteStoreController as APIFavoriteStoreController;
+use App\Http\Controllers\api\v1\FavoriteWalkerController as APIFavoriteWalkerController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -35,5 +39,12 @@ Route::apiResource('/v1/stores/products', APIProductController::class);
 Route::apiResource('/v1/petowners', APIPetOwnerController::class);
 Route::apiResource('/v1/pets', APIPetController::class);
 Route::apiResource('/v1/walks', APIWalkController::class);
+
+Route::apiResource('/v1/favoritePets', APIFavoritePetController::class);
+Route::apiResource('/v1/favoriteStores', APIFavoriteStoreController::class);
+    Route::get('/v1/favoriteStores2', [APIFavoriteStoreController::class, 'index2']);
+
+Route::apiResource('/v1/favoriteWalkers', APIFavoriteWalkerController::class);
+
 });
 

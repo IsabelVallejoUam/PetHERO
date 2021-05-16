@@ -2,12 +2,11 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Illuminate\Support\Facades\DB; 
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 
-class FavoritePet extends Authenticatable
+class FavoritePet extends Model
 {
     use HasFactory;
 
@@ -22,6 +21,19 @@ class FavoritePet extends Authenticatable
         'walker_id'
         
     ];
+
+    // public static function searcPet($user)
+    // {
+
+
+    //     $query = DB::table('favorite_walkers')
+    //         ->join('walkers', 'favorite_walkers.walker_id', '=', 'walkers.user_id')
+    //         ->join('users', 'favorite_walkers.walker_id', '=', 'users.id')
+    //         ->where('favorite_walkers.pet_owner_id', $user->id)
+    //         ->get();
+    //     return $query;
+    // }
+
 
     public function scopeOwnedBy($query, $user_id)
     {

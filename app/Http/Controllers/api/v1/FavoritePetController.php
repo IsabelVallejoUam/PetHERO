@@ -4,13 +4,14 @@ namespace App\Http\Controllers\api\v1;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Http\Requests\WalkRequest;
-use App\Models\Walk;
+use App\Models\FavoritePet;
 
-use App\Http\Resources\walks\WalksCollection;
-use App\Http\Resources\walks\WalksResource;
 
-class WalkController extends Controller
+use App\Http\Resources\favoritePets\FavoritePetsCollection;
+use App\Http\Resources\favoritePets\FavoritePetsResource;
+
+
+class FavoritePetController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,11 +20,12 @@ class WalkController extends Controller
      */
     public function index()
     {
-        $walks = Walk::orderBy('id', 'asc')->get();
-        return (new WalksCollection($walks))
+        $favoritePets = FavoritePet::orderBy('walker_id', 'asc')->get();
+        return (new FavoritePetsCollection($favoritePets))
         ->response()
         ->setStatusCode(200);
     }
+    
 
     /**
      * Store a newly created resource in storage.
@@ -31,10 +33,10 @@ class WalkController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(WalkRequest $request)
+    public function store(Request $request)
     {
-        $walk = Walk::create($request->all());
-        return (new WalksResource($walk))
+        $favoritePet = FavoritePet::create($request->all());
+        return (new FavoritePetsResource($favoritePet))
         ->response()
         ->setStatusCode(200);
     }
@@ -42,12 +44,12 @@ class WalkController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Walker  $walker
+     * @param  \App\Models\Pet  $Pet
      * @return \Illuminate\Http\Response
      */
-    public function show(Walk $walk)
+    public function show(FavoritePet $favoritePet)
     {
-        return (new WalksResource($walk))
+        return (new FavoritePetsResource($favoritePet))
         ->response()
         ->setStatusCode(200);
     }
@@ -56,27 +58,29 @@ class WalkController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Walker  $walker
+     * @param  \App\Models\Pet  $Pet
      * @return \Illuminate\Http\Response
      */
-    public function update(WalkRequest $request, Walk $walk)
+    public function update(Request $request, FavoritePet $favoritePet)
     {
-        $walk->update($request->all());
-        return (new WalksResource($walk))
+        $favoritePet->update($request->all());
+        return (new FavoritePetsResource($favoritePet))
         ->response()
         ->setStatusCode(200);
     }
 
+
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Walker  $walker
+     * @param  \App\Models\Pet  $Pet
      * @return \Illuminate\Http\Response
      */
-    public function destroy(WalkRequest $walk)
+    public function destroy(FavoritePet $favoritePet)
     {
-        $dataDeleted=$walk;
-        $walk->delete();
+        $dataDeleted=$favoritePet;
+        $favoritePet->delete();
         return response()->json(['data' => $dataDeleted], 200);
     }
+
 }
