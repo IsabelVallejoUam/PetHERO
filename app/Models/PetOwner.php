@@ -28,17 +28,17 @@ class PetOwner extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
 
-    // public static function searchUser ($user_id){
-    //     $query = DB::select('SELECT pet_owners.*, users.* FROM users 
-    //                         JOIN pet_owners ON users.id = pet_owners.user_id 
-    //                         WHERE users.id =:id', ['id' => $user_id]);
-    //     return $query;
-    // }
+    public static function searchUser ($user_id){
+        $query = DB::select('SELECT pet_owners.*, users.* FROM users 
+                            JOIN pet_owners ON users.id = pet_owners.user_id 
+                            WHERE users.id =:id', ['id' => $user_id]);
+        return $query;
+    }
 
-    // public static function searchUsers(){
-    //     $query = DB::select('SELECT pet_owners.*, users.* FROM users 
-    //                         JOIN pet_owners WHERE users.id = pet_owners.user_id');
-    //     return $query;
-    // }
+    public static function searchUsers(){
+        $query = DB::select('SELECT pet_owners.*, users.* FROM users 
+                            JOIN pet_owners WHERE users.id = pet_owners.user_id');
+        return $query;
+    }
 
 }

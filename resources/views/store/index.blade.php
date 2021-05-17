@@ -2,12 +2,20 @@
 
 @section('content')
 <?php
-    $authenticated = false;
-    if (Auth::id() == $store->owner_id){ //Verifica que el usuario sea el mismo dueño de la tienda
-        $authenticated = true;
-    } else {
-        $authenticated = false;
-    }
+    //  ESTO NO SE USA PARA NADA CREO 
+    // $authenticated = false;
+    // if (Auth::id() == $store->owner_id){ //Verifica que el usuario sea el mismo dueño de la tienda
+    //     $authenticated = true;
+    // } else {
+    //     $authenticated = false;
+    // }
+
+    use App\Models\PetOwner;
+    $type = '';
+    $pet = PetOwner::find(Auth::id());
+    if (isset($pet)) {
+        $type = 'petOwner';
+    } 
 ?>
 <div class="card container">
     <a type="button" class="btn btn-secondary mb-4 mt-2" href="{{ url()->previous() }}"><i class="far fa-hand-point-left"></i> Volver</a>
@@ -51,14 +59,15 @@
         </tr>
     </table>
 
-    {{-- @if($authenticated) --}}
-    <form action="{{ route('petOwner.addFavoriteStore', $store->id) }}" method="post"
-        onsubmit="return confirm('¿Seguro quieres agregar a {{$store->name}} como tienda favorita?')">
-        @csrf
-        @method('post')
-        <button type="submit" class="btn btn-danger" title="Favorito"><i class="fas fa-star">  Favorito</i></button>
-    </form>
-    {{-- @endif --}}
+    @if ($type == 'petOwner')
+        <form action="{{ route('petOwner.addFavoriteStore', $store->id) }}" method="post"
+            onsubmit="return confirm('¿Seguro quieres agregar a {{$store->name}} como tienda favorita?')">
+            @csrf
+            @method('post')
+            <button type="submit" class="btn btn-danger" title="Favorito"><i class="fas fa-star">  Favorito</i></button>
+        </form>
+    @endif
+
 
     <div class="jumbotron"> <h1>Productos</h1> 
         @foreach ($products as $product)

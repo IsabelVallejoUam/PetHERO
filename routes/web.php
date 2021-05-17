@@ -13,6 +13,7 @@ use App\Http\Controllers\StoreController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\FavoriteStoreController;
 use App\Http\Controllers\FavoriteWalkerController;
+use App\Http\Controllers\FavoritePetController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ForumController;
@@ -49,6 +50,7 @@ Route::post('ckeditor/image_upload', [CKEditorController::class, 'upload'])->nam
 
 Route::get('/walker/profile/{walker}', [App\Http\Controllers\WalkerController::class, 'profile'])->name('walker.profile');
 Route::post('/walker/favorite/pet/{pet}', [App\Http\Controllers\WalkerController::class, 'addFavoritePet'])->name('walker.addFavoritePet');
+//Route::post('/walker/delete/pet/{pet}', [App\Http\Controllers\WalkerController::class, 'deleteFavoritePet'])->name('walker.deleteFavoritePet');
 
 Route::resource('/storeOwner', StoreOwnerController::class);
 Route::get('/storeOwner/profile/{storeOwner}', [App\Http\Controllers\StoreOwnerController::class, 'profile'])->name('storeOwner.profile');

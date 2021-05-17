@@ -61,14 +61,18 @@
                     </p>
                 @endif
             @endif
-            <div class="col text-center">
-                <form action="{{ route('petOwner.addFavoriteWalker', $walker->user_id) }}" method="post"
-                    onsubmit="return confirm('¿Seguro quieres agregar a {{$user->name. ' ' .$user->lastname }} como paseador favorito?')">
-                    @csrf
-                    @method('post')
-                    <button type="submit" class="btn btn-danger text-center " title="favorito"><i class="fas fa-star"></i>Añadir a favoritos</button>
-                </form>
-            </div>
+
+            @if ($type == 'petOwner')
+                <div class="col text-center">
+                    <form action="{{ route('petOwner.addFavoriteWalker', $walker->user_id) }}" method="post"
+                        onsubmit="return confirm('¿Seguro quieres agregar a {{$user->name. ' ' .$user->lastname }} como paseador favorito?')">
+                        @csrf
+                        @method('post')
+                        <button type="submit" class="btn btn-danger text-center " title="favorito"><i class="fas fa-star"></i>Añadir a favoritos</button>
+                    </form>
+                </div>
+            @endif
+
         </div>
     @endsection
 </body>

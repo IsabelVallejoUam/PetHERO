@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\FavoritePet;
+use Illuminate\Support\Facades\Auth;
 
 class FavoritePetController extends Controller
 {
@@ -79,6 +81,14 @@ class FavoritePetController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $existingFavorite = FavoritePet::where('pet_id', '=', $id)->where('walker_id', '=', Auth::id())->exists();
+
+            //COMPROBAR QUE EXISTE YA EL FAVORITO
+            if ($existingFavorite) {             
+                $existingFavorite->delete();
+                return back()->with('_success', 'Mascota eliminado exitosamente de Favoritos!');
+            } else {
+            return back()->with('_failure', 'Esta mascota no esta en tus favoritos!');
+        }
     }
 }

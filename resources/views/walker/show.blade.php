@@ -28,7 +28,7 @@
 
             <div class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
                 <div class="container">
-                    <a type="button" class="btn btn-secondary mb-4 mt-2" href="{{ url()->previous() }}"><i
+                    <a type="button" class="btn btn-secondary mb-4 mt-2" href="{{ route('walker.index') }}"><i
                             class="far fa-hand-point-left"></i> Volver</a>
                     <a>
                         <h1 style="position:static; display:block; margin-left:auto; margin-right:auto;"

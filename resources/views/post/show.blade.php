@@ -12,7 +12,7 @@
 ?>
 <div class="container">
     <div class="card">
-        <a type="button" class="btn btn-secondary mb-4 mt-2 " href="{{ url()->previous() }}"><i class="far fa-hand-point-left"></i> Volver</a><br>
+        <a type="button" class="btn btn-secondary mb-4 mt-2 " href="{{ route('forum.index') }}"><i class="far fa-hand-point-left"></i> Volver</a><br>
         <h1>{{ $post->title }}
         @if($authenticated)
             @if ($post->privacy == 'public')

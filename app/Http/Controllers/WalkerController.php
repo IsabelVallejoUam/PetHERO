@@ -203,7 +203,7 @@ class WalkerController extends Controller
                 return back()->with('_failure', 'Esta mascota ya estaba en favoritos!');
             } else {
                 $favoritePet = new FavoritePet();
-                $favoritePet->user_id = Auth::id();
+                $favoritePet->walker_id = Auth::id();
                 $favoritePet->pet_id = $pet->id;
 
                 $favoritePet->save();
@@ -213,5 +213,23 @@ class WalkerController extends Controller
             return back()->with('_failure', 'Debes estar Loggeado para agregar a favoritos!');
         }
     }
+
+    //    /**
+    //  * Delets a specific pet from the walker favorite
+    //  *
+    //  * @param  int  $id
+    //  * @return \Illuminate\Http\Response
+    //  */
+    // public function deleteFavoritePet(FavoritePet $favoritePet, Pet $pet){
+
+    //     $existingFavorite = FavoritePet::where('pet_id', '=', $pet->id)->where('walker_id', '=', Auth::id())->exists();
+
+    //         //COMPROBAR QUE EXISTE YA EL FAVORITO
+    //         if ($existingFavorite) {             
+    //             $existingFavorite->forceDelete();
+    //         } else {
+    //         return back()->with('_failure', 'Esta mascota no esta en tus favoritos!');
+    //     }
+    // }
 
 }
