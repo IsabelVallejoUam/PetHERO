@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\FavoritePet;
+use App\Models\Pet;
+
 use Illuminate\Support\Facades\Auth;
 
 class FavoritePetController extends Controller
@@ -15,7 +17,9 @@ class FavoritePetController extends Controller
      */
     public function index()
     {
-        //
+        $pets = FavoritePet::searchPet(Auth::user());
+        
+        return view('favoritePet.index', compact('pets'));
     }
 
     /**
@@ -79,16 +83,18 @@ class FavoritePetController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Pet $pet)
     {
-        $existingFavorite = FavoritePet::where('pet_id', '=', $id)->where('walker_id', '=', Auth::id())->exists();
-
+        $existingFavorite = FavoritePet::where('pet_id', '=', $pet->id)->where('walker_id', '=', Auth::id())->exists();
+        $favoritePet = FavoritePet::where('pet_id', '=', $pet->id)->where('walker_id', '=', Auth::id())->get();
+        $pet = Pet::where('id',$pet->id)->get();
+        error_log('ayudaaaa');
             //COMPROBAR QUE EXISTE YA EL FAVORITO
             if ($existingFavorite) {             
-                $existingFavorite->delete();
-                return back()->with('_success', 'Mascota eliminado exitosamente de Favoritos!');
+                $favoritePet->delete();
+                return redirect(route('pet.show', compact('pet')))->with('_success', '¡Mascota eliminado exitosamente de Favoritos!');
             } else {
-            return back()->with('_failure', 'Esta mascota no esta en tus favoritos!');
+                return redirect(route('pet.show', compact('pet')))->with('_failure', 'Esta mascota No estaba en favoritos!');
         }
     }
 }

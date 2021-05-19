@@ -11,7 +11,7 @@
 ?>
 <div class="container">
     <div class="card">
-        <a type="button" class="btn btn-secondary mb-4 mt-2" href="{{ route('walk.walkerIndex') }}"><i class="far fa-hand-point-left"></i> Volver</a>
+        {{-- <a type="button" class="btn btn-secondary mb-4 mt-2" href="{{ route('pet.walkerIndex') }}"><i class="far fa-hand-point-left"></i> Volver</a> --}}
         
         <h1>{{ $pet->pet_name }}</h1>
         <img src="/uploads/pets/{{$pet->photo}}" style="width:150px; border-radious:50%; display: block;"/>
@@ -60,7 +60,7 @@
 
     @if ($type == 'walker')
     <div class="col text-center">
-        <form action="{{ route('walker.addFavoritePet', $pet->id) }}" method="post"
+        <form action="{{ route('walker.addFavoritePet', ['pet' => $pet->id]) }}" method="post"
             onsubmit="return confirm('¿Seguro quieres agregar a {{$pet->name }} como mascota favorita?')">
             @csrf
             @method('post')
@@ -69,10 +69,10 @@
     </div>
 
     <div class="col text-center">
-        <form action="{{ route('FavoritePet.destroy', $pet->id) }}" method="delete"
+        <form action="{{ route('favoritePet.destroy', ['favoritePet' => $pet->id]) }}" method="post"
             onsubmit="return confirm('¿Seguro quieres eliminar a {{$pet->name }} como mascota favorita?')">
             @csrf
-            @method('post')
+            @method('delete')
             <button type="submit" class="btn btn-danger " title="Remover"><i class="fas fa-trash"></i>Eliminar de favoritos</button>
         </form>
     </div>

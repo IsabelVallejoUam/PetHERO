@@ -22,18 +22,13 @@ class FavoritePet extends Model
         
     ];
 
-    // public static function searcPet($user)
-    // {
-
-
-    //     $query = DB::table('favorite_walkers')
-    //         ->join('walkers', 'favorite_walkers.walker_id', '=', 'walkers.user_id')
-    //         ->join('users', 'favorite_walkers.walker_id', '=', 'users.id')
-    //         ->where('favorite_walkers.pet_owner_id', $user->id)
-    //         ->get();
-    //     return $query;
-    // }
-
+    public static function searchPets($user)
+    {
+        $query = DB::table('favorite_pets')
+            ->where('favorite_pets.walker_id', $user->id)
+            ->get();
+        return $query;
+    }
 
     public function scopeOwnedBy($query, $user_id)
     {
