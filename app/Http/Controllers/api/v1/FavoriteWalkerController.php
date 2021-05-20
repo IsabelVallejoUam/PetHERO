@@ -5,6 +5,8 @@ namespace App\Http\Controllers\api\v1;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\FavoriteWalker;
+use App\Models\User;
+use App\Models\Walker;
 
 use App\Http\Resources\favoriteWalkers\FavoriteWalkersCollection;
 use App\Http\Resources\favoriteWalkers\FavoriteWalkersResource;
@@ -20,6 +22,15 @@ class FavoriteWalkerController extends Controller
     public function index()
     {
         $favoriteWalkers = FavoriteWalker::orderBy('id', 'asc')->get();
+        return (new FavoriteWalkersCollection($favoriteWalkers))
+        ->response()
+        ->setStatusCode(200);
+    }
+
+    public function indexUser(User $user)
+    {
+    
+        $favoriteWalkers = FavoriteWalker::where('pet_owner_id', $user->id)->get();
         return (new FavoriteWalkersCollection($favoriteWalkers))
         ->response()
         ->setStatusCode(200);
@@ -51,6 +62,15 @@ class FavoriteWalkerController extends Controller
         ->response()
         ->setStatusCode(200);
     }
+
+    public function showUser(User $user, Walker $walker)
+    {
+        $favoriteWalker = FavoriteWalker::where('pet_owner_id', $user->id)->where('walker_id', $walker->user_id)->first();
+        return (new FavoriteWalkersResource($favoriteWalker))
+        ->response()
+        ->setStatusCode(200);
+    }
+
 
     /**
      * Update the specified resource in storage.

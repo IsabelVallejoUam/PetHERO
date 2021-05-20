@@ -19,6 +19,8 @@ class StoresResource extends JsonResource
 
     public function Products($id){
         $query = Product::where('store_id',$id)->get();
+        // $link = "/api/v1/products/{$id}";
+        // $query->push($link);
         return $query;
     
     }
@@ -31,11 +33,12 @@ class StoresResource extends JsonResource
      */
     public function toArray($request){
        
-        $owner = $this->StoreOwner($this->owner_id);
         $products = $this->Products($this->id);
+        $link = "/api/v1/storeowners/{$this->owner_id}";
 
         return [
             'ID'=> $this->id,
+            'Owner ID'=> $this->owner_id,
             'Name'=> $this->store_name,
             'Slogan'=> $this->slogan,
             'Nit'=> $this->nit,
@@ -47,7 +50,7 @@ class StoresResource extends JsonResource
             "Store's Photo"=> $this->photo,
             'Privacy'=> $this->privacy,
             "Type of Establishment"=> $this->type,
-            'Owner'=> $owner,
+            'Owner Link'=>$link,
             'Products'=>$products,
 
         ];

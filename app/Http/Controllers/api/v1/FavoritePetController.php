@@ -5,6 +5,8 @@ namespace App\Http\Controllers\api\v1;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\FavoritePet;
+use App\Models\User;
+use App\Models\Pet;
 
 
 use App\Http\Resources\favoritePets\FavoritePetsCollection;
@@ -21,6 +23,15 @@ class FavoritePetController extends Controller
     public function index()
     {
         $favoritePets = FavoritePet::orderBy('walker_id', 'asc')->get();
+        return (new FavoritePetsCollection($favoritePets))
+        ->response()
+        ->setStatusCode(200);
+    }
+
+    public function indexUser(User $user)
+    {
+    
+        $favoritePets = FavoritePet::where('walker_id', $user->id)->get();
         return (new FavoritePetsCollection($favoritePets))
         ->response()
         ->setStatusCode(200);
@@ -49,6 +60,14 @@ class FavoritePetController extends Controller
      */
     public function show(FavoritePet $favoritePet)
     {
+        return (new FavoritePetsResource($favoritePet))
+        ->response()
+        ->setStatusCode(200);
+    }
+
+    public function showUser( User $user, Pet $pet)
+    {
+        $favoritePet = FavoritePet::where('walker_id', $user->id)->where('pet_id', $pet->id)->first();
         return (new FavoritePetsResource($favoritePet))
         ->response()
         ->setStatusCode(200);

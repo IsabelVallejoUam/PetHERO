@@ -4,6 +4,7 @@ namespace App\Http\Controllers\api\v1;
 
 use App\Http\Controllers\Controller;
 use App\Models\Store;
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreRequest;
 
@@ -22,6 +23,15 @@ class StoreController extends Controller
     {
         $stores = Store::orderBy('id', 'asc')->get();
         return (new StoresCollection($stores))
+        ->response()
+        ->setStatusCode(200);
+    }
+    
+    public function indexUser(User $user)
+    {
+    
+        $ownerStore = Store::where('owner_id', $user->id)->get();
+        return (new StoresCollection($ownerStore))
         ->response()
         ->setStatusCode(200);
     }

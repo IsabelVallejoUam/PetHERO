@@ -4,6 +4,7 @@ namespace App\Http\Controllers\api\v1;
 
 use App\Http\Controllers\Controller;
 use App\Models\Pet;
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Requests\PetRequest;
 
@@ -22,6 +23,15 @@ class PetController extends Controller
     {
         $pets = Pet::orderBy('id', 'asc')->get();
         return (new PetsCollection($pets))
+        ->response()
+        ->setStatusCode(200);
+    }
+
+    public function indexUser(User $user)
+    {
+    
+        $ownerPets = Pet::where('owner_id', $user->id)->get();
+        return (new PetsCollection($ownerPets))
         ->response()
         ->setStatusCode(200);
     }

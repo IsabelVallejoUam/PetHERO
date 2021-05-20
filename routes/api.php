@@ -35,16 +35,25 @@ Route::apiResource('/v1/walkers', APIWalkerController::class);
 Route::apiResource('/v1/users', APIUserController::class);
 Route::apiResource('/v1/storeowners', APIStoreOwnerController::class);
 Route::apiResource('/v1/stores', APIStoreController::class);
+    Route::get('/v1/stores/user/{user}', [APIStoreController::class,  'indexUser']);
+
 Route::apiResource('/v1/stores/products', APIProductController::class);
 Route::apiResource('/v1/petowners', APIPetOwnerController::class);
 Route::apiResource('/v1/pets', APIPetController::class);
+    Route::get('/v1/pets/user/{user}', [APIPetController::class,  'indexUser']);    
 Route::apiResource('/v1/walks', APIWalkController::class);
 
 Route::apiResource('/v1/favoritePets', APIFavoritePetController::class);
+    Route::get('/v1/favoritePets/user/{user}', [APIFavoritePetController::class, 'indexUser']);
+    Route::get('/v1/favoritePets/user/{user}/pet/{pet}', [APIFavoritePetController::class, 'showUser']);
+
 Route::apiResource('/v1/favoriteStores', APIFavoriteStoreController::class);
-    Route::get('/v1/favoriteStores2', [APIFavoriteStoreController::class, 'index2']);
+    Route::get('/v1/favoriteStores/user/{user}', [APIFavoriteStoreController::class, 'indexUser']);
+    Route::get('/v1/favoriteStores/user/{user}/store/{store}', [APIFavoriteStoreController::class, 'showUser']);
 
 Route::apiResource('/v1/favoriteWalkers', APIFavoriteWalkerController::class);
+    Route::get('/v1/favoriteWalkers/user/{user}', [APIFavoriteWalkerController::class, 'indexUser']);
+    Route::get('/v1/favoriteWalkers/user/{user}/walker/{walker}', [APIFavoriteWalkerController::class, 'showUser']);
 
 });
 
