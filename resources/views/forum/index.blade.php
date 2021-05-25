@@ -28,7 +28,7 @@
                     <h6> Escrito por: <u>{{$post->owner->name}} </u></h6>
                 </div>
                 <div class="container"  style="display:flow-root;">
-                    <b>Preview</b>
+                    <b>Previsualizar</b>
                     @if ($post->created_at != $post->updated_at)
                         <i>(Edited)</i>
                     @endif
