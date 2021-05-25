@@ -14,7 +14,7 @@
             <h6> {{$pet->commentary}}</h6>
             <p><b>Edad:</b> {{$pet->age}}</p>
             <p><b>Raza:</b> {{$pet->race}}</p>
-            <p><b>Raza:</b> {{$pet->size}}</p>
+            <p><b>Tamaño:</b> {{$pet->size}}</p>
             <p><b>Sexo:</b> {{$pet->sex}}</p>
             <p><b>Personalidad:</b> {{$pet->personality}}</p>
             <a href="{{ route('store.showPublic', $pet->id) }}" class=" btn btn-info"> Ver {{$pet->name}}</a>

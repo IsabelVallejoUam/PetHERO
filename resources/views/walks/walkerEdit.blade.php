@@ -12,7 +12,7 @@
                         @csrf
 
                         <div class="form-group row">
-                            <label for="minutes_walked" class="col-md-4 col-form-label text-md-right">{{ __('Minutes Walked') }}</label>
+                            <label for="minutes_walked" class="col-md-4 col-form-label text-md-right">{{ __('Duración en minutos') }}</label>
 
                             <div class="col-md-6">
                                 <input id="minutes_walked" type="number" class="form-control @error('minutes_walked') is-invalid @enderror" name="minutes_walked" value="{{ old('minutes_walked') }}" autocomplete="minutes_walked" autofocus>
@@ -20,7 +20,7 @@
                         </div>
                         
                         <div class="form-group row">
-                            <label for="commentary" class="col-md-4 col-form-label text-md-right">{{ __('Commentary') }}</label>
+                            <label for="commentary" class="col-md-4 col-form-label text-md-right">{{ __('Comentarios') }}</label>
 
                             <div class="col-md-6">
                                 <input id="commentary" type="text" class="form-control"  name="commentary" value="{{ old('commentary') }}"  autocomplete="commentary" autofocus>
@@ -28,7 +28,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="walker" class="col-md-4 col-form-label text-md-right">{{ __('Walker') }}</label>
+                            <label for="walker" class="col-md-4 col-form-label text-md-right">{{ __('Caminador') }}</label>
                             <div class="col-md-6">
                                 <input id="walker" type="text" class="form-control"  name="walker" value="{{ old('walker') }}"  autocomplete="walker" autofocus>
                             </div>
@@ -55,7 +55,7 @@
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
+                                    {{ __('Registrar') }}
                                 </button>
                             </div>
                         </div>

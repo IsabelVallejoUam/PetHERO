@@ -26,15 +26,15 @@
             </a>
             <table class="table table-striped table-hover">
                 <tr>
-                    <th scope="col">Full Name</th>
+                    <th scope="col">Nombre Completo</th>
                     <td>{{ $user->name . ' ' . $user->lastname }}</td>
                 </tr>
                 <tr>
-                    <th scope="col">Email</th>
+                    <th scope="col">Correo Electrónico</th>
                     <td>{{ $user->email }}</td>
                 </tr>
                 <tr>
-                    <th scope="col">Experience</th>
+                    <th scope="col">Experiencia</th>
                     <td>{{ $walker->experience }} Años</td>
                 </tr>
             </table>
