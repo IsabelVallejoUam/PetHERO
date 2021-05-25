@@ -21,7 +21,7 @@
                 <td><i>"{{$store->slogan}}"</i></td>
             </tr>
             <tr>
-                <th scope="col" style="width: 200px">Nit </th>
+                <th scope="col" style="width: 200px">NIT </th>
                 <td>{{$store->nit}}<br>
                 </td>
             </tr>

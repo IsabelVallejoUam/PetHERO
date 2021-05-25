@@ -7,7 +7,7 @@
     <input type="text" class="form-control" id="lastname" name="lastname" value="{{ old('slogan', $user->lastname ?? "") }}">
 </div>  
 <div class="mb-3">
-    <label for="email" class="form-label">Email</label>
+    <label for="email" class="form-label">Correo electrónico</label>
     <input type="text" class="form-control" id="email" name="email" value="{{ old('email', $user->email ?? "") }}">
 </div>  
 

@@ -13,13 +13,13 @@
                 </div>
                 <div class="card-body row justify-content-center">
                     <a href="{{ url('/lobby') }}" class="btn btn-primary">
-                        PET HERO
+                        PetHero
                     </a><br>
                     <a href="{{ url('/login') }}" class="btn btn-primary">
-                        <i class="fas fa-sign-in-alt"></i> LOGIN
+                        <i class="fas fa-sign-in-alt"></i> Iniciar Sesión
                     </a>
                     <a href="{{ url('/registerOptions') }}" class="btn btn-primary">
-                        <i class="fas fa-file-signature"></i> REGISTER
+                        <i class="fas fa-file-signature"></i> Registrarse
                     </a>
                 </div>
             </div>

@@ -39,19 +39,19 @@
                     </a>
                     <table class="table table-striped table-hover">
                         <tr>
-                            <th scope="col">Full Name</th>
+                            <th scope="col">Nombre Completo</th>
                             <td>{{ $user->name . ' ' . $user->lastname }}</td>
                         </tr>
                         <tr>
-                            <th scope="col">Email</th>
+                            <th scope="col">Correo Electrónico</th>
                             <td>{{ $user->email }}</td>
                         </tr>
                         <tr>
-                            <th scope="col">Phone Number</th>
+                            <th scope="col">Número de Teléfono</th>
                             <td>{{ $user->phone }}</td>
                         </tr>
                         <tr>
-                            <th scope="col">Document</th>
+                            <th scope="col">Número de Identidad</th>
                             <td>{{ $user->document }}</td>
                         </tr>
                         <tr>
@@ -59,7 +59,7 @@
                             <td>{{ $walker->slogan }}</td>
                         </tr>
                         <tr>
-                            <th scope="col">Experience</th>
+                            <th scope="col">Experencia en Años</th>
                             <td>{{ $walker->experience }}</td>
                         </tr>
                         <tr>
