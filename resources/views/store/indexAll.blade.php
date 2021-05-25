@@ -2,7 +2,29 @@
 
 @section('content')
 
+<div>
+    <div class="mx-auto pull-right">
+        <div class="container" style="display:inline-block; color:black;">
+            <form action="{{ route('store.indexAll') }}" method="GET" role="search">
+
+                <div class="input-group">
+                    <span class="input-group-btn mr-5 mt-1">
+                        <button class="btn btn-info" type="submit" title="Buscar Tiendas">
+                            <span class="fas fa-search"></span>
+                        </button>
+                    </span>
+                    <input type="text" class="form-control mr-2" name="term" placeholder="Buscar Tiendas" id="term">
+                   
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
 <div class="card container"> 
+    <a type="button" class="btn btn-secondary mb-4 mt-2" href="{{ url()->previous() }}"><i class="far fa-hand-point-left"></i> Volver</a>
+
     <h1>
         Establecimientos
     </h1> 

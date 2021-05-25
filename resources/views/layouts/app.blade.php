@@ -101,6 +101,7 @@ $type = 'walker';
                                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                         <a class="dropdown-item" href="{{ route('store.indexAll') }}">Ver todas las
                                             tiendas</a>
+                                            <a class="dropdown-item" href="{{ route('product.index') }}">Ver todos los productos</a>
                                     </div>
 
                                 </li>
@@ -147,6 +148,7 @@ $type = 'walker';
                                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                             <a class="dropdown-item" href="{{ route('store.indexAll') }}">Ver todas las
                                                 tiendas</a>
+                                            <a class="dropdown-item" href="{{ route('product.index') }}">Ver todps los productos</a>
                                         </div>
     
                                     </li>
@@ -229,8 +231,8 @@ $type = 'walker';
                                         </a>
                                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                             <a class="dropdown-item" href="{{ route('store.indexAll') }}">Ver todas las tiendas</a>
-                                            <a class="dropdown-item" href="{{ route('favoriteStore.index') }}">Ver tiendas favoritas</a>
-
+                                            <a class="dropdown-item" href="{{ route('favoriteStore.index') }}">Ver tiendas favoritas</a>                                    
+                                            <a class="dropdown-item" href="{{ route('product.index') }}">Ver todos los productos</a>
                                         </div>
     
                                     </li>
@@ -295,6 +297,8 @@ $type = 'walker';
                                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                         <a class="dropdown-item" href="{{ route('store.indexAll') }}">Ver todas las
                                             tiendas</a>
+                                        <a class="dropdown-item" href="{{ route('product.index') }}">Ver todps los productos</a>
+
                                     </div>
 
                                 </li>

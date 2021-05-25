@@ -24,9 +24,19 @@ class StoreController extends Controller
         return view('store.index',compact(['store','products','services']));
     }
 
-    public function indexAll()
+    public function indexAll(Request $request)
     {
-        $stores = Store::where('privacy','public')->get();
+        $stores = Store::where([
+            ['privacy','=','public'],
+            [function ($query) use ($request) {
+                if (($term = $request->term)) {
+                    $query->orWhere('store_name','LIKE','%'. $term  . '%')->get();
+                }
+            }]
+        ])
+        ->orderBy("id","desc")
+        ->paginate(5);
+        
         return view('store.indexAll',compact('stores'));
     }
 

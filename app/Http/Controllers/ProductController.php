@@ -14,9 +14,19 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $products = Product::where([
+            [function ($query) use ($request) {
+                if (($term = $request->term)) {
+                    $query->orWhere('name','LIKE','%'. $term  . '%')->get();
+                }
+            }]
+        ])
+        ->orderBy("id","desc")
+        ->paginate(5);
+        
+        return view('product.index',compact('products'));
     }
 
     /**

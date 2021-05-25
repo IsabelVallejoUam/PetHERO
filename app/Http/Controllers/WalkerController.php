@@ -26,11 +26,10 @@ class WalkerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //$walkers = Walker::all()->sortBy('score');
-        $walkers = Walker::searchUsers();
-
+        $walkers = Walker::searchUsers($request);
+        
         return view('walker.index', compact('walkers'));
     }
 
