@@ -8,7 +8,7 @@ use App\Models\Walker;
 use App\Models\Pet;
 use App\Models\Route;
 use App\Models\FavoritePet;
-
+use App\Models\Review;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\WalkerRequest;
@@ -29,7 +29,6 @@ class WalkerController extends Controller
     public function index(Request $request)
     {
         $walkers = Walker::searchUsers($request);
-        
         return view('walker.index', compact('walkers'));
     }
 
@@ -94,6 +93,8 @@ class WalkerController extends Controller
         
         $user = User::findOrFail($walker->user_id);
         $routes = Route::ownedBy($walker->user_id)->get();
+        $rate = Review::where('type','walk')->where('walker_id',$walker->id)->count();
+        dd($rate);
         return view('walker.show', compact('walker','user','routes'));
         
     }
@@ -109,7 +110,8 @@ class WalkerController extends Controller
         
         $user = User::findOrFail($walker->user_id);
         $routes = Route::ownedBy($walker->user_id)->where('privacy','public')->get();
-        return view('walker.perfil', compact('walker','user','routes'));
+        $rate = Review::where('type','walk')->where('walker_id',$walker->user_id)->avg('rate');
+        return view('walker.perfil', compact('walker','user','routes','rate'));
         
     }
 

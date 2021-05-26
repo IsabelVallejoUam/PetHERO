@@ -38,6 +38,13 @@
                 <br>
                 <p class="text-center" style="margin-bottom: 20px">NÚMERO DE RUTAS: {{$routes_count}} </p>
                 <br>
+                @if($rate != null)
+                    <p class="text-center" style="margin-bottom: 20px">CALIFICACIÓN: {{$rate}}/5 </p>
+                    <br>
+                @else
+                    <p class="text-center" style="margin-bottom: 20px"><i>Aún no existen calificaciones</i></p>
+                    <br>
+                @endif
             </div>
             @if($routes_count > 0)
                 <form action="{{route('route.getData')}}" method="POST">
