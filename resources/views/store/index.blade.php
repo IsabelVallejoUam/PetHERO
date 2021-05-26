@@ -13,7 +13,8 @@
 ?>
 
 <div class="card container">
-    <a type="button" class="btn btn-secondary mb-4 mt-2" href="{{ route("store.indexAll") }}"><i class="far fa-hand-point-left"></i> Volver</a>
+    
+    <a type="button" class="btn btn-secondary mb-4 mt-2"  style="width: 100px;" href="{{ route("store.indexAll") }}"><i class="far fa-hand-point-left"></i> Volver</a>
    
     <h1>{{ $store->store_name }}</h1>
     <img src="/uploads/stores/{{$store->photo}}" style="width:150px; border-radious:50%; display: block;"/>
@@ -48,13 +49,18 @@
             </td>
         </tr>
         <tr>
-            <th scope="col" style="width: 200px">Puntuación </th>
+            <th scope="col" style="width: 200px">Puntuación 
+                <form action="{{route('review.indexStore')}}" method="POST">
+                    {{ csrf_field() }}
+                    <input type="hidden" name="store_id" value="{{$store->id}}" id="store_id">
+                    <button type="submit" style="display:block;" class="btn btn-primary">Ver reseñas</button>
+                </form>
+            </th>
             @if ($rate != null)
                 <td>{{$rate}}/5<br>
             @else
                 <td>Esta tienda aún no cuenta con calificaciones<br>
             @endif
-            
             </td>
         </tr>
     </table>

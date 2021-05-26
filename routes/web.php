@@ -47,7 +47,9 @@ Route::resource('/post', PostController::class);
 Route::resource('/chats', ChatController::class);
 Route::resource('/review', ReviewController::class);
 Route::post('/review/new', [App\Http\Controllers\ReviewController::class,'makeReview'])->name('review.makeReview');
-    
+Route::post('/review/index/store', [App\Http\Controllers\ReviewController::class,'indexStore'])->name('review.indexStore');
+Route::post('/review/index/product', [App\Http\Controllers\ReviewController::class,'indexProduct'])->name('review.indexProduct');
+
 Route::resource('/walker/route', RouteController::class);
 Route::resource('/forum', ForumController::class);
 Route::post('ckeditor/image_upload', [CKEditorController::class, 'upload'])->name('upload');

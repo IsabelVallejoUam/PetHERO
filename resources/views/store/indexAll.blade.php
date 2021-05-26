@@ -50,6 +50,11 @@
                     <p><b>Aún no hay calificaciones</p>
                 @endif
                 <a href="{{ route('store.showPublic', $store->id) }}" class=" btn btn-info"> Ver {{$store->store_name}}</a>
+                <form action="{{route('review.indexStore')}}" method="POST">
+                    {{ csrf_field() }}
+                    <input type="hidden" name="store_id" value="{{$store->id}}" id="store_id"><br>
+                    <button type="submit" style="display:block;" class="btn btn-primary">Ver reseñas</button>
+                </form>
             </div>
         </div>
     @endforeach

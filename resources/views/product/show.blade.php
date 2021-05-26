@@ -39,7 +39,14 @@
             <td>{{ $product->discount }}</td>
         </tr>
         <tr>
-            <th scope="col">Calificación</th>
+            <th scope="col">Calificación
+                <form action="{{route('review.indexProduct')}}" method="POST">
+                    {{ csrf_field() }}
+                    <input type="hidden" name="product_id" value="{{$product->id}}" id="product_id">
+                    <button type="submit" style="display:block;" class="btn btn-primary">Ver reseñas</button>
+                </form>
+
+            </th>
             @if ($rate != null)
                 <td>{{$rate}}/5<br>
             @else
