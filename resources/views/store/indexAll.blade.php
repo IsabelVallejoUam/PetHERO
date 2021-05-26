@@ -32,6 +32,9 @@
     </h1> 
     <div class="container">
     @foreach ($stores as $store)
+    <?php
+        $rate = \App\Models\Review::where('type','store')->where('store_id',$store->id)->avg('rate');
+    ?>
         <div class="card" style = "width: 20rem; margin:10px; display:inline-block;">
             <img class="card-img-top" src="/uploads/stores/{{$store->photo}}" alt="">
             <div class="card-body">
@@ -41,7 +44,11 @@
                 <p><b>Horario:</b> {{$store->schedule}}</p>
                 <p><b>Dirección:</b> {{$store->address}}</p>
                 <p><b>Teléfono:</b> {{$store->phone_number}}</p>
-                <p><b>Puntuación:</b> {{$store->score}}</p>
+                @if ($rate != null)
+                    <p><b>Puntuación:</b> {{$rate}}/5</p>
+                @else
+                    <p><b>Aún no hay calificaciones</p>
+                @endif
                 <a href="{{ route('store.showPublic', $store->id) }}" class=" btn btn-info"> Ver {{$store->store_name}}</a>
             </div>
         </div>

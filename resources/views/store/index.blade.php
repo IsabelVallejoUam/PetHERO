@@ -9,12 +9,12 @@
         $type = 'petOwner';
     } 
 
-    $reviewCount = App\Models\Review::where('user_id',Auth::id())->count();
+    $reviewCount = App\Models\Review::where('user_id',Auth::id())->where('type','store')->where('store_id',$store->id)->count();
     $rate = \App\Models\Review::where('type','store')->where('store_id',$store->id)->avg('rate');
 ?>
 
 <div class="card container">
-    <a type="button" class="btn btn-secondary mb-4 mt-2" href="{{ url()->previous() }}"><i class="far fa-hand-point-left"></i> Volver</a>
+    <a type="button" class="btn btn-secondary mb-4 mt-2" href="{{ route("store.indexAll") }}"><i class="far fa-hand-point-left"></i> Volver</a>
    
     <h1>{{ $store->store_name }}</h1>
     <img src="/uploads/stores/{{$store->photo}}" style="width:150px; border-radious:50%; display: block;"/>
@@ -50,7 +50,12 @@
         </tr>
         <tr>
             <th scope="col" style="width: 200px">Puntuación </th>
-            <td>{{$rate}}/5<br>
+            @if ($rate != null)
+                <td>{{$rate}}/5<br>
+            @else
+                <td>Esta tienda aún no cuenta con calificaciones<br>
+            @endif
+            
             </td>
         </tr>
     </table>

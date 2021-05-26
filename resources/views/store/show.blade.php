@@ -139,7 +139,6 @@
             <button type="submit" class="btn btn-primary">Añadir producto o servicio</button>
         </form>
         @endif
-
         <div class="btn-group" role="group" aria-label="Link options">
             <form action="{{ route('store.destroy', $store->id) }}" method="post"
                 onsubmit="return confirm('¿Esta seguro que desea remover este establecimiento?')">
