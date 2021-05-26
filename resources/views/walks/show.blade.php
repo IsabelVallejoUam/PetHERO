@@ -63,7 +63,7 @@
 
                 <tr>
                     <th scope="col">Calificación para el paseador:</th>
-                    <td>{{ $walk->walker_calification }}/5</td>
+                    <td>{{ $walk->walker_calification }}/5 </td>
                 </tr>
 
                 <tr>

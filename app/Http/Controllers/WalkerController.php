@@ -107,12 +107,10 @@ class WalkerController extends Controller
      */
     public function profile(Walker $walker)
     {        
-        
         $user = User::findOrFail($walker->user_id);
         $routes = Route::ownedBy($walker->user_id)->where('privacy','public')->get();
         $rate = Review::where('type','walk')->where('walker_id',$walker->user_id)->avg('rate');
         return view('walker.perfil', compact('walker','user','routes','rate'));
-        
     }
 
     /**
