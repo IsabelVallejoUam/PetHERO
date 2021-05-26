@@ -19,6 +19,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\ForumController;
 use App\Http\Controllers\ChatController;
 use App\Http\Controllers\CKEditorController;
+use App\Http\Controllers\ReviewController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,6 +45,9 @@ Route::resource('/walker', WalkerController::class);
 Route::resource('/comment', CommentController::class);
 Route::resource('/post', PostController::class);
 Route::resource('/chats', ChatController::class);
+Route::resource('/review', ReviewController::class);
+Route::post('/review/new', [App\Http\Controllers\ReviewController::class,'makeReview'])->name('review.makeReview');
+    
 Route::resource('/walker/route', RouteController::class);
 Route::resource('/forum', ForumController::class);
 Route::post('ckeditor/image_upload', [CKEditorController::class, 'upload'])->name('upload');
@@ -105,8 +109,6 @@ Route::middleware(['auth'])->group (function () {
     Route::post('/walk/submit/walker/cancel', [App\Http\Controllers\WalkController::class,'submitWalkerCancel'])->name('walk.submitWalkerCancel');
     Route::post('/walk/submit/accept', [App\Http\Controllers\WalkController::class,'submitWalkerAcceptRequest'])->name('walk.submitWalkerAcceptRequest');
     Route::post('/walk/walker/request', [App\Http\Controllers\WalkController::class,'requestNew'])->name('walk.requestNew');
-    Route::post('/walk/rate', [App\Http\Controllers\WalkController::class,'rate'])->name('walk.rate');
-    Route::post('/walk/submit/rate', [App\Http\Controllers\WalkController::class,'submitRate'])->name('walk.submitRate');
     Route::get('/walk/request/all', [App\Http\Controllers\WalkController::class,'createRequest'])->name('walk.createRequest');  
 });
 

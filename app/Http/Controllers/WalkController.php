@@ -288,17 +288,16 @@ class WalkController extends Controller
     //Formulario para cuando un usuario quiee calificar el paseo
     public function rate(Request $request)
     {
-        $walk = Walk::where('id',$request->input('walk_id'))->first();
-        return view('walks.rate', compact('walk'));
+        return redirect(route('review.makeReview'));   
     }
     //Guarda el formulario para cuando un usuario quiee calificar el paseo
-    public function submitRate(Request $request)
-    {
-        $walk = Walk::where('id',$request->input('walk_id'))->first();
-        $walk->walker_calification = $request->input('calification');
-        $walk->save();
-        return redirect(route('walk.index'))->with('_success', 'Gracias por tu opinión!');   
-    }
+    // public function submitRate(Request $request)
+    // {
+    //     $walk = Walk::where('id',$request->input('walk_id'))->first();
+    //     $walk->walker_calification = $request->input('calification');
+    //     $walk->save();
+    //     return redirect(route('walk.index'))->with('_success', 'Gracias por tu opinión!');   
+    // }
 
     /**
      * Display the specified resource.

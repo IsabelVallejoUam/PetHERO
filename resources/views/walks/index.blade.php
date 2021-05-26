@@ -179,9 +179,11 @@ use App\Models\Walker;
 
                             @if ($walk->status == 'finished' && $walk->walker_calification == null)
                                 @if($type == 'petOwner')
-                                    <form action="{{route('walk.rate')}}" method="POST" 
+                                    <form action="{{route('review.makeReview')}}" method="POST" 
                                     onsubmit="return confirm('¿Esta seguro que desea calificar este paseo?')">
                                         {{ csrf_field() }}
+                                        <input type="hidden" name="walker_id" value="{{$walk->walker}}" id="walker_id">
+                                        <input type="hidden" name="type" value="walk" id="type">
                                         <input type="hidden" name="walk_id" value="{{$walk->id}}" id="walk_id">
                                         <button type="submit" class="btn btn-primary">Calificar paseo</button>
                                     </form>
