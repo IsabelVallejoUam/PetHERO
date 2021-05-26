@@ -22,5 +22,15 @@ class ProductsSeeder extends Seeder
             'description' => "Alimento premium para perros",
             'photo' => "docg_chow.png"
         ]); 
+
+        DB::table('products')->insert([
+            'store_id' => "3", 
+            'price' => "15000",
+            'name' => "Alimento cat chow 500gr",
+            'discount' => "0",
+            'quantity' => "20",
+            'description' => "Alimento premium para gatos",
+            'photo' => "docg_chow.png"
+        ]); 
     }
 }

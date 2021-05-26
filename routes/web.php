@@ -19,6 +19,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\ForumController;
 use App\Http\Controllers\ChatController;
 use App\Http\Controllers\CKEditorController;
+use App\Http\Controllers\CartController;
 
 /*
 |--------------------------------------------------------------------------
@@ -76,6 +77,11 @@ Route::get('/store/public/{store}', [App\Http\Controllers\StoreController::class
 Route::resource('/favoriteStore',FavoriteStoreController::class);
 Route::resource('/favoriteWalker',FavoriteWalkerController::class);
 Route::resource('/favoritePet', FavoritePetController::class);
+
+Route::post('/cart-add',[App\Http\Controllers\CartController::class,'add'])->name('cart.add');
+Route::get('/cart-checkout',[App\Http\Controllers\CartController::class,'cart'])->name('cart.checkout');
+Route::post('/cart-clear',[App\Http\Controllers\CartController::class,'clear'])->name('cart.clear');
+Route::post('/cart-removeitem',[App\Http\Controllers\CartController::class,'removeItem'])->name('cart.removeItem');
 
 //Rutas para los paseos
 Route::middleware(['auth'])->group (function () {

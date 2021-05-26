@@ -82,6 +82,13 @@
                 <p><b>Puntuación:</b> {{$product->score}}</p>         
             
                 <a href="{{ route('product.show', $product->id) }}" class=" btn btn-info"> Ver {{$product->name}}</a>
+                @if ($type == 'petOwner')
+                    <form action="{{route('cart.add')}}" method="POST">
+                        @csrf
+                        <input type="hidden" name="product_id" value="{{$product->id}}">
+                        <input type="submit" name="btn" class="btn btn-success" value="ADD TO CART">
+                    </form>
+                @endif
             </div>
         </div>   
     @endforeach
