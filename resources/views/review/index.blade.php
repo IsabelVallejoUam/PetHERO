@@ -7,9 +7,10 @@
     @elseif ($type == 'product')
         <h1 style="text-align: center;">Reseñas de {{$product->name}}</h1><br>
     @endif
-    
     {{$reviews->links()}}<br>
     <div class="container">
+
+        
         @foreach ($reviews as $review)
         <div class="card" style = "width: 20rem; margin:10px; display:inline-block;">
             <?php
@@ -23,7 +24,6 @@
             <div class="card-body" style = "width: 20rem; margin:10px; display:inline-block;">
                 <img class="card-img-top" src="/uploads/avatars/{{$author->avatar}}" style="border-radius: 2rem; padding:15px;width:200px;float:left; display:flex;" > 
             </div>
-
             <?php
                 $count = App\Models\Review::where('user_id',$review->user_id)->count();
             ?>

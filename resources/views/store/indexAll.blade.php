@@ -33,7 +33,13 @@
     <div class="container">
     @foreach ($stores as $store)
     <?php
+        $type = '';
+        $pet = App\Models\PetOwner::find(Auth::id());
+        if (isset($pet)) {
+            $type = 'petOwner';
+        } 
         $rate = \App\Models\Review::where('type','store')->where('store_id',$store->id)->avg('rate');
+        $overallCount = App\Models\Review::where('type','store')->where('store_id',$store->id)->count();
     ?>
         <div class="card" style = "width: 20rem; margin:10px; display:inline-block;">
             <img class="card-img-top" src="/uploads/stores/{{$store->photo}}" alt="">
@@ -50,11 +56,13 @@
                     <p><b>Aún no hay calificaciones</p>
                 @endif
                 <a href="{{ route('store.showPublic', $store->id) }}" class=" btn btn-info"> Ver {{$store->store_name}}</a>
-                <form action="{{route('review.indexStore')}}" method="POST">
-                    {{ csrf_field() }}
-                    <input type="hidden" name="store_id" value="{{$store->id}}" id="store_id"><br>
-                    <button type="submit" style="display:block;" class="btn btn-primary">Ver reseñas</button>
-                </form>
+                @if($overallCount > 0 && $type )
+                    <form action="{{route('review.indexStore')}}" method="POST">
+                        {{ csrf_field() }}
+                        <input type="hidden" name="store_id" value="{{$store->id}}" id="store_id"><br>
+                        <button type="submit" style="display:block;" class="btn btn-primary">Ver ({{$overallCount}}) reseñas</button>
+                    </form>
+                @endif
             </div>
         </div>
     @endforeach

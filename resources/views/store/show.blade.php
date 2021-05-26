@@ -48,11 +48,6 @@
                 <td>{{$store->phone_number}}<br>
                 </td>
             </tr>
-            <tr>
-                <th scope="col" style="width: 200px">Puntuación </th>
-                <td>{{$store->score}}<br>
-                </td>
-            </tr>
         </table>
         
         <form action="{{ route('petOwner.addFavoriteStore', $store->id) }}" method="post"

@@ -10,6 +10,8 @@
     } 
     $reviewCount = App\Models\Review::where('user_id',Auth::id())->where('type','store')->where('store_id',$store->id)->count();
     $rate = \App\Models\Review::where('type','store')->where('store_id',$store->id)->avg('rate');
+    $overallCount = App\Models\Review::where('type','store')->where('store_id',$store->id)->count();
+    
 ?>
 
 <div class="card container">
@@ -53,7 +55,7 @@
                 <form action="{{route('review.indexStore')}}" method="POST">
                     {{ csrf_field() }}
                     <input type="hidden" name="store_id" value="{{$store->id}}" id="store_id">
-                    <button type="submit" style="display:block;" class="btn btn-primary">Ver reseñas</button>
+                    <button type="submit" style="display:block;" class="btn btn-primary">Ver ({{$overallCount}}) reseñas</button>
                 </form>
             </th>
             @if ($rate != null)
@@ -74,7 +76,7 @@
                 <button type="submit" class="btn btn-danger" title="Favorito"><i class="fas fa-star">  Favorito</i></button>
             </form>
 
-            @if($reviewCount == 0)
+            @if($reviewCount == 0 && $type == 'petOwner')
                 <form action="{{route('review.makeReview')}}" method="POST" 
                 onsubmit="return confirm('¿Está seguro que desea calificar esta tienda?')">
                     {{ csrf_field() }}

@@ -10,6 +10,7 @@
     } 
     
     $reviewCount = App\Models\Review::where('user_id',Auth::id())->where('type','product')->where('product_id',$product->id)->count();
+    $overallCount = App\Models\Review::where('type','product')->where('product_id',$product->id)->count();
     $rate = \App\Models\Review::where('type','product')->where('product_id',$product->id)->avg('rate');
 ?>
 <div class="card container">
@@ -40,12 +41,13 @@
         </tr>
         <tr>
             <th scope="col">Calificación
-                <form action="{{route('review.indexProduct')}}" method="POST">
-                    {{ csrf_field() }}
-                    <input type="hidden" name="product_id" value="{{$product->id}}" id="product_id">
-                    <button type="submit" style="display:block;" class="btn btn-primary">Ver reseñas</button>
-                </form>
-
+                @if ($rate != null)
+                    <form action="{{route('review.indexProduct')}}" method="POST">
+                        {{ csrf_field() }}
+                        <input type="hidden" name="product_id" value="{{$product->id}}" id="product_id">
+                        <button type="submit" style="display:block;" class="btn btn-primary">Ver ({{$overallCount}}) reseñas</button>
+                    </form>
+                @endif
             </th>
             @if ($rate != null)
                 <td>{{$rate}}/5<br>
@@ -54,7 +56,7 @@
             @endif
         </tr>  
     </table>
-    @if($reviewCount < 1)
+    @if($reviewCount < 1 && $type== 'petOwner')
         <form action="{{route('review.makeReview')}}" method="POST" 
         onsubmit="return confirm('¿Está seguro que desea calificar este producto o servicio?')">
             {{ csrf_field() }}
@@ -63,7 +65,7 @@
             <input type="hidden" name="store_id" value="{{$product->store_id}}" id="store_id">
             <button type="submit" class="btn btn-primary">Calificar producto ó servicio</button>
         </form>
-    @else
+    @elseif($reviewCount > 1)
         ¡Ya calificaste este producto!
     @endif
 @endsection
