@@ -63,3 +63,46 @@ Traducción de la página a español
 Finalización de arreglos gráficos, presentación de scrum
 3. ¿Qué impedimentos tienes para realizar el trabajo y qué ayudas necesitas?
 Ninguno por ahora
+
+---------------------------------------------------------------------------------------------------------
+Dev: Juan Pablo Zapata 
+
+Fecha: 07/05/2021
+1. ¿Qué has hecho desde la última reunión?
+Planear el módulo de paseos con mi equipo
+2. ¿Qué harás hoy?
+Iniciar a implementar paseos
+3. ¿Qué impedimentos tienes para realizar el trabajo y qué ayudas necesitas?
+Ninguno por ahora
+
+Fecha: 08/05/2021
+1. ¿Qué has hecho desde la última reunión?
+Implementar versión inicial de paseos
+2. ¿Qué harás hoy?
+Terminar el módulo de paseos
+3. ¿Qué impedimentos tienes para realizar el trabajo y qué ayudas necesitas?
+Algunos errores pero los solucionaré hoy mismo 
+
+Fecha: 13/05/2021
+1. ¿Qué has hecho desde la última reunión?
+Pulir el moduldo de paseos
+2. ¿Qué harás hoy?
+Pulir algunos aspectos para los paseos
+3. ¿Qué impedimentos tienes para realizar el trabajo y qué ayudas necesitas?
+Ninguno
+
+Fecha: 19/05/2021
+1. ¿Qué has hecho desde la última reunión?
+Terminar el módulo de paseos
+2. ¿Qué harás hoy?
+Dejar listo el módulo para paseos
+3. ¿Qué impedimentos tienes para realizar el trabajo y qué ayudas necesitas?
+Ninguno
+
+Fecha: 26/05/2021
+1. ¿Qué has hecho desde la última reunión?
+Investigar a cerca del despliegue de la aplicación
+2. ¿Qué harás hoy?
+Implementar calificaciones
+3. ¿Qué impedimentos tienes para realizar el trabajo y qué ayudas necesitas?
+Ninguno
