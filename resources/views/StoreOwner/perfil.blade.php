@@ -22,7 +22,7 @@
         </tr>
     </table>
     
-    <div class="jumbotron"> <h1>Mis establecimientos</h1> 
+    <div class="container"> <h1>Mis establecimientos</h1> 
         @foreach ($stores as $store)
         <div class="card" style="width: 18rem; display:inline-block; margin:10px;">
             <img class="card-img-top" src="/uploads/stores/{{$store->photo}}" alt="Card image cap">

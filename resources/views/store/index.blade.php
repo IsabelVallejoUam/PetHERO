@@ -89,7 +89,7 @@
     </div>
 
 
-    <div class="jumbotron"> <h1>Productos</h1> 
+    <div class="container"> <h1>Productos</h1> 
         @foreach ($products as $product)
         <?php
             $productRate = \App\Models\Review::where('type','product')->where('product_id',$product->id)->avg('rate');
@@ -114,7 +114,7 @@
     {{$products->links()}}
     </div>
 
-    <div class="jumbotron"> <h1>Servicios</h1> 
+    <div class="container"> <h1>Servicios</h1> 
         @foreach ($services as $product)
         <?php
             $productRate = \App\Models\Review::where('type','product')->where('product_id',$product->id)->avg('rate');

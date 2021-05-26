@@ -19,8 +19,8 @@ class StoreController extends Controller
     }
 
     public function showPublic(Store $store){
-        $products = Product::ownedBy($store->id)->where('type','producto')->where('privacy','public')->simplePaginate(6);
-        $services = Product::ownedBy($store->id)->where('type','servicio')->where('privacy','public')->simplePaginate(6);
+        $products = Product::ownedBy($store->id)->where('type','producto')->where('privacy','public')->simplePaginate(3);
+        $services = Product::ownedBy($store->id)->where('type','servicio')->where('privacy','public')->simplePaginate(3);
         return view('store.index',compact(['store','products','services']));
     }
 
@@ -90,8 +90,8 @@ class StoreController extends Controller
      */
     public function show(Store $store)
     {
-        $products = Product::ownedBy($store->id)->where('type','producto')->simplePaginate(6);
-        $services = Product::ownedBy($store->id)->where('type','servicio')->simplePaginate(6);
+        $products = Product::ownedBy($store->id)->where('type','producto')->simplePaginate(3);
+        $services = Product::ownedBy($store->id)->where('type','servicio')->simplePaginate(3);
         return view('store.show',compact(['store','products','services']));
     }
 

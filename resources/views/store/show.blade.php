@@ -62,7 +62,7 @@
             <button type="submit" class="btn btn-danger" title="Remover"><i class="fas fa-star"> Favorito</i></button>
         </form>
 
-        <div class="jumbotron"> <h1>Productos</h1> 
+        <div class="container"> <h1>Productos</h1> 
             @foreach ($products as $product)
             <div class="card" style="width: 18rem; display:inline-block; margin:10px;">
                 <img class="card-img-top" src="/uploads/products/{{$product->photo}}" alt="Card image cap">
@@ -80,9 +80,9 @@
                     <p><b>Stock:</b> {{$product->quantity}}</p>
                     <p><b>Puntuación:</b> {{$product->score}}</p>         
                 
-                    <a href="{{ route('product.show', $product->id) }}" class=" btn btn-info"> Ver {{$product->name}}</a>
+                    <a href="{{ route('product.show', $product->id) }}" class=" btn btn-info"> Ver </a>
                     @if($authenticated)
-                    <a href="{{ route('product.edit', ['product' => $product->id]) }}" class="btn btn-warning" title="Editar"><i class="far fa-edit"></i>Editar{{$product->name}}</a>
+                    <a href="{{ route('product.edit', ['product' => $product->id]) }}" class="btn btn-warning" title="Editar"><i class="far fa-edit"></i>Editar</a>
                     <form action="{{ route('product.destroy', $product->id) }}" method="post"
                         onsubmit="return confirm('¿Esta seguro que desea remover este Producto?')">
                         @csrf
@@ -92,11 +92,11 @@
                     @endif
                 </div>
             </div>   
-        @endforeach
-        {{$products->links()}}
+            @endforeach
+        {{$products->links()}}   
         </div>
 
-        <div class="jumbotron"> <h1>Servicios</h1> 
+        <div class="container"> <h1>Servicios</h1> 
             @foreach ($services as $product)
             <div class="card" style="width: 18rem; display:inline-block; margin:10px;">
                 <img class="card-img-top" src="/uploads/products/{{$product->photo}}" alt="Card image cap">
@@ -113,9 +113,9 @@
                     <p><b>Descuento:</b> {{$product->discount}}</p>
                     <p><b>Puntuación:</b> {{$product->score}}</p>
                     
-                    <a href="{{ route('product.show', $product->id) }}" class=" btn btn-info"> Ver {{$product->name}}</a>
+                    <a href="{{ route('product.show', $product->id) }}" class=" btn btn-info"> Ver</a>
                     @if($authenticated)
-                    <a href="{{ route('product.edit', ['product' => $product->id]) }}" class="btn btn-warning" title="Editar"><i class="far fa-edit"></i>Editar{{$product->name}}</a>
+                    <a href="{{ route('product.edit', ['product' => $product->id]) }}" class="btn btn-warning" title="Editar"><i class="far fa-edit"></i>Editar</a>
                     <form action="{{ route('product.destroy', $product->id) }}" method="post"
                         onsubmit="return confirm('¿Esta seguro que desea remover esta tienda?')">
                         @csrf
