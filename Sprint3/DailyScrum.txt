@@ -1,1 +1,65 @@
+Dev: Nicolás Herrera Sepúlveda
 
+Fecha: 05/05/2021
+1. ¿Qué has hecho desde la última reunión?
+Presentar Sprint
+2. ¿Qué harás hoy?
+Arreglar bugs gráficos
+3. ¿Qué impedimentos tienes para realizar el trabajo y qué ayudas necesitas?
+Ninguno por ahora
+
+Fecha: 10/05/2021
+1. ¿Qué has hecho desde la última reunión?
+Arreglar bugs gráficos
+2. ¿Qué harás hoy?
+Ayudar a compañeros con solución de bugs
+3. ¿Qué impedimentos tienes para realizar el trabajo y qué ayudas necesitas?
+Ninguno por ahora
+
+Fecha: 12/05/2021
+1. ¿Qué has hecho desde la última reunión?
+Ayudar a compañeros con solución de bugs
+2. ¿Qué harás hoy?
+Solución de dudas con el docente
+3. ¿Qué impedimentos tienes para realizar el trabajo y qué ayudas necesitas?
+Ninguno por ahora
+
+Fecha: 17/05/2021
+1. ¿Qué has hecho desde la última reunión?
+Solución de dudas con el docente
+2. ¿Qué harás hoy?
+Más arreglos gráficos, creación de documento para pruebas de API
+3. ¿Qué impedimentos tienes para realizar el trabajo y qué ayudas necesitas?
+Ninguno por ahora
+
+Fecha: 17/05/2021
+1. ¿Qué has hecho desde la última reunión?
+Más arreglos gráficos, creación de documento para pruebas de API
+2. ¿Qué harás hoy?
+Solución de dudas con el docente
+3. ¿Qué impedimentos tienes para realizar el trabajo y qué ayudas necesitas?
+Ninguno por ahora
+
+Fecha: 24/05/2021
+1. ¿Qué has hecho desde la última reunión?
+Solución de dudas con el docente
+2. ¿Qué harás hoy?
+Creación de pruebas de API
+3. ¿Qué impedimentos tienes para realizar el trabajo y qué ayudas necesitas?
+Ninguno por ahora
+
+Fecha: 25/05/2021
+1. ¿Qué has hecho desde la última reunión?
+Creación de pruebas de API
+2. ¿Qué harás hoy?
+Traducción de la página a español
+3. ¿Qué impedimentos tienes para realizar el trabajo y qué ayudas necesitas?
+Ninguno por ahora
+
+Fecha: 26/05/2021
+1. ¿Qué has hecho desde la última reunión?
+Traducción de la página a español
+2. ¿Qué harás hoy?
+Finalización de arreglos gráficos, presentación de scrum
+3. ¿Qué impedimentos tienes para realizar el trabajo y qué ayudas necesitas?
+Ninguno por ahora
