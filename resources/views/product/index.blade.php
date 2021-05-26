@@ -31,6 +31,9 @@
     </h1> 
     <div class="container">
     @foreach ($products as $product)
+    <?php
+        $rate = \App\Models\Review::where('type','product')->where('product_id',$product->id)->avg('rate');
+    ?>  
         <div class="card" style = "width: 20rem; margin:10px; display:inline-block;">
             <img class="card-img-top" src="/uploads/products/{{$product->photo}}" alt="{{$product->name}}">
             <div class="card-body">
@@ -40,7 +43,11 @@
                 <p><b>Tipo: </b>{{$product->type}}</p>
                 <p><b>Descuento:</b> {{$product->discount}}</p>
                 <p><b>Descripcion:</b> {{$product->description}}</p>
-                <p><b>Puntuación:</b> {{$product->score}}</p>
+                @if ($rate != null)
+                    <p><b>Puntuación:</b> {{$rate}}/5</p>
+                @else
+                    <p><b>Aún no hay calificaciones</p>
+                @endif
                 <a href="{{ route('product.show', $product->id) }}" class=" btn btn-info"> Ver {{$product->name}}</a>
             </div>
         </div>

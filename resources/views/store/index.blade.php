@@ -8,7 +8,6 @@
     if (isset($pet)) {
         $type = 'petOwner';
     } 
-
     $reviewCount = App\Models\Review::where('user_id',Auth::id())->where('type','store')->where('store_id',$store->id)->count();
     $rate = \App\Models\Review::where('type','store')->where('store_id',$store->id)->avg('rate');
 ?>
@@ -69,7 +68,7 @@
                 <button type="submit" class="btn btn-danger" title="Favorito"><i class="fas fa-star">  Favorito</i></button>
             </form>
 
-            @if($reviewCount < 1)
+            @if($reviewCount == 0)
                 <form action="{{route('review.makeReview')}}" method="POST" 
                 onsubmit="return confirm('¿Está seguro que desea calificar esta tienda?')">
                     {{ csrf_field() }}
@@ -77,6 +76,8 @@
                     <input type="hidden" name="type" value="store" id="type">
                     <button type="submit" class="btn btn-primary">Calificar tienda</button>
                 </form>
+            @else
+                ¡Ya calificaste este establecimiento!
             @endif
         @endif
     </div>
@@ -84,6 +85,9 @@
 
     <div class="jumbotron"> <h1>Productos</h1> 
         @foreach ($products as $product)
+        <?php
+            $productRate = \App\Models\Review::where('type','product')->where('product_id',$product->id)->avg('rate');
+        ?>
         <div class="card" style="width: 18rem; display:inline-block; margin:10px;">
             <img class="card-img-top" src="/uploads/products/{{$product->photo}}" alt="Card image cap">
             <div class="card-body">
@@ -91,9 +95,12 @@
                 <h5> <i>{{$product->price}}</i></h5>
                 <h6> {{$store->description}}</h6>
                 <p><b>Descuento:</b> {{$product->discount}}</p>
-                <p><b>Stock:</b> {{$product->quantity}}</p>
-                <p><b>Puntuación:</b> {{$product->score}}</p>         
-            
+                <p><b>Stock:</b> {{$product->quantity}}</p>  
+                @if ($productRate != null)
+                    <p><b>Puntuación:</b> {{$productRate}}/5</p>
+                @else
+                    <p><b>Aún no hay calificaciones</p>
+                @endif
                 <a href="{{ route('product.show', $product->id) }}" class=" btn btn-info"> Ver {{$product->name}}</a>
             </div>
         </div>   
@@ -103,6 +110,9 @@
 
     <div class="jumbotron"> <h1>Servicios</h1> 
         @foreach ($services as $product)
+        <?php
+            $productRate = \App\Models\Review::where('type','product')->where('product_id',$product->id)->avg('rate');
+        ?>
         <div class="card" style="width: 18rem; display:inline-block; margin:10px;">
             <img class="card-img-top" src="/uploads/products/{{$product->photo}}" alt="Card image cap">
             <div class="card-body">
@@ -110,13 +120,14 @@
                 <h5> <i>{{$product->price}}</i></h5>
                 <h6> {{$store->description}}</h6>
                 <p><b>Descuento:</b> {{$product->discount}}</p>
-                <p><b>Puntuación:</b> {{$product->score}}</p>
-                
+                @if ($productRate != null)
+                    <p><b>Puntuación:</b> {{$productRate}}/5</p>
+                @else
+                    <p><b>Aún no hay calificaciones</p>
+                @endif
                 <a href="{{ route('product.show', $product->id) }}" class=" btn btn-info"> Ver {{$product->name}}</a>
             </div>
-            
         </div>
-        
     @endforeach
     {{$services->links()}}
     </div>

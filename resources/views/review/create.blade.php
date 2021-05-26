@@ -18,7 +18,7 @@
                     @csrf
                     <div class="card-body">
                         <div class="mb-3">
-                            <label for="rate" class="form-label">Cómo calificas el servicio ofrecido</label>
+                            <label for="rate" class="form-label">Cómo calificas el producto ó servicio ofrecido</label>
                             <input type="number" min="0" max="5" class="form-control" id="rate" name="rate">
                         </div>
 
@@ -30,7 +30,7 @@
                         <input type="hidden" name="walker_id" value="{{$walker_id}}" id="walker_id">
                         <input type="hidden" name="product_id" value="{{$product_id}}" id="product_id">
                         <input type="hidden" name="store_id" value="{{$store_id}}" id="store_id">
-                        <input type="hidden" name="walk_id" value="{{$walk_id}}" id="walk_id">    
+                        <input type="hidden" name="walk_id" value="{{$walk_id}}" id="walk_id">   
                     </div>
                     <button type="submit" class="btn btn-primary">Calificar</button>
                 </form>
