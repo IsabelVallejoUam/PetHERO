@@ -11,7 +11,10 @@
 ?>
 <div class="container">
     <div class="card">
-        <a type="button" class="btn btn-secondary mb-4 mt-2" href="{{ route('store.index') }}">Volver</a>
+        
+        <div>
+            <a type="button" class="btn btn-secondary mb-4 mt-2" href="{{ route('store.index') }}">Volver</a>
+        </div>
         
         <h1>{{ $store->store_name }}</h1>
         <img src="/uploads/stores/{{$store->photo}}" style="width:150px; border-radious:50%; display: block;"/>
@@ -56,7 +59,7 @@
             onsubmit="return confirm('¿Seguro quieres agregar a {{$store->name}} como tienda favorita?')">
             @csrf
             @method('post')
-            <button type="submit" class="btn btn-danger" title="Remover"><i class="fas fa-star"></i></button>
+            <button type="submit" class="btn btn-danger" title="Remover"><i class="fas fa-star"> Favorito</i></button>
         </form>
 
         <div class="jumbotron"> <h1>Productos</h1> 
@@ -133,7 +136,7 @@
         <form action="{{route('product.getData')}}" method="POST">
             {{ csrf_field() }}
             <input type="hidden" name="store_id" value="{{$store->id}}">
-            <button type="submit" class="btn btn-primary">Añadir producto ó servicio</button>
+            <button type="submit" class="btn btn-primary">Añadir producto o servicio</button>
         </form>
         @endif
 

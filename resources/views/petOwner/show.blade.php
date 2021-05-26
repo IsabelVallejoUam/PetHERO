@@ -36,8 +36,21 @@
 
 
                 <div>
-                    <a type="button" class="btn btn-secondary mb-4 mt-2" href="{{ url()->previous() }}"><i
+                    <div class="btn-group" role="group" aria-label="Link options">
+                        <a type="button" class="btn btn-secondary" href="{{ url()->previous() }}"><i
                             class="far fa-hand-point-left"></i> Volver</a>
+
+                        <a href="{{ route('petOwner.edit', $petOwner->user_id) }}" class="btn btn-warning" title="Editar"><i
+                                class="far fa-edit"></i>Editar</a>
+                        <form action="" {{-- "{{ route('walker.destroy', auth()->user()->document) }}" --}} method="post"
+                            onsubmit="return confirm('¿Esta seguro que desea eliminar el perfil?')">
+                            @csrf
+                            @method('delete')
+                            <button type="submit" class="btn btn-danger" title="Remover"><i class="fas fa-trash"> Eliminar</i></button>
+                        </form>
+
+                    </div>
+                    
                     <div class="card">
                         <a>
                             <h1 style="position:static; display:block; margin-left:auto; margin-right:auto;"
@@ -79,16 +92,6 @@
                                 <td><a href="{{ route('pet.index') }}" class=" btn btn-info"> Ver Mis Mascotas</a></td>
                             </tr>
                         </table>
-                    </div>
-                    <div class="btn-group" role="group" aria-label="Link options">
-                        <a href="{{ route('petOwner.edit', $petOwner->user_id) }}" class="btn btn-warning" title="Editar"><i
-                                class="far fa-edit"></i></a>
-                        <form action="" {{-- "{{ route('walker.destroy', auth()->user()->document) }}" --}} method="post"
-                            onsubmit="return confirm('¿Esta seguro que desea eliminar el perfil?')">
-                            @csrf
-                            @method('delete')
-                            <button type="submit" class="btn btn-danger" title="Remover"><i class="fas fa-trash"></i></button>
-                        </form>
                     </div>
                 </div>
             <!-- </div> -->

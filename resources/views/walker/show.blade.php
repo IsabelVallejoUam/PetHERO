@@ -28,9 +28,19 @@
 
             <div class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
                 <div class="container">
-                    <a type="button" class="btn btn-secondary mb-4 mt-2" href="{{ route('walker.index') }}"><i
-                            class="far fa-hand-point-left"></i> Volver</a>
-                    <a>
+                    <div class="btn-group" role="group" aria-label="Link options">
+                        <a type="button" class="btn btn-secondary" href="{{ route('walker.index') }}"><i
+                                class="far fa-hand-point-left"></i> Volver</a>
+                        <a href="{{ route('walker.edit', $walker->user_id) }}" class="btn btn-warning" title="Editar"><i class=""></i>Editar {{$user->name}}</a>
+                
+                        <form action="" {{-- "{{ route('walker.destroy', auth()->user()->document) }}" --}} method="post"
+                            onsubmit="return confirm('¿Esta seguro que desea eliminar el perfil?')">
+                            @csrf
+                            @method('delete')
+                            <button type="submit" class="btn btn-danger" title="Remover"><i
+                                    class="fas fa-trash">  Eliminar</i></button>
+                        </form>
+                    </div>
                         <h1 style="position:static; display:block; margin-left:auto; margin-right:auto;"
                             class="p-1 text-center">Perfil de {{ $user->name . ' ' . $user->lastname }} (Paseador de
                             mascotas)</h1>
@@ -144,17 +154,7 @@
                             </td>
                         </tr>
                     </table>  
-                    <div class="btn-group" role="group" aria-label="Link options">
-                        <a href="{{ route('walker.edit', $walker->user_id) }}" class="btn btn-warning" title="Editar"><i class="far fa-edit"></i>Editar{{$user->name}}</a>
-                
-                        <form action="" {{-- "{{ route('walker.destroy', auth()->user()->document) }}" --}} method="post"
-                            onsubmit="return confirm('¿Esta seguro que desea eliminar el perfil?')">
-                            @csrf
-                            @method('delete')
-                            <button type="submit" class="btn btn-danger" title="Remover"><i
-                                    class="fas fa-trash"></i></button>
-                        </form>
-                    </div>
+                    
                 </div>
             </div>
         </div>

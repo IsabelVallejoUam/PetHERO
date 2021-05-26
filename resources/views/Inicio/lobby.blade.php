@@ -10,7 +10,7 @@
                     <div class="card-header row justify-content-center">
                             <img src="/uploads/Logo.png" style="width:150px; border-radius:1%;"/>
 
-                            Pet Hero<br>
+                            PetHero<br>
                     </div>
                     <div class="card-body row justify-content-center">
                         <a href="{{ url('walker') }}" class="btn btn-primary">

@@ -23,8 +23,9 @@
 
 
 <div class="card container"> 
-    <a type="button" class="btn btn-secondary mb-4 mt-2" href="{{ url()->previous() }}"><i class="far fa-hand-point-left"></i> Volver</a>
-
+    <div>
+        <a type="button" class="btn btn-secondary mb-4 mt-2" href="{{ url()->previous() }}"><i class="far fa-hand-point-left"></i> Volver</a>
+    </div>
     <h1>
         Productos
     </h1> 

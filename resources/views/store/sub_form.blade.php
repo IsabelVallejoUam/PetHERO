@@ -12,7 +12,7 @@
 </div>  
 <div class="mb-3">
     <label for="description" class="form-label">Describe tu tienda</label>
-    <textarea id="description" name="description" value="{{ old('description', $store->description ?? "") }}">{{ old('description', $store->description ?? "") }}</textarea> 
+    <textarea class="textarea" id="description" name="description" value="{{ old('description', $store->description ?? "") }}">{{ old('description', $store->description ?? "") }}</textarea> 
 </div>  
 <div class="mb-3">
     <label for="schedule" class="form-label">Tu horario</label>

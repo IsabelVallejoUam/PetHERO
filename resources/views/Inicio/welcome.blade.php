@@ -9,7 +9,7 @@
                 <div class="card-header row justify-content-center">
                     
                         <img src="/uploads/Logo.png" style="width:150px; border-radious:50%;"/>
-                        Bienvenido a Pet Hero<br>
+                        Bienvenido a PetHero<br>
                 </div>
                 <div class="card-body row justify-content-center">
                     <a href="{{ url('/lobby') }}" class="btn btn-primary">
