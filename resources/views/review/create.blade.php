@@ -30,8 +30,7 @@
                         <input type="hidden" name="walker_id" value="{{$walker_id}}" id="walker_id">
                         <input type="hidden" name="product_id" value="{{$product_id}}" id="product_id">
                         <input type="hidden" name="store_id" value="{{$store_id}}" id="store_id">
-                        <input type="hidden" name="walk_id" value="{{$walk_id}}" id="walk_id">
-                        
+                        <input type="hidden" name="walk_id" value="{{$walk_id}}" id="walk_id">    
                     </div>
                     <button type="submit" class="btn btn-primary">Calificar</button>
                 </form>

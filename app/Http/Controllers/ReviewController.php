@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Review;
 use App\Models\Walk;
+use App\Models\Store;
 use Illuminate\Support\Facades\Auth;
 class ReviewController extends Controller
 {
@@ -63,7 +64,7 @@ class ReviewController extends Controller
 
         switch($review->type){
             case "store":
-
+                return redirect(route('store.showPublic',$request->input('store_id')))->with('_success', '¡Gracias por tu opinión!');
             break;
             case "walk":
                 return redirect(route('walk.index'))->with('_success', '¡Gracias por tu opinión!');

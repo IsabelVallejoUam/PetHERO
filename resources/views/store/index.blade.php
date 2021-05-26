@@ -2,20 +2,15 @@
 
 @section('content')
 <?php
-    //  ESTO NO SE USA PARA NADA CREO 
-    // $authenticated = false;
-    // if (Auth::id() == $store->owner_id){ //Verifica que el usuario sea el mismo dueño de la tienda
-    //     $authenticated = true;
-    // } else {
-    //     $authenticated = false;
-    // }
-
     use App\Models\PetOwner;
     $type = '';
     $pet = PetOwner::find(Auth::id());
     if (isset($pet)) {
         $type = 'petOwner';
     } 
+
+    $reviewCount = App\Models\Review::where('user_id',Auth::id())->count();
+    $rate = \App\Models\Review::where('type','store')->where('store_id',$store->id)->avg('rate');
 ?>
 
 <div class="card container">
@@ -55,19 +50,31 @@
         </tr>
         <tr>
             <th scope="col" style="width: 200px">Puntuación </th>
-            <td>{{$store->score}}<br>
+            <td>{{$rate}}/5<br>
             </td>
         </tr>
     </table>
 
-    @if ($type == 'petOwner')
-        <form action="{{ route('petOwner.addFavoriteStore', $store->id) }}" method="post"
-            onsubmit="return confirm('¿Seguro quieres agregar a {{$store->name}} como tienda favorita?')">
-            @csrf
-            @method('post')
-            <button type="submit" class="btn btn-danger" title="Favorito"><i class="fas fa-star">  Favorito</i></button>
-        </form>
-    @endif
+    <div class="btn-group" role="group" aria-label="options">
+        @if ($type == 'petOwner')
+            <form action="{{ route('petOwner.addFavoriteStore', $store->id) }}" method="post"
+                onsubmit="return confirm('¿Seguro quieres agregar a {{$store->name}} como tienda favorita?')">
+                @csrf
+                @method('post')
+                <button type="submit" class="btn btn-danger" title="Favorito"><i class="fas fa-star">  Favorito</i></button>
+            </form>
+
+            @if($reviewCount < 1)
+                <form action="{{route('review.makeReview')}}" method="POST" 
+                onsubmit="return confirm('¿Está seguro que desea calificar esta tienda?')">
+                    {{ csrf_field() }}
+                    <input type="hidden" name="store_id" value="{{$store->id}}" id="store_id">
+                    <input type="hidden" name="type" value="store" id="type">
+                    <button type="submit" class="btn btn-primary">Calificar tienda</button>
+                </form>
+            @endif
+        @endif
+    </div>
 
 
     <div class="jumbotron"> <h1>Productos</h1> 
