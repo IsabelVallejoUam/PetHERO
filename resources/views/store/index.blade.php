@@ -52,11 +52,13 @@
         </tr>
         <tr>
             <th scope="col" style="width: 200px">Puntuación 
-                <form action="{{route('review.indexStore')}}" method="POST">
-                    {{ csrf_field() }}
-                    <input type="hidden" name="store_id" value="{{$store->id}}" id="store_id">
-                    <button type="submit" style="display:block;" class="btn btn-primary">Ver ({{$overallCount}}) reseñas</button>
-                </form>
+                @if($overallCount > 0)
+                    <form action="{{route('review.indexStore')}}" method="POST">
+                        {{ csrf_field() }}
+                        <input type="hidden" name="store_id" value="{{$store->id}}" id="store_id">
+                        <button type="submit" style="display:block;" class="btn btn-primary">Ver ({{$overallCount}}) reseñas</button>
+                    </form>
+                @endif
             </th>
             @if ($rate != null)
                 <td>{{$rate}}/5<br>
