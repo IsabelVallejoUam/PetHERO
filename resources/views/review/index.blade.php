@@ -21,6 +21,7 @@
             </small></b>
             <h3>"<i><b>{{$review->commentary}}</i></b>"</h3>
             <h6> Escrito por: <u>{{$author->name}} </u></h6>
+            <h6> Calificación: <u>{{$review->rate}}/5 </u></h6>
             <div class="card-body" style = "width: 20rem; margin:10px; display:inline-block;">
                 <img class="card-img-top" src="/uploads/avatars/{{$author->avatar}}" style="border-radius: 2rem; padding:15px;width:200px;float:left; display:flex;" > 
             </div>
