@@ -45,7 +45,7 @@ class ReviewController extends Controller
         $type ='store';
         $store_id =$request->input('store_id');
         $store = Store::where('id',$store_id)->first();
-        $reviews = Review::where('store_id',$store_id)->simplepaginate(6);
+        $reviews = Review::where('store_id',$store_id)->get();
         return view('review.index', compact('type','store_id','reviews','store'));
     }
 
@@ -54,7 +54,7 @@ class ReviewController extends Controller
         $type ='product';
         $product_id =$request->input('product_id');
         $product = Product::where('id',$product_id)->first();
-        $reviews = Review::where('product_id',$product_id)->simplepaginate(6);
+        $reviews= Review::where('product_id',$product_id)->get();
         return view('review.index', compact('type','reviews','product'));
     }
 
@@ -89,7 +89,9 @@ class ReviewController extends Controller
                 return redirect(route('walk.index'))->with('_success', '¡Gracias por tu opinión!');
             break;
             case "product":
-                return redirect(route('product.show', $request->input('store_id')))->with('_success', '¡Gracias por tu opinión!');
+                $product = Product::where('id',$request->input('product_id'))->first();
+                $store = Store::where('id',$product->store_id)->first();
+                return redirect(route('store.showPublic', $store->id))->with('_success', '¡Gracias por tu opinión!');
             break;
         }
     }

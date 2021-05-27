@@ -62,7 +62,6 @@
             {{ csrf_field() }}
             <input type="hidden" name="product_id" value="{{$product->id}}" id="product_id">
             <input type="hidden" name="type" value="product" id="type">
-            <input type="hidden" name="store_id" value="{{$product->store_id}}" id="store_id">
             <button type="submit" class="btn btn-primary">Calificar producto ó servicio</button>
         </form>
     @elseif($reviewCount > 1)

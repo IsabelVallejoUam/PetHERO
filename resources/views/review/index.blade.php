@@ -7,10 +7,7 @@
     @elseif ($type == 'product')
         <h1 style="text-align: center;">Reseñas de {{$product->name}}</h1><br>
     @endif
-    {{$reviews->links()}}<br>
     <div class="container">
-
-        
         @foreach ($reviews as $review)
         <div class="card" style = "width: 20rem; margin:10px; display:inline-block;">
             <?php

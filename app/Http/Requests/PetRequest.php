@@ -35,7 +35,7 @@ class PetRequest extends FormRequest
         'personality' => 'required',
         'commentary' => 'max:200',
         'size'  => 'required',
-        'species' => 'required'
+        'species' => 'required',
         ];
     }
 

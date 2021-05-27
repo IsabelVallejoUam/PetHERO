@@ -108,7 +108,7 @@ Implementar calificaciones
 Ninguno
 
 ---------------------------------------------------------------------------------------------------------
-Dev: Juan Pablo Zapata 
+Dev: Isabel Vallejo 
 
 Fecha: 11/05/2021
 1. ¿Qué has hecho desde la última reunión?
