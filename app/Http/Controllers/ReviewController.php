@@ -89,7 +89,7 @@ class ReviewController extends Controller
                 return redirect(route('walk.index'))->with('_success', '¡Gracias por tu opinión!');
             break;
             case "product":
-                return redirect(route('store.showPublic', $request->input('store_id')))->with('_success', '¡Gracias por tu opinión!');
+                return redirect(route('product.show', $request->input('store_id')))->with('_success', '¡Gracias por tu opinión!');
             break;
         }
     }

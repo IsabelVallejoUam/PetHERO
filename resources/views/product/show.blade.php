@@ -16,7 +16,7 @@
 <div class="card container">
     
     <div>
-        <a type="button" class="btn btn-secondary mb-4 mt-2" href="{{ url()->previous() }}"><i class="far fa-hand-point-left"></i> Volver</a>
+        <a type="button" class="btn btn-secondary mb-4 mt-2" href="{{ route('product.index') }}"><i class="far fa-hand-point-left"></i> Volver</a>
     </div>
     <a>
         <h1 style="position:static; display:block; margin-left:auto; margin-right:auto;" class="p-1 text-center">{{ $product->name}}</h1>

@@ -66,14 +66,20 @@
                                 <button type="submit" class="btn btn-primary"><i class="fas fa-search-location"></i> Pedir paseo</button>
                             </p>
                         </form>
-                    @elseif($routes ==0) 
+                    {{-- @elseif($routes ==0) 
                         <p class="text-center">
                             <a type="button" class="btn btn-primary " href="{{ route('walk.create') }}"><i class="fas fa-plus-square"></i>Pedir servicio de paseo</a> 
-                        </p>
-                    @endif 
+                        </p> --}}
+                    @endif  
                 </div>
-            </div>  
+            </div> 
         @endforeach 
+        <div>
+            <h4 class="card-title text-center"><b> Pedir Paseo </b></h4>
+            <p class="text-center">
+                <a type="button" class="btn btn-primary " href="{{ route('walk.createRequest') }}"><i class="fas fa-plus-square"></i>Pedir servicio de paseo</a> 
+            </p>
+        </div> 
         </div>
     </div>
 @endsection
