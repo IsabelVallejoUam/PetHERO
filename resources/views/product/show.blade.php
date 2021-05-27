@@ -56,11 +56,13 @@
             @endif
         </tr>  
         <tr>
-            <form action="{{route('cart.add')}}" method="POST">
-                @csrf
-                <input type="hidden" name="product_id" value="{{$product->id}}">
-                <input type="submit" name="btn" class="btn btn-success" value="ADD TO CART">
-            </form>
+            @if ($type == 'petOwner')
+                <form action="{{route('cart.add')}}" method="POST">
+                    @csrf
+                    <input type="hidden" name="product_id" value="{{$product->id}}">
+                    <input type="submit" name="btn" class="btn btn-success" value="ADD TO CART">
+                </form>
+            @endif
         </tr>
     </table>
     @if($reviewCount < 1 && $type== 'petOwner')

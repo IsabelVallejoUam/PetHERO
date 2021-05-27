@@ -1,7 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
-
+<?php
+    use App\Models\PetOwner;
+    $type = '';
+    $pet = PetOwner::find(Auth::id());
+    if (isset($pet)) {
+        $type = 'petOwner';
+    } 
+?>
 <div>
     <div class="mx-auto pull-right">
         <div class="container" style="display:inline-block; color:black;">
@@ -49,6 +56,13 @@
                     <p><b>Aún no hay calificaciones</p>
                 @endif
                 <a href="{{ route('product.show', $product->id) }}" class=" btn btn-info"> Ver {{$product->name}}</a>
+                @if ($type == 'petOwner')
+                    <form action="{{route('cart.add')}}" method="POST">
+                        @csrf
+                        <input type="hidden" name="product_id" value="{{$product->id}}">
+                        <input type="submit" name="btn" class="btn btn-success" value="ADD TO CART">
+                    </form>
+                @endif
             </div>
         </div>
     @endforeach
