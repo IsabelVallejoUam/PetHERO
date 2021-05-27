@@ -95,5 +95,32 @@ class UsersSeeder extends Seeder
             'phone' => '8007000',
             'password' => Hash::make('hola123')
         ]); 
+
+        DB::table('users')->insert([
+            'name' => "Luis Alberto", //ID 10
+            'lastname'=>"Lopez",
+            'email' => "luis222@correo.edu.co",
+            'document' => '135559242',
+            'phone' => '8007050',
+            'password' => Hash::make('12345678')
+        ]); 
+
+        DB::table('users')->insert([
+            'name' => "Luisa ", //ID 11
+            'lastname'=>"Lopez Marin",
+            'email' => "luisa222@correo.edu.co",
+            'document' => '335559242',
+            'phone' => '8337050',
+            'password' => Hash::make('12345678')
+        ]); 
+
+        DB::table('users')->insert([
+            'name' => "Mauricio Alberto", //ID 9
+            'lastname'=>"Lopez",
+            'email' => "maluis222@correo.edu.co",
+            'document' => '135559332',
+            'phone' => '8012050',
+            'password' => Hash::make('12345678')
+        ]); 
     }
 }

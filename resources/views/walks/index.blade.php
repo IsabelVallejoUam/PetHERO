@@ -2,7 +2,7 @@
 @section('content')
 <?php
 use App\Models\Route;
-use App\Models\Walker;
+use App\Models\User;
 
 ?>
 <div class="card" style="margin: 100px; margin-top:0px">
@@ -30,7 +30,7 @@ use App\Models\Walker;
         @foreach ($walks as $walk)
         <?php
             $route = Route::where('id','=',$walk->route)->first();
-            $walker = Walker::where('user_id','=',$walk->walker)->first();
+            $walker = User::where('id','=',$walk->walker)->first();
             $count= Route::where('owner_id',$walk->walker)->count();
         ?>
             <tr>
@@ -61,10 +61,10 @@ use App\Models\Walker;
                         @endif
                     </td>
                     @endif
-                    @if(!$request)
+                    @if(!$request && $walker!=Null)
                         <td>
-                            <img src="/uploads/avatars/{{$walker->owner->avatar}}" style="width: 35px; height:35px; position:relarive;" />
-                            {{$walker->owner->name}}
+                            <img src="/uploads/avatars/{{$walker->avatar}}" style="width: 35px; height:35px; position:relarive;" />
+                            {{$walker->name}}
                         </td>
                     @else
                         <td>

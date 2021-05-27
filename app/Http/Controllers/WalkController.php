@@ -22,11 +22,11 @@ class WalkController extends Controller
      */
     public function index()
     {
-        $walks = Walk::ownedBy(Auth::id())->whereNotNull('walker')->simplePaginate(5);
+        $walks = Walk::ownedBy(Auth::id())->simplePaginate(5);
         $type = 'petOwner';
         $request = false;
         $status = "";
-        return view('walks.index', compact('walks','type','request','status'));
+        return view('walks.index', compact('walks','type','request','status',));
     }
     //Lista los paseos pendientes del usuario
     public function indexPending()
