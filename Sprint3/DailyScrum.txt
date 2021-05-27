@@ -106,3 +106,67 @@ Investigar a cerca del despliegue de la aplicación
 Implementar calificaciones
 3. ¿Qué impedimentos tienes para realizar el trabajo y qué ayudas necesitas?
 Ninguno
+
+---------------------------------------------------------------------------------------------------------
+Dev: Juan Pablo Zapata 
+
+Fecha: 11/05/2021
+1. ¿Qué has hecho desde la última reunión?
+Planear los cambios y adiciones que debemos hacer
+2. ¿Qué harás hoy?
+Arreglare  funciones al edit de cada modelo
+3. ¿Qué impedimentos tienes para realizar el trabajo y qué ayudas necesitas?
+Ninguno por ahora
+
+Fecha: 13/05/2021
+1. ¿Qué has hecho desde la última reunión?
+Agrege la funcion de borrar los modelos desde la svistas de editar 
+2. ¿Qué harás hoy?
+Trabajare en tener todos los Apis actualizados y con la informacion necesaria 
+3. ¿Qué impedimentos tienes para realizar el trabajo y qué ayudas necesitas?
+No tenia claro como funcionaba el formato APIJson pero ya me quedo claro
+
+Fecha: 14/05/2021
+1. ¿Qué has hecho desde la última reunión?
+Trabaje en los metodos que usaran las apis 
+2. ¿Qué harás hoy?
+Trabajare en tener terminar las apis de productos y de las tiendas
+3. ¿Qué impedimentos tienes para realizar el trabajo y qué ayudas necesitas?
+Ninguno por ahora
+
+Fecha: 15/05/2021
+1. ¿Qué has hecho desde la última reunión?
+Termine las apis de productos y tiendas  
+2. ¿Qué harás hoy?
+Trabajare en tener las apis de favoritos(tiendas,paseadores y mascotas) y paseos
+3. ¿Qué impedimentos tienes para realizar el trabajo y qué ayudas necesitas?
+Ninguno
+
+Fecha: 17/05/2021
+1. ¿Qué has hecho desde la última reunión?
+Termine todas las apis
+2. ¿Qué harás hoy?
+Arreglar algunos bugs en los botones de devolver que no funcionan como esperabamos
+3. ¿Qué impedimentos tienes para realizar el trabajo y qué ayudas necesitas?
+Ninguno
+
+Fecha: 17/05/2021
+1. ¿Qué has hecho desde la última reunión?
+Pensar que mas puedo agregar y falta
+2. ¿Qué harás hoy?
+Trabaje en la funcionalidad de borrar objetos de los favoritos
+3. ¿Qué impedimentos tienes para realizar el trabajo y qué ayudas necesitas?
+Tuve bastante errores implementando esta funcion y no me funciono
+
+Fecha: 25/05/2021
+1. ¿Qué has hecho desde la última reunión?
+Intnete solucionar el metodo de borrar favoritos pero no tuve exito
+2. ¿Qué harás hoy?
+Trabajare en una barra de busqueda para poder filtar todos las tiendas,productos y paseadores por nombre
+3. ¿Qué impedimentos tienes para realizar el trabajo y qué ayudas necesitas?
+Ninguno
+
+
+
+
+
