@@ -55,6 +55,13 @@
                 <td>Este producto o servicio aún no cuenta con calificaciones<br>
             @endif
         </tr>  
+        <tr>
+            <form action="{{route('cart.add')}}" method="POST">
+                @csrf
+                <input type="hidden" name="product_id" value="{{$product->id}}">
+                <input type="submit" name="btn" class="btn btn-success" value="ADD TO CART">
+            </form>
+        </tr>
     </table>
     @if($reviewCount < 1 && $type== 'petOwner')
         <form action="{{route('review.makeReview')}}" method="POST" 

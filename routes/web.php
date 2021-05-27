@@ -20,6 +20,7 @@ use App\Http\Controllers\ForumController;
 use App\Http\Controllers\ChatController;
 use App\Http\Controllers\CKEditorController;
 use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\CartController;
 
 /*
 |--------------------------------------------------------------------------
@@ -78,6 +79,11 @@ Route::post('/routes', [App\Http\Controllers\RouteController::class,'getData'])-
 
 Route::post('/product', [App\Http\Controllers\ProductController::class,'store'])->name('product.store');
 Route::get('/store/public/{store}', [App\Http\Controllers\StoreController::class,'showPublic'])->name('store.showPublic');
+
+Route::post('/cart-add',[App\Http\Controllers\CartController::class,'add'])->name('cart.add');
+Route::get('/cart-checkout',[App\Http\Controllers\CartController::class,'cart'])->name('cart.checkout');
+Route::post('/cart-clear',[App\Http\Controllers\CartController::class,'clear'])->name('cart.clear');
+Route::post('/cart-removeitem',[App\Http\Controllers\CartController::class,'removeItem'])->name('cart.removeItem');
 
 Route::resource('/favoriteStore',FavoriteStoreController::class);
 Route::resource('/favoriteWalker',FavoriteWalkerController::class);

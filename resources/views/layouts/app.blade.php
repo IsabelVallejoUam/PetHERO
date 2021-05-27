@@ -194,7 +194,11 @@ $type = 'walker';
 
                             @if ($type == 'petOwner')
                                 <li class="nav-item dropdown">
-
+                                    <li>
+                                        <div class="nav-link">
+                                            <a href="{{route('cart.checkout')}}">Ver Carrito <span class="badge badge-danger">{{count(Cart::getContent())}}</span></a>
+                                        </div>
+                                    </li>
                                     <li class="nav-item dropdown">
                                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
