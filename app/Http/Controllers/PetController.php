@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\PetRequest;
 use App\Models\PetOwner;
 use Illuminate\Support\Facades\Auth;
+use Image;
 
 class PetController extends Controller
 {
@@ -50,7 +51,7 @@ class PetController extends Controller
         $pet->size = $request->input('size');
         $pet->species = $request->input('species');
         if ($request->hasFile('photo')){
-            $pet = $request->file('photo');
+            $photo = $request->file('photo');
             $filename = time() . '.' . $photo->getClientOriginalExtension();
             Image::make($photo)->resize(300,300)->save(public_path('uploads/pets/'.$filename));
             $pet->photo=$filename;
@@ -103,7 +104,7 @@ class PetController extends Controller
         $pet->size = $request->input('size');
         $pet->species = $request->input('species');
         if ($request->hasFile('photo')){
-            $pet = $request->file('photo');
+            $photo = $request->file('photo');
             $filename = time() . '.' . $photo->getClientOriginalExtension();
             Image::make($photo)->resize(300,300)->save(public_path('uploads/pets/'.$filename));
             $pet->photo=$filename;
