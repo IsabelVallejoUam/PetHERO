@@ -87,8 +87,7 @@ class FavoritePetController extends Controller
     {
         $existingFavorite = FavoritePet::where('pet_id', '=', $pet->id)->where('walker_id', '=', Auth::id())->exists();
         $favoritePet = FavoritePet::where('pet_id', '=', $pet->id)->where('walker_id', '=', Auth::id())->get();
-        $pet = Pet::where('id',$pet->id)->get();
-        error_log('ayudaaaa');
+        $pet = Pet::find($pet->id)->first();
             //COMPROBAR QUE EXISTE YA EL FAVORITO
             if ($existingFavorite) {             
                 $favoritePet->delete();

@@ -21,14 +21,15 @@
                         </a>
                         <a href="{{ route('forum.index') }}" class="btn btn-primary">
                             <i class="fab fa-wpforms"></i> IR AL FORO</a>
+                            <a href="{{ route('product.index') }}" class="btn btn-primary">
+                                BUSCAR PRODUCTOS O SERVICIOS
+                            </a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
         
-        {{--<a href="{{ route('products.index') }}" class="btn btn-primary">
-            BUSCAR PRODUCTOS O SERVICIOS
-        </a> --}}
+
     @endsection
 
