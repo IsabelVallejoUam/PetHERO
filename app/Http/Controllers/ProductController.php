@@ -17,6 +17,7 @@ class ProductController extends Controller
     public function index(Request $request)
     {
         $products = Product::where([
+            ['privacy','=','public'],
             [function ($query) use ($request) {
                 if (($term = $request->term)) {
                     $query->orWhere('name','LIKE','%'. $term  . '%')->get();
