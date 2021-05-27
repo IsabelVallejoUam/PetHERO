@@ -106,3 +106,62 @@ Investigar a cerca del despliegue de la aplicación
 Implementar calificaciones
 3. ¿Qué impedimentos tienes para realizar el trabajo y qué ayudas necesitas?
 Ninguno
+
+---------------------------------------------------------------------------------------------------------
+Dev: Juan Manuel Morales    
+
+Fecha: 07/05/2021
+1. ¿Qué has hecho desde la última reunión?
+Planear el módulo de paseos con mi equipo
+2. ¿Qué harás hoy?
+Iniciar a implementar mapas
+3. ¿Qué impedimentos tienes para realizar el trabajo y qué ayudas necesitas?
+Ninguno por ahora
+
+Fecha: 08/05/2021
+1. ¿Qué has hecho desde la última reunión?
+Implementar version inicial de los controladores de los mapas
+2. ¿Qué harás hoy?
+Terminar el modulo de los mapas
+3. ¿Qué impedimentos tienes para realizar el trabajo y qué ayudas necesitas?
+Algunos errores pero los solucionaré hoy mismo 
+
+Fecha: 13/05/2021
+1. ¿Qué has hecho desde la última reunión?
+Pulir el moduldo de mapas
+2. ¿Qué harás hoy?
+Implementar api para mostrar mapas
+3. ¿Qué impedimentos tienes para realizar el trabajo y qué ayudas necesitas?
+Ninguno
+
+Fecha: 19/05/2021
+1. ¿Qué has hecho desde la última reunión?
+Implementar api para mostrar mapas
+2. ¿Qué harás hoy?
+Solucionar problemas
+3. ¿Qué impedimentos tienes para realizar el trabajo y qué ayudas necesitas?
+El modulo de la api de los mapas no funciona correctamente con laravel
+
+Fecha: 24/05/2021
+1. ¿Qué has hecho desde la última reunión?
+Crear modulos para los mapas.(No funcionan)
+2. ¿Qué harás hoy?
+Crear primera version del carrito de compra
+3. ¿Qué impedimentos tienes para realizar el trabajo y qué ayudas necesitas?
+Ninguno de momento.
+
+Fecha: 25/05/2021
+1. ¿Qué has hecho desde la última reunión?
+Crear primera version del carrito de compra
+2. ¿Qué harás hoy?
+Pulir detalles del carrito de compra
+3. ¿Qué impedimentos tienes para realizar el trabajo y qué ayudas necesitas?
+Algunos errores dentro del paquete de ejemplo instalado.
+
+Fecha: 26/05/2021
+1. ¿Qué has hecho desde la última reunión?
+Investigar a cerca de la implementacion de apis para mapas.
+2. ¿Qué harás hoy?
+Intentar solucionar problemas con los mapas.
+3. ¿Qué impedimentos tienes para realizar el trabajo y qué ayudas necesitas?
+Las apis usadas no son compatibles con el codigo.
