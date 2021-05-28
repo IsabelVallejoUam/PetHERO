@@ -33,12 +33,12 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::name('api.')->group(function () {
 Route::apiResource('/v1/walkers', APIWalkerController::class);
 Route::apiResource('/v1/users', APIUserController::class);
-Route::apiResource('/v1/storeowners', APIStoreOwnerController::class);
+Route::apiResource('/v1/storeOwners', APIStoreOwnerController::class);
 Route::apiResource('/v1/stores', APIStoreController::class);
     Route::get('/v1/stores/user/{user}', [APIStoreController::class,  'indexUser']);
 
-Route::apiResource('/v1/stores/products', APIProductController::class);
-Route::apiResource('/v1/petowners', APIPetOwnerController::class);
+Route::apiResource('/v1/products', APIProductController::class);
+Route::apiResource('/v1/petOwners', APIPetOwnerController::class);
 Route::apiResource('/v1/pets', APIPetController::class);
     Route::get('/v1/pets/user/{user}', [APIPetController::class,  'indexUser']);    
 Route::apiResource('/v1/walks', APIWalkController::class);

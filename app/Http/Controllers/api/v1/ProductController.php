@@ -32,13 +32,14 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Product $product)
+    public function store(ProductRequest $request)
     {
-        $product = Product::create($product->all());
+        $product = Product::create($request->all());
         return (new ProductsResource($product))
         ->response()
         ->setStatusCode(200);
     }
+    
 
     /**
      * Display the specified resource.
