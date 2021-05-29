@@ -94,7 +94,6 @@ class WalkerController extends Controller
         $user = User::findOrFail($walker->user_id);
         $routes = Route::ownedBy($walker->user_id)->get();
         $rate = Review::where('type','walk')->where('walker_id',$walker->id)->count();
-        dd($rate);
         return view('walker.show', compact('walker','user','routes'));
         
     }
