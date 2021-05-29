@@ -21,6 +21,7 @@ class StoresSeeder extends Seeder
             'description' => "Esta es una veterinaria muy linda de prueba",
             'schedule' => "Lunes a viernes de 7:00 a.m hasta 5:00 p.m",
             'address' => "P.Sherman calle wallaby 42 Sidney",
+            'privacy' => "public",
             'phone_number' => "8900000"
         ]); 
 
@@ -30,6 +31,7 @@ class StoresSeeder extends Seeder
             'nit' => "126456789",
             'description' => "Esta es una tienda muy linda de prueba",
             'schedule' => "Lunes a viernes de 7:00 a.m hasta 5:00 p.m",
+            'privacy' => "public",
             'address' => "P.Sherman calle wallaby 42 Sidney",
             'phone_number' => "8905500"
         ]); 
@@ -41,6 +43,7 @@ class StoresSeeder extends Seeder
             'description' => "Esta es una tienda de barrio muy linda",
             'schedule' => "Lunes a viernes de 7:00 a.m hasta 5:00 p.m",
             'address' => "P.Sherman calle wallaby 42 Sidney",
+            'privacy' => "public",
             'phone_number' => "8902200"
         ]); 
 
@@ -51,6 +54,7 @@ class StoresSeeder extends Seeder
             'description' => "Esta es una veterinaria ",
             'schedule' => "Lunes a viernes de 7:00 a.m hasta 5:00 p.m",
             'address' => "P.Sherman calle wallaby 42 Sidney",
+            'privacy' => "public",
             'phone_number' => "8900700"
         ]); 
 
@@ -61,6 +65,7 @@ class StoresSeeder extends Seeder
             'description' => "Esta es una veterinaria excelente servicio",
             'schedule' => "Lunes a viernes de 7:00 a.m hasta 5:00 p.m",
             'address' => "En la carola",
+            'privacy' => "public",
             'phone_number' => "8977700"
         ]); 
 
@@ -71,6 +76,7 @@ class StoresSeeder extends Seeder
             'description' => "Esta es una tienda de productos para animales ",
             'schedule' => "Lunes a viernes de 7:00 a.m hasta 5:00 p.m",
             'address' => "Cr 23#51-67",
+            'privacy' => "public",
             'phone_number' => "8903200"
         ]); 
 
@@ -81,6 +87,7 @@ class StoresSeeder extends Seeder
             'description' => "Amigable con el medio ambiente ",
             'schedule' => "Lunes a viernes de 7:00 a.m hasta 5:00 p.m",
             'address' => "Av. Santander",
+            'privacy' => "public",
             'phone_number' => "89007124"
         ]); 
 
@@ -91,6 +98,7 @@ class StoresSeeder extends Seeder
             'description' => "Esta es una veterinaria solo de gatos",
             'schedule' => "Lunes a viernes de 7:00 a.m hasta 5:00 p.m",
             'address' => "Casa de refugio",
+            'privacy' => "public",
             'phone_number' => "8745700"
         ]); 
 
@@ -101,6 +109,7 @@ class StoresSeeder extends Seeder
             'description' => "Esta es una tienda respetable ",
             'schedule' => "Lunes a viernes de 7:00 a.m hasta 5:00 p.m",
             'address' => "cr 51#2-6",
+            'privacy' => "public",
             'phone_number' => "8949700"
         ]); 
     }
