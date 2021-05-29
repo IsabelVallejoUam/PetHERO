@@ -28,11 +28,11 @@ class ProductRequest extends FormRequest
     {
         return [
             'price' => 'required|numeric|min:100',
-            'title' => 'required|max:256',
+            'name' => 'required|max:256',
             'discount' => 'required|numeric|digits_between:0,100',         
             'quantity' => 'required|numeric',
             'description'=> 'required|max:400',
-            'image_url' => 'max:256',
+            'photo' => 'max:256',
 
 
         ];

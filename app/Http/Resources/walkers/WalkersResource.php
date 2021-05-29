@@ -25,6 +25,7 @@ class WalkersResource extends JsonResource
         $walker = $this->user($this->user_id);
 
         return [
+            $walker,
             'Walker ID' => $this->user_id,
             'Name' =>$walker[0]->name,
             'Apellido' => $walker[0]->lastname,

@@ -15,7 +15,7 @@ class PetOwnersResource extends JsonResource
     
     }
 
-    public function stores($id){
+    public function pets($id){
         $query = Pet::where('owner_id',$id)->get();
         return $query;
     
@@ -30,7 +30,7 @@ class PetOwnersResource extends JsonResource
     public function toArray($request)
     {
         $user = $this->user($this->user_id);
-        $pets = $this->user($this->user_id);
+        $pets = $this->pets($this->user_id);
 
         return [
             'Pet Owner ID' => $this->user_id,
