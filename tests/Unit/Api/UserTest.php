@@ -118,7 +118,7 @@ class UserTest extends TestCase
     //         'email' => 'linkuardo@yahoo.com',
     //         'document' => '102010201',
     //         'phone' => '310292929',
-    //         'password' => NULL]);
+    //         'password' => '']);
     //     $lastId = User::max('id');
     //     $response->assertStatus(422);
     // }
