@@ -49,7 +49,7 @@ class StoreOwnerTest extends TestCase
         ]);
     }
 
-    public function testDuenoTienda(){
+    public function testBorrarDuenoTienda(){
         $lastUserId = User::max('id');
         $response = $this->deleteJson('api/v1/users/'.$lastUserId);
         $response->assertStatus(200);

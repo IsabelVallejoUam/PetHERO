@@ -61,7 +61,7 @@ class PetOwnerTest extends TestCase
         $response->assertStatus(422);
     }
 
-    public function testDuenoMascota(){
+    public function testBorrarDuenoMascota(){
         $lastUserId = User::max('id');
         $response = $this->deleteJson('api/v1/users/'.$lastUserId);
         $response->assertStatus(200);
