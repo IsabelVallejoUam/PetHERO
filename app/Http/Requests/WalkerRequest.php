@@ -28,7 +28,6 @@ class WalkerRequest extends FormRequest
     {
         return [
             'experience' => 'numeric|digits_between:0,80',
-            'rate' => 'numeric|min: 0',
             'slogan' => 'required|max:256',        
         ];
     }

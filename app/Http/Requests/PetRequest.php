@@ -30,7 +30,7 @@ class PetRequest extends FormRequest
                  
         'name' => 'required|max:50',
         'sex'=> 'required',
-        'age' => 'required',
+        'age' => 'required|digits_between:0,80',
         'race'  => 'required|max:100',
         'personality' => 'required',
         'commentary' => 'max:200',

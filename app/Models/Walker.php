@@ -24,8 +24,6 @@ class Walker extends Authenticatable
     protected $fillable = [
         'experience',
         'slogan',
-        'rate',
-        'schedule',
         'user_id'
 
     ];

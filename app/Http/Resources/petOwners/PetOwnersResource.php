@@ -42,9 +42,9 @@ class PetOwnersResource extends JsonResource
             'Score' => $this->score,
             'Pets' => $pets,
             'Link' =>  [
-                'User' => "/api/v1/user/{$this->user_id}",
+                'User' => "/api/v1/users/{$this->user_id}",
                 'Pets' => "/api/v1/pets/user/{$this->user_id}",
-                'self'  => "/api/v1/PetOwner/{$this->user_id}",
+                'self'  => "/api/v1/petOwners/{$this->user_id}",
                 ]
         ];
     }

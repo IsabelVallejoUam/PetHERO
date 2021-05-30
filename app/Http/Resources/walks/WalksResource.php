@@ -27,8 +27,8 @@ class WalksResource extends JsonResource
         return [
             'Walk ID' => $this->id,
             'Pet ID' => $this->pet_id,
-            'PetOwner ID' => $owner,
-            'Walker ID' => $walker,
+            'PetOwner' => $owner,
+            'Walker' => $walker,
             'Day of the Walk' => $this->requested_day,
             'Hour of the Walk' => $this->requested_hour,
             'Minutes Walked' => $this->minutes_walked,

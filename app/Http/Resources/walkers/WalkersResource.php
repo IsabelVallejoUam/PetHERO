@@ -25,18 +25,18 @@ class WalkersResource extends JsonResource
         $walker = $this->user($this->user_id);
 
         return [
-            $walker,
+            $this->user_id,
             'Walker ID' => $this->user_id,
-            'Name' =>$walker[0]->name,
-            'Apellido' => $walker[0]->lastname,
-            'Phone Number' =>$walker[0]->phone,
-            'Email' =>$walker[0]->email,
+            // 'Name' =>$walker[0]->name,
+            // 'Last Name' => $walker[0]->lastname,
+            // 'Phone Number' =>$walker[0]->phone,
+            // 'Email' =>$walker[0]->email,
             'Slogan' => $this->slogan,
             'Experience' => $this->experience,
             'Score' => $this->score,
             'Link' =>  [
-                'User' => "/api/v1/user/{$this->user_id}",
-                'self'  => "/api/v1/Walker/{$this->user_id}",
+                'User' => "/api/v1/users/{$this->user_id}",
+                'self'  => "/api/v1/walkers/{$this->user_id}",
                 ]
         ];
     }

@@ -34,7 +34,7 @@ class StoresResource extends JsonResource
     public function toArray($request){
        
         $products = $this->Products($this->id);
-        $link = "/api/v1/storeowners/{$this->owner_id}";
+        $link = "/api/v1/storeOwners/{$this->owner_id}";
 
         return [
             'ID'=> $this->id,

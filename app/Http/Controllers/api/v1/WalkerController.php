@@ -35,6 +35,7 @@ class WalkerController extends Controller
     public function store(WalkerRequest $request)
     {
         $walker = Walker::create($request->all());
+        var_dump($walker->user_id);
         return (new WalkersResource($walker))
         ->response()
         ->setStatusCode(200);

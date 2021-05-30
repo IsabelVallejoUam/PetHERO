@@ -27,10 +27,11 @@ class WalkRequest extends FormRequest
     public function rules()
     {
         return [
-            'requested_day' => 'required|max:128',
+            'requested_day' => 'required',
             'route' => 'required',
-            'min_time' => 'required|max:128',
-            'max_time' => 'required|max:128',
+            'min_time' => 'required|digits_between:0,480',
+            'max_time' => 'required|digits_between:0,480',
+            'minutes_walked' => 'digits_between:0,80',
             'commentary' => 'required|max:128',
             'status' => 'required',
             'walker' => 'required'
