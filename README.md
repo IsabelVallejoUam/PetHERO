@@ -1,62 +1,41 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
 
-## About Laravel
+## Sobre PET HERO
+Este proyecto tiene como propósito ayudar a todas aquellas personas que carecen de la información suficiente para suplir algunas de las necesidades de su mascota, también tiene como propósito ayudar a aquellas personas que prestan servicios relacionados con el bienestar de los animales en general, ya sean tiendas, veterinarias o paseadores propiamente.
+Al unificar las necesidades de los dueños de mascotas con quienes pueden suplir estas necesidades en una misma aplicación, estaríamos generando valor para ambas partes interesadas; consumidores y proveedores en un mismo lugar que está centralizado en la mascota. En adición a esto, y por transitividad, se estaría generando valor añadido para quienes proveen los productos que luego las veterinarias o centros especializados comercializarán dentro de la aplicación, pues se presentará una mayor demanda que deberá ser suplida.
+El valor añadido que generamos con esta iniciativa se verá reflejado en forma económica para quienes proveen los productos o servicios que un dueño de mascota requiera, así como en forma de reputación pues se maneja un sistema de calificaciones con el cual los usuarios sabrán que tiendas, producto ó servicios y paseadores les convenga más basados en la calificación que tengan dentro de la aplicación.
+Otro beneficio para los usuarios es contar con un foro en el cual podrán hacer publicaciones de todo tipo; desde preguntas hasta espacios informativos para todos los usuarios, que al encontrarse en un ambiente enfocado en las mascotas, proveerá unos temas de interés común entre todos. Igualmente se podrá interactuar en ellos; es decir, los usuarios podrán responderse entre sí para ampliar más este factor de comunicación e interacción entre los mismos usuarios. 
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Dependencias
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+| AUTOR | PAQUETE | VERSION |
+|-------|---------|--------|
+|darryldecode | laravelshoppingcart darryldecode/cart | 4.2, < 5.0|
+|facade | ignition facade/ignition | 2.5, < 3.0|
+|FakerPHP | Faker fakerphp/faker | 1.9.1, < 2.0.0|
+|fideloper | TrustedProxy fideloper/proxy | 4.4, < 5.0|
+|fruitcake | laravel-cors fruitcake/laravel-cors | 2.0, < 3.0|
+|guzzle | guzzle guzzlehttp/guzzle | 7.0.1, < 8.0.0|
+|mtibben | html2text html2text/html2text | 4.3, < 5.0|
+|Intervention | image intervention/image | 2.5, < 3.0|
+|Laravel-Lang | lang laravel-lang/lang | 7.0|
+|laravel | framework laravel/framework | 8.12, < 9.0|
+|laravel | sail laravel/sail | 1.0.1, < 2.0.0|
+|laravel | tinker laravel/tinker | 2.5, < 3.0|
+|laravel | ui laravel/ui | 3.2, < 4.0|
+|mockery | mockery mockery/mockery | 1.4.2, < 2.0.0|
+|nunomaduro / collision nunomaduro/collision | 5.0, < 6.0|
+|php | php-src php | 7.3|^8.0, < 8.0.0|
+|sebastianbergmann | phpunit phpunit/phpunit | 9.3.3, < 10.0.0|
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-## Learning Laravel
+## Colaboradores
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+-Nicolas Herrera Sepulveda
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+-Juan Manuel Morales
 
-## Laravel Sponsors
+-Isabel Vallejo
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+-Juan Pablo Zapata
 
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/)**
-- **[OP.GG](https://op.gg)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
