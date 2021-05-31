@@ -39,8 +39,10 @@
                 <td>{{ $post->updated_at->format('d/m/y') ?? "Desconocida" }}</td>
             </tr>
             <tr><th scope="col">Contenido</th>
-                <td><textarea disabled class="form-control" type="text" name="content" id="content">{!!$post->content!!}</textarea><script>
+                {{-- <td><textarea disabled class="form-control" type="text" name="content" id="content">{!!$post->content!!}</textarea><script>
                     CKEDITOR.replace( 'content',{width: "900px",height: "400px",});</script>
+                </td> --}}
+                <td> <div class="form-control" style="width: 900px; height: 400px;" type="text" name="content" id="content">{!! html_entity_decode($post->content) !!}</div>
                 </td>
             </tr>
             </tr>
