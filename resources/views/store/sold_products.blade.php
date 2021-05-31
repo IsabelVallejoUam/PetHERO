@@ -39,7 +39,7 @@
                 ?>
                 <tr>
                     <th>
-                        {{$pet_owner->name}}
+                        {{$pet_owner->name}}  {{$pet_owner->lastname}}
                     </th>
                     <th>
                         {{$product->name}}
