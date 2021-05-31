@@ -49,13 +49,20 @@
                 </td>
             </tr>
         </table>
-        
-        <form action="{{ route('petOwner.addFavoriteStore', $store->id) }}" method="post"
-            onsubmit="return confirm('¿Seguro quieres agregar a {{$store->name}} como tienda favorita?')">
-            @csrf
-            @method('post')
-            <button type="submit" class="btn btn-danger" title="Remover"><i class="fas fa-star"> Favorito</i></button>
-        </form>
+        <div class="btn-group" role="group" aria-label="options">
+            <form action="{{route('soldProduct.showSolds')}}" method="POST">
+                @csrf
+                @method('POST')
+                <input type="hidden" name="store_id" id="store_id" value="{{$store->id}}">
+                <button type="submit" class=" btn btn-primary">Ver Ventas</button>
+            </form>
+            <form action="{{ route('petOwner.addFavoriteStore', $store->id) }}" method="post"
+                onsubmit="return confirm('¿Seguro quieres agregar a {{$store->name}} como tienda favorita?')">
+                @csrf
+                @method('post')
+                <button type="submit" class="btn btn-danger" title="Remover"><i class="fas fa-star"> Favorito</i></button>
+            </form>
+        </div>
 
         <div class="container"> <h1>Productos</h1> 
             @foreach ($products as $product)

@@ -23,6 +23,7 @@ use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\BillController;
 use App\Http\Controllers\BillProductController;
+use App\Http\Controllers\SoldProductController;
 
 
 /*
@@ -93,7 +94,10 @@ Route::resource('/favoriteWalker',FavoriteWalkerController::class);
 Route::resource('/favoritePet', FavoritePetController::class);
 Route::resource('/bill', BillController::class);
 Route::resource('/billProduct', BillProductController::class);
+Route::resource('/soldProduct', SoldProductController::class);
 Route::post('/billProduct',[App\Http\Controllers\BillProductController::class,'createProducts'])->name('billProduct.createProducts');
+Route::get('/soldProducts',[App\Http\Controllers\SoldProductController::class,'createProducts'])->name('soldProduct.createProducts');
+Route::post('/showSolds',[App\Http\Controllers\SoldProductController::class,'showSolds'])->name('soldProduct.showSolds');
 
 //Rutas para los paseos
 Route::middleware(['auth'])->group (function () {

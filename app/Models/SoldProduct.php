@@ -12,7 +12,7 @@ class SoldProduct extends Model
     protected $fillable = [
         'store_id',
         'pet_owner_id',
-        'bill_product_id'
+        'product_id'
     ];
 
     public function scopeOwnedBy($query, $store_id)

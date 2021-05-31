@@ -51,7 +51,7 @@ class BillProductController extends Controller
 
             $billProduct->save();
         }
-        return redirect(route('cart.clear'));
+        return redirect(route('soldProduct.createProducts'));
     }
 
     

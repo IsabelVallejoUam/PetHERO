@@ -8,21 +8,26 @@
             @if(count(Cart::getContent()))
                 <table class="table table-striped table-hover">
                     <thead>
-                        <th scope="col">
-                            ID
-                        </th>
-                        <th scope="col">
-                            Nombre producto
-                        </th>
-                        <th scope="col">
-                            Cantidad
-                        </th>
-                        <th scope="col">
-                            Precio
-                        </th>
-                        <th scope="col">
-                            Subtotal
-                        </th>
+                        <tr>
+                            <h1>Carrito de Compras</h1>
+                        </tr>
+                        <tr>
+                            <th scope="col">
+                                ID
+                            </th>
+                            <th scope="col">
+                                Nombre producto
+                            </th>
+                            <th scope="col">
+                                Cantidad
+                            </th>
+                            <th scope="col">
+                                Precio
+                            </th>
+                            <th scope="col">
+                                Subtotal
+                            </th>
+                        </tr>
                     </thead>
                     <tbody>
                         @foreach (Cart::getContent() as $item)

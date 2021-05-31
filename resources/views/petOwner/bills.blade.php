@@ -8,15 +8,22 @@
     {{$bills->links()}}
     <table class="table table-striped table-hover">
         <thead>
-            <th scope="col">
-                Fecha
-            </th>
-            <th scope="col">
-                Precio total
-            </th>
-            <th scope="col">
-                Acciones
-            </th>
+            <tr>
+                <h1>
+                    Facturas
+                </h1>
+            </tr>
+            <tr>
+                <th scope="col">
+                    Fecha
+                </th>
+                <th scope="col">
+                    Precio total
+                </th>
+                <th scope="col">
+                    Acciones
+                </th>
+            </tr>
         </thead>
         <tbody>
             @foreach ($bills as $item)
