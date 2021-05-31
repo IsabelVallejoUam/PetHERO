@@ -12,12 +12,7 @@
         <table class="table table-striped table-hover">
             <thead>
                 <tr>
-                    <h1>Factura</h1>
-                </tr>
-                <tr>
-                    <th>
-                        <h1>{{ $bill->created_at }}</h1>
-                    </th>
+                    <h1>Factura  {{ $bill->created_at }}</h1>
                 </tr>
             </thead>
             <tbody>
