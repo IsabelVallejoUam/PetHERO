@@ -20,6 +20,9 @@ class PetTest extends TestCase
         $this->assertTrue(true);
     }
 
+    /**
+     * Test para crear una mascota exitosamente
+     */
     public function testCrearNuevaMascota()
     {
         $this->postJson('/api/v1/users', [
@@ -64,8 +67,11 @@ class PetTest extends TestCase
                 'Size' => 'medium',
              ]
         ]);
-    }
+    }   
 
+    /**
+     * Test para crear una mascota con nombre nulo
+     */
     public function testCrearMascotaNombreIncorrecto()
     {
         $lastUserId = User::max('id');   
@@ -82,6 +88,9 @@ class PetTest extends TestCase
         $response->assertStatus(422);
     }
 
+    /**
+     * Test para crear una mascota con especie nula
+     */
     public function testCrearMascotaEspecieIncorrecta()
     {
         $lastUserId = User::max('id');   
@@ -98,6 +107,9 @@ class PetTest extends TestCase
         $response->assertStatus(422);
     }
 
+    /**
+     * Test para crear una mascota con raza nula
+     */
     public function testCrearMascotaRazaIncorrecta()
     {
         $lastUserId = User::max('id');   
@@ -114,6 +126,9 @@ class PetTest extends TestCase
         $response->assertStatus(422);
     }
 
+    /**
+     * Test para crear una mascota con sexo nulo
+     */
     public function testCrearMascotaSexoIncorrecto()
     {
         $lastUserId = User::max('id');   
@@ -130,6 +145,9 @@ class PetTest extends TestCase
         $response->assertStatus(422);
     }
 
+    /**
+     * Test para crear una mascota con edad nula
+     */
     public function testCrearMascotaEdadIncorrecta()
     {
         $lastUserId = User::max('id');   
@@ -146,6 +164,9 @@ class PetTest extends TestCase
         $response->assertStatus(422);
     }
 
+    /**
+     * Test para crear una mascota con personalidad nula
+     */
     public function testCrearMascotaPersonalidadIncorrecta()
     {
         $lastUserId = User::max('id');   
@@ -162,6 +183,9 @@ class PetTest extends TestCase
         $response->assertStatus(422);
     }
 
+    /**
+     * Test para crear una mascota con tamaño incorrecto
+     */
     public function testCrearMascotaTamanoIncorrecto()
     {
         $lastUserId = User::max('id');   
@@ -178,7 +202,9 @@ class PetTest extends TestCase
         $response->assertStatus(422);
     }
 
-
+    /**
+     * Test para eliminar una mascota correctamente
+     */
     public function testBorrarMascota(){
         $lastUserId = User::max('id');
         $lastPetId = Pet::max('id');

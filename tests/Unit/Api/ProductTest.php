@@ -21,6 +21,9 @@ class ProductTest extends TestCase
         $this->assertTrue(true);
     }
     
+    /**
+     * Test para crear un producto correctamente
+     */
     public function testCrearNuevoProducto()
     {
         $this->postJson('/api/v1/users', [
@@ -73,6 +76,9 @@ class ProductTest extends TestCase
         ]);
     }
 
+    /**
+     * Test para crear un producto con el nombre incorrecto
+     */
     public function testCrearProductoNombreIncorrecto()
     {
         $lastStoreId = Store::max('id');
@@ -88,6 +94,9 @@ class ProductTest extends TestCase
         $response->assertStatus(422);
     }
 
+    /**
+     * Test para crear un producto con un precio escrito en letras en lugar de números
+     */
     public function testCrearProductoPrecioIncorrecto()
     {
         $lastStoreId = Store::max('id');
@@ -103,6 +112,9 @@ class ProductTest extends TestCase
         $response->assertStatus(422);
     }
     
+    /**
+     * Test para crear un producto con descuento nulo
+     */
     public function testCrearProductoDescuentoIncorrecto()
     {
         $lastStoreId = Store::max('id');
@@ -118,6 +130,9 @@ class ProductTest extends TestCase
         $response->assertStatus(422);
     }
     
+    /**
+     * Test para crear un producto con cantidad escrita en letras y no en números
+     */
     public function testCrearProductoCantidadIncorrecta()
     {
         $lastStoreId = Store::max('id');
@@ -133,6 +148,9 @@ class ProductTest extends TestCase
         $response->assertStatus(422);
     }
     
+    /**
+     * Test para crear un producto con descripción nula
+     */
     public function testCrearProductoDescripcionIncorrecta()
     {
         $lastStoreId = Store::max('id');
@@ -148,6 +166,9 @@ class ProductTest extends TestCase
         $response->assertStatus(422);
     }
 
+    /**
+     * Test para eliminar un producto correctamente
+     */
     public function testBorrarProducto(){
         $lastUserId = User::max('id');
         $lastStoreId = Store::max('id');

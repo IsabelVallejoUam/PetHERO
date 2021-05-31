@@ -19,6 +19,9 @@ class StoreTest extends TestCase
         $this->assertTrue(true);
     }
 
+    /**
+     * Test para crear una tienda correctamente
+     */
     public function testCrearNuevaTienda()
     {
         $this->postJson('/api/v1/users', [
@@ -62,6 +65,9 @@ class StoreTest extends TestCase
         ]);
     }
 
+    /**
+     * Test para crear una tienda con nombre nulo
+     */
     public function testCrearTiendaNombreIncorrecto()
     {
         $lastUserId = User::max('id');   
@@ -76,7 +82,10 @@ class StoreTest extends TestCase
             'phone_number' => '8910000']);
         $response->assertStatus(422);
     }
-
+    
+    /**
+     * Test para crear una tienda con NIT más corto de lo indicado
+     */
     public function testCrearTiendaNitIncorrecto()
     {
         $lastUserId = User::max('id');   
@@ -92,6 +101,9 @@ class StoreTest extends TestCase
         $response->assertStatus(422);
     }
 
+    /**
+     * Test para crear una tienda con número de teléfono escrito en letras y no en números
+     */
     public function testCrearTiendaNumeroIncorrecto()
     {
         $lastUserId = User::max('id');   
@@ -107,6 +119,9 @@ class StoreTest extends TestCase
         $response->assertStatus(422);
     }
 
+    /**
+     * Test para crear una tienda con dirección nula
+     */
     public function testCrearTiendaDireccionIncorrecta()
     {
         $lastUserId = User::max('id');   
@@ -121,9 +136,10 @@ class StoreTest extends TestCase
             'phone_number' => '8910000']);
         $response->assertStatus(422);
     }
-
-    
-
+ 
+    /**
+     * Test para eliminar una tienda correctamente
+     */
     public function testBorrarTienda(){
         $lastUserId = User::max('id');
         $lastStoreId = Store::max('id');

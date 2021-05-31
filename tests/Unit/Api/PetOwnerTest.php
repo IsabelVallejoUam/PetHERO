@@ -18,6 +18,9 @@ class PetOwnerTest extends TestCase
         $this->assertTrue(true);
     }
 
+    /**
+     * Test para crear un dueño de mascota exitosamente
+     */
     public function testCrearNuevoDuenoMascota()
     {
         $this->postJson('/api/v1/users', [
@@ -51,6 +54,9 @@ class PetOwnerTest extends TestCase
         ]);
     }
 
+    /**
+     * Crear un dueño de mascota cuya dirección es nula
+     */
     public function testCrearDuenoMascotaDireccionIncorrecta()
     {
         $lastUserId = User::max('id');
@@ -61,6 +67,9 @@ class PetOwnerTest extends TestCase
         $response->assertStatus(422);
     }
 
+    /**
+     * Test para eliminar un dueño de mascota correctamente
+     */
     public function testBorrarDuenoMascota(){
         $lastUserId = User::max('id');
         $response = $this->deleteJson('api/v1/users/'.$lastUserId);

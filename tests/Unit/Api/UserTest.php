@@ -45,6 +45,9 @@ class UserTest extends TestCase
         ]);
     }
 
+    /**
+     * Test para crear un usuario con nombre nulo
+     */
     public function testCrearUsuarioNombreIncorrecto()
     {
         $response = $this->postJson('/api/v1/users', [
@@ -58,6 +61,9 @@ class UserTest extends TestCase
         $response->assertStatus(422);
     }
 
+    /**
+     * Test para crear un usuario con apellido nulo
+     */
     public function testCrearUsuarioApellidoIncorrecto()
     {
         $response = $this->postJson('/api/v1/users', [
@@ -71,6 +77,9 @@ class UserTest extends TestCase
         $response->assertStatus(422);
     }
 
+    /**
+     * Test para crear un usuario con email que no sigue el código estándar de correos electrónicos
+     */
     public function testCrearUsuarioCorreoIncorrecto()
     {
         $response = $this->postJson('/api/v1/users', [
@@ -84,6 +93,9 @@ class UserTest extends TestCase
         $response->assertStatus(422);
     }
 
+    /**
+     * Test para crear un usuario con un documento más corto de lo necesario
+     */
     public function testCrearUsuarioDocumentoIncorrecto()
     {
         $response = $this->postJson('/api/v1/users', [
@@ -97,6 +109,9 @@ class UserTest extends TestCase
         $response->assertStatus(422);
     }
 
+    /**
+     * Test para crear un usuario con un teléfono más largo de lo necesario
+     */
     public function testCrearUsuarioTelefonoIncorrecto()
     {
         $response = $this->postJson('/api/v1/users', [
@@ -110,19 +125,9 @@ class UserTest extends TestCase
         $response->assertStatus(422);
     }
 
-    // public function testCrearUsuarioNoContrasena()
-    // {
-    //     $response = $this->postJson('/api/v1/users', [
-    //         'name' => 'Link Creado', 
-    //         'lastname' => 'En Test',
-    //         'email' => 'linkuardo@yahoo.com',
-    //         'document' => '102010201',
-    //         'phone' => '310292929',
-    //         'password' => '']);
-    //     $lastId = User::max('id');
-    //     $response->assertStatus(422);
-    // }
-
+    /**
+     * Test para eliminar un usuario correctamente
+     */
     public function testBorrarUsuario(){
         $lastId = User::max('id');
         $response = $this->deleteJson('/api/v1/users/'.$lastId);

@@ -18,6 +18,9 @@ class WalkerTest extends TestCase
         $this->assertTrue(true);
     }
 
+    /**
+     * Test para crear un paseador correctamente
+     */
     public function testCrearNuevoPaseador()
     {
         $this->postJson('/api/v1/users', [
@@ -48,6 +51,9 @@ class WalkerTest extends TestCase
         ]);
     }
 
+    /**
+     * Test para crear un paseador con slogan nulo
+     */
     public function testCrearPaseadorSloganIncorrecto()
     {
         $lastUserId = User::max('id');
@@ -59,6 +65,9 @@ class WalkerTest extends TestCase
         $response->assertStatus(422);
     }
 
+    /**
+     * Test para crear un paseador con experiencia negativa
+     */
     public function testCrearPaseadorExperienciaIncorrecta()
     {
         $lastUserId = User::max('id');
@@ -70,7 +79,9 @@ class WalkerTest extends TestCase
         $response->assertStatus(422);
     }
 
-
+    /**
+     * Test para eliminar un paseador correctamente
+     */
     public function testBorrarPaseador(){
         $lastUserId = User::max('id');
         // $lastWalkerId = Walker::max('id');
