@@ -72,8 +72,8 @@
                     <h5> <i>{{$product->price}}</i></h5>
                     <h6> {{$store->description}}</h6>
                     <p><b>Descuento:</b> {{$product->discount}}</p>
-                    <p><b>Stock:</b> {{$product->quantity}}</p>
-                    <p><b>Puntuación:</b> {{$product->score}}</p>         
+                    <p><b>Puntuación:</b> {{$product->score}}</p>  
+                    <p><b>Stock Disponible:</b> {{$product->quantity}}</p>       
                 
                     <a href="{{ route('product.show', $product->id) }}" class=" btn btn-info"> Ver </a>
                     @if($authenticated)
