@@ -24,6 +24,8 @@ class Store extends Model
         'description',
         'owner_id',
         'schedule',
+        'slogan'
+        
     ];
 
     public function scopeOwnedBy($query, $owner_id)

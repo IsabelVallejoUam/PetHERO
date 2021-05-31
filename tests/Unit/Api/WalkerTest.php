@@ -37,17 +37,11 @@ class WalkerTest extends TestCase
         $response->assertStatus(200);
         $response->assertJsonStructure([
             'data' => [
-                'Walker ID', 'Name', 'Apellido','Email','Phone','Slogan','Experience'
+                'Walker ID','Slogan','Experience'
             ]
         ]);
         $response->assertJson(['data' =>
              [
-                // "ID" => $lastWalkerId,
-                "Walker ID"=> $lastUserId,
-                "Name"=> "Link Creado",
-                "Apellido"=> "En Test",
-                "Phone Number"=> "8905420",
-                "Email"=> "linkuarda@email.com",
                 "Slogan" => "Paseo con cautela y con mortadela",
                 "Experience" => "2",
              ]

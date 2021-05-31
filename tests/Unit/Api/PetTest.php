@@ -46,7 +46,7 @@ class PetTest extends TestCase
         $response->assertStatus(200);
         $response->assertJsonStructure([
              'data' => [
-                'Pet ID', 'Pet Name', 'Type of Pet','Race','Owner', 'Sex', 'Age', 'Personality', 'Commentary', 'Size'
+                'Pet ID', 'Pet Name', 'Type of Pet','Race','Pet Owner ID', 'Sex', 'Age', 'Personality', 'Commentary', 'Size'
              ]
         ]);
         $lastPetId = Pet::max('id');
@@ -56,7 +56,7 @@ class PetTest extends TestCase
                 "Pet Name"=> "Firulais",
                 "Type of Pet"=> "dog",
                 "Race"=> "Cocker spaniel",
-                "Owner"=> $lastUserId,
+                "Pet Owner ID"=> $lastUserId,
                 'Sex' => 'Macho',
                 'Age' => '12',
                 'Personality' => 'shy',
@@ -162,7 +162,7 @@ class PetTest extends TestCase
         $response->assertStatus(422);
     }
 
-    public function testCrearMascotaTamañoIncorrecto()
+    public function testCrearMascotaTamanoIncorrecto()
     {
         $lastUserId = User::max('id');   
         $response = $this->postJson('/api/v1/pets', [
