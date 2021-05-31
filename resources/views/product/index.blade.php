@@ -9,30 +9,31 @@
         $type = 'petOwner';
     } 
 ?>
-<div>
-    <div class="mx-auto pull-right">
-        <div class="container" style="display:inline-block; color:black;">
-            <form action="{{ route('product.index') }}" method="GET" role="search">
-
-                <div class="input-group">
-                    <span class="input-group-btn mr-5 mt-1">
-                        <button class="btn btn-info" type="submit" title="Buscar Productos">
-                            <span class="fas fa-search"></span>
-                        </button>
-                    </span>
-                    <input type="text" class="form-control mr-2" name="term" placeholder="Buscar Productos" id="term">
-                   
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-
 
 <div class="card container"> 
     <div>
         <a type="button" class="btn btn-secondary mb-4 mt-2" href="{{ url()->previous() }}"><i class="far fa-hand-point-left"></i> Volver</a>
     </div>
+    <div class="form-horizontal">
+        <div class=" pull-right">
+            <div class="container" style="display:inline-block; color:black;">
+                <form action="{{ route('product.index') }}" method="GET" role="search">
+
+                    <div class="input-group">
+                        <span class="input-group-btn">
+                            <button class="btn btn-info" type="submit" title="Buscar Productos">
+                                <span class="fas fa-search"></span>
+                            </button>
+                        </span>
+                        <input type="text" class="form-control mr-2" name="term" placeholder="Buscar Productos" id="term">
+                    
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
     <h1>
         Productos
     </h1> 
@@ -55,14 +56,21 @@
                 @else
                     <p><b>Aún no hay calificaciones</p>
                 @endif
+                <p><b>Stock Disponible:</b> {{$product->quantity}}</p>
                 <a href="{{ route('product.show', $product->id) }}" class=" btn btn-info"> Ver {{$product->name}}</a>
-                @if ($type == 'petOwner')
-                    <form action="{{route('cart.add')}}" method="POST">
-                        @csrf
-                        <input type="hidden" name="product_id" value="{{$product->id}}">
-                        <input type="submit" name="btn" class="btn btn-success" value="ADD TO CART">
-                    </form>
-                @endif
+                <div>
+                    @if ($type == 'petOwner')
+                        @if($product->quantity > 0)
+                            <form action="{{route('cart.add')}}" method="POST" class="center">
+                                @csrf
+                                <input type="hidden" name="product_id" value="{{$product->id}}">
+                                <input type="submit" name="btn" class="btn btn-success" value="Agregar al Carrito">
+                            </form>
+                        @else
+                            ¡Este producto no tiene stock!
+                        @endif
+                    @endif
+                </div>
             </div>
         </div>
     @endforeach

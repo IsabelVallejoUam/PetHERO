@@ -2,15 +2,10 @@
 
 @section('content')
 <div class="card container">
-    <div>
-        <a type="button" class="btn btn-secondary mb-4 mt-2" href="{{ url()->previous() }}"><i class="far fa-hand-point-left"></i> Volver</a>
-    </div>
+
             @if(count(Cart::getContent()))
                 <table class="table table-striped table-hover">
                     <thead>
-                        <th scope="col">
-                            ID
-                        </th>
                         <th scope="col">
                             Nombre producto
                         </th>
@@ -28,9 +23,6 @@
                         @foreach (Cart::getContent() as $item)
                             <tr>
                                 <th>
-                                    {{$item->id}}
-                                </th>
-                                <th>
                                     {{$item->name}}
                                 </th>
                                 <th>
@@ -42,13 +34,6 @@
                                 <th>
                                     {{$item->quantity * $item->price}} $
                                 </th>
-                                <th>
-                                    <form action="{{route('cart.removeItem')}}" method="POST">
-                                        @csrf
-                                        <input type="hidden" name="id" value="{{$item->id}}">
-                                        <button type="submit" class="btn btn-link btn-sm text-danger">Eliminar</button>
-                                    </form>
-                                </th>
                             </tr>
                         @endforeach
                     </tbody>
@@ -56,9 +41,8 @@
                         <tr>
                             <th></th>
                             <th></th>
-                            <th></th>
                             <th>
-                                Total carrito:
+                                Total compra:
                             </th>
                             <?php
                                 $total = 0;
@@ -73,17 +57,12 @@
                     </tfoot>
                 </table>
                 <div class="col-lg-12 row justify-content-center">
-                    <form action="{{route('bill.store')}}" method="POST" class="center">
+                    <form action="{{route('billProduct.createProducts')}}" method="POST">
                         @csrf
-                        <input type="submit" name="btn" class="btn btn-success" value="Ir a Pagar">
-                    </form>
-                    <form action="{{route('cart.clear')}}" method="GET" class="center">
-                        @csrf
-                        <input type="submit" name="btn" class="btn btn-danger" value="Vaciar Carrito">
+                        <input type="hidden" name="bill_id" value="{{$id}}" id="bill_id"><br>
+                        <input type="submit" name="btn" class="btn btn-success" value="Generar Factura">
                     </form>
                 </div>
-            @else
-                <h3>Tu Carrito esta vacio!!</h3>
             @endif
 
 </div>

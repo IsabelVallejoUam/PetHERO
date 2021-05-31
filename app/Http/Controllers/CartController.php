@@ -32,6 +32,6 @@ class CartController extends Controller
 
     public function clear(){
         Cart::clear();
-        return back()->with('success', "Carrito vaciado exitosamente.");
+        return view('product.cart');
     }
 }
