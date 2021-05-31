@@ -11,7 +11,7 @@
                     <div class="card-body">
                         <h5 class="card-title"><b> {{$walker->name}}</b></h5>
                         <p class="card-subtitle mb-2 text-muted"><b>Puntuacion:{{$walker->score}}</b></p>
-                        <p class="card-text">Slogan:{{$walker->slogan}}</p>
+                        <p class="card-text"><b>Slogan: </b>{{$walker->slogan}}</p>
                         <a href="{{ route('walker.profile', $walker->id) }}" class="btn btn-secondary">Ver Perfil</a>
                     </div>
                 </div>

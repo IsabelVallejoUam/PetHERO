@@ -18,7 +18,7 @@ class CreateSoldProductsTable extends Migration
             $table->timestamps();
             $table->foreignId('pet_owner_id');
             $table->foreignId('store_id');
-            $table->foreignId('bill_product_id');
+            $table->foreignId('product_id');
 
             $table->foreign('pet_owner_id')
                 ->references('user_id')->on('pet_owners')
@@ -30,8 +30,8 @@ class CreateSoldProductsTable extends Migration
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
 
-            $table->foreign('bill_product_id')
-                ->references('id')->on('bill_products')
+            $table->foreign('product_id')
+                ->references('id')->on('products')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
         });
