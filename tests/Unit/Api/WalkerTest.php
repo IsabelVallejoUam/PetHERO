@@ -18,6 +18,9 @@ class WalkerTest extends TestCase
         $this->assertTrue(true);
     }
 
+    /**
+     * Test para crear un paseador correctamente
+     */
     public function testCrearNuevoPaseador()
     {
         $this->postJson('/api/v1/users', [
@@ -37,23 +40,20 @@ class WalkerTest extends TestCase
         $response->assertStatus(200);
         $response->assertJsonStructure([
             'data' => [
-                'Walker ID', 'Name', 'Apellido','Email','Phone','Slogan','Experience'
+                'Walker ID','Slogan','Experience'
             ]
         ]);
         $response->assertJson(['data' =>
              [
-                // "ID" => $lastWalkerId,
-                "Walker ID"=> $lastUserId,
-                "Name"=> "Link Creado",
-                "Apellido"=> "En Test",
-                "Phone Number"=> "8905420",
-                "Email"=> "linkuarda@email.com",
                 "Slogan" => "Paseo con cautela y con mortadela",
                 "Experience" => "2",
              ]
         ]);
     }
 
+    /**
+     * Test para crear un paseador con slogan nulo
+     */
     public function testCrearPaseadorSloganIncorrecto()
     {
         $lastUserId = User::max('id');
@@ -65,6 +65,9 @@ class WalkerTest extends TestCase
         $response->assertStatus(422);
     }
 
+    /**
+     * Test para crear un paseador con experiencia negativa
+     */
     public function testCrearPaseadorExperienciaIncorrecta()
     {
         $lastUserId = User::max('id');
@@ -76,7 +79,9 @@ class WalkerTest extends TestCase
         $response->assertStatus(422);
     }
 
-
+    /**
+     * Test para eliminar un paseador correctamente
+     */
     public function testBorrarPaseador(){
         $lastUserId = User::max('id');
         // $lastWalkerId = Walker::max('id');

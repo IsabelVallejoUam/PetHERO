@@ -54,14 +54,22 @@
             @else
                 <td>Este producto o servicio aún no cuenta con calificaciones<br>
             @endif
-        </tr>  
+        </tr>
+        <tr>
+            <th scope="col">Stock Disponible</th>
+            <td>{{ $product->quantity }}</td>
+        </tr>
         <tr>
             @if ($type == 'petOwner')
-                <form action="{{route('cart.add')}}" method="POST">
-                    @csrf
-                    <input type="hidden" name="product_id" value="{{$product->id}}">
-                    <input type="submit" name="btn" class="btn btn-success" value="ADD TO CART">
-                </form>
+                @if($product->quantity > 0)
+                    <form action="{{route('cart.add')}}" method="POST" class="center">
+                        @csrf
+                        <input type="hidden" name="product_id" value="{{$product->id}}">
+                        <input type="submit" name="btn" class="btn btn-success" value="Agregar al Carrito">
+                    </form>
+                @else
+                    ¡Este producto no tiene stock!
+                @endif
             @endif
         </tr>
     </table>

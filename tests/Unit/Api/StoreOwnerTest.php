@@ -18,6 +18,9 @@ class StoreOwnerTest extends TestCase
         $this->assertTrue(true);
     }
 
+    /**
+     * Test para crear un dueño de tiendas correctamente
+     */
     public function testCrearNuevoDuenoTienda()
     {
         $this->postJson('/api/v1/users', [
@@ -49,6 +52,9 @@ class StoreOwnerTest extends TestCase
         ]);
     }
 
+    /**
+     * Test para eliminar un dueño de tiendas correctamente
+     */
     public function testBorrarDuenoTienda(){
         $lastUserId = User::max('id');
         $response = $this->deleteJson('api/v1/users/'.$lastUserId);

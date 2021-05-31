@@ -105,19 +105,23 @@
                 <h5> <i>{{$product->price}}</i></h5>
                 <h6> {{$store->description}}</h6>
                 <p><b>Descuento:</b> {{$product->discount}}</p>
-                <p><b>Stock:</b> {{$product->quantity}}</p>  
                 @if ($productRate != null)
                     <p><b>Puntuación:</b> {{$productRate}}/5</p>
                 @else
                     <p><b>Aún no hay calificaciones</p>
                 @endif
+                <p><b>Stock Disponible:</b> {{$product->quantity}}</p>
                 <a href="{{ route('product.show', $product->id) }}" class=" btn btn-info"> Ver {{$product->name}}</a>
                 @if ($type == 'petOwner')
-                    <form action="{{route('cart.add')}}" method="POST">
-                        @csrf
-                        <input type="hidden" name="product_id" value="{{$product->id}}">
-                        <input type="submit" name="btn" class="btn btn-success" value="ADD TO CART">
-                    </form>
+                    @if($product->quantity > 0)
+                        <form action="{{route('cart.add')}}" method="POST" class="center">
+                            @csrf
+                            <input type="hidden" name="product_id" value="{{$product->id}}">
+                            <input type="submit" name="btn" class="btn btn-success" value="Agregar al Carrito">
+                        </form>
+                    @else
+                        ¡Este producto no tiene stock!
+                    @endif
                 @endif
             </div>
         </div>   
